@@ -1,10 +1,12 @@
 """check.sh must pass a well-formed project and fail each kind of broken one."""
 
 import re
+import shutil
 import subprocess
 from pathlib import Path
 
 CHECK = Path(__file__).resolve().parents[1] / "check.sh"
+DOCS = Path(__file__).resolve().parent / "fixtures/adder_docs"
 
 PLAN = """# Plan
 ## Goal
@@ -14,7 +16,7 @@ Add two numbers.
 ## Steps
 1. write add
 ## System model
-System model: not needed, because it is one function.
+See docs/MODEL.md.
 """
 README = """# Adder
 ## Run it
@@ -27,7 +29,9 @@ CODE = "def add(a, b):\n    return a + b\n"
 TEST = "from add import add\n\ndef test_add():\n    assert add(2, 3) == 5\n"
 
 
-def project(tmp_path, plan=PLAN, readme=README, code=CODE, test=TEST):
+def project(tmp_path, plan=PLAN, readme=README, code=CODE, test=TEST, docs=True):
+    if docs:
+        shutil.copytree(DOCS, tmp_path / "docs")
     for name, text in {"PLAN.md": plan, "README.md": readme, "add.py": code, "test_add.py": test}.items():
         if text is not None:
             (tmp_path / name).write_text(text)
@@ -117,9 +121,22 @@ def test_empty_system_model_section_fails(tmp_path):
     assert code == 1 and "System model section is empty" in out
 
 
-def test_one_line_system_model_reason_passes(tmp_path):
+def test_system_model_pointing_at_docs_passes(tmp_path):
     code, out = run(project(tmp_path))
     assert code == 0 and "PASS PLAN.md has a System model" in out
+
+
+def test_missing_planning_package_fails(tmp_path):
+    code, out = run(project(tmp_path, docs=False))
+    assert code == 1
+    for name in ("DESIGN", "MODEL", "DECISIONS"):
+        assert f"FAIL docs/{name}.md missing" in out, out
+
+
+def test_package_results_are_counted(tmp_path):
+    code, out = run(project(tmp_path), "--final")
+    assert "PASS docs/MODEL.md diagram 3 'Main sequence' is a sequenceDiagram" in out, out
+    assert "PASS docs/MODEL.md names 1 functions, all defined in the code" in out, out
 
 
 def test_planner_notes_name_every_section_check_sh_requires():

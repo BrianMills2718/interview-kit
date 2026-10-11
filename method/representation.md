@@ -14,5 +14,6 @@ they will do with the answer. Then pick the form.
   "unknown", not drawn as if known.
 - **Colour is never the only signal**: add a word or a dashed line, and avoid red against green.
 
-For a take-home README: at most two diagrams (context, and the main sequence), each under a
-heading that is its question.
+For a take-home: the six diagrams live in `docs/MODEL.md`, each under a heading that is its
+question. The README shows the two a reviewer needs first (context and the main sequence) and
+links to the rest.

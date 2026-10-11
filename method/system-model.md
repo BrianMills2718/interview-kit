@@ -1,7 +1,9 @@
 # System model: one page that says what the system is
 
-Write one model per project before the code, and keep it true as the code changes. For a
-take-home it is one page, in this order (the arc42 headings, with C4 diagrams in Mermaid):
+Write one model per project before the code, and keep it true as the code changes. In a
+take-home it is `docs/MODEL.md`, copied from `templates/MODEL.md`, with six diagrams (context,
+building blocks, main sequence, rules, states, data) and the tables below; `check.sh` enforces
+it. The content follows the arc42 headings, with C4 diagrams in Mermaid:
 
 1. **Goals**: the outcome and the 2 to 4 quality goals that matter (correct refunds, bounded
    cost, explainable output).
@@ -17,8 +19,8 @@ take-home it is one page, in this order (the arc42 headings, with C4 diagrams in
 End with an **Unknowns** table: `| Unknown | What would decide it |`. Never fill a gap with a
 guess presented as fact; mark each element `decided` or `guessed`.
 
-Too small for a model (one function, one file)? Write one line instead:
-`System model: not needed, because <reason>.`
+A small system still gets all six diagrams; they are short. Only the states diagram may be
+replaced, by one line "No states: <reason>", when nothing changes state.
 
 ## Keep it true
 

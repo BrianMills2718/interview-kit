@@ -6,8 +6,12 @@ These rules apply to any AI coding assistant working in this project. Read them 
 
 1. **Plan before code.** Write `PLAN.md` from `PLAN.template.md` (see `skills/plan/SKILL.md`):
    goal with the quoted requirements, checkable done-when items, small steps, the shape chosen,
-   a one-page system model (or one line saying why none is needed), assumptions and risks. How to think at each
-   stage (design chain, model, views, decisions) is in `kit/method/README.md`.
+   assumptions and risks. With it, fill the planning package from `kit/templates/`:
+   `docs/DESIGN.md` (outcome, quoted requirements, failure modes, rules, fixtures, slices),
+   `docs/MODEL.md` (six Mermaid diagrams: context, building blocks, main sequence, rules,
+   states, data; plus runtime, contracts, quality and unknowns tables) and `docs/DECISIONS.md`.
+   `check.sh` fails until all three are filled in. How to think at each stage is in
+   `kit/method/README.md`.
    Wait for approval before editing code (the person types "plan approved" in the chat, so the
    recording shows it). If no person is present (an agent working alone or rehearsing), commit
    the plan and go on: the commit is the record.

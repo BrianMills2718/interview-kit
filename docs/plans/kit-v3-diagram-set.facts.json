@@ -1,0 +1,21 @@
+{
+  "schema_version": "method-activation-facts.v1",
+  "record_type": "method_activation_facts",
+  "plan_ref": "docs/plans/kit-v3-diagram-set.md",
+  "plan_sha256": "3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+  "path_decision_ref": "docs/plans/kit-v3-diagram-set.path-decision.json",
+  "path_decision_sha256": "e4cb3e36152154e49acf442bcbeb12c799c1579067829b19d1c96c2072d56953",
+  "facts": {
+    "shared_mechanism": false,
+    "empirical_comparison_proposed": false,
+    "llm_central": false,
+    "irreversible_or_spend_action": false
+  },
+  "fact_sources": {
+    "shared_mechanism": "derived_current_boundary",
+    "empirical_comparison_proposed": "derived_current_boundary",
+    "llm_central": "derived_current_boundary",
+    "irreversible_or_spend_action": "derived_current_boundary"
+  },
+  "recorded_at": "2026-10-11T17:03:29Z"
+}

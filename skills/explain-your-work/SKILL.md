@@ -21,8 +21,13 @@ Two or three sentences: what the system does and the shape of the solution (a di
 like START -> agent -> tools -> agent -> END helps).
 
 ## Design decisions
-| Decision | Why | Rejected alternative |
+The two or three that matter most; all of them are in [docs/DECISIONS.md](docs/DECISIONS.md).
+Design, model and all six diagrams: [docs/DESIGN.md](docs/DESIGN.md), [docs/MODEL.md](docs/MODEL.md).
+Paste the context and main-sequence diagrams from the model here.
+
+| Requirement | Code | Test |
 |---|---|---|
+| R1 "<quoted line>" | `<function()>` | `<test name>` |
 
 ## Assumptions
 Where the spec was ambiguous and which reading I chose.

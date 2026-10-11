@@ -5,7 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 {
   echo "# Interview kit (combined; source: the interview-kit repo)"
-  for f in AGENTS.md PLAN.template.md skills/*/SKILL.md agents/*.md method/*.md; do
+  for f in AGENTS.md PLAN.template.md templates/*.md skills/*/SKILL.md agents/*.md method/*.md; do
     echo; echo "<!-- $f -->"; cat "$f"
   done
 } > KIT.md

@@ -31,9 +31,9 @@ else
   for sec in "## Goal" "## Done when" "## Steps"; do
     grep -q "^$sec" PLAN.md && ok "PLAN.md has '$sec'" || bad "PLAN.md lacks '$sec'"
   done
-  # the system model: a one-page model, or one line saying why none is needed (kit/method/system-model.md)
+  # the System model section points at docs/MODEL.md (checked below with the rest of the package)
   if ! grep -q '^## System model' PLAN.md; then
-    bad "PLAN.md lacks '## System model' (a one-page model, or 'System model: not needed, because <reason>'; see kit/method/system-model.md)"
+    bad "PLAN.md lacks '## System model' (point it at docs/MODEL.md; see kit/method/system-model.md)"
   elif [[ -z $(awk '/^## System model/{f=1;next} /^## /{f=0} f && NF' PLAN.md) ]]; then
     bad "PLAN.md System model section is empty"
   else
@@ -52,6 +52,14 @@ else
     [[ "$stale" == 0 ]] && ok "ticked items show real results" || bad "$stale ticked item(s) show a placeholder result like 'N passed': run the check and write what it printed"
   fi
 fi
+
+# 1b. Planning package: docs/DESIGN.md, docs/MODEL.md (six diagrams), docs/DECISIONS.md (kit/templates/)
+FA=(); [[ $FINAL == 1 ]] && FA=(--final)
+docs_out=$(python3 "$KIT/check_docs.py" . "${FA[@]}" 2>&1); seen=0
+while read -r line; do
+  case "$line" in PASS\ *) ok "${line#PASS }"; seen=1 ;; FAIL\ *) bad "${line#FAIL }"; seen=1 ;; esac
+done <<< "$docs_out"
+{ [[ $seen == 1 ]] && ! grep -q Traceback <<< "$docs_out"; } || bad "check_docs.py crashed: $(echo "$docs_out" | tail -2)"
 
 # 2. Code compiles
 if find . -name '*.py' -not -path './.venv/*' -not -path './kit/*' | grep -q .; then

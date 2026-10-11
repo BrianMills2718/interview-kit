@@ -27,7 +27,7 @@ def test_every_runtime_row_has_a_writer_that_writes_it():
 def test_kit_md_matches_its_sources(tmp_path):
     for p in ["build_kit.sh", "AGENTS.md", "PLAN.template.md"]:
         shutil.copy(ROOT / p, tmp_path / p)
-    for d in ["skills", "agents", "method"]:
+    for d in ["skills", "agents", "method", "templates"]:
         if (ROOT / d).exists():
             shutil.copytree(ROOT / d, tmp_path / d)
     subprocess.run(["bash", "build_kit.sh"], cwd=tmp_path, check=True, capture_output=True)
@@ -38,7 +38,7 @@ def test_kit_md_bundles_every_note():
     """Model V1: KIT.md is a view of every note in B1, method/ included; no note left out."""
     kit = (ROOT / "KIT.md").read_text(encoding="utf-8")
     notes = ["AGENTS.md", "PLAN.template.md"] + [
-        str(p.relative_to(ROOT)) for d in ["skills", "agents", "method"] for p in sorted((ROOT / d).rglob("*.md"))
+        str(p.relative_to(ROOT)) for d in ["skills", "agents", "method", "templates"] for p in sorted((ROOT / d).rglob("*.md"))
     ]
     missing = [n for n in notes if f"<!-- {n} -->" not in kit]
     assert not missing, f"KIT.md leaves out: {missing}"

@@ -61,13 +61,17 @@ def test_problem_removal_command_deletes_the_reference(tmp_path):
 
 
 def test_filled_template_passes_check(tmp_path):
-    """Filling every placeholder in PLAN.template.md gives a plan check.sh accepts, Shape section included."""
+    """Filling every placeholder in PLAN.template.md and templates/ gives a project check.sh accepts."""
     import re
     import subprocess
 
     template = (ROOT / "PLAN.template.md").read_text()
     assert "## Shape" in template
     (tmp_path / "PLAN.md").write_text(re.sub(r"<[^<>]+>", "filled", template))
+    (tmp_path / "docs").mkdir()
+    for name in ("DESIGN", "MODEL", "DECISIONS"):  # the planning package, filled the same way
+        text = (ROOT / "templates" / f"{name}.md").read_text()
+        (tmp_path / "docs" / f"{name}.md").write_text(re.sub(r"<[^<>]+>", "filled", text))
     (tmp_path / "test_x.py").write_text("def test_x():\n    assert 1 + 1 == 2\n")
     r = subprocess.run(["bash", str(ROOT / "check.sh"), str(tmp_path)], capture_output=True, text=True)
     assert r.returncode == 0, r.stdout

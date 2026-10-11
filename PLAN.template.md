@@ -16,7 +16,7 @@
 <plain code, one structured call, fixed workflow, agent loop, or supervisor; one line per bigger shape rejected and why (skills/plan)>
 
 ## System model
-<one page per kit/method/system-model.md (goals, context, parts, runtime with the writing function, quality checks, unknowns), or one line: System model: not needed, because REASON>
+<one line pointing at docs/MODEL.md (filled from kit/templates/MODEL.md), plus the one or two facts a reader most needs from it>
 
 ## Assumptions
 - <ambiguity> -> <reading chosen, and why>

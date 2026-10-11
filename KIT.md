@@ -9,8 +9,12 @@ These rules apply to any AI coding assistant working in this project. Read them 
 
 1. **Plan before code.** Write `PLAN.md` from `PLAN.template.md` (see `skills/plan/SKILL.md`):
    goal with the quoted requirements, checkable done-when items, small steps, the shape chosen,
-   a one-page system model (or one line saying why none is needed), assumptions and risks. How to think at each
-   stage (design chain, model, views, decisions) is in `kit/method/README.md`.
+   assumptions and risks. With it, fill the planning package from `kit/templates/`:
+   `docs/DESIGN.md` (outcome, quoted requirements, failure modes, rules, fixtures, slices),
+   `docs/MODEL.md` (six Mermaid diagrams: context, building blocks, main sequence, rules,
+   states, data; plus runtime, contracts, quality and unknowns tables) and `docs/DECISIONS.md`.
+   `check.sh` fails until all three are filled in. How to think at each stage is in
+   `kit/method/README.md`.
    Wait for approval before editing code (the person types "plan approved" in the chat, so the
    recording shows it). If no person is present (an agent working alone or rehearsing), commit
    the plan and go on: the commit is the record.
@@ -82,13 +86,138 @@ sections present. Run it after each step; the work is done only when `--final` p
 <plain code, one structured call, fixed workflow, agent loop, or supervisor; one line per bigger shape rejected and why (skills/plan)>
 
 ## System model
-<one page per kit/method/system-model.md (goals, context, parts, runtime with the writing function, quality checks, unknowns), or one line: System model: not needed, because REASON>
+<one line pointing at docs/MODEL.md (filled from kit/templates/MODEL.md), plus the one or two facts a reader most needs from it>
 
 ## Assumptions
 - <ambiguity> -> <reading chosen, and why>
 
 ## Risks (failure modes)
 - <what could make this wrong> -> <how it would show>
+
+<!-- templates/DECISIONS.md -->
+# Decisions
+
+Copy to `docs/DECISIONS.md`. One row per real choice (library, structure, scope, a rule's
+reading), written when it is made (method/decisions.md). The README links here.
+
+| ID | Decision | Why | Rejected alternative | What would show it wrong |
+|---|---|---|---|---|
+| D1 | <choice> | <reason> | <alternative and why not> | <observable trigger> |
+
+<!-- templates/DESIGN.md -->
+# Design
+
+Copy to `docs/DESIGN.md` in the first minutes, before the model and the code. Walk it top to
+bottom (method/design-chain.md); each section depends on the one above. Short lists are fine.
+
+## Outcome
+<who does what, and what they see when it works, in one sentence>
+
+Example: <one concrete input> -> <the exact expected result>
+
+## Requirements
+| ID | Quoted from the task | Assumption, if inferred |
+|---|---|---|
+| R1 | "<exact requirement text>" | <reading chosen, or none> |
+
+## Failure modes and controls
+| ID | Requirement | What could go wrong | Control (least code that prevents, detects or recovers) |
+|---|---|---|---|
+| F1 | R1 | <failure> | <control> |
+
+## Domain rules, in the order they are checked
+1. <rule>: <what happens>
+
+## Fixtures: one good and one smallest bad input per boundary
+| Boundary | Good input | Bad input | Expected on bad |
+|---|---|---|---|
+| <boundary> | <good> | <bad> | <error or refusal> |
+
+## Slices: build order, each with its judge first
+1. <slice>: judged by `<test name>`
+
+<!-- templates/MODEL.md -->
+# System model
+
+Copy to `docs/MODEL.md` before writing code; keep it true as the code changes (method/system-model.md).
+Every box, arrow and row names a real function, class, tool or record. Write functions in
+backticks with parentheses and classes in backticks: `check.sh --final` fails any function named
+that way that the code does not define, and any backticked test name that no test file defines.
+Mark anything not yet decided (guessed). Each diagram answers the question in its heading. If
+nothing in the system changes state, replace diagram 5 with one line starting "No states:" and
+the reason.
+
+## Goals
+- Outcome: <who does what, and what they see when it works>
+- Quality goals: <2 to 4, e.g. correct refunds, bounded steps, explainable answer>
+
+## 1. Context: who and what is outside the system?
+```mermaid
+flowchart LR
+  <Person or caller> -->|<what they send>| <System>
+  <System> -->|<what it calls>| <External system or model>
+```
+
+## 2. Building blocks: which part owns what?
+```mermaid
+flowchart TB
+  <entry function()> --> <part function()>
+```
+
+| Block | Owns | Code |
+|---|---|---|
+| <part> | <what it decides or holds> | `<function()>` |
+
+## 3. Main sequence: what happens, in order, on the main path?
+```mermaid
+sequenceDiagram
+  participant <Caller>
+  participant <Part>
+  <Caller>->><Part>: <call>
+  <Part>-->><Caller>: <result>
+```
+
+## 4. Rules: in what order are the business rules checked?
+```mermaid
+flowchart TD
+  <first check?> -->|yes| <outcome>
+  <first check?> -->|no| <next check?>
+```
+
+## 5. States: what states does the main item move through?
+```mermaid
+stateDiagram-v2
+  [*] --> <first state>
+  <first state> --> <next state>: <event>
+```
+
+## 6. Data: what are the typed contracts and state?
+```mermaid
+classDiagram
+  class <Model> {
+    <field: type>
+  }
+```
+
+## Runtime: which function writes each record?
+| Process | Trigger | Reads | Writes | Writer |
+|---|---|---|---|---|
+| <process> | <what starts it> | <inputs> | <record changed> | `<function()>` |
+
+## Contracts: what crosses between parts, and how it fails
+| Crossing | Producer | Consumer | Shape | On failure |
+|---|---|---|---|---|
+| <crossing> | <part> | <part> | <type or schema> | <what happens> |
+
+## Quality: what observable result shows each goal holds?
+| Goal | Observable pattern | Test |
+|---|---|---|
+| <goal> | <what you would see> | `<test name>` |
+
+## Unknowns
+| Unknown | What would decide it |
+|---|---|
+| <open question> | <the evidence that settles it> |
 
 <!-- skills/debug/SKILL.md -->
 ---
@@ -209,8 +338,13 @@ Two or three sentences: what the system does and the shape of the solution (a di
 like START -> agent -> tools -> agent -> END helps).
 
 ## Design decisions
-| Decision | Why | Rejected alternative |
+The two or three that matter most; all of them are in [docs/DECISIONS.md](docs/DECISIONS.md).
+Design, model and all six diagrams: [docs/DESIGN.md](docs/DESIGN.md), [docs/MODEL.md](docs/MODEL.md).
+Paste the context and main-sequence diagrams from the model here.
+
+| Requirement | Code | Test |
 |---|---|---|
+| R1 "<quoted line>" | `<function()>` | `<test name>` |
 
 ## Assumptions
 Where the spec was ambiguous and which reading I chose.
@@ -463,10 +597,16 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
    Not "works well". Each item gets `[ ]` and becomes `[x]` only after the check ran.
    Leave out "`check.sh --final` passes": it checks these items, so run it last instead.
 3. **Steps**: numbered, each small enough to run and check on its own.
-4. **System model** (heading `## System model`): one page per `method/system-model.md` (goals, context, building blocks,
-   runtime, views, quality, unknowns), or one line "System model: not needed, because <reason>". `check.sh` fails without it.
-   For the steps before it (requirements, failure modes, contracts, thin slices) see
-   `method/design-chain.md`.
+4. **System model** (heading `## System model`): one line pointing at `docs/MODEL.md`. The
+   planning package lives in `docs/`, copied from `templates/` and filled before code:
+   - `docs/DESIGN.md`: outcome with one example, quoted requirements R1.., failure modes and
+     controls F1.., domain rules in order, fixtures, slices (`method/design-chain.md`);
+   - `docs/MODEL.md`: six Mermaid diagrams (1 context, 2 building blocks, 3 main sequence,
+     4 rules, 5 states, 6 data) and the runtime, contracts, quality and unknowns tables
+     (`method/system-model.md`, `method/architecture-views.md`);
+   - `docs/DECISIONS.md`: one row per real choice (`method/decisions.md`).
+   `check.sh` fails until each is filled; `--final` also fails any function or test the model
+   names that the code does not define.
 5. **Assumptions**: every ambiguity in the spec and the reading chosen.
 6. **Risks**: what could make this wrong, and how it would show.
 
@@ -685,19 +825,21 @@ You are the implementer. Take exactly one step from `PLAN.md`.
 <!-- agents/planner.md -->
 ---
 name: planner
-description: Turns a task into PLAN.md (goal, checkable done-when items, small steps, assumptions, risks) before any code is written. Use first on every task and when scope changes.
+description: Turns a task into PLAN.md and the docs/ planning package (design, six-diagram model, decisions) before any code is written. Use first on every task and when scope changes.
 tools: Read, Grep, Glob, Write
 ---
 
 You are the planner. Read the task and the existing files, then write or update `PLAN.md`
 following `skills/plan/SKILL.md` and `PLAN.template.md`. For anything bigger than one function,
-walk `method/design-chain.md` and write the one-page model from `method/system-model.md`.
+then fill the planning package: copy `templates/DESIGN.md`, `templates/MODEL.md` and
+`templates/DECISIONS.md` into `docs/` and fill each (`method/design-chain.md`, `method/system-model.md`).
 
 - Quote the requirement lines you were given; do not paraphrase them away.
 - Every done-when item is a command or an observable result. Reject vague ones.
 - Steps are small enough to run and check one at a time.
 - List each ambiguity with the reading you chose.
-- Fill `## System model`: the one-page model, or one line "not needed, because <reason>".
+- Fill `## System model` with one line pointing at `docs/MODEL.md`; draw all six diagrams there,
+  each answering its heading's question about this system. Undecided parts are marked (guessed).
 - Do not write implementation code. Return the plan and the open questions, if any.
 
 <!-- agents/reviewer.md -->
@@ -751,9 +893,9 @@ that needs a team (claims, worktrees, coordination) is left out.
 | Stage of the test | Read | You produce |
 |---|---|---|
 | First 10 minutes: understand the task | [design-chain.md](design-chain.md) | outcome, requirements, failure modes, in `PLAN.md` |
-| Before code: the shape of the solution | [system-model.md](system-model.md) | a one-page model in `PLAN.md` or `docs/MODEL.md` |
-| When a picture would help | [architecture-views.md](architecture-views.md), [representation.md](representation.md) | one or two Mermaid diagrams, each answering one question |
-| Any choice (library, structure, scope) | [decisions.md](decisions.md) | a decision row in the README: choice, why, what would show it wrong |
+| Before code: the shape of the solution | [system-model.md](system-model.md) | `docs/DESIGN.md` and `docs/MODEL.md` from `templates/` |
+| When a picture would help | [architecture-views.md](architecture-views.md), [representation.md](representation.md) | the six diagrams in `docs/MODEL.md`, each answering its heading's question |
+| Any choice (library, structure, scope) | [decisions.md](decisions.md) | a row in `docs/DECISIONS.md`: choice, why, what would show it wrong |
 | Each step | [design-chain.md](design-chain.md#slices-judge-first) | the test (the judge) first, then the code |
 | Optional: machine-checked plan | [aes.md](aes.md) | `aes` records outcome to criterion to test, and says what is unproven |
 
@@ -762,9 +904,9 @@ that needs a team (claims, worktrees, coordination) is left out.
 applies.
 
 **Skip in a timed test:** the design chain's steps when the prompt already fixes the inputs,
-outputs and rules (quote it in the Goal instead); the model's drift test (it pays off over days,
-not hours); diagrams unless the reviewer would otherwise have to read code to see the flow; `aes`
-under 3 hours.
+outputs and rules (quote it in `docs/DESIGN.md` instead); the model's drift test (it pays off over
+days, not hours; `check.sh --final` already checks every named function exists); `aes` under
+3 hours. Never skip the package itself: `check.sh` requires it.
 
 Time budget for a 4-hour test: about 25 minutes on design-chain plus model before any code,
 5 minutes per decision row, and the last 20 minutes on the README. In a 2-hour test, halve the
@@ -967,14 +1109,17 @@ they will do with the answer. Then pick the form.
   "unknown", not drawn as if known.
 - **Colour is never the only signal**: add a word or a dashed line, and avoid red against green.
 
-For a take-home README: at most two diagrams (context, and the main sequence), each under a
-heading that is its question.
+For a take-home: the six diagrams live in `docs/MODEL.md`, each under a heading that is its
+question. The README shows the two a reviewer needs first (context and the main sequence) and
+links to the rest.
 
 <!-- method/system-model.md -->
 # System model: one page that says what the system is
 
-Write one model per project before the code, and keep it true as the code changes. For a
-take-home it is one page, in this order (the arc42 headings, with C4 diagrams in Mermaid):
+Write one model per project before the code, and keep it true as the code changes. In a
+take-home it is `docs/MODEL.md`, copied from `templates/MODEL.md`, with six diagrams (context,
+building blocks, main sequence, rules, states, data) and the tables below; `check.sh` enforces
+it. The content follows the arc42 headings, with C4 diagrams in Mermaid:
 
 1. **Goals**: the outcome and the 2 to 4 quality goals that matter (correct refunds, bounded
    cost, explainable output).
@@ -990,8 +1135,8 @@ take-home it is one page, in this order (the arc42 headings, with C4 diagrams in
 End with an **Unknowns** table: `| Unknown | What would decide it |`. Never fill a gap with a
 guess presented as fact; mark each element `decided` or `guessed`.
 
-Too small for a model (one function, one file)? Write one line instead:
-`System model: not needed, because <reason>.`
+A small system still gets all six diagrams; they are short. Only the states diagram may be
+replaced, by one line "No states: <reason>", when nothing changes state.
 
 ## Keep it true
 
