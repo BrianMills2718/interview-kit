@@ -1,0 +1,10 @@
+Before (build_kit.sh skipped method/ and 3 skills):
+>       assert not missing, f"KIT.md leaves out: {missing}"
+E       AssertionError: KIT.md leaves out: ['skills/debug/SKILL.md', 'skills/production-hardening/SKILL.md', 'skills/raw-api-agent/SKILL.md', 'method/README.md', 'method/aes.md', 'method/architecture-views.md', 'method/decisions.md', 'method/design-chain.md', 'method/representation.md', 'method/syst
+1 failed, 2 passed in 0.88s
+
+After:
+tests/test_wiki_map.py::test_every_wiki_link_resolves PASSED             [100%]
+
+============================= 48 passed in 32.13s ==============================
+exit 0

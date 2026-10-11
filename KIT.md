@@ -86,6 +86,58 @@ sections present. Run it after each step; the work is done only when `--final` p
 ## Risks
 - <what could make this wrong> -> <how it would show>
 
+<!-- skills/debug/SKILL.md -->
+---
+name: debug
+description: Find the root cause of a failing test, error or wrong agent answer before changing code - read, reproduce, one hypothesis at a time, fix with a test. Use whenever something fails or surprises you.
+---
+
+# Skill: debug by root cause, not by guessing
+
+Adapted from obra/superpowers `systematic-debugging` (MIT). In a recorded test, a run of
+"try this... try that..." prompts reads as lost control; a stated hypothesis tested in one small
+step reads as skill.
+
+**Rule: no fix before you can say what the cause is and why.**
+
+## 1. Read and reproduce
+
+- Read the whole error and stack trace: file, line, exception type, message.
+- Reproduce it with one command (`pytest tests/test_x.py::test_y -v`). If it does not fail on
+  demand, you are not debugging yet.
+- For an agent that answers wrongly, print the trace before touching code: every message, each
+  tool call with its arguments, each tool result, the final answer
+  (`for step in graph.stream(..., stream_mode="updates"): print(step)`). Then decide which it is:
+  - the needed fact never came back from any tool (tool or retrieval problem),
+  - it came back but the model ignored or contradicted it (prompt or tool-description problem),
+  - the expected answer is itself wrong (test problem).
+
+## 2. Compare with something that works
+
+Find the closest working example (the kit's `examples/`, the library docs, an earlier passing
+commit) and list every difference, including the installed version
+(`importlib.metadata.version("langgraph")`).
+
+## 3. One hypothesis, one change
+
+- Write it down: "I think X causes this because Y." Ask the AI chat in **Ask** mode to check
+  the reasoning, not to fix it.
+- Make the smallest change that tests it. Run. If it is wrong, undo it and form a new hypothesis;
+  do not pile fixes on top of each other.
+- Say "I don't understand X yet" when that is true, then read the source or docs.
+
+## 4. Fix with a test
+
+- First a test that fails for this bug, then the fix, then the full suite.
+- After three failed fixes, stop and question the design rather than trying a fourth.
+
+## Stop signs
+
+"Quick fix for now", "just try changing X", several changes before one test run, "it's probably
+X" with no evidence, or each fix revealing a new problem elsewhere. Go back to step 1.
+
+Note the bug and its cause in the README's AI section if the AI introduced it.
+
 <!-- skills/evaluate-agent/SKILL.md -->
 ---
 name: evaluate-agent
@@ -429,6 +481,89 @@ Write one line per rejected shape: "Not an agent: every input is known before th
 - If the approach changes, edit the plan first, then the code.
 - At the end, the plan's unticked items go into the README under "Limitations".
 
+<!-- skills/production-hardening/SKILL.md -->
+---
+name: production-hardening
+description: Add retries, call limits, cost tracking and input/output guardrails to a LangChain agent using LangChain's own middleware. Use once the agent works, when the task mentions reliability, cost, safety or production readiness.
+---
+
+# Skill: harden the agent with built-in middleware
+
+Runnable, offline-tested version: `examples/hardening.py` (`tests/test_hardening.py`), langchain
+1.4 / langchain-core 1.6. Each piece is LangChain's own, passed to
+`create_agent(llm, tools, middleware=[...])`; don't hand-write retry loops or regex filters.
+
+| Need | Use | Note |
+|---|---|---|
+| transient model errors (503, rate limit) | `ModelRetryMiddleware(max_retries=2, initial_delay=1.0, on_failure="error")` | `on_failure="continue"` (default) hides a final failure; prefer `"error"` |
+| runaway tool loops | `ModelCallLimitMiddleware(run_limit=6, exit_behavior="end")` | also `ToolCallLimitMiddleware(run_limit=5)` |
+| a node in your own StateGraph | `g.add_node("x", fn, retry_policy=RetryPolicy(max_attempts=3))` | `from langgraph.types import RetryPolicy` |
+| rate limiting | `ChatOpenAI(..., rate_limiter=InMemoryRateLimiter(requests_per_second=1))` | `langchain_core.rate_limiters` |
+| personal data | `PIIMiddleware("email", strategy="redact", apply_to_input=True)` | strategies: redact, mask, hash, block |
+| reject bad input before spending a call | `@before_agent(can_jump_to=["end"])` returning `{"messages": [...], "jump_to": "end"}` | `@after_agent` checks the output |
+| cost | `with get_usage_metadata_callback() as cb:` then tokens x price | counts only replies whose `response_metadata` has `model_name` (real providers set it; fakes in tests must) |
+
+Also:
+
+- **Tool output is untrusted input** (prompt injection): never let a tool result change the
+  system prompt or call a destructive tool without a check or a human-approval interrupt
+  (`examples/patterns.py`).
+- **Validate tool arguments** with typed parameters or a Pydantic schema, and raise a clear error.
+- **Report cost and limits in the README**: tokens and estimated cost per question, and what
+  happens when a limit is hit. Graders look for this.
+
+Test each guard on a case where it must act: an email that must not reach the model, a model
+that fails once, a model that asks for tools forever (see the example's tests).
+
+<!-- skills/raw-api-agent/SKILL.md -->
+---
+name: raw-api-agent
+description: Build a tool-calling agent directly on the Anthropic or OpenAI API, no framework - the loop, tool definitions, error handling. Use when the task says raw API calls or forbids LangChain, or a framework would be overkill.
+---
+
+# Skill: an agent loop on the raw API
+
+Runnable, offline-tested version: `examples/raw_api_agent.py` (`tests/test_raw_api_agent.py`).
+The tests replay replies in the documented message shapes with a stub client; check the
+installed SDK once live before relying on a shape.
+
+## The loop (both providers)
+
+```
+messages = [user question]
+repeat at most N turns:
+    reply = model(messages, tools)
+    append reply to messages            # keep the model's own tool-call items
+    if reply asks for no tool: return its text
+    for each tool call: run it, append its result with the SAME call id
+raise "no answer after N turns"
+```
+
+| | Anthropic Messages API | OpenAI Responses API |
+|---|---|---|
+| call | `client.messages.create(model, max_tokens, system, tools, messages)` | `client.responses.create(model, instructions, tools, input)` |
+| tool def | `{"name", "description", "input_schema"}` | `{"type": "function", "name", "description", "parameters"}` |
+| more tools wanted when | `resp.stop_reason == "tool_use"` | any `item.type == "function_call"` in `resp.output` |
+| call fields | block `.id`, `.name`, `.input` (dict) | item `.call_id`, `.name`, `.arguments` (JSON string) |
+| send result | user message of `{"type": "tool_result", "tool_use_id", "content", "is_error"}` blocks, all results in one message | append `{"type": "function_call_output", "call_id", "output"}` |
+| final text | text blocks of `resp.content` | `resp.output_text` |
+
+## Design rules (from the providers' guides and 12-factor-agents, paraphrased)
+
+- **You own the control flow**: the loop, the turn limit and the stop condition are plain code
+  you can read and test, which is easy to explain to a grader.
+- **Tool descriptions are prompts**: say what it does, when to use it, and what it returns.
+  Return only the fields the model needs.
+- **Errors go back to the model, compactly**: catch the tool's exception, send its message as the
+  result with `is_error: true`, and let the model retry or explain. Unknown tool names too.
+  Never crash the loop, and never hide the error.
+- **Bound everything**: `max_turns`, and `max_tokens` on Anthropic (required there).
+- **Log each turn**: tool name, arguments, result size; return the whole message list so a test
+  can assert on it.
+
+When to prefer this over LangGraph: the prompt says raw API calls, one provider is fixed, or the
+loop is all you need. Say so in the README's design decisions.
+
 <!-- skills/using-ide-ai-chat/SKILL.md -->
 ---
 name: using-ide-ai-chat
@@ -580,7 +715,292 @@ You are the tester. Follow `skills/evaluate-agent/SKILL.md`.
 - For any failure, read the full message trace and say which it is: the needed fact never came
   back from a tool, it came back and was ignored, or the expected answer is wrong.
 
-<!-- not bundled, to keep this file pasteable; in the cloned kit: -->
-- skills/debug/SKILL.md
-- skills/production-hardening/SKILL.md
-- skills/raw-api-agent/SKILL.md
+<!-- method/README.md -->
+# Method: how to plan and design in a timed test
+
+The kit's rules (`AGENTS.md`) say *what* to do: plan, small steps, tests, review. These notes
+say *how to think* at each stage. They are adapted from a fuller planning method; everything
+that needs a team (claims, worktrees, coordination) is left out.
+
+| Stage of the test | Read | You produce |
+|---|---|---|
+| First 10 minutes: understand the task | [design-chain.md](design-chain.md) | outcome, requirements, failure modes, in `PLAN.md` |
+| Before code: the shape of the solution | [system-model.md](system-model.md) | a one-page model in `PLAN.md` or `docs/MODEL.md` |
+| When a picture would help | [architecture-views.md](architecture-views.md), [representation.md](representation.md) | one or two Mermaid diagrams, each answering one question |
+| Any choice (library, structure, scope) | [decisions.md](decisions.md) | a decision row in the README: choice, why, what would show it wrong |
+| Each step | [design-chain.md](design-chain.md#slices-judge-first) | the test (the judge) first, then the code |
+| Optional: machine-checked plan | [aes.md](aes.md) | `aes` records outcome to criterion to test, and says what is unproven |
+
+Time budget for a 4-hour test: about 25 minutes on design-chain plus model before any code,
+5 minutes per decision row, and the last 20 minutes on the README. In a 2-hour test, halve the
+first number. If design takes longer, the task is bigger than one test: cut scope and say so.
+
+<!-- method/aes.md -->
+# AES: a machine-checked plan (optional)
+
+`aes` is a small command-line tool that keeps the plan in a file it can check: each outcome links
+to requirements, each requirement to a success criterion with a disproof, each criterion to the
+test that proves it. `aes status` then says, per criterion, whether a current test run supports
+it. It makes no AI calls, so it is allowed wherever a terminal is; it is not a second assistant.
+
+Use it when the test is long enough (3 hours or more) and you want the plan-to-test links to be
+shown rather than claimed. Otherwise `PLAN.md` plus `check.sh` is enough.
+
+## Set up (about 1 minute)
+
+```bash
+bash kit/method/install_aes.sh            # installs `aes` with uv at the tested revision
+git init -q && git add -A && git commit -qm "Start"   # aes needs one commit
+aes init --project-id myproj --actor "<who uses it>" --outcome "<what they get, in one sentence>"
+git add .aes && git commit -qm "Initialize AES"
+```
+
+Code goes under `src/` and tests under `tests/` (the default governed folders).
+
+## Each requirement
+
+1. Copy [aes-plan.example.yaml](aes-plan.example.yaml), change the ids and text: one behavior
+   (`NI-`), its success criterion with a `disproof` (`SC-`), the test that proves it (`VS-`), and
+   the files you will write.
+2. `aes plan validate plan.yaml` then `aes plan accept plan.yaml`; commit `.aes`.
+3. Write the test, see it fail, write the code, see it pass.
+4. `aes evidence record VS-<id> --depends-on <source file>`; commit `.aes/observations`.
+5. `aes status`: every criterion should read as supported. One that is not is the next thing
+   to do, or a limitation to state in the README.
+
+`trace_review` in the plan says whether the work runs a model or agent. If it does, set
+`runs_traced_work: true` and keep the run's trace (the logged steps) next to the test.
+
+## What it shows a reviewer
+
+The `.aes/` folder, committed step by step, is the plan and its evidence over time: what was
+promised, what proves it, and what is still unproven.
+
+<!-- method/architecture-views.md -->
+# Architecture views: which diagram for which question
+
+Draw a view only to answer a question someone has. Pick the view from the concern:
+
+| Concern | View | In Mermaid |
+|---|---|---|
+| scope: who uses it, what is outside | C4 context | `flowchart LR` with people and external systems |
+| ownership: which part does what | component view plus a responsibility table | `flowchart` with one box per part |
+| domain terms | glossary, with a class or ER diagram if terms relate | `classDiagram`, `erDiagram` |
+| crossings between parts | contract table: producer, consumer, shape, failure | a table, not a diagram |
+| order of steps and failures | sequence or activity diagram | `sequenceDiagram`, `flowchart TD` |
+| states an item moves through | state machine | `stateDiagram-v2` |
+| where it runs | deployment, only when placement matters | `flowchart` |
+| claims: why we believe it works | traceability table | a table |
+
+Rules:
+
+- **Bind every view to the source.** Each box or arrow names a real file, function, tool or
+  record. A box you cannot point at is a guess; mark it.
+- **Label each view** `current` (what the code does), `proposed` (the plan) or `historical`.
+- **An ownership arrow is not a data-flow arrow.** Use one kind of arrow per diagram and say in
+  the caption which.
+- **A straight chain is a numbered list**, not a diagram.
+- **Reconcile** the views with each other before coding, and again after any change that
+  touches a part they show.
+
+## Traceability: the chain a reviewer follows
+
+requirement → domain rule → operation → contract → check (one passing case, one rejected case)
+→ observation (the test output that shows it).
+
+As a table in the README:
+
+| Requirement (quoted) | Rule | Code | Check | Seen |
+|---|---|---|---|---|
+| "refunds over $50 need approval" | amount > 50 pauses | `request_refund` | `test_large_refund_pauses`, `test_small_refund_does_not` | pytest output |
+
+Adapted from ISO/IEC/IEEE 42010 (views answer stakeholders' concerns), UML and the C4 model.
+
+<!-- method/decisions.md -->
+# Decisions: when to ask, when to decide, how to record it
+
+## Decide or ask
+
+Confidence decides. In a timed test you can rarely ask, so:
+
+- **High confidence, or cheap to reverse**: decide, and write one row in the README's Design
+  decisions (below). Do not ask.
+- **Low confidence and it changes the outcome** (the task is ambiguous about what "done" is):
+  if you can ask the interviewer, ask one atomic question with your recommendation attached.
+  If you cannot, pick the reading that keeps the most options open, state it as an assumption,
+  and test it.
+
+When you ask, in this order: what you understood; what you recommend; how confident you are;
+what is at stake; the alternatives; the one question.
+
+## Record it
+
+| Decision | Why | Rejected | Wrong if |
+|---|---|---|---|
+| specialists as tools, not a handoff swarm | one loop, testable with a fake model | langgraph-supervisor | a task needs agents to hand control mid-conversation |
+
+"Wrong if" is a concrete, checkable condition (a test, a case, a number), not "revisit later".
+
+## Prior art first
+
+Order of preference: (1) something already does it, use it (a library function, a prebuilt
+agent); (2) combine or configure existing pieces; (3) write it yourself, only for what nothing
+covers, and say why in the decision row. Writing your own retry loop, parser or agent framework
+in a 4-hour test is almost always the wrong call.
+
+<!-- method/design-chain.md -->
+# Design chain: from the task to the first test
+
+Work down this chain once, briefly, before code. Each line depends on the one above; skipping a
+line usually means a later surprise.
+
+1. **Outcome**: who does what, and what they see when it works. One sentence, plus one
+   concrete example (input, then the exact expected result).
+2. **Requirements**: quote the task text. Mark anything you infer as an assumption.
+3. **Failure modes**: for each requirement, the ways it can go wrong that matter
+   (wrong tool chosen, loop never stops, bad input accepted, model output invalid).
+4. **Controls**: the least code that prevents, detects or recovers from each failure mode
+   (validation, a step limit, a retry with the error, a human approval step). Every control
+   traces to a failure mode; a control with no failure mode is gold-plating.
+5. **Boundaries**: where data crosses between parts (user to agent, agent to tool, tool to data,
+   agent to model). Each crossing gets a typed contract.
+6. **Domain rules**: the business rules, in the order they are checked.
+7. **Contracts and schema**: function signatures, tool signatures, Pydantic models, state.
+8. **Fixtures**: for each boundary that matters, one good input and one smallest bad input.
+9. **Thin slices**: the order to build in (below).
+
+Depth: a take-home is "small". Write lines 1, 2, 3 and 9 in full; 4 to 8 as short lists. Do not
+invent security, compliance or scaling requirements the task did not ask for; name them as
+"would add with more time" in the README instead.
+
+## Pick the path
+
+| Situation | Path | What it needs | What it skips |
+|---|---|---|---|
+| You do not know if an approach works (an API, a model's behavior) | probe | one question, the cheapest real test, a stop rule | tests beyond the probe, polish |
+| You know the shape; build it | prototype | outcome example, first vertical slice, focused tests | hardening |
+| Something broke | repair | reproduce it first, a failing test, then the fix | redesign |
+
+Switch path when the evidence changes: a probe that answered its question becomes a prototype;
+two steps with no visible progress, or three failures at the same boundary, mean stop and rethink
+the approach rather than retry.
+
+## Slices: judge first
+
+A slice is one end-to-end path through the system (input to visible result), not one layer.
+Build the thinnest one that reaches the real outcome first, then widen.
+
+Each slice has four things, written before its code:
+
+- **Outcome**: what changes for the user.
+- **Success check**: the property that shows it works, plus how it could fail (the disproof).
+- **Watchlist**: the failure modes from step 3 this slice could trigger.
+- **Judge**: representative inputs and the check that grades them, usually a test with a fake
+  model. Write the judge first and see it fail.
+
+A test that the trivial answer would pass proves nothing: include an input where a wrong
+implementation gives a different result. A count that lands on the expected number is not proof
+the right things were counted; assert which items, not how many.
+
+## When a run fails or surprises you
+
+Read the whole trace (inputs, each tool call and its result, the model's output) before
+changing code. Say which it is: the needed data never reached the model, it arrived and was
+ignored, or the expected answer was wrong. Fix that, then re-run and keep the failing case as a
+test.
+
+<!-- method/representation.md -->
+# Diagrams and pages a person reads
+
+Before drawing, write the question the reader has ("which part writes the refund?") and what
+they will do with the answer. Then pick the form.
+
+- **Title says what it is and for whom.** "Refund flow: what happens to a $70 refund request",
+  not "Diagram 1".
+- **The whole thing is readable in a minute.** If it is not, split it, or cut detail.
+- **Form matches job**: a sequence for order, a table for comparison, a state diagram for
+  status, a list for a straight chain.
+- **Draw relationships; do not imply them** with position or colour alone.
+- **One visual language per page**: the same shape means the same thing everywhere.
+- **Nothing invented**: every element is real (see architecture-views.md); unknowns are marked
+  "unknown", not drawn as if known.
+- **Colour is never the only signal**: add a word or a dashed line, and avoid red against green.
+
+For a take-home README: at most two diagrams (context, and the main sequence), each under a
+heading that is its question.
+
+<!-- method/system-model.md -->
+# System model: one page that says what the system is
+
+Write one model per project before the code, and keep it true as the code changes. For a
+take-home it is one page, in this order (the arc42 headings, with C4 diagrams in Mermaid):
+
+1. **Goals**: the outcome and the 2 to 4 quality goals that matter (correct refunds, bounded
+   cost, explainable output).
+2. **Context and scope**: who and what is outside the system, and what crosses the edge.
+   One C4 context diagram.
+3. **Building blocks**: the parts and what each owns. A table, one row per part.
+4. **Runtime**: each process (what triggers it, what it reads, what it writes, which function
+   does the writing). A table, plus one sequence diagram for the main path if it has more than
+   three steps.
+5. **Views**: which diagrams exist and what question each answers.
+6. **Quality**: the observable pattern that shows each goal holds, and the test that checks it.
+
+End with an **Unknowns** table: `| Unknown | What would decide it |`. Never fill a gap with a
+guess presented as fact; mark each element `decided` or `guessed`.
+
+Too small for a model (one function, one file)? Write one line instead:
+`System model: not needed, because <reason>.`
+
+## Keep it true
+
+A model that drifts from the code is worse than none. Add one small test that reads the model
+and checks it against the code in both directions: every runtime row names a function that
+exists, and every tool or node in the code appears in the model. Break it once on purpose to see
+it fail. This repository does that for itself: [docs/model/ARCHITECTURE.md](../docs/model/ARCHITECTURE.md)
+and [tests/test_model.py](../tests/test_model.py).
+
+## Example: a meeting-room booking agent
+
+~~~markdown
+## System model
+
+Elements:
+- G1 (decided): a staff member asks in plain words and gets a room booked or a clear reason why not.
+- B1 (decided): agent graph; B2 (decided): rooms store; B3 (decided): calendar tool.
+- P1 (decided): book_room writes a booking to the rooms store (`tools.py: book_room`).
+- Q1 (decided): never double-books; test_no_double_booking.
+
+### 1. Goals
+Book a free room that fits the request; never double-book; explain each refusal.
+
+### 2. Context
+```mermaid
+flowchart LR
+  Staff -->|request in words| Agent
+  Agent -->|tool calls| Rooms[(rooms store)]
+  Agent -->|prompts| LLM[model API]
+```
+
+### 3. Building blocks
+| Part | Owns |
+|---|---|
+| agent graph (`agent.py`) | the conversation and the stop rule |
+| tools (`tools.py`) | find_rooms, book_room; all writes |
+| rooms store (`rooms.json`) | rooms, bookings |
+
+### 4. Runtime
+| Process | Trigger | Reads | Writes | Writer |
+|---|---|---|---|---|
+| P1 book | model calls book_room | bookings | one booking | `tools.py: book_room` |
+
+### 6. Quality
+| Goal | Observable pattern | Check |
+|---|---|---|
+| never double-book | a second booking of the same slot is refused with the clashing id | `test_no_double_booking` |
+
+### Unknowns
+| Unknown | What would decide it |
+|---|---|
+| Are time zones in scope? | the task text, or the interviewer's answer |
+~~~

@@ -32,3 +32,13 @@ def test_kit_md_matches_its_sources(tmp_path):
             shutil.copytree(ROOT / d, tmp_path / d)
     subprocess.run(["bash", "build_kit.sh"], cwd=tmp_path, check=True, capture_output=True)
     assert (tmp_path / "KIT.md").read_text() == (ROOT / "KIT.md").read_text(), "KIT.md is stale: run ./build_kit.sh"
+
+
+def test_kit_md_bundles_every_note():
+    """Model V1: KIT.md is a view of every note in B1, method/ included; no note left out."""
+    kit = (ROOT / "KIT.md").read_text(encoding="utf-8")
+    notes = ["AGENTS.md", "PLAN.template.md"] + [
+        str(p.relative_to(ROOT)) for d in ["skills", "agents", "method"] for p in sorted((ROOT / d).rglob("*.md"))
+    ]
+    missing = [n for n in notes if f"<!-- {n} -->" not in kit]
+    assert not missing, f"KIT.md leaves out: {missing}"
