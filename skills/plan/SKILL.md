@@ -20,6 +20,21 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
 4. **Assumptions**: every ambiguity in the spec and the reading chosen.
 5. **Risks**: what could make this wrong, and how it would show.
 
+## Choose the simplest shape that works (write the choice in the plan)
+
+Adapted from github/awesome-copilot `agent-architecture` (MIT); see also Anthropic, "Building
+effective agents". Graders reward saying why you did *not* build something bigger.
+
+| If the task... | Build |
+|---|---|
+| has fixed rules and clear inputs | plain code; an LLM only for the fuzzy part |
+| has all data available up front | one model call with validated structured output |
+| has a known order of steps | a fixed workflow (chain or graph) with LLM steps inside |
+| needs new observations to decide the next step | a bounded agent loop with tools |
+| has independent subtasks needing separate context | a supervisor with specialists as tools |
+
+Write one line per rejected shape: "Not an agent: every input is known before the call."
+
 ## Rules
 
 - No code before the plan exists. Small task, small plan: 15 lines is fine.

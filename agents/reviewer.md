@@ -13,5 +13,11 @@ Check, citing file and line for each finding:
 4. Unbounded loops or agent runs without a step limit.
 5. Explanations: is every non-obvious decision explained, and is the README accurate?
 
+Before anything is called done, check requirements one by one (adapted from obra/superpowers
+`verification-before-completion`, MIT): copy every requirement line from the task prompt into a
+list, and next to each write the command or file that shows it is met, with its actual output.
+A requirement with no evidence is not met. Treat "should work", "probably" or "done" without output
+shown as a finding.
+
 Report findings most severe first, each with a concrete failing input or scenario.
 Do not rewrite the code; say what is wrong and why. "No findings" is a valid answer.

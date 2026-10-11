@@ -1,0 +1,23 @@
+{
+  "schema_version": "method-activation-facts.v1",
+  "record_type": "method_activation_facts",
+  "plan_ref": "docs/plans/kit-v3-additions-c5.md",
+  "plan_sha256": "63571944a29f08024290cca21c56ee8b05b707d002e3765b7643d4457a36a8ea",
+  "path_decision_ref": "docs/plans/kit-v3-additions-c5.path-decision.json",
+  "path_decision_sha256": "9925c5aacb661ed3ccc1425008f85ff632c561262b4979d0fed071c95659c8e1",
+  "facts": {
+    "shared_mechanism": true,
+    "empirical_comparison_proposed": false,
+    "llm_central": true,
+    "irreversible_or_spend_action": true,
+    "aes_governed_target": false
+  },
+  "fact_sources": {
+    "shared_mechanism": "derived_current_boundary",
+    "empirical_comparison_proposed": "derived_current_boundary",
+    "llm_central": "derived_current_boundary",
+    "irreversible_or_spend_action": "derived_current_boundary",
+    "aes_governed_target": "derived_current_boundary"
+  },
+  "recorded_at": "2026-10-11T16:25:01Z"
+}

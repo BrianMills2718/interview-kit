@@ -51,6 +51,26 @@ Never start in Edit. Ask -> Plan -> Edit, one step per Edit prompt.
 Antidote to all three: small steps, run after each, and be able to say in one sentence what each
 function does.
 
+Companies that publish how they judge AI use in interviews list the same habits that hold people
+back: reading from a script, long silent pauses, using the AI as a teleprompter, accepting every
+answer as correct, and not being able to explain the result in depth. What the strongest candidates
+did instead: asked clarifying questions about the requirements, gave the AI well-defined subtasks
+while keeping control of the overall design, reviewed and improved its code, and debugged it
+themselves when it was wrong. After each generated block, say in the chat what it does.
+
+## Treat every AI answer as a review comment, not an instruction
+
+Adapted from obra/superpowers `receiving-code-review` (MIT).
+
+1. **Read** the whole answer before acting on any of it.
+2. **Restate** what it proposes in one line; if you cannot, ask it to clarify first.
+3. **Verify** against the real code and installed versions (run it, `import` it, read the file).
+4. **Evaluate**: is it right for *this* task? "Production-grade" extras the spec does not ask
+   for are cut (YAGNI), and the reason goes in the chat.
+5. **Respond in the chat**: accept, or push back with the reason ("that API was removed in
+   langgraph 1.x; use X"). A short "that is wrong because..." is evidence of judgment.
+6. **Apply one item at a time**, running the tests after each.
+
 ## Last 20 minutes
 
 Stop adding features. Run `bash kit/check.sh --final`, fill the README (see

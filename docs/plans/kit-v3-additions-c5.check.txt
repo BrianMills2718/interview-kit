@@ -1,0 +1,84 @@
+# kit-v3-additions-c5 checks at aa0b063 + working changes, 2026-10-11T16:23:47Z
+## pytest (full suite, -v)
+tests/test_agent_template.py::test_tool_result_reaches_the_model PASSED  [  2%]
+tests/test_agent_template.py::test_tool_error_is_returned_not_raised PASSED [  4%]
+tests/test_agent_template.py::test_no_tool_needed_ends_immediately PASSED [  6%]
+tests/test_check_sh.py::test_good_project_passes_final PASSED            [  9%]
+tests/test_check_sh.py::test_missing_plan_fails PASSED                   [ 11%]
+tests/test_check_sh.py::test_template_placeholders_fail PASSED           [ 13%]
+tests/test_check_sh.py::test_failing_test_fails PASSED                   [ 15%]
+tests/test_check_sh.py::test_unticked_item_fails_only_in_final PASSED    [ 18%]
+tests/test_check_sh.py::test_readme_without_ai_section_fails_final PASSED [ 20%]
+tests/test_check_sh.py::test_quoted_requirement_with_angle_brackets_is_not_a_placeholder PASSED [ 22%]
+tests/test_check_sh.py::test_unfilled_template_line_is_a_placeholder PASSED [ 25%]
+tests/test_check_sh.py::test_no_tests_yet_waits_before_final_and_fails_final PASSED [ 27%]
+tests/test_check_sh.py::test_ai_section_needs_the_word_not_the_letters PASSED [ 29%]
+tests/test_check_sh.py::test_uses_the_project_venv_python PASSED         [ 31%]
+tests/test_hardening.py::test_email_is_redacted_before_the_model_sees_it PASSED [ 34%]
+tests/test_hardening.py::test_transient_model_error_is_retried PASSED    [ 36%]
+tests/test_hardening.py::test_runaway_tool_loop_is_stopped_by_the_call_limit PASSED [ 38%]
+tests/test_hardening.py::test_oversized_input_is_rejected_without_a_model_call PASSED [ 40%]
+tests/test_hardening.py::test_usage_is_counted_from_the_model_response PASSED [ 43%]
+tests/test_mcp_server.py::test_mcp_lists_the_tool_with_its_docstring_and_schema PASSED [ 45%]
+tests/test_mcp_server.py::test_mcp_tool_call_returns_result_and_errors_are_flagged PASSED [ 47%]
+tests/test_method.py::test_readme_links_every_method_note PASSED         [ 50%]
+tests/test_method.py::test_aes_accepts_the_example_plan_and_rejects_one_without_a_disproof PASSED [ 52%]
+tests/test_model.py::test_every_runtime_row_has_a_writer_that_writes_it PASSED [ 54%]
+tests/test_model.py::test_kit_md_matches_its_sources PASSED              [ 56%]
+tests/test_patterns.py::test_structured_output_retries_on_invalid_then_validates PASSED [ 59%]
+tests/test_patterns.py::test_retrieval_ranks_the_relevant_document_first PASSED [ 61%]
+tests/test_patterns.py::test_retrieval_says_so_when_nothing_matches PASSED [ 63%]
+tests/test_patterns.py::test_interrupt_pauses_before_the_action_and_resume_yes_runs_it PASSED [ 65%]
+tests/test_patterns.py::test_interrupt_resume_no_skips_the_action PASSED [ 68%]
+tests/test_patterns_multi.py::test_supervisor_routes_to_the_right_specialist_and_uses_its_answer PASSED [ 70%]
+tests/test_patterns_multi.py::test_supervisor_can_ask_two_specialists_in_turn PASSED [ 72%]
+tests/test_patterns_multi.py::test_stream_yields_each_step_in_order PASSED [ 75%]
+tests/test_practice.py::test_reference_passes_every_case PASSED          [ 77%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [ 79%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 81%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [ 84%]
+tests/test_rag_embeddings.py::test_question_retrieves_the_matching_policy_first PASSED [ 86%]
+tests/test_rag_embeddings.py::test_a_different_question_ranks_a_different_policy_first PASSED [ 88%]
+tests/test_raw_api_agent.py::test_anthropic_loop_runs_the_requested_tool_and_returns_its_result PASSED [ 90%]
+tests/test_raw_api_agent.py::test_anthropic_tool_error_goes_back_to_the_model_flagged PASSED [ 93%]
+tests/test_raw_api_agent.py::test_anthropic_loop_stops_at_the_turn_limit PASSED [ 95%]
+tests/test_raw_api_agent.py::test_openai_loop_sends_function_call_output_with_the_same_call_id PASSED [ 97%]
+tests/test_wiki_map.py::test_every_wiki_link_resolves PASSED             [100%]
+============================= 44 passed in 15.14s ==============================
+pytest exit=0
+## mutations (each pattern broken on purpose; its test must fail)
+M1 raw loop drops the tool result: pytest exit 1; failed: ['test_anthropic_loop_runs_the_requested_tool_and_returns_its_result', 'test_anthropic_tool_error_goes_back_to_the_model_flagged']
+M2a no call limit: pytest exit 1; failed: ['test_runaway_tool_loop_is_stopped_by_the_call_limit']
+M2b no PII redaction: pytest exit 1; failed: ['test_email_is_redacted_before_the_model_sees_it']
+M2c no retry: pytest exit 1; failed: ['test_transient_model_error_is_retried']
+M2d no size guard: pytest exit 1; failed: ['test_oversized_input_is_rejected_without_a_model_call']
+M3 search ignores the query: pytest exit 1; failed: ['test_a_different_question_ranks_a_different_policy_first']
+## KIT.md
+wrote KIT.md (581 lines)
+lines: 581 (cap 600)
+included 'Companies that publish how they judge AI use': 1
+included '## Treat every AI answer as a review comment': 1
+included '## Choose the simplest shape that works': 1
+included 'check requirements one by one': 1
+excluded 'name: debug': 0
+excluded 'name: raw-api-agent': 0
+excluded 'name: production-hardening': 0
+## parallel-implementation check
+examples/hardening.py:16:    ModelRetryMiddleware,
+examples/hardening.py:62:            ModelRetryMiddleware(max_retries=2, initial_delay=initial_delay, on_failu
+examples/raw_api_agent.py:48:def run_tool(name: str, args: dict) -> tuple[str, bool]:
+examples/raw_api_agent.py:74:        results = []  # one tool_result per tool_use, same id, all in a single us
+examples/raw_api_agent.py:78:                {"type": "tool_result", "tool_use_id": c.id, "content": text, "is
+debug
+evaluate-agent
+explain-your-work
+langgraph-agent
+mcp-and-a2a
+plan
+production-hardening
+raw-api-agent
+using-ide-ai-chat
+## privacy scan of new and changed files
+files: 24
+email/phone/key pattern hits: 0 (example.com test fixtures excluded)
+employer and person name pattern hits (list kept in the session notes, not here): 0 hits outside docs/plans

@@ -407,6 +407,21 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
 4. **Assumptions**: every ambiguity in the spec and the reading chosen.
 5. **Risks**: what could make this wrong, and how it would show.
 
+## Choose the simplest shape that works (write the choice in the plan)
+
+Adapted from github/awesome-copilot `agent-architecture` (MIT); see also Anthropic, "Building
+effective agents". Graders reward saying why you did *not* build something bigger.
+
+| If the task... | Build |
+|---|---|
+| has fixed rules and clear inputs | plain code; an LLM only for the fuzzy part |
+| has all data available up front | one model call with validated structured output |
+| has a known order of steps | a fixed workflow (chain or graph) with LLM steps inside |
+| needs new observations to decide the next step | a bounded agent loop with tools |
+| has independent subtasks needing separate context | a supervisor with specialists as tools |
+
+Write one line per rejected shape: "Not an agent: every input is known before the call."
+
 ## Rules
 
 - No code before the plan exists. Small task, small plan: 15 lines is fine.
@@ -468,6 +483,26 @@ Never start in Edit. Ask -> Plan -> Edit, one step per Edit prompt.
 Antidote to all three: small steps, run after each, and be able to say in one sentence what each
 function does.
 
+Companies that publish how they judge AI use in interviews list the same habits that hold people
+back: reading from a script, long silent pauses, using the AI as a teleprompter, accepting every
+answer as correct, and not being able to explain the result in depth. What the strongest candidates
+did instead: asked clarifying questions about the requirements, gave the AI well-defined subtasks
+while keeping control of the overall design, reviewed and improved its code, and debugged it
+themselves when it was wrong. After each generated block, say in the chat what it does.
+
+## Treat every AI answer as a review comment, not an instruction
+
+Adapted from obra/superpowers `receiving-code-review` (MIT).
+
+1. **Read** the whole answer before acting on any of it.
+2. **Restate** what it proposes in one line; if you cannot, ask it to clarify first.
+3. **Verify** against the real code and installed versions (run it, `import` it, read the file).
+4. **Evaluate**: is it right for *this* task? "Production-grade" extras the spec does not ask
+   for are cut (YAGNI), and the reason goes in the chat.
+5. **Respond in the chat**: accept, or push back with the reason ("that API was removed in
+   langgraph 1.x; use X"). A short "that is wrong because..." is evidence of judgment.
+6. **Apply one item at a time**, running the tests after each.
+
 ## Last 20 minutes
 
 Stop adding features. Run `bash kit/check.sh --final`, fill the README (see
@@ -520,6 +555,12 @@ Check, citing file and line for each finding:
 4. Unbounded loops or agent runs without a step limit.
 5. Explanations: is every non-obvious decision explained, and is the README accurate?
 
+Before anything is called done, check requirements one by one (adapted from obra/superpowers
+`verification-before-completion`, MIT): copy every requirement line from the task prompt into a
+list, and next to each write the command or file that shows it is met, with its actual output.
+A requirement with no evidence is not met. Treat "should work", "probably" or "done" without output
+shown as a finding.
+
 Report findings most severe first, each with a concrete failing input or scenario.
 Do not rewrite the code; say what is wrong and why. "No findings" is a valid answer.
 
@@ -538,3 +579,8 @@ You are the tester. Follow `skills/evaluate-agent/SKILL.md`.
 - Run `pytest -v` and report the counts (passed, failed, skipped) and the exit code.
 - For any failure, read the full message trace and say which it is: the needed fact never came
   back from a tool, it came back and was ignored, or the expected answer is wrong.
+
+<!-- not bundled, to keep this file pasteable; in the cloned kit: -->
+- skills/debug/SKILL.md
+- skills/production-hardening/SKILL.md
+- skills/raw-api-agent/SKILL.md

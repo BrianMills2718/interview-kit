@@ -1,0 +1,272 @@
+{
+  "004a3c3a35e3a67584f9cb28f2a98450ad653a057afa3f9dcb543f49e23e0c73": {
+    "item_id": "OV-PRIOR-ART-DISPOSITION",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly establish that existing ownership and internal lineage were searched. It also lists several candidates as \u201cRejected\u201d rather than dispositioning each as reuse, extend, compose, supersede, or bounded exception.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly describes searches of public skill collections and agent-building gaps and dispositions several external and internal sources. However, the rejected candidates do not receive one of the required dispositions, and ownership/internal-lineage searches are not explicitly stated.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/a19fe935d7b1/OV-PRIOR-ART-DISPOSITION",
+    "verdict": "unresolved"
+  },
+  "0353baad7d763feb3a857588db36c652cedb76827cfae9d5c1c27b287abcd552": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as a candidate in a timed agentic-AI take-home, states the desired result as the kit covering the listed gaps, and gives a stable, concrete, user-visible example involving opening named files, copying an agent loop, integrating a retriever, and seeing offline tests pass.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "18046a3f6ab61f82fa5ee06b93c0e1547d0706da8941cfe5afba7b762d3b3bc9": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies authority: the owner as owner and approver, with session code-c7 owning specified files by agreement. It also explicitly lists the work\u2019s non-goals, including no edits to code-c7\u2019s files, no live model call, no new dependency beyond numpy, and other exclusions.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "2251604222127645e8af7fbfe60e7ae598669b967b138bbafc0721c4b2354501": {
+    "item_id": "OV-LLM-CALL-BOUNDARY",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly describes the raw and hardening model call graphs, including turn behavior and termination, and defines the structured tool-call/result boundary with IDs, arguments, error results, and schema validation. It also specifies tracing through per-turn logs, returned message lists, usage metadata, and scripted test traces.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/OV-LLM-CALL-BOUNDARY",
+    "verdict": "pass"
+  },
+  "2bf57ec242a7eb74ba4dcd7b6e0c170fd25858ac33900ec045c95c1226545d64": {
+    "item_id": "OV-PRIOR-ART-DISPOSITION",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states that existing repository ownership and internal lineage were searched, and it identifies the searched internal locations and prior plans. It also lists relevant external candidates and gives each an explicit disposition as extend, bounded exception, reuse, or compose; no candidate is left without a disposition.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/51e12ab152fc/OV-PRIOR-ART-DISPOSITION",
+    "verdict": "pass"
+  },
+  "38642032b7366a404865461f46e48204061461eecf3290a6dffd637aca79aa44": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states, \u201cNo catalogue entry fits, because\u201d the need is notes and example code readable by a hosted IDE assistant without workspace access, and explains that no catalogue capability is importable in that context. It also explicitly identifies no catalogue capabilities as reused and gives the first consumer for the added example files and notes.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/453e504e8ea4/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "3fdc00cc17f13bd8faf939e360b66050902b574afb19b1bc71519a51aa548e78": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan does not propose an A/B test or alternative-comparison experiment, so `empirical_comparison_proposed: false` is valid. It explicitly states there is no AES target or `aes init`, and expressly disclaims conformance to external provider APIs or contracts, so the false declarations for `aes_governed_target` and `claims_external_standard` are supported.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/a19fe935d7b1/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "41fe2ca77581af7bf11cb1d0a0f575da543067554f8d2df3b8fe27a248717b94": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "material",
+    "missing": "The evidence does not name any new capability added by the work together with its first consumer. It also does not clearly identify a catalogue capability reused by its catalogue id, key, or provided id; the listed libraries and message shapes are not shown as catalogue entries.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "It does provide a reasoned \u201cNo catalogue entry fits\u201d statement, identifying the need as notes and example code readable by a third-party hosted IDE assistant with no workspace access. However, the requirement also requires first consumers for new capabilities and explicit catalogue identifiers for any claimed reuse, neither of which is present.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-CAPABILITY-REUSE",
+    "verdict": "unresolved"
+  },
+  "457c28d39d1130adc349c6d30df327ab43f81f57e70e487f96bab25bd2a6e1ce": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the run (\u201csuccess check, run once at the commit to be pushed\u201d), identifies its complete trace location (`docs/plans/kit-v3-additions-c5.check.txt`), and specifies what must be observed beyond final results: named non-skipped tests, mutation failures and assertions, grep findings, privacy patterns and zero hits, and matching pytest status. The stated success criteria are therefore tied to examination of that full trace rather than only outcomes.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "49c86562e6c23cbe4e4be3bb4b798ef42fd68566d2fa2f63a37f9ffb4284a025": {
+    "item_id": "OV-PRIOR-ART-PARALLEL-CHECK",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names concrete structural checks: a grep over `examples/` to ensure the raw loop and retry implementations have no silent duplicates, plus `ls skills/` to ensure one skill per concern. These checks directly detect parallel implementations of the same concern.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/51e12ab152fc/OV-PRIOR-ART-PARALLEL-CHECK",
+    "verdict": "pass"
+  },
+  "4b9a2628b6a8bb906ca6f995cacd3d2c119c062dcc6a6420199aa1c393b14352": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan declares shared_mechanism, llm_central, and irreversible_or_spend_action true, matching its new reusable mechanisms, centrally model-dependent behavior, and proposed public push. It declares empirical_comparison_proposed false despite only verification tests, aes_governed_target false while stating no `.aes/target.yaml` exists or is created, and claims_external_standard false while explicitly disclaiming conformance to provider contracts.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/55719c3039c0/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "4c9467d75da7237db2b1bddac03b65d5423c16380053cfb98dc3d514ee20de78": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "shared_mechanism is declared false even though the plan proposes a new raw-API agent loop algorithm and new hardening mechanisms (retry, call-limit, tool-limit, and PII middleware patterns).",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly adds and tests a raw-API agent loop and hardening mechanisms, which triggers shared_mechanism under the requirement's definition of a new mechanism or algorithm. The other declared facts are supported: no alternative comparison is proposed, LLM calls and the irreversible push are declared, and no external standard or AES target is claimed.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  },
+  "517765646f81af484a9b27e869ab220fda2996d43b69e65cdf4de63f90bc6690": {
+    "item_id": "OV-PRIOR-ART-DISPOSITION",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states that external prior art and internal ownership/lineage were searched, including the repo, prior plans, and another writer. Every listed candidate or candidate group has an explicit disposition\u2014reuse, extend, compose, or bounded exception; no supersede disposition is required if none applies.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/dd73eb266e85/OV-PRIOR-ART-DISPOSITION",
+    "verdict": "pass"
+  },
+  "58eaf0c5a3f4c3bd705992c4f74f96637406803975c86813c68c95e69db40904": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan declares true each triggered fact: shared_mechanism, llm_central, and irreversible_or_spend_action. It correctly declares empirical_comparison_proposed false because the tests verify expected behavior rather than compare alternatives, aes_governed_target false because no AES target exists or is created, and claims_external_standard false because the examples are explicitly not presented as conforming to provider contracts.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/dd73eb266e85/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "63c0cb42c4af0dc6348246a5316f6ea79e3ba7749cfbb10ee2b0d13d44cbb143": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan does not propose an experiment comparing alternatives; its tests and mutation checks verify expected behavior, so `empirical_comparison_proposed: false` is correct. It states that `.aes/` has no `target.yaml` and that the examples are not presented as conforming to provider APIs or external contracts, so the false declarations for `aes_governed_target` and `claims_external_standard` are also supported.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/51e12ab152fc/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "6639db51768fe7c13cdc182d16511505ae821912616c2a88fbf51d4575891890": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides the required exemption and explicitly states that the repository has no stored state or user-facing view. It also identifies the documentation entry point, explains that no source-linked views apply, specifies freshness/drift checks, and describes same-change reconciliation and the handling of a model landing first.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-SYSTEM-MODEL",
+    "verdict": "pass"
+  },
+  "6c0c36290a5cbf70e4043f8e8eba5fbc7fca24f30fecb7c0b2f5b1f632a5e36b": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly defines success evidence, including test behavior checks, mutation-based direct correctness checks, documentation conformance, privacy results, and trace requirements. It also gives concrete disproof conditions, and explains why counts are only summaries while the behavioral tests directly test each claimed property.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  },
+  "6eb76217d32950eac45c8f5b4776532288d0760be7de29caf053f1fb860adb73": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a requirements table covering the requested items and the work\u2019s explicit claims, including the claim that code snippets are tested and that no external-standard conformance is claimed. Every listed requirement names a check and has an explicit status (\u201cplanned, not yet run\u201d); no requirements are deferred, so no deferral carry-forward is required.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "73b26cad51481cf6e7637ac365cfec7720de23b8159692f43f588f6108741e00": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies authority: the owner approved the additions, while session code-c7 owns specified files and other files are shared. It also explicitly lists multiple non-goals, including no edits to code-c7's files, no live model call, and no new dependencies beyond numpy.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/dd73eb266e85/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "81c90b9363fb3def40867eb0e347418e6f4c0f5666b9e48a8f05183f9183a281": {
+    "item_id": "CORE-IRREVERSIBLE-SPEND",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence identifies the irreversible action and boundary (`git push origin main` to the public GitHub repo), names the authorizer (the owner), and specifies containment through pre-push privacy and test checks, limited content, and immediate reversion/reporting if private data is found.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-IRREVERSIBLE-SPEND",
+    "verdict": "pass"
+  },
+  "9d20a88e531a9afb3337f34643e904d1447f30c507fa78f448e546c8e5f59c99": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence lists four uncertainties and provides either an owner or resolving evidence for each. It names owners for the numpy and KIT.md items, live provider calls as resolving evidence for API shapes, and the middleware construction test as resolution evidence.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "a37470b82cb8b8a6f367a061b396fb797884393c375bf1c49f73f2ab743a4278": {
+    "item_id": "OV-LLM-AUTHORITY-PROMOTION",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the provider/route (the owner\u2019s OpenRouter route, with Anthropic and OpenAI call shapes) and the spend authority (the candidate\u2019s own key and test rules, or the owner\u2019s route for future live checks). It also states an authentic-run condition: before promotion, one live run per provider must log a real tool call, the matching tool result, and a final text answer.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/OV-LLM-AUTHORITY-PROMOTION",
+    "verdict": "pass"
+  },
+  "a7cf92f0bc4afebc9bb1a56c9f18be0e9c98f6d7f43e628a517eeb867161b4e6": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a requirements table with nine requirements, and each names an explicit check and a passing status. It also explicitly identifies the change\u2019s implied claim that each code snippet is tested and maps that claim to R3, R4, and R6, while stating that no external-standard conformance is claimed.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/55719c3039c0/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "b358d5093eccf1ba3688bcc0a62a6f587cb23ac716b70905b3e2d9baf2e619e5": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a requirements list with nine requirements, each naming a check and a valid status (all planned and not yet run). It also explicitly records the work\u2019s implied claim that each code snippet is tested and maps that claim to R3, R4, and R6, while stating that no external-standard conformance is claimed.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/dd73eb266e85/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "b6898d1fab5384dee140c9f2938555d6d631a76f501ca168c0e248efdb1bfd3e": {
+    "item_id": "OV-PRIOR-ART-PARALLEL-CHECK",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names a concrete structural check: `grep -rn \"def run_tool\\|tool_result\\|Retry\" examples/` verifies implementation locations and retry reuse, while `ls skills/` checks for duplicate skills per concern. These checks would detect a silent parallel implementation.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/a19fe935d7b1/OV-PRIOR-ART-PARALLEL-CHECK",
+    "verdict": "pass"
+  },
+  "baa3425f6a54e6227538e1dc552ddfcc58ccd3c09cef644e09ba0bbec6f976fa": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the minimal vertical result, the reset boundary, and multiple non-goals. It also explicitly states that no coordinated-work ceremony is added, including no claim registry or handoff documents.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/453e504e8ea4/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "d146810e9ca7fd67d724e6220777371f03c036b4f3c685531f6b3fa8ee3cdca5": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "material",
+    "missing": "The actual non-goals are not quoted; \u201cas under Authority and non-goals\u201d only refers elsewhere. The evidence also does not substantively establish that no coordinated-work ceremony is added.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The minimal vertical and reset boundary are explicitly specified. However, the non-goals and the absence of coordinated-work ceremony are asserted or referenced rather than provided in the quoted evidence.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/OV-PROTO-VERTICAL-RESET",
+    "verdict": "unresolved"
+  },
+  "ee4f5f54ac58b3e5abf06be42318183de08832922ed82dbcf44cb5b8ff08d760": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly provides a separate failure/surprise procedure distinct from anticipated failure modes. It covers preserving the failed run and trace id, reviewing all named artifacts before changing code, citing and classifying the divergence, prohibiting fixes based on unresolved guesses, and linking a targeted fix to a new traced run while retaining the original; it also states that review completeness is separate from the run verdict.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/f1771d3f9eed/CORE-TRACE-DEBUGGING",
+    "verdict": "pass"
+  },
+  "f371528ce6fe9bb890bdd1a9312d676db4eecc76ed3797f2feb67b7fa8ebb82d": {
+    "item_id": "OV-PRIOR-ART-PARALLEL-CHECK",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names concrete structural checks: a grep for `def run_tool|tool_result|Retry` in `examples/` to detect duplicate raw loops or hand-written retries, and `ls skills/` to verify one skill per concern. It also specifies the expected results and records the output in `check.txt`.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/dd73eb266e85/OV-PRIOR-ART-PARALLEL-CHECK",
+    "verdict": "pass"
+  },
+  "ff26a122a5e0b9080af5c7bb81f2f07f8af4c80b1544ae69578fc9a4470fff08": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "claims_external_standard is declared false, but the plan states that the loop follows Anthropic and OpenAI's documented message shapes exactly, presenting the work as conforming to externally owned provider contracts.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly says the examples reuse Anthropic and OpenAI tool-use documentation and that the loop follows their documented message shapes exactly. That triggers claims_external_standard, so declaring it false violates the activation-facts requirement.",
+    "trace_id": "company-planning/method-conformance/kit-v3-additions-c5/453e504e8ea4/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  }
+}
