@@ -1,0 +1,20 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-practice.md",
+  "plan_sha256": "b55cb9ca4caf5b54b4bbc84be4933e88e7af7ecbd4d66e988e48b0e70d09df43",
+  "receipt_ref": "docs/plans/kit-v2-practice.receipt.json",
+  "receipt_sha256": "6b3232b5d0619f15cd2dcfbc35140e7de6db50e5b9dbc4652ecdc0c3463acde9",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: The evidence does not state what correctness or conformance property the reference test directly checks, so “the reference passing” and the pytest result are not shown to be direct evidence rather than a stand-in. The broken-rule test provides a concrete disproof condition, but the success evidence is insufficiently defined.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly state that this procedure is distinct from anticipated failure modes; it also does not explicitly prohibit authorizing a causal repair while the diagnosis remains unresolved, nor clearly state that review completeness is separate from the run verdict.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The evidence does not state what the examined run must concretely show for the `practice problem` element; it only says the output must show “what that line says.” It also lacks a documentation entry point establishing how the model is reachable, applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change.",
+    "CORE-ACTIVATION-FACTS: semantic_unresolved -> Add to the plan: Evidence that the target repository is not governed by `.aes/target.yaml`, or an `aes_governed_target: true` declaration. The optional fact is shown as false, but the quoted plan does not establish whether the target repository has that AES target file."
+  ],
+  "decided_at": "2026-10-11T06:21:43Z"
+}

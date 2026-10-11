@@ -1,0 +1,14 @@
+{
+  "today": "2026-03-01",
+  "orders": {
+    "A-101": {"item": "Desk lamp", "amount": 30, "status": "delivered", "delivered_on": "2026-02-20"},
+    "A-102": {"item": "Office chair", "amount": 120, "status": "delivered", "delivered_on": "2026-02-15"},
+    "A-103": {"item": "Monitor", "amount": 80, "status": "processing", "delivered_on": null},
+    "A-104": {"item": "Keyboard", "amount": 45, "status": "delivered", "delivered_on": "2026-01-10"}
+  },
+  "policies": [
+    {"id": "P-1", "text": "Refunds: delivered orders can be refunded within 30 days of delivery. Refunds over $50 need a human reviewer's approval."},
+    {"id": "P-2", "text": "Shipping: orders ship within 2 business days; shipping then takes 3-5 business days."},
+    {"id": "P-3", "text": "Damaged items: report damage within 7 days with a photo; we send a replacement or a refund."}
+  ]
+}

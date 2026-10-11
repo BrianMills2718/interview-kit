@@ -1,0 +1,374 @@
+[
+ {
+  "name": "small-refund",
+  "message": "Please refund order A-101, the lamp flickers.",
+  "human": null,
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "get_order",
+      "args": {
+       "order_id": "A-101"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "request_refund",
+      "args": {
+       "order_id": "A-101",
+       "reason": "flickers"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "refund",
+       "order_id": "A-101",
+       "action": "Refunded $30.",
+       "policy_ids": [
+        "P-1"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [
+    "A-101"
+   ],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Desk lamp",
+    "Refunded A-101 ($30)."
+   ],
+   "reply": {
+    "category": "refund",
+    "order_id": "A-101"
+   }
+  }
+ },
+ {
+  "name": "large-refund-approved",
+  "message": "I want my money back for the chair, order A-102.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "request_refund",
+      "args": {
+       "order_id": "A-102",
+       "reason": "changed mind"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "refund",
+       "order_id": "A-102",
+       "action": "Refunded $120 after review.",
+       "policy_ids": [
+        "P-1"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [
+    "A-102"
+   ],
+   "interrupted": true,
+   "tool_output_contains": [
+    "Refunded A-102 ($120) after approval."
+   ]
+  }
+ },
+ {
+  "name": "large-refund-declined",
+  "message": "Refund A-102 please.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "request_refund",
+      "args": {
+       "order_id": "A-102",
+       "reason": "unspecified"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "refund",
+       "order_id": "A-102",
+       "action": "A reviewer declined the refund.",
+       "policy_ids": [
+        "P-1"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [],
+   "interrupted": true,
+   "tool_output_contains": [
+    "Refund for A-102 declined by reviewer."
+   ]
+  }
+ },
+ {
+  "name": "too-old",
+  "message": "Refund my keyboard, order A-104.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "request_refund",
+      "args": {
+       "order_id": "A-104",
+       "reason": "stopped working"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "refund",
+       "order_id": "A-104",
+       "action": "Not eligible: past 30 days.",
+       "policy_ids": [
+        "P-1"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Not eligible: A-104 was delivered 50 days ago (limit 30)."
+   ]
+  }
+ },
+ {
+  "name": "not-delivered",
+  "message": "Cancel and refund A-103.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "request_refund",
+      "args": {
+       "order_id": "A-103",
+       "reason": "too slow"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "refund",
+       "order_id": "A-103",
+       "action": "Not eligible: not delivered yet.",
+       "policy_ids": [
+        "P-1"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Not eligible: A-103 has not been delivered."
+   ]
+  }
+ },
+ {
+  "name": "shipping-question",
+  "message": "How long does shipping take?",
+  "human": null,
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "search_policy",
+      "args": {
+       "query": "how long does shipping take"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "shipping",
+       "order_id": null,
+       "action": "Explained shipping times.",
+       "policy_ids": [
+        "P-2"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "P-2: Shipping"
+   ],
+   "reply": {
+    "category": "shipping",
+    "order_id": null,
+    "policy_ids": [
+     "P-2"
+    ]
+   }
+  }
+ },
+ {
+  "name": "unknown-order-and-invalid-reply",
+  "message": "Where is order A-999?",
+  "human": null,
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "get_order",
+      "args": {
+       "order_id": "A-999"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "lost",
+       "order_id": "A-999",
+       "action": "Order not found.",
+       "policy_ids": []
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "other",
+       "order_id": "A-999",
+       "action": "Order not found.",
+       "policy_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Order A-999 not found."
+   ],
+   "reply": {
+    "category": "other",
+    "order_id": "A-999"
+   }
+  }
+ },
+ {
+  "name": "refund-twice",
+  "message": "Refund A-101. Actually, refund it again to be sure.",
+  "human": null,
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "request_refund",
+      "args": {
+       "order_id": "A-101",
+       "reason": "flickers"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "request_refund",
+      "args": {
+       "order_id": "A-101",
+       "reason": "again"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Reply",
+      "args": {
+       "category": "refund",
+       "order_id": "A-101",
+       "action": "Refunded once.",
+       "policy_ids": [
+        "P-1"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "refunds": [
+    "A-101"
+   ],
+   "interrupted": false,
+   "tool_output_contains": [
+    "A-101 was already refunded."
+   ]
+  }
+ }
+]
