@@ -51,13 +51,19 @@ def leftover_placeholders(path: Path, template: Path) -> list[str]:
 
 
 def defined_names(project: Path) -> set[str]:
-    """Every def and class name in the project's own .py files (not the kit or the venv)."""
+    """Every def, class and imported name in the project's own .py files (not the kit or the venv).
+
+    Imported names count so a library call the code really makes, such as `interrupt()`, may be named."""
     names: set[str] = set()
     for py in project.rglob("*.py"):
         rel = py.relative_to(project).parts
         if rel[0] in {".venv", "venv", "kit"} or "site-packages" in rel:
             continue
-        names |= set(re.findall(r"^\s*(?:async\s+)?(?:def|class)\s+(\w+)", py.read_text(encoding="utf-8"), re.M))
+        text = py.read_text(encoding="utf-8")
+        names |= set(re.findall(r"^\s*(?:async\s+)?(?:def|class)\s+(\w+)", text, re.M))
+        for group in re.findall(r"^\s*from\s+[\w.]+\s+import\s+(?:\(([^)]*)\)|([^\n]+))", text, re.M):
+            group = "".join(group).split("#")[0]
+            names |= {n.split()[-1] for n in group.replace("\n", " ").split(",") if n.strip()}
     return names
 
 

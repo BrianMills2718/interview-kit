@@ -121,3 +121,11 @@ def test_kit_and_venv_code_does_not_count(tmp_path):
         (p / d / "add.py").write_text(CODE)
     code, out = run(p, "--final")
     assert code == 1 and "does not define: add" in out, out
+
+
+def test_final_accepts_an_imported_library_function(tmp_path):
+    p = package(tmp_path)
+    (p / "add.py").write_text("from langgraph.types import interrupt, Command as Cmd\n" + CODE)
+    edit(p / "docs/MODEL.md", "| adder | the sum | `add()` |", "| adder | the sum | `add()` after `interrupt()` and `Cmd()` |")
+    code, out = run(p, "--final")
+    assert code == 0, out

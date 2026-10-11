@@ -1113,6 +1113,11 @@ For a take-home: the six diagrams live in `docs/MODEL.md`, each under a heading 
 question. The README shows the two a reviewer needs first (context and the main sequence) and
 links to the rest.
 
+**Check every diagram renders** before you finish: paste each block into mermaid.live, or run
+`npx --yes @mermaid-js/mermaid-cli -i docs/MODEL.md -o .render/MODEL.md`. If it cannot find
+Chrome, point it at an installed one with `-p puppeteer.json` containing
+`{"executablePath": "<path to chrome>"}`. Quote labels that contain parentheses: `A["get_order()"]`.
+
 <!-- method/system-model.md -->
 # System model: one page that says what the system is
 

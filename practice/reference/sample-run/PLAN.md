@@ -1,87 +1,53 @@
 # Plan
 
 ## Goal
-Build a small-shop support agent in `solution.py` (LangChain `create_agent` on LangGraph) that answers
-one customer message with three tools over `kit/practice/data.json` and ends with a validated `Reply`.
-Refunds over $50 pause for a human reviewer before any money moves.
-
-Quoted requirements (kit/practice/PROBLEM.md):
+A customer writes to a small shop; a LangGraph agent looks up the order, finds the matching
+policy, refunds when the rules allow (pausing for a human reviewer over $50), and returns a
+validated `Reply`. Quoted requirements:
+- "The agent answers a customer message using three tools, then gives a final structured answer."
 - "`get_order(order_id)` ... Returns exactly `A-101: Desk lamp, $30, delivered 2026-02-20` (date only once delivered), or `Order A-999 not found.`"
 - "`search_policy(query)` find the best matching policies, best first, at most 2 ... lines `P-2: <policy text>`, or `No matching policy.`"
-- Refund rules in order: unknown, already refunded, not delivered, >30 days, >$50 needs approval (`yes` -> `Refunded X ($N) after approval.`, else `Refund for X declined by reviewer.`), else `Refunded X ($N).`
-- "A refund is recorded by appending the order id to `shop["refunds"]`."
+- "Refund rules, checked in this order" (unknown, already refunded, not delivered, over 30 days, over $50 needs approval, otherwise refund).
+- "A refund is recorded by appending the order id to `shop[\"refunds\"]`."
 - "The final answer is a validated `Reply` ... An invalid answer goes back to the model to retry."
 - "`def build_agent(llm, shop)` ... return a compiled graph with a checkpointer"
 
-Shape: a bounded agent loop with tools (the next step depends on tool results). Not plain code:
-the input is free text. Not a supervisor: one context suffices.
-
 ## Done when
-- [x] `.venv/bin/python kit/practice/grade.py solution.py` -> `== grade: 8 passed, 0 failed`, exit 0 (ran: 8 passed, exit 0)
-- [x] `.venv/bin/python -m pytest -v test_solution.py` -> all PASSED, none skipped (ran: 11 passed)
-- [x] README explains approach, decisions, AI use and limitations
+- [x] `.venv/bin/python kit/practice/grade.py solution.py` -> `== grade: 8 passed, 0 failed of 8 cases`, exit 0
+- [x] `.venv/bin/python -m pytest -v test_solution.py` -> `8 passed in 0.94s`, none skipped
+- [x] `npx --yes @mermaid-js/mermaid-cli@11.4.2 -p .render/puppeteer.json -i docs/MODEL.md -o .render/MODEL.md` -> 6 of 6 diagrams rendered, exit 0 (needed `-p`: see README)
+- [x] README explains approach, decisions, AI use and limitations (sections Run it, Approach, Design decisions, How I used the AI assistant, Limitations)
 
 ## Steps
-1. Tools as pure functions over `shop` + unit tests (get_order, search_policy, refund rules 1-4, 6).
-2. `Reply` Pydantic model with validation + tests for a bad order id / bad category.
-3. `build_agent`: `create_agent(llm, tools, response_format=ToolStrategy(Reply), checkpointer=InMemorySaver())`; approval via `interrupt()` inside `request_refund`, side effect after it returns.
-4. Run grader; read every failure trace; fix.
-5. README, tick plan, `bash kit/check.sh --final`.
+1. Planning package: PLAN.md, docs/DESIGN.md, docs/MODEL.md, docs/DECISIONS.md; render the diagrams; commit.
+2. Pure helpers + `get_order` / `search_policy` tools: tests first (format, not found, ranking, limit 2, no match).
+3. `refund_refusal()` rules 1-4 and `request_refund` tool with the $50 approval `interrupt()`: tests for each rule, approve, decline.
+4. `Reply` model and `build_agent()` with `create_agent(..., response_format=ToolStrategy(Reply), checkpointer=InMemorySaver())`: retry test with an invalid Reply.
+5. First grade run; read every failing case's trace; fix; keep each fixed case as a test.
+6. README per skills/explain-your-work; `check.sh --final`.
+
+## Shape
+Bounded agent loop with tools (`create_agent`), plus one human-approval pause inside the refund tool.
+Not plain code: the customer message is free text and which order/policy to look up is decided from it.
+Not a fixed workflow: the next tool depends on what the previous one returned (not found, not eligible).
+Not a supervisor: one small domain, no independent subtasks needing separate context.
 
 ## System model
-
-Elements:
-- G1 (decided): customer message -> correct tool outputs and a validated Reply; refunds only when rules allow.
-- B1 (decided): agent graph (`build_agent`); B2 (decided): tools (`make_tools`); B3 (decided): `shop` dict (given by caller).
-- P1 (decided): refund writes `shop["refunds"]` (`solution.py: make_tools.request_refund`).
-- Q1 (decided): no refund over $50 without a "yes"; `test_big_refund_needs_yes`.
-
-### 1. Goals
-Correct refund decisions (rule order exact); never refund >$50 without approval; output always a valid Reply.
-
-### 2. Context
-```mermaid
-flowchart LR
-  Customer -->|message| Agent
-  Agent -->|tool calls| Tools --> Shop[(shop dict)]
-  Agent -->|prompts| LLM[model]
-  Tools -->|interrupt| Reviewer
-```
-
-### 3. Building blocks
-| Part | Owns |
-|---|---|
-| `build_agent` | wiring: model, tools, Reply schema, checkpointer, step bound |
-| `make_tools(shop)` | get_order, search_policy, request_refund; the only writer |
-| `Reply` | final answer schema and its validation |
-
-### 4. Runtime
-| Process | Trigger | Reads | Writes | Writer |
-|---|---|---|---|---|
-| P1 refund | model calls request_refund | orders, refunds, today | append to refunds | `make_tools.request_refund` |
-| P2 approval | refund > $50 | reviewer answer via resume | nothing (gates P1) | `interrupt()` in request_refund |
-
-### 5. Views
-Context diagram above: what crosses the system edge.
-
-### 6. Quality
-| Goal | Observable pattern | Check |
-|---|---|---|
-| rule order | already-refunded beats not-delivered etc. | `test_refund_rules_*` |
-| approval gate | refunds list empty until "yes" | `test_big_refund_needs_yes`, grader |
-| valid Reply | bad order id rejected | `test_reply_rejects_bad_id` |
-
-### Unknowns
-| Unknown | What would decide it |
-|---|---|
-| Policy match scoring (guessed: keyword overlap) | grader cases |
-| "more than 30 days" boundary: 30 days allowed (guessed) | grader cases |
+See [docs/MODEL.md](docs/MODEL.md). Key facts: all refund rules live in one pure function,
+`refund_refusal()`, checked before the approval pause; the only write is `record_refund()`,
+which runs after `interrupt()` returns, so a resumed tool cannot refund twice.
 
 ## Assumptions
-- "Delivered more than 30 days" -> days = today - delivered_on; refuse when > 30.
-- Over $50 means amount > 50 (exactly $50 refunds without approval).
-- Reviewer answer other than exactly "yes" (case-insensitive) is a decline.
+- "Delivered more than 30 days before today" -> refuse only when days > 30; exactly 30 is allowed (the word is "more than").
+- "Amount over $50" -> amount > 50; exactly $50 refunds without review.
+- Reviewer answer -> only `yes` (case-insensitive, trimmed) approves; anything else declines, as "Otherwise" says.
+- `order_id` in `Reply` "or none" -> `None` (JSON null); a string like "none" is rejected so the model retries.
+- "action (one sentence)" -> a non-empty string with at most one sentence end; more is sent back to the model.
+- Policy matching -> keyword overlap with light stemming; ties keep the data order (P-1 before P-2).
+- Money printed as whole dollars (`$30`), as in the example; data amounts are integers.
 
-## Risks
-- interrupt() inside a tool re-runs the tool on resume -> refund must happen only after interrupt returns; a double append would show in the grader's refunds list.
-- Policy ranking differing from the grader's -> shows as tool_output_contains failures.
+## Risks (failure modes)
+- Refund issued twice when the tool re-runs on resume -> `shop["refunds"]` shows the id twice; test resumes and asserts exactly one.
+- Policy search ranks the wrong policy first -> grader `reply.policy_ids` or tool output mismatch.
+- Reply schema too strict (rejects a valid scripted answer) or too loose (accepts invalid) -> grader "no structured_response" or wrong retry behavior.
+- Agent loops forever -> recursion limit set at build time stops it with an error.
