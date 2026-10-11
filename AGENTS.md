@@ -8,7 +8,7 @@ These rules apply to any AI coding assistant working in this project. Read them 
    goal with the quoted requirements, checkable done-when items, small steps, the shape chosen,
    assumptions and risks. With it, fill the planning package from `kit/templates/`:
    `docs/DESIGN.md` (outcome, quoted requirements, failure modes, rules, fixtures, slices),
-   `docs/MODEL.md` (six Mermaid diagrams: context, building blocks, main sequence, rules,
+   `docs/MODEL.md` (six Mermaid diagrams: context, agent loop, main sequence, rules,
    states, data; plus runtime, contracts, quality and unknowns tables) and `docs/DECISIONS.md`.
    `check.sh` fails until all three are filled in. How to think at each stage is in
    `kit/method/README.md`.

@@ -21,7 +21,7 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
    planning package lives in `docs/`, copied from `templates/` and filled before code:
    - `docs/DESIGN.md`: outcome with one example, quoted requirements R1.., failure modes and
      controls F1.., domain rules in order, fixtures, slices (`method/design-chain.md`);
-   - `docs/MODEL.md`: six Mermaid diagrams (1 context, 2 building blocks, 3 main sequence,
+   - `docs/MODEL.md`: six Mermaid diagrams (1 context, 2 agent loop, 3 main sequence,
      4 rules, 5 states, 6 data) and the runtime, contracts, quality and unknowns tables
      (`method/system-model.md`, `method/architecture-views.md`);
    - `docs/DECISIONS.md`: one row per real choice (`method/decisions.md`).

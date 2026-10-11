@@ -1,7 +1,4 @@
-"""Offline tests for solution.py: tools, refund rules, approval pause and Reply retry.
-
-Each test uses a scripted fake model, so no API key is needed and runs are deterministic.
-"""
+"""Offline tests for solution.py: tools, refund rules, approval pause, Reply validation, wiring."""
 
 import copy
 import json
@@ -9,155 +6,132 @@ from pathlib import Path
 
 import pytest
 from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
-from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
+from langchain_core.messages import AIMessage, HumanMessage
+from langgraph.errors import GraphRecursionError
 from langgraph.types import Command
 from pydantic import ValidationError
 
-from solution import Reply, build_agent, make_tools, refund_refusal
+import solution
 
 DATA = json.loads((Path(__file__).parent / "kit/practice/data.json").read_text())
 
 
-class ScriptedModel(GenericFakeChatModel):
-    """Fake chat model that replays fixed messages; bind_tools is a no-op."""
+class Scripted(GenericFakeChatModel):
+    """Fake model replaying fixed messages; bind_tools is a no-op."""
 
-    def bind_tools(self, tools, **kwargs):
-        """Ignore tools: the script already names them."""
+    def bind_tools(self, tools, **kw):
+        """Return self so create_agent can bind tools."""
         return self
 
 
 def fresh_shop():
-    """A deep copy of data.json with an empty refunds list, as the grader builds it."""
+    """A copy of the shop data with an empty refunds list."""
     shop = copy.deepcopy(DATA)
     shop["refunds"] = []
     return shop
 
 
-def tools_by_name(shop):
-    """The three tools for this shop, keyed by name."""
-    return {t.name: t for t in make_tools(shop)}
+def tools(shop):
+    """Tools by name for direct calls."""
+    return {t.name: t for t in solution.make_tools(shop)}
 
 
-def call(name, args, i=0):
-    """An AI message calling one tool."""
-    return AIMessage(content="", tool_calls=[{"name": name, "args": args, "id": f"c{i}"}])
+def call(name, **args):
+    """A scripted AI message calling one tool."""
+    return AIMessage(content="", tool_calls=[{"name": name, "args": args, "id": f"{name}-{len(args)}"}])
 
 
-def run(shop, script, text, human=None, thread="t"):
-    """Run the agent, resuming with `human` while it is paused; return (result, pauses)."""
-    graph = build_agent(ScriptedModel(messages=iter(script)), shop)
+def run(shop, script, text="help", human=None, thread="t"):
+    """Invoke the agent with a script; resume each pause with `human`; return (result, pauses)."""
+    graph = solution.build_agent(Scripted(messages=iter(script)), shop)
     cfg = {"configurable": {"thread_id": thread}}
-    out = graph.invoke({"messages": [HumanMessage(text)]}, cfg)
-    pauses = 0
+    out, pauses = graph.invoke({"messages": [HumanMessage(text)]}, cfg), []
     while out.get("__interrupt__"):
-        pauses += 1
-        assert pauses <= 3, "resume never reached the end"
+        pauses.append(out["__interrupt__"][0].value)
         out = graph.invoke(Command(resume=human), cfg)
     return out, pauses
 
 
-def tool_texts(out):
-    """All tool outputs of a run, in order."""
-    return [m.content for m in out["messages"] if isinstance(m, ToolMessage)]
+def reply(**kw):
+    """A scripted final Reply call."""
+    base = {"category": "refund", "order_id": "A-101", "action": "Refunded the order.", "policy_ids": ["P-1"]}
+    return call("Reply", **{**base, **kw})
 
 
-def test_get_order_formats():
-    """Delivered shows the date, processing does not, unknown gives not-found; ids are normalized."""
-    t = tools_by_name(fresh_shop())["get_order"]
+def test_get_order_delivered_and_missing():
+    t = tools(fresh_shop())["get_order"]
     assert t.invoke({"order_id": "A-101"}) == "A-101: Desk lamp, $30, delivered 2026-02-20"
     assert t.invoke({"order_id": "A-103"}) == "A-103: Monitor, $80, processing"
     assert t.invoke({"order_id": "A-999"}) == "Order A-999 not found."
-    assert t.invoke({"order_id": " a-102 "}).startswith("A-102: Office chair, $120")
-
-
-def test_search_policy_ranks_best_first():
-    """Shipping query puts P-2 first (not data order); at most 2 lines; nonsense finds nothing."""
-    t = tools_by_name(fresh_shop())["search_policy"]
-    lines = t.invoke({"query": "when will my package ship? shipping is slow"}).splitlines()
-    assert lines[0].startswith("P-2: Shipping")
-    assert len(lines) <= 2
-    damaged = t.invoke({"query": "my lamp arrived damaged"}).splitlines()
-    assert damaged[0].startswith("P-3: Damaged")
-    refund = t.invoke({"query": "refund"}).splitlines()
-    assert refund[0].startswith("P-1: ") and len(refund) <= 2
-    assert t.invoke({"query": "hello there"}) == "No matching policy."
 
 
 def test_refund_rules_in_order():
-    """Each of rules 1-4 gives its exact text; an old order over $50 is refused, never paused."""
     shop = fresh_shop()
-    shop["orders"]["A-105"] = {"item": "Desk", "amount": 300, "status": "delivered", "delivered_on": "2026-01-01"}
-    assert refund_refusal(shop, "A-999") == "Order A-999 not found."
-    assert refund_refusal(shop, "A-103") == "Not eligible: A-103 has not been delivered."
-    assert refund_refusal(shop, "A-104") == "Not eligible: A-104 was delivered 50 days ago (limit 30)."
-    assert refund_refusal(shop, "A-105") == "Not eligible: A-105 was delivered 59 days ago (limit 30)."
-    shop["refunds"].append("A-104")  # already refunded is checked before age
-    assert refund_refusal(shop, "A-104") == "A-104 was already refunded."
-    assert refund_refusal(shop, "A-101") is None
-    # boundary: exactly 30 days is allowed, 31 is not
-    shop["orders"]["A-106"] = {"item": "Pen", "amount": 5, "status": "delivered", "delivered_on": "2026-01-30"}
-    shop["orders"]["A-107"] = {"item": "Pen", "amount": 5, "status": "delivered", "delivered_on": "2026-01-29"}
-    assert refund_refusal(shop, "A-106") is None
-    assert refund_refusal(shop, "A-107") == "Not eligible: A-107 was delivered 31 days ago (limit 30)."
+    r = tools(shop)["request_refund"]
+    ask = lambda oid: r.invoke({"order_id": oid, "reason": "x"})  # noqa: E731
+    assert ask("A-999") == "Order A-999 not found."
+    assert ask("A-103") == "Not eligible: A-103 has not been delivered."
+    assert ask("A-104") == "Not eligible: A-104 was delivered 50 days ago (limit 30)."
+    assert ask("A-101") == "Refunded A-101 ($30)."
+    # rule 2 is checked before rule 4: an old order already refunded says "already refunded"
+    shop["refunds"].append("A-104")
+    assert ask("A-104") == "A-104 was already refunded."
+    assert ask("A-101") == "A-101 was already refunded."
+    assert shop["refunds"] == ["A-101", "A-104"]
 
 
-def final(category, order_id, action, policy_ids, i=9):
-    """An AI message calling Reply."""
-    return call("Reply", {"category": category, "order_id": order_id, "action": action,
-                          "policy_ids": policy_ids}, i)
-
-
-def test_small_refund_recorded_once():
-    """$30 refund goes through without a pause and is recorded once; a second request is refused."""
+def test_large_refund_pauses_then_approves():
     shop = fresh_shop()
-    script = [call("request_refund", {"order_id": "A-101", "reason": "broken"}, 0),
-              call("request_refund", {"order_id": "A-101", "reason": "again"}, 1),
-              final("refund", "A-101", "Refunded order A-101.", ["P-1"])]
-    out, pauses = run(shop, script, "refund A-101")
-    assert pauses == 0
-    assert shop["refunds"] == ["A-101"]
-    assert tool_texts(out)[:2] == ["Refunded A-101 ($30).", "A-101 was already refunded."]
-    assert out["structured_response"] == Reply(category="refund", order_id="A-101",
-                                               action="Refunded order A-101.", policy_ids=["P-1"])
-
-
-def test_large_refund_approved_after_pause():
-    """$120 refund pauses, and on 'yes' is recorded exactly once (the tool re-runs on resume)."""
-    shop = fresh_shop()
-    script = [call("request_refund", {"order_id": "A-102", "reason": "too big"}, 0),
-              final("refund", "A-102", "Refunded A-102 after approval.", ["P-1"])]
-    out, pauses = run(shop, script, "refund my chair A-102", human="yes")
-    assert pauses == 1
-    assert shop["refunds"] == ["A-102"]
-    assert "Refunded A-102 ($120) after approval." in tool_texts(out)
-    assert out["structured_response"].order_id == "A-102"
+    out, pauses = run(shop, [call("request_refund", order_id="A-102", reason="broken"),
+                             reply(order_id="A-102", action="Refunded after approval.")], human="yes")
+    assert len(pauses) == 1 and pauses[0]["amount"] == 120 and pauses[0]["order_id"] == "A-102"
+    assert shop["refunds"] == ["A-102"]  # once, although the tool ran twice
+    assert "Refunded A-102 ($120) after approval." in [m.content for m in out["messages"]]
 
 
 def test_large_refund_declined_records_nothing():
-    """On 'no' the refund is declined and nothing is recorded."""
     shop = fresh_shop()
-    script = [call("request_refund", {"order_id": "A-102", "reason": "too big"}, 0),
-              final("refund", "A-102", "The reviewer declined the refund.", ["P-1"])]
-    out, pauses = run(shop, script, "refund A-102", human="no")
-    assert pauses == 1
+    out, pauses = run(shop, [call("request_refund", order_id="A-102", reason="broken"),
+                             reply(order_id="A-102", action="The reviewer declined the refund.")], human="no")
+    assert len(pauses) == 1
     assert shop["refunds"] == []
-    assert "Refund for A-102 declined by reviewer." in tool_texts(out)
+    assert "Refund for A-102 declined by reviewer." in [m.content for m in out["messages"]]
 
 
-def test_invalid_reply_is_retried():
-    """A Reply with a bad category is sent back; the model's second, valid Reply is returned."""
+def test_search_policy_best_first_and_no_match():
+    s = tools(fresh_shop())["search_policy"]
+    lines = s.invoke({"query": "how long does shipping take"}).splitlines()
+    assert lines[0].startswith("P-2: Shipping") and len(lines) <= 2
+    assert len(s.invoke({"query": "refund damaged item delivered"}).splitlines()) == 2
+    assert s.invoke({"query": "zebra giraffe"}) == "No matching policy."
+
+
+def test_reply_rejects_bad_values():
+    solution.Reply(category="refund", order_id="A-101", action="Refunded it.", policy_ids=["P-1"])
+    for bad in ({"category": "billing"}, {"order_id": "101"}, {"action": "Done. Also more."},
+                {"policy_ids": ["refunds"]}, {"action": "  "}):
+        args = {"category": "refund", "order_id": "A-101", "action": "Refunded it.", "policy_ids": [], **bad}
+        with pytest.raises(ValidationError):
+            solution.Reply(**args)
+
+
+def test_agent_end_to_end_small_refund():
     shop = fresh_shop()
-    script = [final("billing", "A-101", "Checked the order.", [], 0),
-              final("other", None, "Answered the question.", [], 1)]
-    out, _ = run(shop, script, "hi")
-    reply = out["structured_response"]
-    assert reply.category == "other" and reply.order_id is None
-    assert any("validation error for Reply" in t for t in tool_texts(out)), "first Reply was not rejected"
+    out, pauses = run(shop, [call("get_order", order_id="A-101"),
+                             call("request_refund", order_id="A-101", reason="unwanted"), reply()])
+    assert pauses == [] and shop["refunds"] == ["A-101"]
+    assert out["structured_response"].order_id == "A-101"
 
 
-def test_reply_rejects_bad_fields():
-    """Bad order id form and a two-sentence action are invalid."""
-    with pytest.raises(ValidationError):
-        Reply(category="refund", order_id="101", action="Refunded.", policy_ids=[])
-    with pytest.raises(ValidationError):
-        Reply(category="refund", order_id="A-101", action="Refunded it. Thanks!", policy_ids=[])
+def test_invalid_reply_goes_back_for_retry():
+    shop = fresh_shop()
+    out, _ = run(shop, [reply(category="billing"), reply(category="other", order_id=None, policy_ids=[])])
+    assert out["structured_response"].category == "other"
+    errors = [m.content for m in out["messages"] if m.type == "tool" and "validation error" in m.content]
+    assert len(errors) == 1 and "category" in errors[0]  # the first, invalid Reply went back to the model
+
+
+def test_looping_model_is_stopped():
+    shop = fresh_shop()
+    with pytest.raises(GraphRecursionError):
+        run(shop, [call("get_order", order_id="A-101")] * 50)

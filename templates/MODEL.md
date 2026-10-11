@@ -9,7 +9,9 @@ Under each heading write two lines before the diagram: a bold "Answer:" line, on
 answering the heading for this system; then an italic line saying whether the view is current
 or proposed and what its arrows mean (one meaning per diagram). Give each part one label and use
 it unchanged in every diagram (same node id, same text). Draw the mechanism a decision rests on
-as the library really does it (a pause returns to the caller; a resume re-runs the tool).
+as the library really does it (a pause returns to the caller; a resume re-runs the tool). A
+ten-line probe script that confirms the behaviour is allowed before the model, and worth it.
+Guidance in `<!-- -->` comments does not render; leave or delete it.
 
 ## Goals
 - Outcome: <who does what, and what they see when it works>
@@ -17,7 +19,7 @@ as the library really does it (a pause returns to the caller; a resume re-runs t
 
 ## 1. Context: who and what is outside the system?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 ```mermaid
 flowchart LR
   <Person or caller> -->|<what they send>| <System>
@@ -26,7 +28,7 @@ flowchart LR
 
 ## 2. Agent loop: which part runs each step, and where does the run stop or pause?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 ```mermaid
 flowchart LR
   In["<caller>"] -->|"invoke(input, thread_id)"| Model["<model node>"]
@@ -36,7 +38,7 @@ flowchart LR
   Tools -.->|"pause: returned to caller"| In
 ```
 
-Who owns what (one row per part; mark the only writer of each record):
+<!-- Who owns what: one row per part; mark the only writer of each record. -->
 
 | Block | Owns | Code |
 |---|---|---|
@@ -44,7 +46,7 @@ Who owns what (one row per part; mark the only writer of each record):
 
 ## 3. Main sequence: what happens, in order, on the main path?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 ```mermaid
 sequenceDiagram
   participant Caller
@@ -60,17 +62,18 @@ sequenceDiagram
   end
   Graph-->>Caller: <final answer, or pause payload>
 ```
-`->>` is a call, `-->>` only its return. Give every tool its own lifeline, or none. A pause
+<!-- ->> is a call, -->> only its return. Give every tool its own lifeline, or none. A pause
 returns to the caller; draw the resume as a new call from the caller and show what re-runs.
+No ";" inside a message or Note: it breaks the diagram. -->
 
 ## 4. Rules: in what order are the business rules checked?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 | # | Check (first match wins) | Result text | Code |
 |---|---|---|---|
 | 1 | <check> | <exact text> | `<function()>` |
 
-Draw a flowchart only for the branches after the straight chain:
+<!-- Draw a flowchart only for the branches after the straight chain. -->
 ```mermaid
 flowchart LR
   <gate?> -->|yes| <outcome>
@@ -79,9 +82,9 @@ flowchart LR
 
 ## 5. States: what states does a run or record move through, including pauses and resumes?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
-Draw only states the rules in section 4 do not already show (paused, checkpointed, resumed,
-retried).
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
+<!-- Draw only states the rules in section 4 do not already show (paused, checkpointed,
+resumed, retried). -->
 ```mermaid
 stateDiagram-v2
   [*] --> <first state>
@@ -90,9 +93,9 @@ stateDiagram-v2
 
 ## 6. Data: what are the typed contracts and state?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
-Write Literal values out (`Literal["approved", "refused"]`), list each validator under its
-field, and leave out `+`/`-` visibility markers.
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
+<!-- Write Literal values out (Literal["approved", "refused"]), list each validator under its
+field, leave out +/- visibility markers, and keep parentheses out of field lines. -->
 ```mermaid
 classDiagram
   class <Model> {

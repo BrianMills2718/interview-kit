@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 KIT = Path(__file__).resolve().parent
-PLACEHOLDER = re.compile(r"<[^<>\n]+>")
+PLACEHOLDER = re.compile(r"<(?!!--)[^<>\n]+>")  # <!-- guidance --> comments are not placeholders
 
 DESIGN_SECTIONS = ["Outcome", "Requirements", "Failure modes", "Domain rules", "Fixtures", "Slices"]
 # diagram number -> (name used in messages, Mermaid kinds accepted)

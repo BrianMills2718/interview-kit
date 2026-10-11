@@ -25,4 +25,7 @@ check each diagram against the code: every node, arrow and row is something the 
 **Check every diagram renders** before you finish: paste each block into mermaid.live, or run
 `npx --yes @mermaid-js/mermaid-cli -i docs/MODEL.md -o .render/MODEL.md`. If it cannot find
 Chrome, point it at an installed one with `-p puppeteer.json` containing
-`{"executablePath": "<path to chrome>"}`. Quote labels that contain parentheses: `A["get_order()"]`.
+`{"executablePath": "<path to chrome>"}`. Quote labels that contain parentheses: `A["get_order()"]`. mermaid-cli exits 0 even when a
+block fails to parse, so count its ✅ lines (one per block) rather than trusting the exit code.
+Known breakers: `;` inside a sequence message or Note, parentheses in a class-diagram field
+(it moves to the methods box), and `__name__` in a Note (renders as bold).

@@ -2,7 +2,7 @@
 
 Write one model per project before the code, and keep it true as the code changes. In a
 take-home it is `docs/MODEL.md`, copied from `templates/MODEL.md`, with six diagrams (context,
-building blocks, main sequence, rules, states, data) and the tables below; `check.sh` enforces
+agent loop with who-owns-what, main sequence, rules, states, data) and the tables below; `check.sh` enforces
 it. The content follows the arc42 headings, with C4 diagrams in Mermaid:
 
 1. **Goals**: the outcome and the 2 to 4 quality goals that matter (correct refunds, bounded

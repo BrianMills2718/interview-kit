@@ -7,7 +7,7 @@ A timed rehearsal for an agentic-AI take-home. Target 2 hours, hard stop at 4.
 1. In a project folder of your own (new, or the one the IDE gives you), `git init` if it is not
    already a repository, then `git clone <this kit> kit` inside it.
 2. Remove the answer before reading anything else:
-   `python3 -c "import shutil; shutil.rmtree('kit/practice/reference', ignore_errors=True)"`.
+   `python3 -c "import shutil; [shutil.rmtree(p, ignore_errors=True) for p in ('kit/practice/reference', 'kit/practice2/reference')]"`.
    Install into a project environment: `uv venv && uv pip install langchain langgraph pytest`
    (or `python -m venv .venv && .venv/bin/pip install langchain langgraph pytest`); `check.sh` uses `.venv`.
    Do not open `kit/practice/cases.json` before your first grade run: it gives away the design.

@@ -11,7 +11,7 @@ These rules apply to any AI coding assistant working in this project. Read them 
    goal with the quoted requirements, checkable done-when items, small steps, the shape chosen,
    assumptions and risks. With it, fill the planning package from `kit/templates/`:
    `docs/DESIGN.md` (outcome, quoted requirements, failure modes, rules, fixtures, slices),
-   `docs/MODEL.md` (six Mermaid diagrams: context, building blocks, main sequence, rules,
+   `docs/MODEL.md` (six Mermaid diagrams: context, agent loop, main sequence, rules,
    states, data; plus runtime, contracts, quality and unknowns tables) and `docs/DECISIONS.md`.
    `check.sh` fails until all three are filled in. How to think at each stage is in
    `kit/method/README.md`.
@@ -148,7 +148,9 @@ Under each heading write two lines before the diagram: a bold "Answer:" line, on
 answering the heading for this system; then an italic line saying whether the view is current
 or proposed and what its arrows mean (one meaning per diagram). Give each part one label and use
 it unchanged in every diagram (same node id, same text). Draw the mechanism a decision rests on
-as the library really does it (a pause returns to the caller; a resume re-runs the tool).
+as the library really does it (a pause returns to the caller; a resume re-runs the tool). A
+ten-line probe script that confirms the behaviour is allowed before the model, and worth it.
+Guidance in `<!-- -->` comments does not render; leave or delete it.
 
 ## Goals
 - Outcome: <who does what, and what they see when it works>
@@ -156,7 +158,7 @@ as the library really does it (a pause returns to the caller; a resume re-runs t
 
 ## 1. Context: who and what is outside the system?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 ```mermaid
 flowchart LR
   <Person or caller> -->|<what they send>| <System>
@@ -165,7 +167,7 @@ flowchart LR
 
 ## 2. Agent loop: which part runs each step, and where does the run stop or pause?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 ```mermaid
 flowchart LR
   In["<caller>"] -->|"invoke(input, thread_id)"| Model["<model node>"]
@@ -175,7 +177,7 @@ flowchart LR
   Tools -.->|"pause: returned to caller"| In
 ```
 
-Who owns what (one row per part; mark the only writer of each record):
+<!-- Who owns what: one row per part; mark the only writer of each record. -->
 
 | Block | Owns | Code |
 |---|---|---|
@@ -183,7 +185,7 @@ Who owns what (one row per part; mark the only writer of each record):
 
 ## 3. Main sequence: what happens, in order, on the main path?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 ```mermaid
 sequenceDiagram
   participant Caller
@@ -199,17 +201,18 @@ sequenceDiagram
   end
   Graph-->>Caller: <final answer, or pause payload>
 ```
-`->>` is a call, `-->>` only its return. Give every tool its own lifeline, or none. A pause
+<!-- ->> is a call, -->> only its return. Give every tool its own lifeline, or none. A pause
 returns to the caller; draw the resume as a new call from the caller and show what re-runs.
+No ";" inside a message or Note: it breaks the diagram. -->
 
 ## 4. Rules: in what order are the business rules checked?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
 | # | Check (first match wins) | Result text | Code |
 |---|---|---|---|
 | 1 | <check> | <exact text> | `<function()>` |
 
-Draw a flowchart only for the branches after the straight chain:
+<!-- Draw a flowchart only for the branches after the straight chain. -->
 ```mermaid
 flowchart LR
   <gate?> -->|yes| <outcome>
@@ -218,9 +221,9 @@ flowchart LR
 
 ## 5. States: what states does a run or record move through, including pauses and resumes?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
-Draw only states the rules in section 4 do not already show (paused, checkpointed, resumed,
-retried).
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
+<!-- Draw only states the rules in section 4 do not already show (paused, checkpointed,
+resumed, retried). -->
 ```mermaid
 stateDiagram-v2
   [*] --> <first state>
@@ -229,9 +232,9 @@ stateDiagram-v2
 
 ## 6. Data: what are the typed contracts and state?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows mean: <one meaning>.*
-Write Literal values out (`Literal["approved", "refused"]`), list each validator under its
-field, and leave out `+`/`-` visibility markers.
+*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
+<!-- Write Literal values out (Literal["approved", "refused"]), list each validator under its
+field, leave out +/- visibility markers, and keep parentheses out of field lines. -->
 ```mermaid
 classDiagram
   class <Model> {
@@ -641,7 +644,7 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
    planning package lives in `docs/`, copied from `templates/` and filled before code:
    - `docs/DESIGN.md`: outcome with one example, quoted requirements R1.., failure modes and
      controls F1.., domain rules in order, fixtures, slices (`method/design-chain.md`);
-   - `docs/MODEL.md`: six Mermaid diagrams (1 context, 2 building blocks, 3 main sequence,
+   - `docs/MODEL.md`: six Mermaid diagrams (1 context, 2 agent loop, 3 main sequence,
      4 rules, 5 states, 6 data) and the runtime, contracts, quality and unknowns tables
      (`method/system-model.md`, `method/architecture-views.md`);
    - `docs/DECISIONS.md`: one row per real choice (`method/decisions.md`).
@@ -1160,14 +1163,17 @@ check each diagram against the code: every node, arrow and row is something the 
 **Check every diagram renders** before you finish: paste each block into mermaid.live, or run
 `npx --yes @mermaid-js/mermaid-cli -i docs/MODEL.md -o .render/MODEL.md`. If it cannot find
 Chrome, point it at an installed one with `-p puppeteer.json` containing
-`{"executablePath": "<path to chrome>"}`. Quote labels that contain parentheses: `A["get_order()"]`.
+`{"executablePath": "<path to chrome>"}`. Quote labels that contain parentheses: `A["get_order()"]`. mermaid-cli exits 0 even when a
+block fails to parse, so count its ✅ lines (one per block) rather than trusting the exit code.
+Known breakers: `;` inside a sequence message or Note, parentheses in a class-diagram field
+(it moves to the methods box), and `__name__` in a Note (renders as bold).
 
 <!-- method/system-model.md -->
 # System model: one page that says what the system is
 
 Write one model per project before the code, and keep it true as the code changes. In a
 take-home it is `docs/MODEL.md`, copied from `templates/MODEL.md`, with six diagrams (context,
-building blocks, main sequence, rules, states, data) and the tables below; `check.sh` enforces
+agent loop with who-owns-what, main sequence, rules, states, data) and the tables below; `check.sh` enforces
 it. The content follows the arc42 headings, with C4 diagrams in Mermaid:
 
 1. **Goals**: the outcome and the 2 to 4 quality goals that matter (correct refunds, bounded

@@ -131,6 +131,13 @@ def test_final_accepts_an_imported_library_function(tmp_path):
     assert code == 0, out
 
 
+def test_template_guidance_comment_left_in_is_fine(tmp_path):
+    p = package(tmp_path)
+    edit(p / "docs/MODEL.md", "| Block | Owns | Code |", "<!-- Who owns what: one row per part; mark the only writer of each record. -->\n\n| Block | Owns | Code |")
+    code, out = run(p)
+    assert code == 0, out
+
+
 def test_diagram_without_an_answer_line_fails(tmp_path):
     p = package(tmp_path)
     edit(p / "docs/MODEL.md", "**Answer:** one call, one return.\n", "")
