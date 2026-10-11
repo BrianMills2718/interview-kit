@@ -94,6 +94,12 @@ Most useful next additions, in order:
 2. A dry run by a person in the hosted IDE's chat itself (needs an account); the 12-minute agent
    run says nothing about a human's pace.
 
+Blocked (kit-v2 goal, criterion 4, 2026-10-11): the privacy read, checked with planted lines
+that it catches, finds no company or interview detail, but lists the owner's name (plugin files)
+and GitHub username (every clone URL) as personal data. They cannot be removed while the kit is
+installable from this repo. Resume when the owner either accepts the repo's own public identity
+as outside the check, or moves the kit to a neutral account.
+
 Known untidiness: plan-adoption records under `docs/plans/` show in the IDE file explorer after a
 clone; harmless.
 
