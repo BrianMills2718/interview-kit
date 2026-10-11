@@ -1,0 +1,521 @@
+[
+ {
+  "name": "block-declined-by-reviewer",
+  "message": "Block 203.0.113.9 please.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "203.0.113.9",
+       "reason": "suspicious"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "medium",
+       "host": "web-1",
+       "evidence": [
+        "L-1"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": true,
+   "tool_output_contains": [
+    "Block of 203.0.113.9 declined by reviewer."
+   ],
+   "verdict": {
+    "severity": "medium"
+   }
+  }
+ },
+ {
+  "name": "internal-ip-refused",
+  "message": "Block 10.0.0.9, it exported the cards table.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "10.0.0.9",
+       "reason": "export"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "high",
+       "host": "db-1",
+       "evidence": [
+        "L-4"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Refused: 10.0.0.9 is internal."
+   ],
+   "verdict": {
+    "severity": "high",
+    "host": "db-1"
+   }
+  }
+ },
+ {
+  "name": "invalid-ip-rejected",
+  "message": "Block 203.0.113 now.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "203.0.113",
+       "reason": "typo"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "low"
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Invalid IP: 203.0.113."
+   ]
+  }
+ },
+ {
+  "name": "second-block-is-a-no-op",
+  "message": "Block 198.51.100.23, and make sure it is blocked.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "198.51.100.23",
+       "reason": "known bad"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "198.51.100.23",
+       "reason": "again"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "high",
+       "host": "build-7",
+       "evidence": [
+        "L-5"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [
+    "198.51.100.23"
+   ],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Blocked 198.51.100.23 (known bad).",
+    "198.51.100.23 is already blocked."
+   ]
+  }
+ },
+ {
+  "name": "host-names-ignore-case",
+  "message": "Look at WEB-1 logins.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "get_host",
+      "args": {
+       "name": "WEB-1"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "Web-1",
+       "term": "LOGIN"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "medium",
+       "host": "web-1",
+       "evidence": [
+        "L-7"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "web-1: prod, owner storefront, ip 10.0.0.5",
+    "L-7 2026-03-01T11:40 failed login for guest from 192.0.2.44\nL-3 2026-03-01T10:02 successful login for admin from 203.0.113.9\nL-2 2026-03-01T09:59 failed login for admin from 203.0.113.9"
+   ],
+   "tool_output_absent": [
+    "L-1 "
+   ],
+   "verdict": {
+    "host": "web-1"
+   }
+  }
+ },
+ {
+  "name": "search-limit-enforced",
+  "message": "Search db-1 for everything you can think of.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "db-1",
+       "term": "export"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "db-1",
+       "term": "login"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "db-1",
+       "term": "ssh"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "db-1",
+       "term": "cards"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "db-1",
+       "term": "admin"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "high",
+       "host": "db-1",
+       "evidence": [
+        "L-4"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "No matching logs.\nL-4 2026-03-01T10:05 large export of table cards by user admin\nSearch limit reached (4)."
+   ]
+  }
+ },
+ {
+  "name": "high-without-evidence-is-retried",
+  "message": "db-1 exported the cards table. How bad?",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "db-1",
+       "term": "export"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "high",
+       "host": "db-1",
+       "evidence": []
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "high",
+       "host": "db-1",
+       "evidence": [
+        "L-4"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "L-4 2026-03-01T10:05 large export of table cards by user admin"
+   ],
+   "verdict": {
+    "severity": "high",
+    "evidence": [
+     "L-4"
+    ]
+   }
+  }
+ },
+ {
+  "name": "unknown-severity-is-retried",
+  "message": "Rate the guest login on web-1.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "urgent",
+       "host": "web-1",
+       "evidence": [
+        "L-7"
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "low",
+       "host": "web-1",
+       "evidence": [
+        "L-7"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [],
+   "verdict": {
+    "severity": "low",
+    "evidence": [
+     "L-7"
+    ]
+   }
+  }
+ },
+ {
+  "name": "two-pauses-in-one-turn",
+  "message": "Block both outside addresses that tried to log in to web-1.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "203.0.113.9",
+       "reason": "brute force"
+      }
+     },
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "192.0.2.44",
+       "reason": "guest login"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "high",
+       "host": "web-1",
+       "evidence": [
+        "L-3",
+        "L-7"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [
+    "203.0.113.9",
+    "192.0.2.44"
+   ],
+   "interrupted": true,
+   "tool_output_contains": [
+    "Blocked 203.0.113.9 after approval.",
+    "Blocked 192.0.2.44 after approval."
+   ]
+  }
+ },
+ {
+  "name": "parallel-tool-calls",
+  "message": "Check web-1 and db-1 together.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "get_host",
+      "args": {
+       "name": "web-1"
+      }
+     },
+     {
+      "name": "get_host",
+      "args": {
+       "name": "db-1"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "low"
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "web-1: prod, owner storefront, ip 10.0.0.5",
+    "db-1: prod, owner payments, ip 10.0.0.9"
+   ]
+  }
+ }
+]

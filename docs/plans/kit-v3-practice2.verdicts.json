@@ -1,0 +1,281 @@
+{
+  "01e1ff38250994cc330ea257e835daff72051c517608ed78645fa472e8a2ef93": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly require preserving the failed run and its trace id, nor does it require linking the targeted repair to a new traced verification run. It also does not state that review completeness is separate from the run verdict.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence requires keeping failing output in check.txt, reading inputs/tool messages/verdict, citing classifications, and rerunning the full test file while retaining the original failure. However, it never mentions a trace id, a new traced verification run, or the separation of review completeness from the run verdict.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "03143d36407842df930b5a7ecb0eff7bcf69cdbd6ec304ddf8209bf42b0ce45a": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as \u201ca candidate rehearsing for a timed agentic-AI take-home,\u201d states the desired result as a second rehearsal requiring the candidate to derive tests from a spec under hidden grading cases, and gives a stable, concrete user-visible example involving `grade.py` failures, finding rule 2, writing a test, fixing it, and reaching `12 passed`.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "1cfaa714ed1215ed62ebf8c33e099cbd77f3fc109ddf5fbe3d9640c39a75352a": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "material",
+    "missing": "The specific non-goals are not stated; the evidence only refers to them as \u201cunder Authority and non-goals.\u201d",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the minimal vertical result, the reset boundary, and the absence of coordinated-work ceremony. However, it does not explicitly state what the non-goals are.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/OV-PROTO-VERTICAL-RESET",
+    "verdict": "unresolved"
+  },
+  "392c1c8648415a36da0e8476792e196b1d43c53857dfee50226e6b151d708367": {
+    "item_id": "OV-PRIOR-ART-DISPOSITION",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly state that relevant external prior art was searched. It also uses dispositions outside the required set: hidden test suites are \"adopt\" and wiki item 1 is \"closed by this work\"; practice/grade.py is given both \"reuse\" and the internal practice/ is \"extend,\" without a clear qualifying disposition for each candidate.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "Internal ownership and lineage searches are explicitly stated, and some candidates have allowed dispositions such as \"reuse\" or \"extend.\" However, the external search is only implied by the list, and not every candidate is dispositioned as reuse, extend, compose, supersede, or bounded exception.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/OV-PRIOR-ART-DISPOSITION",
+    "verdict": "unresolved"
+  },
+  "3baecb17ee21595e39296e2e9e1bdfef72ccbdbec0f394cd9651edafe20d9ef0": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the runs being judged (`uv run pytest ...` and the leak-mutation run, plus the dry-run subagent session), identifies where their traces live (`docs/plans/kit-v3-practice2.check.txt` and the session task-output transcript), and specifies trace content beyond final outcomes: each parametrized case, the leaked-string assertion, the first grade output, each hidden failure, and the rule tracing.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/f4093ba1c121/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "3bd2aed1efb36a653badf2060ef9ae4e605edfd1a5fb5957226492dd3e6e2a70": {
+    "item_id": "OV-PRIOR-ART-PARALLEL-CHECK",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names a concrete structural check: `grep -rn \"class ScriptedModel\" --include=*.py .`, with the expected result that only `practice/grade.py` appears. This would detect a parallel implementation of `ScriptedModel`.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/39b11dd92054/OV-PRIOR-ART-PARALLEL-CHECK",
+    "verdict": "pass"
+  },
+  "3e48dd2b737aa401c8025c4434db26c31cc2c4efa2b6222a0f1a795a2857806e": {
+    "item_id": "OV-LLM-AUTHORITY-PROMOTION",
+    "materiality": "material",
+    "missing": "A specifically named model provider and a clearly identified spend authority for model calls.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence gives an authentic-run condition: `first_grade.txt` must show a hidden failure that the agent traces to a stated rule. However, \u201cthe session\u2019s own model; no API key\u201d does not explicitly name the provider or identify who has spend authority.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/OV-LLM-AUTHORITY-PROMOTION",
+    "verdict": "unresolved"
+  },
+  "422363d6c96b5ffda4c5ac2d9314cee5291aaf1c7a6c009c9d1a6d49dc74cd70": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence lists two uncertainties and explicitly identifies resolving evidence for each. The first also names an owner (\u201cthis session\u201d), while the second specifies the dry-run agent\u2019s ambiguity list and how each ambiguity is resolved.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "4c652c0c8201c2dc049f60bbebf7173ed4b938ba5b94ad76fbb8bab500fdd762": {
+    "item_id": "OV-LLM-AUTHORITY-PROMOTION",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names Anthropic as the provider and the owner's 2026-10-11 approval as spend authority. It also states the authentic-run promotion condition: `first_grade.txt` must show at least one hidden failure that the agent traced to a stated rule.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/39b11dd92054/OV-LLM-AUTHORITY-PROMOTION",
+    "verdict": "pass"
+  },
+  "4f5445a136abcb6a5c9560e7ca5185da7d4d44a8e319b5faad46f9b02a18c257": {
+    "item_id": "OV-PRIOR-ART-DISPOSITION",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states that existing ownership and internal lineage were searched across the repo\u2019s practice/, tests/, and docs/plans/, and that external prior art was searched. It assigns dispositions to the identified candidates: reuse, extend, or bounded exception, including the practice grader, external conventions, GenericFakeChatModel, the practice problem/grader, and the wiki item.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/39b11dd92054/OV-PRIOR-ART-DISPOSITION",
+    "verdict": "pass"
+  },
+  "5623acbfd86db08e84c8037ca4c3e80f5673fae098d48c373cf022d496f687cf": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides the required exemption and explicitly states that the repository has no stored state or user-facing view. It also cites the documentation entry point, identifies that no source-linked views apply, and specifies same-commit reconciliation plus a concrete wiki-reachability freshness check.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-SYSTEM-MODEL",
+    "verdict": "pass"
+  },
+  "66177c0e58a6a2e050444e80604e0a84ce981fee4bcfe75aef15373cc1654ee3": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states, \u201cNo catalogue entry fits, because\u201d the work needs a self-contained offline practice grader in a hosted IDE with only langchain and langgraph, while catalogue capabilities require workspace services unavailable to a candidate. It also explicitly states that no catalogue capabilities are reused and identifies the repo-local grader\u2019s first consumer as the plan\u2019s dry run.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "6c7dd69908c1839717cc0807bd90e8aa361dd47d795e27bab2d96e5611fe6a32": {
+    "item_id": "OV-LLM-CALL-BOUNDARY",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly describes the call graph, identifying that the grader makes no model calls and that the only model calls are the dry-run subagent\u2019s session. It also specifies structured results for the graded solution and dry run, and explains tracing through the full transcript and copied first-grade output.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/f4093ba1c121/OV-LLM-CALL-BOUNDARY",
+    "verdict": "pass"
+  },
+  "70f9c7bfa5eae87e1776f692161821fbcaf8ba677476f6f5530e343022eebdcc": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan declares true each triggered fact: shared_mechanism, irreversible_or_spend_action, and llm_central. It declares empirical_comparison_proposed false even though the evidence describes verification and one dry run rather than comparison among alternatives; aes_governed_target and claims_external_standard are also not triggered by the quoted evidence.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/39b11dd92054/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "76b2062278f4520e84cb53150df947f94119f32205f6484ca4e8cb7b19ec4e05": {
+    "item_id": "OV-PRIOR-ART-PARALLEL-CHECK",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names a concrete structural check: `grep -rn \"class ScriptedModel\" --include=*.py .`, with the expected result that only `practice/grade.py` appears. This would detect a second, silent implementation of `ScriptedModel`.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/OV-PRIOR-ART-PARALLEL-CHECK",
+    "verdict": "pass"
+  },
+  "89549351148b4b5e85e14b6dac718815850f2f27519df62e3680e9a9d55af397": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides an explicit requirements list with R1\u2013R8, and every requirement names a check and a status. The listed claims (\u201chidden,\u201d \u201cgrades,\u201d and \u201cfair\u201d) are represented by R3, R2, and R4 respectively, and no external standard is claimed; all statuses are passing, so no deferral carry-forward is required.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/f4093ba1c121/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "8aa3a37bc9fd56cd93a18ece4b83daf58c8c9231869f1ec531cdc57c487161bb": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a requirements list with requested and work-implied claims, and each requirement names a check and status. Requirements R1\u2013R6 are passing, R7\u2013R8 are explicitly planned, and no requirements are deferred; the evidence also identifies the implied claims (\u201chidden,\u201d \u201cgrades,\u201d and \u201cfair\u201d) and includes them as R3, R2, and R4.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "95e71085d7407c9351e4a76405e5c463b18241fa6098197d5ddce000f5b0a449": {
+    "item_id": "CORE-IRREVERSIBLE-SPEND",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies each proposed irreversible spend/action, states its boundary, names the authorization for each, and explains containment. The spend is limited to one dry-run session with a 60-minute cap; the push is authorized by the owner's standing rule and approval, gated by scans, with immediate reversion if private content is found.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-IRREVERSIBLE-SPEND",
+    "verdict": "pass"
+  },
+  "972645a8fcc9530cca9cf5e2685ea5c00d79fe2edc1bb3aaf4a07d36d013e243": {
+    "item_id": "OV-LLM-CALL-BOUNDARY",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly describes the call graph, including that only the dry-run subagent makes model calls; defines the structured results for the graded solution and dry run; and explains tracing through the session transcript and copied first-grade output.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/39b11dd92054/OV-LLM-CALL-BOUNDARY",
+    "verdict": "pass"
+  },
+  "975fb5ff82184c45c156829343ea4b4e2a894f51ea43a268a83e21ffe430adb9": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly defines success through the reference passing specified cases, each single-rule breakage failing its hidden case, and the leak mutation failing with named leaked strings. It also gives concrete disproof conditions: a broken copy passing, a hidden case failing for an unlisted rule, or the dry-run agent finding PROBLEM.md contrary to the grader.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/f4093ba1c121/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  },
+  "9ce02356ef9456c90ea4d37e3218b3293b00a4d6af71c1d641e3d96a6e3cfb83": {
+    "item_id": "OV-LLM-CALL-BOUNDARY",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the call graph, including that the grader makes no model calls and that the only calls are the dry-run subagent\u2019s session. It specifies structured results for the graded solution and dry run, and explains tracing through the full transcript and copied first-grade output.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/OV-LLM-CALL-BOUNDARY",
+    "verdict": "pass"
+  },
+  "b15f7de7063e86ec3cd5692545eb34b39475df8e1b7423404155eabd5796c82f": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence specifies a separate failure/surprise procedure and explicitly requires preserving the failed run and trace ID, reviewing all listed artifacts before fixing, citing and classifying divergences, and linking targeted repairs to a new traced verification run while retaining the original. It also states that unresolved diagnoses cannot authorize causal repairs and that review completeness is recorded separately from the run verdict.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/bb5b17f1f304/CORE-TRACE-DEBUGGING",
+    "verdict": "pass"
+  },
+  "b9117dff24ce7a08056e493b537bfb76b72d0adcd6092267b08133f724deb97f": {
+    "item_id": "OV-LLM-AUTHORITY-PROMOTION",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names Anthropic as the provider and the owner's 2026-10-11 approval as spend authority. It also states an authentic-run condition before promotion: `first_grade.txt` must show at least one hidden failure that the agent traced to a stated rule.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/f4093ba1c121/OV-LLM-AUTHORITY-PROMOTION",
+    "verdict": "pass"
+  },
+  "c36c15f12318bcc8aa69be32b8d002ad05db95efe0ae55d4cfe5791156d803e3": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan declares the triggered facts shared_mechanism, irreversible_or_spend_action, and\u2014conservatively\u2014llm_central as true. The facts declared false or default-false are not triggered: it proposes no alternative-comparison experiment, does not claim conformity to an external standard, and neither targets nor creates an AES-governed repository.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/f4093ba1c121/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "c70a4cce58a217d777a8f3419a1c6951d5ca885d4d093dc672c2f849f7c4abb8": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan does not trigger any fact it declares false. Its dry run and tests are verification rather than an experiment comparing alternatives; it does not claim conformity to an external standard, and it states that `.aes/` contains no `.aes/target.yaml` and does not create one. The triggered facts\u2014shared mechanism, LLM-central behavior, and irreversible/spend action\u2014are declared true.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "ce05a17c7bd44832ed7e8f67a4c5ddadf3783baaee582dd91e604364b286b8bd": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan declares true all triggered facts: the grader contract/shared mechanism, LLM-dependent dry run, and irreversible/spend actions. The declared false facts are not triggered: no experiment compares alternatives, no AES target exists or is created, and the plan expressly makes no claim of conforming to an external standard.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/bb5b17f1f304/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "d6801fdc16f79249646d88891e015ce4e5da77b64ef3eb4079f0e914e4decb7a": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "Explicit instructions to read the full inputs and prompts, each tool call\u2019s arguments and results, all intermediate stages, and the final output before selecting a fix.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly covers preserving the failed run and trace id, divergence classification, targeted repair with a new traced verification run, retaining the original failure, unresolved diagnoses, and separate review completeness. However, \u201cthe tool messages the solution produced and the verdict\u201d does not explicitly provide the required full inputs, prompts, per-call arguments/results, intermediate stages, and final output review.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/39b11dd92054/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "e1122d551e0fabf980ddc9ad023c2af26c291808fbf5b2ad7fee6a36f95f7b21": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly defines success through the reference and hidden-case outcomes, maps each case to the rule it tests, and names the leaked strings for the leak test. It also gives concrete disproof conditions: a broken copy passing, an unexplained hidden-case failure, or contradiction between the dry-run agent and grader.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  },
+  "ec9ee6e752b71b54c8408925aaa138c7f3f419b6d7caad752a66263a98841d4c": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the authority as \u201cthe owner,\u201d supported by the dated approval and session confirmation. It also explicitly lists non-goals, including no changes to specified files, no new dependency, no encryption of hidden cases, and no live-model grading.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "f1072e694a7e911083d7f3a9093bdefcf8af77cc9b3ddf875cc81500dae20236": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the runs (`pytest` plus the leak-mutation run, and the dry-run subagent session), identifies where their traces live (`docs/plans/kit-v3-practice2.check.txt` and the session task-output transcript), and specifies trace content beyond final outcomes, including each parametrized case, leaked-string assertions, the first grade, hidden failures, and rule tracing.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/4c564ac4a0c7/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "f950201cfc2e9e38ec167d02a9471a9369185d7ad8a8529e1d3af4ac2a22ef08": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the minimal vertical result, the reset boundary (branch, worktree, base, and abandonment action), and the non-goals. It also explicitly states that no coordinated-work ceremony is added and describes the one-writer, one-branch arrangement.",
+    "trace_id": "company-planning/method-conformance/kit-v3-practice2/39b11dd92054/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  }
+}

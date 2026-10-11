@@ -1,0 +1,17 @@
+{
+  "hosts": {
+    "web-1": {"env": "prod", "owner": "storefront", "ip": "10.0.0.5"},
+    "db-1": {"env": "prod", "owner": "payments", "ip": "10.0.0.9"},
+    "build-7": {"env": "dev", "owner": "platform", "ip": "10.0.3.7"}
+  },
+  "known_bad": ["198.51.100.23"],
+  "logs": [
+    {"id": "L-1", "ts": "2026-03-01T09:58", "host": "web-1", "text": "failed login for admin from 203.0.113.9"},
+    {"id": "L-2", "ts": "2026-03-01T09:59", "host": "web-1", "text": "failed login for admin from 203.0.113.9"},
+    {"id": "L-3", "ts": "2026-03-01T10:02", "host": "web-1", "text": "successful login for admin from 203.0.113.9"},
+    {"id": "L-4", "ts": "2026-03-01T10:05", "host": "db-1", "text": "large export of table cards by user admin"},
+    {"id": "L-5", "ts": "2026-03-01T08:30", "host": "build-7", "text": "outbound connection to 198.51.100.23 port 4444"},
+    {"id": "L-6", "ts": "2026-03-01T11:10", "host": "build-7", "text": "nightly build finished"},
+    {"id": "L-7", "ts": "2026-03-01T11:40", "host": "web-1", "text": "failed login for guest from 192.0.2.44"}
+  ]
+}

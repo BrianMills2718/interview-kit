@@ -1,0 +1,174 @@
+[
+ {
+  "name": "brute-force-blocked-after-approval",
+  "message": "Alert: repeated admin logins on web-1. Triage it.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "get_host",
+      "args": {
+       "name": "web-1"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "web-1",
+       "term": "admin"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "203.0.113.9",
+       "reason": "brute force then success"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Blocked 203.0.113.9 after approval.",
+       "severity": "critical",
+       "host": "web-1",
+       "evidence": [
+        "L-3",
+        "L-2"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [
+    "203.0.113.9"
+   ],
+   "interrupted": true,
+   "tool_output_contains": [
+    "web-1: prod, owner storefront, ip 10.0.0.5",
+    "L-3 2026-03-01T10:02 successful login for admin from 203.0.113.9\nL-2 2026-03-01T09:59 failed login for admin from 203.0.113.9\nL-1 2026-03-01T09:58 failed login for admin from 203.0.113.9",
+    "Blocked 203.0.113.9 after approval."
+   ],
+   "verdict": {
+    "severity": "critical",
+    "host": "web-1",
+    "evidence": [
+     "L-3",
+     "L-2"
+    ]
+   }
+  }
+ },
+ {
+  "name": "known-bad-blocked-without-pause",
+  "message": "build-7 is talking to something odd on port 4444.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "search_logs",
+      "args": {
+       "host": "build-7",
+       "term": "4444"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "block_ip",
+      "args": {
+       "ip": "198.51.100.23",
+       "reason": "known bad"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "Noted.",
+       "severity": "high",
+       "host": "build-7",
+       "evidence": [
+        "L-5"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [
+    "198.51.100.23"
+   ],
+   "interrupted": false,
+   "tool_output_contains": [
+    "L-5 2026-03-01T08:30 outbound connection to 198.51.100.23 port 4444",
+    "Blocked 198.51.100.23 (known bad)."
+   ],
+   "verdict": {
+    "severity": "high",
+    "host": "build-7"
+   }
+  }
+ },
+ {
+  "name": "unknown-host-is-low",
+  "message": "Check mail-3 for anything weird.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "get_host",
+      "args": {
+       "name": "mail-3"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Verdict",
+      "args": {
+       "action": "No such host; nothing to do.",
+       "severity": "low"
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "blocked": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "Host mail-3 not found."
+   ],
+   "verdict": {
+    "severity": "low",
+    "host": null,
+    "evidence": []
+   }
+  }
+ }
+]

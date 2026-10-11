@@ -1,0 +1,111 @@
+# kit-v3-practice2 check record (2026-10-11)
+
+## 1. tests/test_practice2.py
+tests/test_practice2.py::test_hidden_file_matches_its_source PASSED      [ 10%]
+tests/test_practice2.py::test_reference_passes_every_case PASSED         [ 20%]
+tests/test_practice2.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [ 30%]
+tests/test_practice2.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 40%]
+tests/test_practice2.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [ 50%]
+tests/test_practice2.py::test_grader_fails_a_broken_solution[broken3-expect_failed3] PASSED [ 60%]
+tests/test_practice2.py::test_grader_fails_a_broken_solution[broken4-expect_failed4] PASSED [ 70%]
+tests/test_practice2.py::test_grader_fails_a_broken_solution[broken5-expect_failed5] PASSED [ 80%]
+tests/test_practice2.py::test_hidden_failures_print_no_expected_values PASSED [ 90%]
+tests/test_practice2.py::test_problem_removal_command_deletes_the_reference PASSED [100%]
+============================== 10 passed in 4.03s ==============================
+exit=0
+
+## 2. The leak test fails on a leaking grader (report changed to print hidden details), then passes on the real one
+E       assert ['198.51.100.....51.100.23']"] == []
+E         
+E         Left contains 5 more items, first extra item: '198.51.100.23 is already blocked.'
+restored grade.py, marker count: 1
+======================= 1 passed, 9 deselected in 0.78s ========================
+
+## 3. A broken solution's grade output (rules 2 and host case broken): names and check kinds only
+PASS brute-force-blocked-after-approval
+PASS known-bad-blocked-without-pause
+PASS unknown-host-is-low
+PASS hidden: block-declined-by-reviewer
+FAIL hidden: internal-ip-refused
+     failed check: approval pause, tool output text
+PASS hidden: invalid-ip-rejected
+PASS hidden: second-block-is-a-no-op
+FAIL hidden: host-names-ignore-case
+     failed check: tool output text
+PASS hidden: search-limit-enforced
+PASS hidden: high-without-evidence-is-retried
+PASS hidden: unknown-severity-is-retried
+PASS hidden: parallel-tool-calls
+== grade: 10 passed, 2 failed of 12 cases (9 hidden)
+exit=1
+
+## 4. Parallel-implementation check: grep -rn 'class ScriptedModel' --include=*.py .
+practice/grade.py:23:class ScriptedModel(GenericFakeChatModel):
+
+## 5. Dry run 1 (fresh agent, ~/code/.scratch/practice2-dryrun, start 13:16:59, first grade 13:21:46, end 13:24:06)
+PASS brute-force-blocked-after-approval
+PASS known-bad-blocked-without-pause
+PASS unknown-host-is-low
+PASS hidden: block-declined-by-reviewer
+PASS hidden: internal-ip-refused
+PASS hidden: invalid-ip-rejected
+PASS hidden: second-block-is-a-no-op
+PASS hidden: host-names-ignore-case
+PASS hidden: search-limit-enforced
+PASS hidden: high-without-evidence-is-retried
+PASS hidden: unknown-severity-is-retried
+PASS hidden: parallel-tool-calls
+== grade: 12 passed, 0 failed of 12 cases (9 hidden)
+exit 0
+Trace read (agent session transcript, every command): it read PROBLEM.md, AGENTS.md, grade.py, data.json,
+examples.json, practice/grade.py, templates, check_docs.py, and practice/reference/solution.py (the FIRST
+problem's answer, still present because step 2 removed only practice2/reference). It never read hidden.b64
+(no decode command in its transcript). Classification: invalid expectation in the problem setup, not a
+grader defect: the run could copy the first answer's agent and pause-in-tool pattern, so a 12/12 first
+grade does not show the hidden cases are hard. Fix: step 2 now removes both reference folders
+(test_problem_removal_command_deletes_the_reference asserts both are gone). Ambiguities it reported and
+the PROBLEM.md change for each: search_logs host case (now stated), what counts toward the search limit
+(now: every call, unknown hosts included), what counts as yes (now: any case, spaces ignored), lower-case
+host in the verdict (now: otherwise invalid), unused "now" in data.json (removed).
+
+## 6. Dry run 2 (fresh agent, both answers removed, ~/code/.scratch/practice2-dryrun2, start 13:26:07, first grade 13:27:19, end 13:28:51)
+PASS brute-force-blocked-after-approval
+PASS known-bad-blocked-without-pause
+PASS unknown-host-is-low
+PASS hidden: block-declined-by-reviewer
+PASS hidden: internal-ip-refused
+PASS hidden: invalid-ip-rejected
+PASS hidden: second-block-is-a-no-op
+PASS hidden: host-names-ignore-case
+PASS hidden: search-limit-enforced
+PASS hidden: high-without-evidence-is-retried
+PASS hidden: unknown-severity-is-retried
+PASS hidden: parallel-tool-calls
+== grade: 12 passed, 0 failed of 12 cases (9 hidden)
+exit 0
+Trace read: files read were practice2/PROBLEM.md, grade.py, data.json, examples.json, practice/grade.py,
+check.sh, check_docs.py, examples/patterns.py (120 lines), templates/*.md, PLAN.template.md; no
+reference folder existed and no decode of hidden.b64 appears. It wrote solution.py from the rules,
+then 15 of its own tests; check.sh --final: 38 passed, 0 failed, exit 0. Result: for an agent the
+hidden cases do not catch a first attempt (both runs 12/12 first time); the kit states this.
+Surprise it reported, classified: two unknown-IP blocks in one model turn create two pending pauses
+and the grader's plain Command(resume=...) would raise. Classification: invalid expectation in the
+grader (it assumed one pause per round). Reproduced below, then fixed: the grader answers each pending
+pause by id, compares blocked IPs without order, and a new hidden case two-pauses-in-one-turn covers it;
+PROBLEM.md states the rule.
+
+## 7. Reproduction of the two-pause surprise, and the re-grade after the fix
+pending pauses: 2 [{'ip': '203.0.113.9', 'reason': 'brute force'}, {'ip': '192.0.2.44', 'reason': 'guest login'}]
+plain resume: RuntimeError When there are multiple pending interrupts, you must specify the interrupt id when resuming. Docs: https://doc
+re-grade practice2/reference/solution.py:
+== grade: 13 passed, 0 failed of 13 cases (10 hidden)
+re-grade ~/code/.scratch/practice2-dryrun/solution.py:
+== grade: 13 passed, 0 failed of 13 cases (10 hidden)
+re-grade ~/code/.scratch/practice2-dryrun2/solution.py:
+== grade: 13 passed, 0 failed of 13 cases (10 hidden)
+
+## 8. Full suite
+============================= 76 passed in 39.30s ==============================
+exit=0
+
+Note: sections 1-5 were recorded before the tenth hidden case (two-pauses-in-one-turn) was added; sections 7-8 are after it.
