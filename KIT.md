@@ -418,9 +418,8 @@ description: Drive a hosted IDE's built-in AI chat (Ask / Plan / Edit modes) wel
 # Skill: use the IDE's AI chat so the recording shows judgment
 
 In a recorded test the reviewer replays every prompt. They grade *how* the AI was used, not
-whether it was. Sources: CoderPad AI Assist docs
-(coderpad.io/resources/docs/interview/pads/interview-ai-assist/) and Canva's interview guide
-(canva.dev/blog/engineering/ai-interview-success/).
+whether it was. Source for the modes: the IDE's AI Assist docs
+(coderpad.io/resources/docs/interview/pads/interview-ai-assist/).
 
 ## Setup (first 5 minutes)
 

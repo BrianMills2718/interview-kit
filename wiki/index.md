@@ -46,6 +46,11 @@ Each says what would show it was wrong.
    ([company-planning#118](https://github.com/BrianMills2718/company-planning/issues/118)).
    Wrong if a commit here lands without a real plan file; then set `plan_adoption: enforce`.
 5. **Public repo, no private data**: no company names, interview details or personal data.
+   "Company names" means any employer the kit is used for and any company's interview
+   practices; the tools the kit runs on (the CoderPad IDE, the `openai` and `anthropic`
+   provider packages, GitHub hosting) are named because the instructions need them. Wrong if
+   a named tool, together with the repo, would tell a reader which employer or which interview
+   it was built for; then describe the IDE generically.
 6. **Multi-agent = specialists wrapped as tools**, not the `langgraph-supervisor` add-on: the
    supervisor is the same agent loop as the template, needs no extra package, and is testable
    with the same fake model. Wrong if a task needs agents handing control to each other
