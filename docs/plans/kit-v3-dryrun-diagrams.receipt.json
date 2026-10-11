@@ -156,7 +156,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result as the 12 diagrams being committed and rendered on GitHub with an index, and gives a stable, concrete, user-visible example: opening the specified MODEL.md shows six named diagrams for the security-triage agent.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result as the 12 diagrams being committed and rendered on GitHub with an index, and gives a stable, concrete, user-visible example: opening the specified MODEL.md shows six named diagrams for the security-triage agent.",
         "reused": false
       },
       "suggested_action": null
@@ -366,7 +366,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies Brian as the authority by stating he requested the change in his own repository, and it specifies non-goals: work outside the listed files, irreversible actions, and spending.",
+        "rationale": "The evidence explicitly identifies the owner as the authority by stating he requested the change in his own repository, and it specifies non-goals: work outside the listed files, irreversible actions, and spending.",
         "reused": false
       },
       "suggested_action": null

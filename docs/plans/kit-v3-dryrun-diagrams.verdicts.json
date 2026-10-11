@@ -40,7 +40,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly names the actor as Brian, states the desired result as the 12 diagrams being committed and rendered on GitHub with an index, and gives a stable, concrete, user-visible example: opening the specified MODEL.md shows six named diagrams for the security-triage agent.",
+    "rationale": "The evidence explicitly names the actor as the owner, states the desired result as the 12 diagrams being committed and rendered on GitHub with an index, and gives a stable, concrete, user-visible example: opening the specified MODEL.md shows six named diagrams for the security-triage agent.",
     "trace_id": "company-planning/method-conformance/kit-v3-dryrun-diagrams/9b26f888bcf7/CORE-ACTOR-RESULT-EXAMPLE",
     "verdict": "pass"
   },
@@ -49,7 +49,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly identifies Brian as the authority by stating he requested the change in his own repository, and it specifies non-goals: work outside the listed files, irreversible actions, and spending.",
+    "rationale": "The evidence explicitly identifies the owner as the authority by stating he requested the change in his own repository, and it specifies non-goals: work outside the listed files, irreversible actions, and spending.",
     "trace_id": "company-planning/method-conformance/kit-v3-dryrun-diagrams/9b26f888bcf7/CORE-AUTHORITY-NONGOALS",
     "verdict": "pass"
   },

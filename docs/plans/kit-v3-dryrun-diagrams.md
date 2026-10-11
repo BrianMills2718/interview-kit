@@ -13,9 +13,9 @@ goal:
   outcome: "The 12 diagrams the two practice2 dry runs generated are committed in the kit and render on GitHub, with one index linking them and the practice sample run's 6"
   canonical_example: "Opening practice2/reference/dry-runs/run2/MODEL.md on GitHub shows six drawn diagrams (context, building blocks, sequence, rules, states, data) for the security-triage agent."
   forbidden_substitutes: "claiming success from a check's last line or exit status alone; a change outside the listed files; a commit without the saved check output"
-  boundaries: "only these files: wiki/index.md, practice2/reference/dry-runs/README.md, practice2/reference/dry-runs/run1/MODEL.md, practice2/reference/dry-runs/run2/MODEL.md; no irreversible action and no spend; Brian's request as quoted is the scope"
+  boundaries: "only these files: wiki/index.md, practice2/reference/dry-runs/README.md, practice2/reference/dry-runs/run1/MODEL.md, practice2/reference/dry-runs/run2/MODEL.md; no irreversible action and no spend; the owner's request as quoted is the scope"
   done_when: "A headless-browser load of each GitHub MODEL.md page after the push finds 6 rendered mermaid svg elements and no mermaid error text, which tests that the diagrams actually draw, not only that the files exist; tests/test_wiki_map.py asserts the index is reachable from wiki/index.md; tests/test_practice2.py asserts the removal step still deletes practice2/reference (now including the dry runs). The check's full output on the parent commit and on the change commit is committed as docs/plans/kit-v3-dryrun-diagrams.check.txt, and the commit is tagged [Goal kit-v3-dryrun-diagrams] with an Asked: line quoting the request."
-  do_not_gate_on: "Brian's review of the plan page; work outside the listed files"
+  do_not_gate_on: "the owner's review of the plan page; work outside the listed files"
 ---
 
 # Publish the practice2 dry-run diagrams
@@ -36,7 +36,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Actor and result
 
-**Actor:** Brian, who asked for this change.
+**Actor:** the owner, who asked for this change.
 
 **Request (verbatim):** the owner 2026-10-11 "i want to see al thediagrams tha were presumably gneerated"
 
@@ -46,7 +46,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Authority and non-goals
 
-**Authority:** Brian asked for this change in his own repository; one agent makes it.
+**Authority:** the owner asked for this change in his own repository; one agent makes it.
 
 **Non-goals:** nothing outside the files listed under Vertical and reset. No irreversible action and no spend.
 
