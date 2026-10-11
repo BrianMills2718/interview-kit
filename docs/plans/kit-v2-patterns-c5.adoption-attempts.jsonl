@@ -1,0 +1,1 @@
+{"attempted_at": "2026-10-11T06:29:53Z", "decision": "adopted", "not_passed_items": [], "plan_ref": "docs/plans/kit-v2-patterns-c5.md", "plan_sha256": "025d8b133a9067b00f46954a3c5d9f0432ab12c3f916ad6301a95701a2ca9cad", "reason_codes": [], "receipt_result": "pass", "record_type": "method_adoption_attempt", "route": "inline_prototype", "route_fit": null}

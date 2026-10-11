@@ -1,0 +1,21 @@
+## mutation 1: stream_mode values instead of updates
+tests/test_patterns_multi.py::test_supervisor_routes_to_the_right_specialist_and_uses_its_answer PASSED [ 33%]
+tests/test_patterns_multi.py::test_supervisor_can_ask_two_specialists_in_turn PASSED [ 66%]
+tests/test_patterns_multi.py::test_stream_yields_each_step_in_order FAILED [100%]
+FAILED tests/test_patterns_multi.py::test_stream_yields_each_step_in_order - ...
+========================= 1 failed, 2 passed in 0.92s ==========================
+exit 1
+## mutation 2: specialist tool returns the question, not the specialist's answer
+tests/test_patterns_multi.py::test_supervisor_routes_to_the_right_specialist_and_uses_its_answer FAILED [ 33%]
+tests/test_patterns_multi.py::test_supervisor_can_ask_two_specialists_in_turn FAILED [ 66%]
+tests/test_patterns_multi.py::test_stream_yields_each_step_in_order PASSED [100%]
+FAILED tests/test_patterns_multi.py::test_supervisor_routes_to_the_right_specialist_and_uses_its_answer
+FAILED tests/test_patterns_multi.py::test_supervisor_can_ask_two_specialists_in_turn
+========================= 2 failed, 1 passed in 0.61s ==========================
+exit 1
+## mutation 3: MCP tool raises ValueError instead of ToolError
+tests/test_mcp_server.py::test_mcp_lists_the_tool_with_its_docstring_and_schema PASSED [ 50%]
+tests/test_mcp_server.py::test_mcp_tool_call_returns_result_and_errors_are_flagged FAILED [100%]
+FAILED tests/test_mcp_server.py::test_mcp_tool_call_returns_result_and_errors_are_flagged
+========================= 1 failed, 1 passed in 0.89s ==========================
+exit 1
