@@ -13,6 +13,15 @@ that needs a team (claims, worktrees, coordination) is left out.
 | Each step | [design-chain.md](design-chain.md#slices-judge-first) | the test (the judge) first, then the code |
 | Optional: machine-checked plan | [aes.md](aes.md) | `aes` records outcome to criterion to test, and says what is unproven |
 
+**Read first:** `AGENTS.md`, `PLAN.template.md`, the skill for the task (usually
+`skills/langgraph-agent`), then this page. Open the other method notes only when their row above
+applies.
+
+**Skip in a timed test:** the design chain's steps when the prompt already fixes the inputs,
+outputs and rules (quote it in the Goal instead); the model's drift test (it pays off over days,
+not hours); diagrams unless the reviewer would otherwise have to read code to see the flow; `aes`
+under 3 hours.
+
 Time budget for a 4-hour test: about 25 minutes on design-chain plus model before any code,
 5 minutes per decision row, and the last 20 minutes on the README. In a 2-hour test, halve the
 first number. If design takes longer, the task is bigger than one test: cut scope and say so.
