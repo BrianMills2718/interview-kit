@@ -1,0 +1,3 @@
+unlinked_ok:
+  - path: docs/plans/
+    reason: "Plan-adoption records written by the planning tool for each commit; evidence for audits, not reading for kit users or maintainers (the wiki links the plan of record and the current goal)."
