@@ -41,3 +41,32 @@ def test_grader_fails_a_broken_solution(broken, expect_failed):
     old, new = broken
     assert old in REFERENCE
     assert failed(grade.run_all(module_from(REFERENCE.replace(old, new)))) == expect_failed
+
+
+def test_problem_removal_command_deletes_the_reference(tmp_path):
+    """The command PROBLEM.md gives removes kit/practice/reference and nothing else, without rm -rf."""
+    import re
+    import shutil
+    import subprocess
+
+    problem = (ROOT / "practice/PROBLEM.md").read_text()
+    assert "rm -rf" not in problem, "a host safety hook may block rm -rf; use the Python command"
+    commands = [c for c in re.findall(r"`([^`]+)`", problem) if "shutil.rmtree" in c]
+    assert len(commands) == 1, commands
+    shutil.copytree(ROOT / "practice", tmp_path / "kit/practice", ignore=shutil.ignore_patterns("__pycache__"))
+    subprocess.run(commands[0], shell=True, cwd=tmp_path, check=True)
+    assert not (tmp_path / "kit/practice/reference").exists()
+    assert (tmp_path / "kit/practice/grade.py").exists()
+
+
+def test_filled_template_passes_check(tmp_path):
+    """Filling every placeholder in PLAN.template.md gives a plan check.sh accepts, Shape section included."""
+    import re
+    import subprocess
+
+    template = (ROOT / "PLAN.template.md").read_text()
+    assert "## Shape" in template
+    (tmp_path / "PLAN.md").write_text(re.sub(r"<[^<>]+>", "filled", template))
+    (tmp_path / "test_x.py").write_text("def test_x():\n    assert 1 + 1 == 2\n")
+    r = subprocess.run(["bash", str(ROOT / "check.sh"), str(tmp_path)], capture_output=True, text=True)
+    assert r.returncode == 0, r.stdout

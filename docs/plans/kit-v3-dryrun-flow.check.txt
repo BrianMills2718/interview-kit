@@ -1,0 +1,23 @@
+== before (8d6de8f)
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [  8%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 12%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [ 16%]
+tests/test_practice.py::test_problem_removal_command_deletes_the_reference FAILED [ 20%]
+tests/test_practice.py::test_filled_template_passes_check FAILED         [ 24%]
+tests/test_model.py::test_kit_md_matches_its_sources FAILED              [ 96%]
+FAILED tests/test_practice.py::test_problem_removal_command_deletes_the_reference
+FAILED tests/test_practice.py::test_filled_template_passes_check - AssertionE...
+FAILED tests/test_model.py::test_kit_md_matches_its_sources - AssertionError:...
+======================== 3 failed, 22 passed in 12.74s =========================
+exit=1
+== after (working tree on 8d6de8f)
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [  8%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 12%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [ 16%]
+tests/test_practice.py::test_problem_removal_command_deletes_the_reference PASSED [ 20%]
+tests/test_practice.py::test_filled_template_passes_check PASSED         [ 24%]
+tests/test_check_sh.py::test_planner_notes_name_every_section_check_sh_requires PASSED [ 84%]
+tests/test_model.py::test_kit_md_matches_its_sources PASSED              [ 96%]
+tests/test_model.py::test_kit_md_bundles_every_note PASSED               [100%]
+============================= 25 passed in 13.83s ==============================
+exit=0

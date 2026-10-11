@@ -4,12 +4,15 @@ A timed rehearsal for an agentic-AI take-home. Target 2 hours, hard stop at 4.
 
 ## How to run the practice
 
-1. New empty folder, `git init`, then `git clone <this kit> kit` inside it.
-2. If `kit/practice/reference` exists, `rm -rf` it before reading anything else (it holds the answer).
-   Install: `pip install langchain langgraph pytest` (or `uv add` the same).
+1. In a project folder of your own (new, or the one the IDE gives you), `git init` if it is not
+   already a repository, then `git clone <this kit> kit` inside it.
+2. Remove the answer before reading anything else:
+   `python3 -c "import shutil; shutil.rmtree('kit/practice/reference', ignore_errors=True)"`.
+   Install into a project environment: `uv venv && uv pip install langchain langgraph pytest`
+   (or `python -m venv .venv && .venv/bin/pip install langchain langgraph pytest`); `check.sh` uses `.venv`.
    Do not open `kit/practice/cases.json` before your first grade run: it gives away the design.
 3. Start a timer. Use only the kit's files and one AI chat, as the IDE would allow.
-4. Done = `python kit/practice/grade.py solution.py` exits 0 and `bash kit/check.sh --final` exits 0.
+4. Done = `.venv/bin/python kit/practice/grade.py solution.py` exits 0 and `bash kit/check.sh --final` exits 0.
 5. Write down the elapsed time and every place you got stuck.
 
 ## The task

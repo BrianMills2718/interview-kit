@@ -8,11 +8,12 @@ These rules apply to any AI coding assistant working in this project. Read them 
 ## How we work
 
 1. **Plan before code.** Write `PLAN.md` from `PLAN.template.md` (see `skills/plan/SKILL.md`):
-   goal with the quoted requirements, checkable done-when items, small steps, a one-page
-   system model (or one line saying why none is needed), assumptions. How to think at each
+   goal with the quoted requirements, checkable done-when items, small steps, the shape chosen,
+   a one-page system model (or one line saying why none is needed), assumptions and risks. How to think at each
    stage (design chain, model, views, decisions) is in `kit/method/README.md`.
    Wait for approval before editing code (the person types "plan approved" in the chat, so the
-   recording shows it).
+   recording shows it). If no person is present (an agent working alone or rehearsing), commit
+   the plan and go on: the commit is the record.
 2. **One small step at a time.** Each edit does one thing that can be run and checked. No
    multi-file rewrites in one go.
 3. **Run it after every change.** Execute the code or the tests after each edit and report the
@@ -74,8 +75,11 @@ sections present. Run it after each step; the work is done only when `--final` p
 - [ ] README explains approach, decisions, AI use and limitations
 
 ## Steps
-1. <smallest runnable step>
+1. <smallest runnable step: its test first, then the code>
 2. ...
+
+## Shape
+<plain code, one structured call, fixed workflow, agent loop, or supervisor; one line per bigger shape rejected and why (skills/plan)>
 
 ## System model
 <one page per kit/method/system-model.md (goals, context, parts, runtime with the writing function, quality checks, unknowns), or one line: System model: not needed, because REASON>
@@ -83,7 +87,7 @@ sections present. Run it after each step; the work is done only when `--final` p
 ## Assumptions
 - <ambiguity> -> <reading chosen, and why>
 
-## Risks
+## Risks (failure modes)
 - <what could make this wrong> -> <how it would show>
 
 <!-- skills/debug/SKILL.md -->
@@ -296,7 +300,10 @@ print(result["messages"][-1].content)
   when custom routing or extra state is needed. Say which and why.
 - **Memory across turns:** `graph = g.compile(checkpointer=InMemorySaver())` from
   `langgraph.checkpoint.memory`, then pass `config={"configurable": {"thread_id": "1"}}`.
+- **Step limit when you do not control `invoke`** (a grader calls it): set it at build time,
+  `graph = create_agent(...).with_config({"recursion_limit": 10})` (checked on langgraph 1.2.14).
 - **Structured final answer:** `create_agent(llm, tools, response_format=ToolStrategy(Answer))`
+  registers a tool named after the class (`Answer`; a `Reply` class gives a tool `Reply`).
   (`from langchain.agents.structured_output import ToolStrategy`); invalid output is sent back to
   the model to retry, and the result is in `out["structured_response"]`. In a hand-built graph, a
   last node calling `llm.with_structured_output(Answer)`. See `examples/patterns.py`.
@@ -481,7 +488,9 @@ Write one line per rejected shape: "Not an agent: every input is known before th
 ## Rules
 
 - No code before the plan exists. Small task, small plan: 15 lines is fine.
-- Tick a done-when item only with the evidence beside it (the command and its result).
+- Write every done-when item as `[ ]`. Tick it only after its command ran, and replace the
+  expected result with what it printed ("8 passed, 0 failed", not "N passed").
+  `check.sh --final` fails a ticked item still showing "N passed".
 - If the approach changes, edit the plan first, then the code.
 - At the end, the plan's unticked items go into the README under "Limitations".
 
@@ -737,6 +746,15 @@ that needs a team (claims, worktrees, coordination) is left out.
 | Each step | [design-chain.md](design-chain.md#slices-judge-first) | the test (the judge) first, then the code |
 | Optional: machine-checked plan | [aes.md](aes.md) | `aes` records outcome to criterion to test, and says what is unproven |
 
+**Read first:** `AGENTS.md`, `PLAN.template.md`, the skill for the task (usually
+`skills/langgraph-agent`), then this page. Open the other method notes only when their row above
+applies.
+
+**Skip in a timed test:** the design chain's steps when the prompt already fixes the inputs,
+outputs and rules (quote it in the Goal instead); the model's drift test (it pays off over days,
+not hours); diagrams unless the reviewer would otherwise have to read code to see the flow; `aes`
+under 3 hours.
+
 Time budget for a 4-hour test: about 25 minutes on design-chain plus model before any code,
 5 minutes per decision row, and the last 20 minutes on the README. In a 2-hour test, halve the
 first number. If design takes longer, the task is bigger than one test: cut scope and say so.
@@ -750,18 +768,24 @@ test that proves it. `aes status` then says, per criterion, whether a current te
 it. It makes no AI calls, so it is allowed wherever a terminal is; it is not a second assistant.
 
 Use it when the test is long enough (3 hours or more) and you want the plan-to-test links to be
-shown rather than claimed. Otherwise `PLAN.md` plus `check.sh` is enough.
+shown rather than claimed. Otherwise `PLAN.md` plus `check.sh` is enough; skip it in the 2-hour
+practice unless you are rehearsing `aes` itself.
+
+**Layout limit:** `aes` governs only files under subfolders (`src/` and `tests/` by default). Code
+at the project root (`solution.py`) cannot be governed: `.` is not accepted as a root
+(AES issue 540). Decide the layout before the first file, or skip `aes`.
 
 ## Set up (about 1 minute)
 
 ```bash
-bash kit/method/install_aes.sh            # installs `aes` with uv at the tested revision
-git init -q && git add -A && git commit -qm "Start"   # aes needs one commit
+bash kit/method/install_aes.sh            # installs `aes` with uv at the tested revision; replaces any installed `aes`
+git init -q && git add -A && git commit -qm "Start"   # `aes plan validate` needs at least one commit
 aes init --project-id myproj --actor "<who uses it>" --outcome "<what they get, in one sentence>"
 git add .aes && git commit -qm "Initialize AES"
 ```
 
-Code goes under `src/` and tests under `tests/` (the default governed folders).
+Code goes under `src/` and tests under `tests/` (the default governed folders). To keep an
+existing `aes` instead, run it without installing: `uvx --from "$(bash kit/method/install_aes.sh --spec)" aes ...`.
 
 ## Each requirement
 

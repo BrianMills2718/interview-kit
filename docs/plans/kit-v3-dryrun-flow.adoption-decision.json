@@ -1,0 +1,16 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "adopted",
+  "plan_ref": "docs/plans/kit-v3-dryrun-flow.md",
+  "plan_sha256": "a60d14dd1a2e0da8237a07811ec9c74009f249c7ca0a6dfa583ea192e1d9b57a",
+  "receipt_ref": "docs/plans/kit-v3-dryrun-flow.receipt.json",
+  "receipt_sha256": "90f7562e7baf37c49a18fa945dccac9417cb801a7a58c096902531c22462c50d",
+  "receipt_result": "pass",
+  "reason_codes": [],
+  "summary": [
+    "pass: 11 items evidenced, 1 confirmed not applicable, 0 advisory deviation(s)",
+    "warn CORE-SYSTEM-MODEL: MODEL-NO-ELEMENT-IDS -> MODEL-NO-ELEMENT-IDS: docs/model/ARCHITECTURE.md has no element lines; write each as `- ID (decided|guessed): what it is`"
+  ],
+  "decided_at": "2026-10-11T16:47:48Z"
+}
