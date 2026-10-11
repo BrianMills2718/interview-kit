@@ -1,0 +1,553 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-kit-v2-watchlist-9cc41acdcbff",
+  "plan": {
+    "plan_ref": "docs/plans/kit-v2-watchlist.md",
+    "plan_sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+  },
+  "path_decision": {
+    "ref": "docs/plans/kit-v2-watchlist.path-decision.json",
+    "sha256": "20b06717b5c672403453d78fa0ef5a42aac0fbc7404c825847c138d884bab3c6",
+    "selected_path": "prototype",
+    "classified_path": "prototype",
+    "errors": []
+  },
+  "route": "inline_prototype",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@11",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "0261c51b94b32a629bf6255b3c032c18cdbef4e8df6d5bed9db1f72d267c89cb"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "e08f1a326de035b56e4e20bd6224439145f2373926a66672502c4b78a524105d"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/kit-v2-watchlist.facts.json",
+    "facts_sha256": "155f5625de72a3e5640b72f70967b0b61e333ddc2dc3b6263f4e37737377bea6",
+    "facts": {
+      "shared_mechanism": false,
+      "empirical_comparison_proposed": false,
+      "llm_central": false,
+      "irreversible_or_spend_action": false,
+      "crosses_system_boundary": false,
+      "deploys": false,
+      "claims_external_standard": false,
+      "aes_governed_target": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": true
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "crosses_system_boundary": "default:not_declared",
+      "deploys": "default:not_declared",
+      "claims_external_standard": "default:not_declared",
+      "aes_governed_target": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": false,
+        "reason": "shared_mechanism=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": false,
+        "reason": "llm_central=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": true,
+        "reason": "inline_prototype=true (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": false,
+        "reason": "crosses_system_boundary=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": false,
+        "reason": "claims_external_standard=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:59d07598ef592074b6d653d504afccd9f94968d4279484484aef01d84db64596",
+    "definition_sha256": "2896ca01d865cfa474c0a5961f7ebbc0b799a882fe95ad9545743d440554f8b4",
+    "bundle_ref": "docs/plans/kit-v2-watchlist.bundle.json",
+    "bundle_sha256": "33a5384b3633cab7d206cac8b7f3afd16d1d73d631c993dc0bc0bb8de1532d80",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#actor-and-result",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor (Brian), states the desired result (a version-checked watchlist table mapping old API forms to current patterns), and gives a concrete user-visible example: the create_react_agent row citing the LangGraphDeprecatedSinceV10 warning on langgraph 1.2.14.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.path-decision.json",
+          "sha256": "20b06717b5c672403453d78fa0ef5a42aac0fbc7404c825847c138d884bab3c6"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The Requirements table lists R1, identifies the requested watchlist outcome, names the success check under “Success and disproof” with its saved output, and marks it “planned, not yet run.” The plan also explicitly states that the change implies no requirements beyond R1 and makes no omitted standard, schema, contract, or other user-reliant property claim.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#success-and-disproof",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "A direct check that the watchlist entries' claimed behavior is correct or conforms to the installed package; having a version in each row and including the table in KIT.md only checks presence/structure, and the evidence does not identify a substantive behavior or conformance test.",
+        "rationale": "The evidence defines success as rows having versions and KIT.md containing the table, which are stand-ins rather than checks of the claimed behavior. It does provide a disproof condition—“A row states behaviour not reproduced against the installed package”—but no explicit direct success check of that behavior is quoted.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: A direct check that the watchlist entries' claimed behavior is correct or conforms to the installed package; having a version in each row and including the table in KIT.md only checks presence/structure, and the evidence does not identify a substantive behavior or conformance test."
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#success-and-disproof",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence names the run being judged, identifies its location, and specifies trace content beyond the final result, including the command, files, individual checks and results, skipped status, exit status, and System model lines. It explicitly states that both success and disproof are judged from that trace file, and also records that no model, agent, or LLM pipeline runs under the plan.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#when-a-run-fails-or-surprises-us",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence does not explicitly establish that this procedure is distinct from the anticipated failure modes, and it says to preserve the failed “check” rather than explicitly preserving the failed run. It also does not explicitly state that review completeness is separate from the run verdict, only that a complete review is distinct from a passing run.",
+        "rationale": "The evidence explicitly covers trace preservation, full artifact review, divergence citation and classification, unresolved-cause investigation, targeted repair with a new traced verification run, and retention of the original failure. However, the stated distinctions and preservation requirement are not all explicit as required.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence does not explicitly establish that this procedure is distinct from the anticipated failure modes, and it says to preserve the failed “check” rather than explicitly preserving the failed run. It also does not explicitly state that review completeness is separate from the run verdict, only that a complete review is distinct from a passing run."
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The plan does not cite a documentation entry point from which the model is reachable, identify applicable source-linked views, explain material view omissions, name concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change (or why each needs no update).",
+        "rationale": "The plan links `wiki/index.md` and states `none -- documentation only`, which explains that no model element is touched. However, the requirement also mandates discovery, view, freshness/drift, and reconciliation obligations, and those are not provided by the quoted evidence.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The plan does not cite a documentation entry point from which the model is reachable, identify applicable source-linked views, explain material view omissions, name concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change (or why each needs no update)."
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#capability-reuse",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies both catalogue files and states, “No catalogue entry fits,” with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#authority-and-non-goals",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies Brian as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": false,
+      "verifier_kind": "semantic",
+      "disposition": "not_applicable",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#uncertainties",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly lists the uncertainty about whether additional files are needed and provides resolving evidence: `git status --short` listing only the specified files. An owner is not required because resolving evidence is provided.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#activation-facts",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly identifies no shared mechanism, comparison, central LLM behavior, irreversible action or spend, or external-standard claim, and the quoted scope is limited to documentation files. Nothing in the quoted evidence triggers those facts, and no evidence establishes an AES-governed target.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-PROTO-VERTICAL-RESET",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-watchlist.md#vertical-and-reset",
+          "sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/OV-PROTO-VERTICAL-RESET",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly states the vertical result: a versioned watchlist table in `skills/langgraph-agent/SKILL.md` and inclusion in `KIT.md`. It defines the reset boundary as `git revert` of the commit and the non-goal as anything outside the listed files, without adding coordinated-work ceremony.",
+        "reused": false
+      },
+      "suggested_action": null
+    }
+  ],
+  "item_counts": {
+    "pass": 9,
+    "unresolved": 3,
+    "not_applicable": 1,
+    "unavailable": 0,
+    "missing": 0
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-kit-v2-watchlist-9cc41acdcbff",
+    "snapshot_ref": "SNAPSHOT-kit-v2-watchlist",
+    "snapshot_revision": "sha256:33a5384b3633cab7d206cac8b7f3afd16d1d73d631c993dc0bc0bb8de1532d80",
+    "packet_ref": "docs/plans/kit-v2-watchlist.md",
+    "packet_revision": "sha256:9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [
+      {
+        "diagnostic_id": "DIAG-kit-v2-watchlist-3",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-SUCCESS-DISPROOF: A direct check that the watchlist entries' claimed behavior is correct or conforms to the installed package; having a version in each row and including the table in KIT.md only checks presence/structure, and the evidence does not identify a substantive behavior or conformance test.",
+        "source_locator": "docs/plans/kit-v2-watchlist.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: A direct check that the watchlist entries' claimed behavior is correct or conforms to the installed package; having a version in each row and including the table in KIT.md only checks presence/structure, and the evidence does not identify a substantive behavior or conformance test.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-SUCCESS-DISPROOF"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-watchlist-5",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-TRACE-DEBUGGING: The evidence does not explicitly establish that this procedure is distinct from the anticipated failure modes, and it says to preserve the failed “check” rather than explicitly preserving the failed run. It also does not explicitly state that review completeness is separate from the run verdict, only that a complete review is distinct from a passing run.",
+        "source_locator": "docs/plans/kit-v2-watchlist.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence does not explicitly establish that this procedure is distinct from the anticipated failure modes, and it says to preserve the failed “check” rather than explicitly preserving the failed run. It also does not explicitly state that review completeness is separate from the run verdict, only that a complete review is distinct from a passing run.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-TRACE-DEBUGGING"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-watchlist-6",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-SYSTEM-MODEL: The plan does not cite a documentation entry point from which the model is reachable, identify applicable source-linked views, explain material view omissions, name concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change (or why each needs no update).",
+        "source_locator": "docs/plans/kit-v2-watchlist.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The plan does not cite a documentation entry point from which the model is reachable, identify applicable source-linked views, explain material view omissions, name concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change (or why each needs no update).",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-SYSTEM-MODEL"
+      }
+    ],
+    "route": "inline_prototype",
+    "adoption_readiness": "contributor_disposition_needed",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "actionable_summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: A direct check that the watchlist entries' claimed behavior is correct or conforms to the installed package; having a version in each row and including the table in KIT.md only checks presence/structure, and the evidence does not identify a substantive behavior or conformance test.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly establish that this procedure is distinct from the anticipated failure modes, and it says to preserve the failed “check” rather than explicitly preserving the failed run. It also does not explicitly state that review completeness is separate from the run verdict, only that a complete review is distinct from a passing run.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not cite a documentation entry point from which the model is reachable, identify applicable source-linked views, explain material view omissions, name concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change (or why each needs no update)."
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "quick-adopt",
+    "session": "ee31d131-4b2f-4673-b467-06a94912c64d"
+  },
+  "started_at": "2026-10-11T06:17:38Z",
+  "completed_at": "2026-10-11T06:17:51Z",
+  "duration_ms": 12726
+}

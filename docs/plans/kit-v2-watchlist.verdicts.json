@@ -1,0 +1,101 @@
+{
+  "0338acb9eeb69b8221bfd73f373b3cd7f548d6f00f767afb4661bd2a60adc360": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "The plan does not cite a documentation entry point from which the model is reachable, identify applicable source-linked views, explain material view omissions, name concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change (or why each needs no update).",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan links `wiki/index.md` and states `none -- documentation only`, which explains that no model element is touched. However, the requirement also mandates discovery, view, freshness/drift, and reconciliation obligations, and those are not provided by the quoted evidence.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  },
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly establish that this procedure is distinct from the anticipated failure modes, and it says to preserve the failed \u201ccheck\u201d rather than explicitly preserving the failed run. It also does not explicitly state that review completeness is separate from the run verdict, only that a complete review is distinct from a passing run.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly covers trace preservation, full artifact review, divergence citation and classification, unresolved-cause investigation, targeted repair with a new traced verification run, and retention of the original failure. However, the stated distinctions and preservation requirement are not all explicit as required.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "47566a7d238c1e5253f7e7242446eee9a1d7545237918e1b14883a8c7a62614c": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly identifies no shared mechanism, comparison, central LLM behavior, irreversible action or spend, or external-standard claim, and the quoted scope is limited to documentation files. Nothing in the quoted evidence triggers those facts, and no evidence establishes an AES-governed target.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "61ea64e552ba561618f0c8158fc54fcdf40ba3e49f960024b2b09005d9eabfba": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states the vertical result: a versioned watchlist table in `skills/langgraph-agent/SKILL.md` and inclusion in `KIT.md`. It defines the reset boundary as `git revert` of the commit and the non-goal as anything outside the listed files, without adding coordinated-work ceremony.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "6605e75c6299329571080a4c0b909477d3ca9d94f078d212c449770b19f08983": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor (Brian), states the desired result (a version-checked watchlist table mapping old API forms to current patterns), and gives a concrete user-visible example: the create_react_agent row citing the LangGraphDeprecatedSinceV10 warning on langgraph 1.2.14.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "7fa2e79c84a072dddfb9986235fe894ddbbcf1e9c124c9835c3baacc62e9a790": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "material",
+    "missing": "A direct check that the watchlist entries' claimed behavior is correct or conforms to the installed package; having a version in each row and including the table in KIT.md only checks presence/structure, and the evidence does not identify a substantive behavior or conformance test.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence defines success as rows having versions and KIT.md containing the table, which are stand-ins rather than checks of the claimed behavior. It does provide a disproof condition\u2014\u201cA row states behaviour not reproduced against the installed package\u201d\u2014but no explicit direct success check of that behavior is quoted.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-SUCCESS-DISPROOF",
+    "verdict": "unresolved"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies Brian as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "96d7db09678812dbe386f27aa6df145e3a060ae9446fcad7ae96ca400a2120f0": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly lists the uncertainty about whether additional files are needed and provides resolving evidence: `git status --short` listing only the specified files. An owner is not required because resolving evidence is provided.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "ae5d053dde3a27213fa6182f9c75454fa0a6a75955cac046b350b3d1b5ae5776": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "ee37db75d9ce59d8fcf9409db249f359287144aa93db83e31ddc6d3dbc153341": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The Requirements table lists R1, identifies the requested watchlist outcome, names the success check under \u201cSuccess and disproof\u201d with its saved output, and marks it \u201cplanned, not yet run.\u201d The plan also explicitly states that the change implies no requirements beyond R1 and makes no omitted standard, schema, contract, or other user-reliant property claim.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "fe2885fbe8be2711006f9784149639d1ea34820090e7c089ee9f0c82a81cd3a4": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the run being judged, identifies its location, and specifies trace content beyond the final result, including the command, files, individual checks and results, skipped status, exit status, and System model lines. It explicitly states that both success and disproof are judged from that trace file, and also records that no model, agent, or LLM pipeline runs under the plan.",
+    "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  }
+}

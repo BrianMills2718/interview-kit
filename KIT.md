@@ -175,8 +175,9 @@ description: Build a tool-calling agent or multi-step graph with LangGraph (stat
 # Skill: build a tool-calling agent with LangGraph
 
 Use when the task is "build an agent that uses tools / takes steps / answers from data".
-Tested with langgraph 1.2, langchain-core 1.6. A runnable version is in
-`examples/agent_template.py`.
+Tested with langgraph 1.2.14, langchain 1.4.4, langchain-core 1.6.9. Runnable versions:
+`examples/agent_template.py` (hand-built graph) and `examples/patterns.py` (structured output,
+retrieval tool, human approval), each with offline tests in `tests/`.
 
 ## Shape
 
@@ -232,24 +233,48 @@ print(result["messages"][-1].content)
 
 ## Variations
 
-- **Prebuilt shortcut:** `from langchain.agents import create_agent` (LangChain 1.x) or the older
-  `langgraph.prebuilt.create_react_agent(llm, TOOLS)`. Fine for a first version; hand-built graph
+- **Prebuilt shortcut:** `from langchain.agents import create_agent`;
+  `create_agent(llm, tools=TOOLS, system_prompt="...")`. Fine for a first version; hand-built graph
   when custom routing or extra state is needed. Say which and why.
 - **Memory across turns:** `graph = g.compile(checkpointer=InMemorySaver())` from
   `langgraph.checkpoint.memory`, then pass `config={"configurable": {"thread_id": "1"}}`.
-- **Structured final answer:** a last node calling `llm.with_structured_output(Answer)` where
-  `Answer` is a Pydantic model.
+- **Structured final answer:** `create_agent(llm, tools, response_format=ToolStrategy(Answer))`
+  (`from langchain.agents.structured_output import ToolStrategy`); invalid output is sent back to
+  the model to retry, and the result is in `out["structured_response"]`. In a hand-built graph, a
+  last node calling `llm.with_structured_output(Answer)`. See `examples/patterns.py`.
+- **Retrieval:** a tool returning the top passages as `id: text`, and a clear "No matching
+  documents." when nothing matches. See `search_docs` in `examples/patterns.py`.
 - **Extra state:** add fields to `State` (e.g. `attempts: int`) and a router function for
   `add_conditional_edges` that returns a node name.
-- **Human in the loop / retries:** a router that sends to a `check` node, which loops back to
+- **Human approval:** `interrupt(payload)` inside a node pauses the run (the caller sees
+  `result["__interrupt__"]`); resume with `graph.invoke(Command(resume="yes"), cfg)` on the same
+  `thread_id`. Needs a checkpointer. See `build_refund_graph` in `examples/patterns.py`.
+- **Retries:** a router that sends to a `check` node, which loops back to
   `agent` with feedback or ends, with a counter so it cannot loop forever.
+
+## Current API watchlist (the IDE's AI may suggest the old form)
+
+Checked 2026-10-11 against the installed packages (`pip show langchain langgraph`). If the
+installed versions differ, re-check before trusting this table or the assistant.
+
+| Old form the AI may write | Current form | Checked in |
+|---|---|---|
+| `from langgraph.prebuilt import create_react_agent` | `from langchain.agents import create_agent` (still imports; calling it warns `LangGraphDeprecatedSinceV10`) | langgraph 1.2.14 / langchain 1.4.4 |
+| `create_react_agent(llm, tools, prompt=...)`; `state_modifier=` (no longer exists anywhere in `langgraph.prebuilt`) | `create_agent(llm, tools=..., system_prompt="...")` | langgraph 1.2.14 / langchain 1.4.4 |
+| `from langchain.chains import ...`, `from langchain import hub` | removed: `No module named 'langchain.chains'` / `'langchain.hub'`; write the graph or prompt yourself | langchain 1.4.4 |
+| `langgraph_supervisor.create_supervisor`, swarm add-ons | not installed with langgraph; wrap each subagent as a `@tool` the supervisor calls | langgraph 1.2.14 |
+| "recursion_limit defaults to 25" | default is 10007 (env `LANGGRAPH_DEFAULT_RECURSION_LIMIT`): a looping model runs a long time; always pass `config={"recursion_limit": 10}` | langgraph 1.2.14 |
+| `GenericFakeChatModel(...).bind_tools(tools)` in tests | raises `NotImplementedError`; subclass with `def bind_tools(self, tools, **kw): return self` (see tests) | langchain-core 1.6.9 |
+| `llm.with_structured_output` inside `create_agent` | `response_format=ToolStrategy(Model)`; result in `out["structured_response"]` | langchain 1.4.4 |
+| `from langchain.mcp import ...` on a plain install | needs `pip install "langchain[mcp]"` (imports `fastmcp`) | langchain 1.4.4 |
 
 ## Pitfalls
 
 - Forgetting `add_messages`: each node then overwrites the history.
-- No `recursion_limit`: a confused model loops until the default limit error.
+- No `recursion_limit`: the default is 10007 steps, so a confused model loops (and bills) for a long time.
 - Tool docstrings that are vague: the model picks the wrong tool or wrong arguments.
 - Testing only against the live model: flaky and slow. Use a fake model (see the test).
+
 
 <!-- skills/plan/SKILL.md -->
 ---

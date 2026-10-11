@@ -1,0 +1,19 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-watchlist.md",
+  "plan_sha256": "9cc41acdcbff2368e1d10deec3ff2a04273a6b4d005f004eec58d39afdaaf4a3",
+  "receipt_ref": "docs/plans/kit-v2-watchlist.receipt.json",
+  "receipt_sha256": "0d41ba46e13ca28c73181748e9bca93de8ec2a0632f1042bdbf55cea35a64aca",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: A direct check that the watchlist entries' claimed behavior is correct or conforms to the installed package; having a version in each row and including the table in KIT.md only checks presence/structure, and the evidence does not identify a substantive behavior or conformance test.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly establish that this procedure is distinct from the anticipated failure modes, and it says to preserve the failed “check” rather than explicitly preserving the failed run. It also does not explicitly state that review completeness is separate from the run verdict, only that a complete review is distinct from a passing run.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not cite a documentation entry point from which the model is reachable, identify applicable source-linked views, explain material view omissions, name concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change (or why each needs no update)."
+  ],
+  "decided_at": "2026-10-11T06:17:51Z"
+}
