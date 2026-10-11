@@ -1,0 +1,20 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-dryrun-docs.md",
+  "plan_sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707",
+  "receipt_ref": "docs/plans/kit-v2-dryrun-docs.receipt.json",
+  "receipt_sha256": "fde50a846e71a16e29ad7125962828281b3a40cfcd759609ac5474d73f10a15f",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: A direct check of the claimed correctness or conformance is missing. The evidence specifies that `pytest` passes and that two watchlist rows reproduce, but it does not state what correct output or behavior those checks must establish; the trace requirements likewise verify execution and reporting rather than the truth of the result.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only presents a section headed “When a run fails or surprises us.”",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not name each system-model element as an entity, process, record/event, or view, and does not state what the examined run must show for each; “practice problem and skills” is insufficient. It also lacks the maintained-repository documentation entry point from which the model is reachable, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation plan for the model, view coverage, and verification evidence.",
+    "OV-PROTO-VERTICAL-RESET: semantic_unresolved -> Add to the plan: An explicit statement that the vertical adds no coordinated-work ceremony is missing."
+  ],
+  "decided_at": "2026-10-11T06:55:50Z"
+}

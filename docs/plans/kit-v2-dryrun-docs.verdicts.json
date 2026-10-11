@@ -1,0 +1,101 @@
+{
+  "0b74c931a4106f931b0a0fdddaf8ccb8bcea261f36f81eb3f32476c344e07fbc": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "material",
+    "missing": "An explicit statement that the vertical adds no coordinated-work ceremony is missing.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the vertical result, gives a `git revert` reset boundary, and states the non-goal of work outside the listed files. However, it does not explicitly establish that no coordinated-work ceremony is added; \u201cMake the change, run the success check, commit\u201d describes execution steps but does not address that requirement.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/OV-PROTO-VERTICAL-RESET",
+    "verdict": "unresolved"
+  },
+  "1174110c81b4b94a33f4599c799fd858b5e96405ab6c0fd3764286b1e8189b84": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence identifies the judged run as the success check run once on the change commit, specifies that its complete output is saved at `docs/plans/kit-v2-dryrun-docs.check.txt`, and states what must appear beyond the final result. It also explicitly says that both success and disproof are judged from that file, covering the disproof criterion as well.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only presents a section headed \u201cWhen a run fails or surprises us.\u201d",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The section covers preserving the failure, full trace review, divergence classification, targeted re-verification, unresolved-cause investigation, and separation of review completeness from run outcome. However, it does not explicitly distinguish this procedure from anticipated failure modes, an element required by CORE-TRACE-DEBUGGING.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "5b751e31bfd53862f71776d87faae49e893b0a016d630a44122232039104e181": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly lists one material uncertainty\u2014whether the change needs files beyond the listed scope\u2014and provides resolving evidence: a pre-edit `git status --short` output listing the relevant files. This uncertainty therefore has resolution evidence.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "60212107655962734345b23e8473eb0df1d2b11ee314a69b78867b1a28ecdb83": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly lists requirement R1, states what was asked for, and identifies its check and status as \u201cplanned, not yet run.\u201d It also explicitly states that the change has no additional implied claims beyond R1, so no omitted standard, schema, contract, or user-reliant property is identified.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "7302bb7cfeee0a3fd874255b99f7965660c9ea7427261a18f760abbb381c74e8": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "material",
+    "missing": "A direct check of the claimed correctness or conformance is missing. The evidence specifies that `pytest` passes and that two watchlist rows reproduce, but it does not state what correct output or behavior those checks must establish; the trace requirements likewise verify execution and reporting rather than the truth of the result.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan does provide a concrete disproof condition: `Command(resume=None)` works or an interrupted node runs once on langgraph 1.2.14. However, its success measures are not explicitly tied to a defined property of correctness or conformance, so passing tests and reproduction could be stand-ins.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-SUCCESS-DISPROOF",
+    "verdict": "unresolved"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies Brian as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "aa6b2308affcf69a85eb2e0ab63064d42864987d6fe6e55676aa5009bd1b801d": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly states there is no shared mechanism, comparison, centrally dependent LLM behavior, irreversible action or spend, or external-standard claim. Its pytest run and reproduction of watchlist rows are verification checks, not experiments comparing alternatives, and the evidence does not indicate an AES-governed target.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "ae5d053dde3a27213fa6182f9c75454fa0a6a75955cac046b350b3d1b5ae5776": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "b7604ada15aa35d0662e6116324008c6c811f45ac7776ff49474c1c2b05f23ce": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as Brian, states the desired result as notes answering the listed timed-dry-run questions, and gives a concrete, user-visible example: a candidate reading PROBLEM.md knows which packages to install and not to open cases.json first.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "e0f7817f04dc26c4b0ce82458f6a701f6f9ea53774bfc2f61066407b12bf990c": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "The plan does not name each system-model element as an entity, process, record/event, or view, and does not state what the examined run must show for each; \u201cpractice problem and skills\u201d is insufficient. It also lacks the maintained-repository documentation entry point from which the model is reachable, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation plan for the model, view coverage, and verification evidence.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "Although the plan links `wiki/index.md`, its element list contains only \u201cpractice problem and skills\u201d and provides no per-element observed-run evidence. The quoted System model section also contains none of the required discovery, view, freshness/drift, or reconciliation obligations.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  }
+}

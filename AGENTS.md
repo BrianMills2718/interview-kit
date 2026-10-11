@@ -6,7 +6,8 @@ These rules apply to any AI coding assistant working in this project. Read them 
 
 1. **Plan before code.** Write `PLAN.md` from `PLAN.template.md` (see `skills/plan/SKILL.md`):
    goal with the quoted requirements, checkable done-when items, small steps, assumptions.
-   Wait for approval before editing code.
+   Wait for approval before editing code (the person types "plan approved" in the chat, so the
+   recording shows it).
 2. **One small step at a time.** Each edit does one thing that can be run and checked. No
    multi-file rewrites in one go.
 3. **Run it after every change.** Execute the code or the tests after each edit and report the

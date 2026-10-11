@@ -15,6 +15,7 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
 2. **Done when**: checkable items, each one a command or an observable result, e.g.
    "`pytest -v` shows test_routes_to_tool PASSED" or "`python main.py 'X'` prints Y".
    Not "works well". Each item gets `[ ]` and becomes `[x]` only after the check ran.
+   Leave out "`check.sh --final` passes": it checks these items, so run it last instead.
 3. **Steps**: numbered, each small enough to run and check on its own.
 4. **Assumptions**: every ambiguity in the spec and the reading chosen.
 5. **Risks**: what could make this wrong, and how it would show.

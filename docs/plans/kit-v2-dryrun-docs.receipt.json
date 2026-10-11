@@ -1,0 +1,568 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-kit-v2-dryrun-docs-e6640d535b94",
+  "plan": {
+    "plan_ref": "docs/plans/kit-v2-dryrun-docs.md",
+    "plan_sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+  },
+  "path_decision": {
+    "ref": "docs/plans/kit-v2-dryrun-docs.path-decision.json",
+    "sha256": "cba27d8dc5f7a23ce05d56b93140d5cb053a6f305163d8a45eb160504f3f406a",
+    "selected_path": "prototype",
+    "classified_path": "prototype",
+    "errors": []
+  },
+  "route": "inline_prototype",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@11",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "0261c51b94b32a629bf6255b3c032c18cdbef4e8df6d5bed9db1f72d267c89cb"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "e08f1a326de035b56e4e20bd6224439145f2373926a66672502c4b78a524105d"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/kit-v2-dryrun-docs.facts.json",
+    "facts_sha256": "25a98f9de13633d9fa12ba59622e6daee711bf9d11f98806485bbb37adcbfd4f",
+    "facts": {
+      "shared_mechanism": false,
+      "empirical_comparison_proposed": false,
+      "llm_central": false,
+      "irreversible_or_spend_action": false,
+      "crosses_system_boundary": false,
+      "deploys": false,
+      "claims_external_standard": false,
+      "aes_governed_target": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": true
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "crosses_system_boundary": "default:not_declared",
+      "deploys": "default:not_declared",
+      "claims_external_standard": "default:not_declared",
+      "aes_governed_target": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": false,
+        "reason": "shared_mechanism=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": false,
+        "reason": "llm_central=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": true,
+        "reason": "inline_prototype=true (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": false,
+        "reason": "crosses_system_boundary=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": false,
+        "reason": "claims_external_standard=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:66112df5e4d0013aca9fe26f619b9e614f68a57e14be6982f89e9d52a4a474dd",
+    "definition_sha256": "64702ae9f2d8ab5e05a9ba4ba5255a42d18eb5655ccad614f54bb2459a464432",
+    "bundle_ref": "docs/plans/kit-v2-dryrun-docs.bundle.json",
+    "bundle_sha256": "2909728575dfc51e486d2d6ea90f370fb64469bf0e3859b1317fa44ccc8a61fd",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#actor-and-result",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor as Brian, states the desired result as notes answering the listed timed-dry-run questions, and gives a concrete, user-visible example: a candidate reading PROBLEM.md knows which packages to install and not to open cases.json first.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.path-decision.json",
+          "sha256": "cba27d8dc5f7a23ce05d56b93140d5cb053a6f305163d8a45eb160504f3f406a"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly lists requirement R1, states what was asked for, and identifies its check and status as “planned, not yet run.” It also explicitly states that the change has no additional implied claims beyond R1, so no omitted standard, schema, contract, or user-reliant property is identified.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#success-and-disproof",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "A direct check of the claimed correctness or conformance is missing. The evidence specifies that `pytest` passes and that two watchlist rows reproduce, but it does not state what correct output or behavior those checks must establish; the trace requirements likewise verify execution and reporting rather than the truth of the result.",
+        "rationale": "The plan does provide a concrete disproof condition: `Command(resume=None)` works or an interrupted node runs once on langgraph 1.2.14. However, its success measures are not explicitly tied to a defined property of correctness or conformance, so passing tests and reproduction could be stand-ins.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: A direct check of the claimed correctness or conformance is missing. The evidence specifies that `pytest` passes and that two watchlist rows reproduce, but it does not state what correct output or behavior those checks must establish; the trace requirements likewise verify execution and reporting rather than the truth of the result."
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#success-and-disproof",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence identifies the judged run as the success check run once on the change commit, specifies that its complete output is saved at `docs/plans/kit-v2-dryrun-docs.check.txt`, and states what must appear beyond the final result. It also explicitly says that both success and disproof are judged from that file, covering the disproof criterion as well.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#when-a-run-fails-or-surprises-us",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only presents a section headed “When a run fails or surprises us.”",
+        "rationale": "The section covers preserving the failure, full trace review, divergence classification, targeted re-verification, unresolved-cause investigation, and separation of review completeness from run outcome. However, it does not explicitly distinguish this procedure from anticipated failure modes, an element required by CORE-TRACE-DEBUGGING.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only presents a section headed “When a run fails or surprises us.”"
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The plan does not name each system-model element as an entity, process, record/event, or view, and does not state what the examined run must show for each; “practice problem and skills” is insufficient. It also lacks the maintained-repository documentation entry point from which the model is reachable, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation plan for the model, view coverage, and verification evidence.",
+        "rationale": "Although the plan links `wiki/index.md`, its element list contains only “practice problem and skills” and provides no per-element observed-run evidence. The quoted System model section also contains none of the required discovery, view, freshness/drift, or reconciliation obligations.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The plan does not name each system-model element as an entity, process, record/event, or view, and does not state what the examined run must show for each; “practice problem and skills” is insufficient. It also lacks the maintained-repository documentation entry point from which the model is reachable, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation plan for the model, view coverage, and verification evidence."
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#capability-reuse",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies both catalogue files and states, “No catalogue entry fits,” with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#authority-and-non-goals",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies Brian as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": false,
+      "verifier_kind": "semantic",
+      "disposition": "not_applicable",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#uncertainties",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly lists one material uncertainty—whether the change needs files beyond the listed scope—and provides resolving evidence: a pre-edit `git status --short` output listing the relevant files. This uncertainty therefore has resolution evidence.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#activation-facts",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly states there is no shared mechanism, comparison, centrally dependent LLM behavior, irreversible action or spend, or external-standard claim. Its pytest run and reproduction of watchlist rows are verification checks, not experiments comparing alternatives, and the evidence does not indicate an AES-governed target.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-PROTO-VERTICAL-RESET",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-dryrun-docs.md#vertical-and-reset",
+          "sha256": "e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/OV-PROTO-VERTICAL-RESET",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "An explicit statement that the vertical adds no coordinated-work ceremony is missing.",
+        "rationale": "The evidence names the vertical result, gives a `git revert` reset boundary, and states the non-goal of work outside the listed files. However, it does not explicitly establish that no coordinated-work ceremony is added; “Make the change, run the success check, commit” describes execution steps but does not address that requirement.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: An explicit statement that the vertical adds no coordinated-work ceremony is missing."
+    }
+  ],
+  "item_counts": {
+    "pass": 8,
+    "unresolved": 4,
+    "not_applicable": 1,
+    "unavailable": 0,
+    "missing": 0
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-kit-v2-dryrun-docs-e6640d535b94",
+    "snapshot_ref": "SNAPSHOT-kit-v2-dryrun-docs",
+    "snapshot_revision": "sha256:2909728575dfc51e486d2d6ea90f370fb64469bf0e3859b1317fa44ccc8a61fd",
+    "packet_ref": "docs/plans/kit-v2-dryrun-docs.md",
+    "packet_revision": "sha256:e6640d535b945b4d808187201801c05e5a6e192c2ed277bfb1b1642030b49707",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [
+      {
+        "diagnostic_id": "DIAG-kit-v2-dryrun-docs-3",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-SUCCESS-DISPROOF: A direct check of the claimed correctness or conformance is missing. The evidence specifies that `pytest` passes and that two watchlist rows reproduce, but it does not state what correct output or behavior those checks must establish; the trace requirements likewise verify execution and reporting rather than the truth of the result.",
+        "source_locator": "docs/plans/kit-v2-dryrun-docs.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: A direct check of the claimed correctness or conformance is missing. The evidence specifies that `pytest` passes and that two watchlist rows reproduce, but it does not state what correct output or behavior those checks must establish; the trace requirements likewise verify execution and reporting rather than the truth of the result.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-SUCCESS-DISPROOF"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-dryrun-docs-5",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-TRACE-DEBUGGING: The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only presents a section headed “When a run fails or surprises us.”",
+        "source_locator": "docs/plans/kit-v2-dryrun-docs.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only presents a section headed “When a run fails or surprises us.”",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-TRACE-DEBUGGING"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-dryrun-docs-6",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-SYSTEM-MODEL: The plan does not name each system-model element as an entity, process, record/event, or view, and does not state what the examined run must show for each; “practice problem and skills” is insufficient. It also lacks the maintained-repository documentation entry point from which the model is reachable, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation plan for the model, view coverage, and verification evidence.",
+        "source_locator": "docs/plans/kit-v2-dryrun-docs.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The plan does not name each system-model element as an entity, process, record/event, or view, and does not state what the examined run must show for each; “practice problem and skills” is insufficient. It also lacks the maintained-repository documentation entry point from which the model is reachable, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation plan for the model, view coverage, and verification evidence.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-SYSTEM-MODEL"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-dryrun-docs-12",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "OV-PROTO-VERTICAL-RESET: An explicit statement that the vertical adds no coordinated-work ceremony is missing.",
+        "source_locator": "docs/plans/kit-v2-dryrun-docs.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: An explicit statement that the vertical adds no coordinated-work ceremony is missing.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/OV-PROTO-VERTICAL-RESET"
+      }
+    ],
+    "route": "inline_prototype",
+    "adoption_readiness": "contributor_disposition_needed",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "actionable_summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: A direct check of the claimed correctness or conformance is missing. The evidence specifies that `pytest` passes and that two watchlist rows reproduce, but it does not state what correct output or behavior those checks must establish; the trace requirements likewise verify execution and reporting rather than the truth of the result.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only presents a section headed “When a run fails or surprises us.”",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not name each system-model element as an entity, process, record/event, or view, and does not state what the examined run must show for each; “practice problem and skills” is insufficient. It also lacks the maintained-repository documentation entry point from which the model is reachable, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation plan for the model, view coverage, and verification evidence.",
+    "OV-PROTO-VERTICAL-RESET: semantic_unresolved -> Add to the plan: An explicit statement that the vertical adds no coordinated-work ceremony is missing."
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "quick-adopt",
+    "session": "ee31d131-4b2f-4673-b467-06a94912c64d"
+  },
+  "started_at": "2026-10-11T06:54:55Z",
+  "completed_at": "2026-10-11T06:55:50Z",
+  "duration_ms": 47062
+}

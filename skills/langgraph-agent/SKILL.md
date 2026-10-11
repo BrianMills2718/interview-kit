@@ -79,13 +79,14 @@ print(result["messages"][-1].content)
   `add_conditional_edges` that returns a node name.
 - **Human approval:** `interrupt(payload)` inside a node pauses the run (the caller sees
   `result["__interrupt__"]`); resume with `graph.invoke(Command(resume="yes"), cfg)` on the same
-  `thread_id`. Needs a checkpointer. See `build_refund_graph` in `examples/patterns.py`.
+  `thread_id`. Needs a checkpointer. See `build_refund_graph` in `examples/patterns.py`. Inside a
+  `@tool` of `create_agent` it also works (pass `checkpointer=`); see the watchlist for the re-run.
 - **Retries:** a router that sends to a `check` node, which loops back to
   `agent` with feedback or ends, with a counter so it cannot loop forever.
 
 ## Current API watchlist (the IDE's AI may suggest the old form)
 
-Checked 2026-10-11 against the installed packages (`pip show langchain langgraph`). If the
+Checked 2026-10-11 against the installed packages (`python -c "import importlib.metadata as m; print(m.version('langchain'), m.version('langgraph'))"`; `pip show` fails inside a uv venv). If the
 installed versions differ, re-check before trusting this table or the assistant.
 
 | Old form the AI may write | Current form | Checked in |
@@ -98,6 +99,12 @@ installed versions differ, re-check before trusting this table or the assistant.
 | `GenericFakeChatModel(...).bind_tools(tools)` in tests | raises `NotImplementedError`; subclass with `def bind_tools(self, tools, **kw): return self` (see tests) | langchain-core 1.6.9 |
 | `llm.with_structured_output` inside `create_agent` | `response_format=ToolStrategy(Model)`; result in `out["structured_response"]` | langchain 1.4.4 |
 | `from langchain.mcp import ...` on a plain install | needs `pip install "langchain[mcp]"` (imports `fastmcp`) | langchain 1.4.4 |
+| `Command(resume=None)` to mean "no answer" | crashes (`UnboundLocalError`); resume with a real value, e.g. `"no"` | langgraph 1.2.14 |
+| `interrupt()` inside a `@tool` used by `create_agent` | works, but on resume the whole tool runs again from the top: do side effects (refund, write) only after `interrupt()` returns | langgraph 1.2.14 |
+
+The model provider: the task names it (or gives a key). Install that provider's package
+(`langchain-openai`, `langchain-anthropic`, ...), read the key from the environment variable it
+names, and fail with a clear message when it is missing. Tests use the fake model, so they need no key.
 
 ## Pitfalls
 

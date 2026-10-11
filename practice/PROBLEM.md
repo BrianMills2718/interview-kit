@@ -5,7 +5,9 @@ A timed rehearsal for an agentic-AI take-home. Target 2 hours, hard stop at 4.
 ## How to run the practice
 
 1. New empty folder, `git init`, then `git clone <this kit> kit` inside it.
-2. `rm -rf kit/practice/reference` before reading anything else (it holds the answer).
+2. If `kit/practice/reference` exists, `rm -rf` it before reading anything else (it holds the answer).
+   Install: `pip install langchain langgraph pytest` (or `uv add` the same).
+   Do not open `kit/practice/cases.json` before your first grade run: it gives away the design.
 3. Start a timer. Use only the kit's files and one AI chat, as the IDE would allow.
 4. Done = `python kit/practice/grade.py solution.py` exits 0 and `bash kit/check.sh --final` exits 0.
 5. Write down the elapsed time and every place you got stuck.

@@ -37,7 +37,7 @@ Never start in Edit. Ask -> Plan -> Edit, one step per Edit prompt.
   model, then the code."
 - **Make it verify:** "Run `pytest -v` and show me the output" after every Edit.
 - **Check its API knowledge:** "Which langchain/langgraph version is installed? Is that function
-  current in that version?" Then check with `pip show` and the watchlist in
+  current in that version?" Then check with `importlib.metadata.version(...)` and the watchlist in
   `skills/langgraph-agent`. Assistants often suggest deprecated calls.
 - **Correct it in the open:** when it is wrong, say what was wrong and why in the chat, and note
   it in the README's AI section. Visible corrections are evidence of judgment.
