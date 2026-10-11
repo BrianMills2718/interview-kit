@@ -1,0 +1,21 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-patterns.md",
+  "plan_sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb",
+  "receipt_ref": "docs/plans/kit-v2-patterns.receipt.json",
+  "receipt_sha256": "d2c0b38aa0e724e704e21929af744481a232b5c130cd02d5d6d6749194b95e4e",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: The evidence does not identify the claimed success property or a direct check that tests it; it only reports that five tests passed. The disproof condition is present, but no direct correctness or conformance check is specified beyond the test result.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it says only that a complete review is distinct from a passing run; it does not explicitly state that review completeness is separate from the run verdict.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The evidence lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons each needs no update). It also does not explicitly state that the shared model has this repository's scope, if `wiki/index.md` is shared.",
+    "CORE-UNCERTAINTIES: semantic_unresolved -> Add to the plan: The evidence does not explicitly establish that the listed uncertainty is material.",
+    "CORE-ACTIVATION-FACTS: semantic_unresolved -> Add to the plan: Evidence does not establish that `llm_central` is false: the planned result uses `create_agent+ToolStrategy`, but the statement that no LLM pipeline runs under the plan concerns execution, not whether the implemented behavior centrally depends on LLM calls. Evidence also does not establish that the target repository is not governed by an AES target (`.aes/target.yaml`), so `aes_governed_target` cannot be safely declared false."
+  ],
+  "decided_at": "2026-10-11T06:17:21Z"
+}

@@ -1,0 +1,101 @@
+{
+  "04b7726cdb814b4ce5fcea8844f2026831e6e6e1601a3fd0384912583b07262c": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as Brian, states the desired result, and gives a concrete, user-visible stable example: `test_interrupt_resume_no_skips_the_action` asserting `REFUNDS_ISSUED == []` after resume `'no'`.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "10ba73953ee6ad7d63209a6464581a6aa476afe22e34a21dac637246692efff1": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the run being judged, identifies its complete saved trace and exact location, and specifies what must be seen beyond the final test result, including command context, individual checks, skipped status, exit status, and model-element output. It explicitly states that both success and disproof are judged from that trace.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "1648b134702a000af0c5e60916069f82045629722bda8ac3efb9913e0abbd7c1": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "The evidence lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons each needs no update). It also does not explicitly state that the shared model has this repository's scope, if `wiki/index.md` is shared.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan provides the model link `wiki/index.md`, names three model elements, and specifies that the saved check output must show their tests passing. However, a bare model link and element list do not satisfy the additional view, freshness/drift, and reconciliation obligations required by CORE-SYSTEM-MODEL.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  },
+  "1ea98ea18870cf6ed533c20faaaf4265a325caaef4521873ca914f5ab3e066df": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the vertical files and delivered result, defines completion via the five passing tests, sets the reset boundary as reverting the commit, and states the non-goal as anything outside those files. It adds no coordinated-work ceremony beyond making the change, running the check, and committing.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it says only that a complete review is distinct from a passing run; it does not explicitly state that review completeness is separate from the run verdict.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly covers preservation, full trace review, divergence citation, all requested classifications, unresolved-cause handling, targeted re-verification, and retention of the original failure. However, the required distinctions from anticipated failure modes and from the run verdict are not stated explicitly.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "2f2e8e27c8e825c8bafb050628ad8663b592e20b94db88b132fbf08d3d5b0029": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly establish that the listed uncertainty is material.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The table lists an uncertainty and provides resolving evidence: `git status --short` with the allowed files. However, it does not state that this uncertainty is material, as required.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-UNCERTAINTIES",
+    "verdict": "unresolved"
+  },
+  "41f58de70babe0938523622f95bdfce55297cb8f54401eb918ba672f08950804": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "material",
+    "missing": "The evidence does not identify the claimed success property or a direct check that tests it; it only reports that five tests passed. The disproof condition is present, but no direct correctness or conformance check is specified beyond the test result.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "\u201cuv run pytest -v lists the 5 tests ... PASSED\u201d is a test-count/result stand-in without stating what property the tests establish. Although \u201cRouting ask_approval always to issue_refund still passes the tests\u201d is a concrete disproof condition, the required direct success evidence is missing.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-SUCCESS-DISPROOF",
+    "verdict": "unresolved"
+  },
+  "59db4cf3da8bbd63f41157f2d4fbaacfb9fdf76f5d3048175964cafa47c52855": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "Evidence does not establish that `llm_central` is false: the planned result uses `create_agent+ToolStrategy`, but the statement that no LLM pipeline runs under the plan concerns execution, not whether the implemented behavior centrally depends on LLM calls. Evidence also does not establish that the target repository is not governed by an AES target (`.aes/target.yaml`), so `aes_governed_target` cannot be safely declared false.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly declares both `llm_central` and `aes_governed_target` false, while its quoted evidence neither resolves the centrality of LLM behavior nor checks for `.aes/target.yaml`. The other listed false facts are supported by the explicit bounded scope, verification-only tests, no-spend/no-irreversible statement, and explicit absence of external-standard claims.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  },
+  "5ae5c803da1941ade65989b5a0a37053cf7274997a703c1706f5f2bebd996c53": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan provides a requirements list with R1, which explicitly covers the requested structured output, retrieval tool, interrupt graph, and offline fake-model tests. R1 names a check\u2014the success check whose output is saved\u2014and gives its status as \u201cplanned, not yet run\u201d; the plan also states that no additional standards, schemas, contracts, or other relied-upon claims are omitted.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states that one agent makes it. It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "ae5d053dde3a27213fa6182f9c75454fa0a6a75955cac046b350b3d1b5ae5776": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason: the work is content in a standalone public interview kit rather than a cross-project mechanism.",
+    "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  }
+}

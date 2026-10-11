@@ -1,0 +1,583 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-kit-v2-patterns-5d9c3b8ec5ed",
+  "plan": {
+    "plan_ref": "docs/plans/kit-v2-patterns.md",
+    "plan_sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+  },
+  "path_decision": {
+    "ref": "docs/plans/kit-v2-patterns.path-decision.json",
+    "sha256": "5b481d9d39745923edbbf06c7ed13f344da24c9ffbf099288e8706ede7857e9c",
+    "selected_path": "prototype",
+    "classified_path": "prototype",
+    "errors": []
+  },
+  "route": "inline_prototype",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@11",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "0261c51b94b32a629bf6255b3c032c18cdbef4e8df6d5bed9db1f72d267c89cb"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "e08f1a326de035b56e4e20bd6224439145f2373926a66672502c4b78a524105d"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/kit-v2-patterns.facts.json",
+    "facts_sha256": "23741e2e70607c12f56f4f0f6989f7e34b2d0ecd06f129e889f61ef936e73d9e",
+    "facts": {
+      "shared_mechanism": false,
+      "empirical_comparison_proposed": false,
+      "llm_central": false,
+      "irreversible_or_spend_action": false,
+      "crosses_system_boundary": false,
+      "deploys": false,
+      "claims_external_standard": false,
+      "aes_governed_target": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": true
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "crosses_system_boundary": "default:not_declared",
+      "deploys": "default:not_declared",
+      "claims_external_standard": "default:not_declared",
+      "aes_governed_target": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": false,
+        "reason": "shared_mechanism=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": false,
+        "reason": "llm_central=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": true,
+        "reason": "inline_prototype=true (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": false,
+        "reason": "crosses_system_boundary=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": false,
+        "reason": "claims_external_standard=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:081a203d73e09fbbe414c98b9194790c8ddc8b81e4b4abc1bb0839168761dc91",
+    "definition_sha256": "8d93a0ff9b640eaa8a83fb313b8ee32bb849fc3a5c57fa88b3f042915bd48409",
+    "bundle_ref": "docs/plans/kit-v2-patterns.bundle.json",
+    "bundle_sha256": "0a2895f6594af04732ed73cf89712085f0e826ac88cd43bdcccab9e29c371a3e",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#actor-and-result",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor as Brian, states the desired result, and gives a concrete, user-visible stable example: `test_interrupt_resume_no_skips_the_action` asserting `REFUNDS_ISSUED == []` after resume `'no'`.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.path-decision.json",
+          "sha256": "5b481d9d39745923edbbf06c7ed13f344da24c9ffbf099288e8706ede7857e9c"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan provides a requirements list with R1, which explicitly covers the requested structured output, retrieval tool, interrupt graph, and offline fake-model tests. R1 names a check—the success check whose output is saved—and gives its status as “planned, not yet run”; the plan also states that no additional standards, schemas, contracts, or other relied-upon claims are omitted.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#success-and-disproof",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence does not identify the claimed success property or a direct check that tests it; it only reports that five tests passed. The disproof condition is present, but no direct correctness or conformance check is specified beyond the test result.",
+        "rationale": "“uv run pytest -v lists the 5 tests ... PASSED” is a test-count/result stand-in without stating what property the tests establish. Although “Routing ask_approval always to issue_refund still passes the tests” is a concrete disproof condition, the required direct success evidence is missing.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence does not identify the claimed success property or a direct check that tests it; it only reports that five tests passed. The disproof condition is present, but no direct correctness or conformance check is specified beyond the test result."
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#success-and-disproof",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence names the run being judged, identifies its complete saved trace and exact location, and specifies what must be seen beyond the final test result, including command context, individual checks, skipped status, exit status, and model-element output. It explicitly states that both success and disproof are judged from that trace.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#when-a-run-fails-or-surprises-us",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it says only that a complete review is distinct from a passing run; it does not explicitly state that review completeness is separate from the run verdict.",
+        "rationale": "The evidence explicitly covers preservation, full trace review, divergence citation, all requested classifications, unresolved-cause handling, targeted re-verification, and retention of the original failure. However, the required distinctions from anticipated failure modes and from the run verdict are not stated explicitly.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it says only that a complete review is distinct from a passing run; it does not explicitly state that review completeness is separate from the run verdict."
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons each needs no update). It also does not explicitly state that the shared model has this repository's scope, if `wiki/index.md` is shared.",
+        "rationale": "The plan provides the model link `wiki/index.md`, names three model elements, and specifies that the saved check output must show their tests passing. However, a bare model link and element list do not satisfy the additional view, freshness/drift, and reconciliation obligations required by CORE-SYSTEM-MODEL.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons each needs no update). It also does not explicitly state that the shared model has this repository's scope, if `wiki/index.md` is shared."
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#capability-reuse",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies both catalogue files and states, “No catalogue entry fits,” with a reason: the work is content in a standalone public interview kit rather than a cross-project mechanism.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#authority-and-non-goals",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states that one agent makes it. It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": false,
+      "verifier_kind": "semantic",
+      "disposition": "not_applicable",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#uncertainties",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence does not explicitly establish that the listed uncertainty is material.",
+        "rationale": "The table lists an uncertainty and provides resolving evidence: `git status --short` with the allowed files. However, it does not state that this uncertainty is material, as required.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence does not explicitly establish that the listed uncertainty is material."
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#activation-facts",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "Evidence does not establish that `llm_central` is false: the planned result uses `create_agent+ToolStrategy`, but the statement that no LLM pipeline runs under the plan concerns execution, not whether the implemented behavior centrally depends on LLM calls. Evidence also does not establish that the target repository is not governed by an AES target (`.aes/target.yaml`), so `aes_governed_target` cannot be safely declared false.",
+        "rationale": "The plan explicitly declares both `llm_central` and `aes_governed_target` false, while its quoted evidence neither resolves the centrality of LLM behavior nor checks for `.aes/target.yaml`. The other listed false facts are supported by the explicit bounded scope, verification-only tests, no-spend/no-irreversible statement, and explicit absence of external-standard claims.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: Evidence does not establish that `llm_central` is false: the planned result uses `create_agent+ToolStrategy`, but the statement that no LLM pipeline runs under the plan concerns execution, not whether the implemented behavior centrally depends on LLM calls. Evidence also does not establish that the target repository is not governed by an AES target (`.aes/target.yaml`), so `aes_governed_target` cannot be safely declared false."
+    },
+    {
+      "item_id": "OV-PROTO-VERTICAL-RESET",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-patterns.md#vertical-and-reset",
+          "sha256": "5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/OV-PROTO-VERTICAL-RESET",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the vertical files and delivered result, defines completion via the five passing tests, sets the reset boundary as reverting the commit, and states the non-goal as anything outside those files. It adds no coordinated-work ceremony beyond making the change, running the check, and committing.",
+        "reused": false
+      },
+      "suggested_action": null
+    }
+  ],
+  "item_counts": {
+    "pass": 7,
+    "unresolved": 5,
+    "not_applicable": 1,
+    "unavailable": 0,
+    "missing": 0
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-kit-v2-patterns-5d9c3b8ec5ed",
+    "snapshot_ref": "SNAPSHOT-kit-v2-patterns",
+    "snapshot_revision": "sha256:0a2895f6594af04732ed73cf89712085f0e826ac88cd43bdcccab9e29c371a3e",
+    "packet_ref": "docs/plans/kit-v2-patterns.md",
+    "packet_revision": "sha256:5d9c3b8ec5ed64900be2bb1d2e7b9d2c6d385b5f80a096fb0c570fcf339b16cb",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [
+      {
+        "diagnostic_id": "DIAG-kit-v2-patterns-3",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-SUCCESS-DISPROOF: The evidence does not identify the claimed success property or a direct check that tests it; it only reports that five tests passed. The disproof condition is present, but no direct correctness or conformance check is specified beyond the test result.",
+        "source_locator": "docs/plans/kit-v2-patterns.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence does not identify the claimed success property or a direct check that tests it; it only reports that five tests passed. The disproof condition is present, but no direct correctness or conformance check is specified beyond the test result.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-SUCCESS-DISPROOF"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-patterns-5",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-TRACE-DEBUGGING: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it says only that a complete review is distinct from a passing run; it does not explicitly state that review completeness is separate from the run verdict.",
+        "source_locator": "docs/plans/kit-v2-patterns.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it says only that a complete review is distinct from a passing run; it does not explicitly state that review completeness is separate from the run verdict.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-TRACE-DEBUGGING"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-patterns-6",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-SYSTEM-MODEL: The evidence lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons each needs no update). It also does not explicitly state that the shared model has this repository's scope, if `wiki/index.md` is shared.",
+        "source_locator": "docs/plans/kit-v2-patterns.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons each needs no update). It also does not explicitly state that the shared model has this repository's scope, if `wiki/index.md` is shared.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-SYSTEM-MODEL"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-patterns-10",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-UNCERTAINTIES: The evidence does not explicitly establish that the listed uncertainty is material.",
+        "source_locator": "docs/plans/kit-v2-patterns.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence does not explicitly establish that the listed uncertainty is material.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-UNCERTAINTIES"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-patterns-11",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-ACTIVATION-FACTS: Evidence does not establish that `llm_central` is false: the planned result uses `create_agent+ToolStrategy`, but the statement that no LLM pipeline runs under the plan concerns execution, not whether the implemented behavior centrally depends on LLM calls. Evidence also does not establish that the target repository is not governed by an AES target (`.aes/target.yaml`), so `aes_governed_target` cannot be safely declared false.",
+        "source_locator": "docs/plans/kit-v2-patterns.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: Evidence does not establish that `llm_central` is false: the planned result uses `create_agent+ToolStrategy`, but the statement that no LLM pipeline runs under the plan concerns execution, not whether the implemented behavior centrally depends on LLM calls. Evidence also does not establish that the target repository is not governed by an AES target (`.aes/target.yaml`), so `aes_governed_target` cannot be safely declared false.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-patterns/6f1532443b9f/CORE-ACTIVATION-FACTS"
+      }
+    ],
+    "route": "inline_prototype",
+    "adoption_readiness": "contributor_disposition_needed",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "actionable_summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: The evidence does not identify the claimed success property or a direct check that tests it; it only reports that five tests passed. The disproof condition is present, but no direct correctness or conformance check is specified beyond the test result.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it says only that a complete review is distinct from a passing run; it does not explicitly state that review completeness is separate from the run verdict.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The evidence lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons each needs no update). It also does not explicitly state that the shared model has this repository's scope, if `wiki/index.md` is shared.",
+    "CORE-UNCERTAINTIES: semantic_unresolved -> Add to the plan: The evidence does not explicitly establish that the listed uncertainty is material.",
+    "CORE-ACTIVATION-FACTS: semantic_unresolved -> Add to the plan: Evidence does not establish that `llm_central` is false: the planned result uses `create_agent+ToolStrategy`, but the statement that no LLM pipeline runs under the plan concerns execution, not whether the implemented behavior centrally depends on LLM calls. Evidence also does not establish that the target repository is not governed by an AES target (`.aes/target.yaml`), so `aes_governed_target` cannot be safely declared false."
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "quick-adopt",
+    "session": "ee31d131-4b2f-4673-b467-06a94912c64d"
+  },
+  "started_at": "2026-10-11T06:17:07Z",
+  "completed_at": "2026-10-11T06:17:21Z",
+  "duration_ms": 13243
+}
