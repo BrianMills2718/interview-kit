@@ -6,18 +6,24 @@ test that proves it. `aes status` then says, per criterion, whether a current te
 it. It makes no AI calls, so it is allowed wherever a terminal is; it is not a second assistant.
 
 Use it when the test is long enough (3 hours or more) and you want the plan-to-test links to be
-shown rather than claimed. Otherwise `PLAN.md` plus `check.sh` is enough.
+shown rather than claimed. Otherwise `PLAN.md` plus `check.sh` is enough; skip it in the 2-hour
+practice unless you are rehearsing `aes` itself.
+
+**Layout limit:** `aes` governs only files under subfolders (`src/` and `tests/` by default). Code
+at the project root (`solution.py`) cannot be governed: `.` is not accepted as a root
+(AES issue 540). Decide the layout before the first file, or skip `aes`.
 
 ## Set up (about 1 minute)
 
 ```bash
-bash kit/method/install_aes.sh            # installs `aes` with uv at the tested revision
-git init -q && git add -A && git commit -qm "Start"   # aes needs one commit
+bash kit/method/install_aes.sh            # installs `aes` with uv at the tested revision; replaces any installed `aes`
+git init -q && git add -A && git commit -qm "Start"   # `aes plan validate` needs at least one commit
 aes init --project-id myproj --actor "<who uses it>" --outcome "<what they get, in one sentence>"
 git add .aes && git commit -qm "Initialize AES"
 ```
 
-Code goes under `src/` and tests under `tests/` (the default governed folders).
+Code goes under `src/` and tests under `tests/` (the default governed folders). To keep an
+existing `aes` instead, run it without installing: `uvx --from "$(bash kit/method/install_aes.sh --spec)" aes ...`.
 
 ## Each requirement
 

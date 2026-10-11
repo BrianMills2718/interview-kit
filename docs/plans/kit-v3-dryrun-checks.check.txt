@@ -1,0 +1,25 @@
+== before (5f59b5e check.sh)
+tests/test_check_sh.py:140: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_check_sh.py::test_ticked_item_with_placeholder_result_fails_final
+======================== 1 failed, 15 passed in 15.04s =========================
+exit=1
+== after
+tests/test_check_sh.py::test_good_project_passes_final PASSED            [  6%]
+tests/test_check_sh.py::test_missing_plan_fails PASSED                   [ 12%]
+tests/test_check_sh.py::test_template_placeholders_fail PASSED           [ 18%]
+tests/test_check_sh.py::test_failing_test_fails PASSED                   [ 25%]
+tests/test_check_sh.py::test_unticked_item_fails_only_in_final PASSED    [ 31%]
+tests/test_check_sh.py::test_readme_without_ai_section_fails_final PASSED [ 37%]
+tests/test_check_sh.py::test_quoted_requirement_with_angle_brackets_is_not_a_placeholder PASSED [ 43%]
+tests/test_check_sh.py::test_unfilled_template_line_is_a_placeholder PASSED [ 50%]
+tests/test_check_sh.py::test_no_tests_yet_waits_before_final_and_fails_final PASSED [ 56%]
+tests/test_check_sh.py::test_ai_section_needs_the_word_not_the_letters PASSED [ 62%]
+tests/test_check_sh.py::test_uses_the_project_venv_python PASSED         [ 68%]
+tests/test_check_sh.py::test_plan_without_system_model_fails PASSED      [ 75%]
+tests/test_check_sh.py::test_empty_system_model_section_fails PASSED     [ 81%]
+tests/test_check_sh.py::test_one_line_system_model_reason_passes PASSED  [ 87%]
+tests/test_check_sh.py::test_planner_notes_name_every_section_check_sh_requires PASSED [ 93%]
+tests/test_check_sh.py::test_ticked_item_with_placeholder_result_fails_final PASSED [100%]
+============================= 16 passed in 12.72s ==============================
+exit=0

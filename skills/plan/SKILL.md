@@ -42,6 +42,8 @@ Write one line per rejected shape: "Not an agent: every input is known before th
 ## Rules
 
 - No code before the plan exists. Small task, small plan: 15 lines is fine.
-- Tick a done-when item only with the evidence beside it (the command and its result).
+- Write every done-when item as `[ ]`. Tick it only after its command ran, and replace the
+  expected result with what it printed ("8 passed, 0 failed", not "N passed").
+  `check.sh --final` fails a ticked item still showing "N passed".
 - If the approach changes, edit the plan first, then the code.
 - At the end, the plan's unticked items go into the README under "Limitations".

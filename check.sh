@@ -47,6 +47,9 @@ else
   if [[ $FINAL == 1 ]]; then
     open=$(grep -cE '^\s*- \[ \]' PLAN.md || true)
     [[ "$open" == 0 ]] && ok "all done-when items ticked" || bad "$open done-when item(s) not ticked (tick with evidence, or move to README Limitations)"
+    # a ticked item whose result still reads "N passed" was ticked before the check ran
+    stale=$(grep -E '^\s*- \[x\]' PLAN.md | grep -cE '\bN (passed|failed|tests?|cases?)\b' || true)
+    [[ "$stale" == 0 ]] && ok "ticked items show real results" || bad "$stale ticked item(s) show a placeholder result like 'N passed': run the check and write what it printed"
   fi
 fi
 

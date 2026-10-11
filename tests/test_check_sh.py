@@ -130,3 +130,11 @@ def test_planner_notes_name_every_section_check_sh_requires():
         text = (CHECK.parent / note).read_text()
         missing = [h for h in required if h not in text]
         assert not missing, f"{note} does not name {missing}"
+
+
+def test_ticked_item_with_placeholder_result_fails_final(tmp_path):
+    """A done-when item ticked before its check ran still shows the expected-result placeholder."""
+    p = project(tmp_path, plan=PLAN.replace("-> test_add PASSED", "-> N passed, 0 failed"))
+    assert run(p)[0] == 0
+    code, out = run(p, "--final")
+    assert code == 1 and "placeholder result" in out, out

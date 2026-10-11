@@ -69,7 +69,10 @@ print(result["messages"][-1].content)
   when custom routing or extra state is needed. Say which and why.
 - **Memory across turns:** `graph = g.compile(checkpointer=InMemorySaver())` from
   `langgraph.checkpoint.memory`, then pass `config={"configurable": {"thread_id": "1"}}`.
+- **Step limit when you do not control `invoke`** (a grader calls it): set it at build time,
+  `graph = create_agent(...).with_config({"recursion_limit": 10})` (checked on langgraph 1.2.14).
 - **Structured final answer:** `create_agent(llm, tools, response_format=ToolStrategy(Answer))`
+  registers a tool named after the class (`Answer`; a `Reply` class gives a tool `Reply`).
   (`from langchain.agents.structured_output import ToolStrategy`); invalid output is sent back to
   the model to retry, and the result is in `out["structured_response"]`. In a hand-built graph, a
   last node calling `llm.with_structured_output(Answer)`. See `examples/patterns.py`.
