@@ -7,13 +7,13 @@
     "schema_version": "checklist-definition.v1",
     "record_type": "checklist_definition",
     "checklist_id": "method-conformance.bounded-design",
-    "revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
+    "revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
     "title": "bounded-design method conformance for kit-v3-diagram-set",
     "purpose": "Route-bound evidence that the selected Company Planning method was applied before adoption.",
     "subject_ref": {
       "kind": "planning_review",
       "id": "kit-v3-diagram-set",
-      "revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055"
+      "revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd"
     },
     "items": [
       {
@@ -28,7 +28,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#core-and-conditional-requirements"
@@ -46,7 +46,7 @@
           "path_decision_record"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#choose-the-route-before-adding-structure"
@@ -64,7 +64,7 @@
           "plan_document"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#requirements-traced-default"
@@ -82,7 +82,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#4-derive-the-design"
@@ -100,7 +100,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#4-derive-the-design"
@@ -118,7 +118,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#when-a-run-fails-or-surprises-us"
@@ -136,7 +136,7 @@
           "plan_document"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#system-model-default"
@@ -154,7 +154,7 @@
           "plan_document"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#capability-reuse-default"
@@ -172,7 +172,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#core-and-conditional-requirements"
@@ -190,7 +190,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#core-and-conditional-requirements"
@@ -208,7 +208,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#core-and-conditional-requirements"
@@ -227,7 +227,7 @@
           "activation_facts_record"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#core-and-conditional-requirements"
@@ -245,7 +245,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "<owner>/company-planning",
+          "repository": "BrianMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "6953b5acddad920f2c2ace4831319ea055e8080c",
           "pointer": "#4-derive-the-design"
@@ -259,8 +259,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-ACTOR-RESULT-EXAMPLE",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
       "evidence_types": [
         "plan_section"
@@ -273,9 +273,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#actor-and-result",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -285,8 +285,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-ROUTE",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-ROUTE",
       "evidence_types": [
         "path_decision_record"
@@ -299,9 +299,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.path-decision.json",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -311,8 +311,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-REQUIREMENTS-TRACED",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-REQUIREMENTS-TRACED",
       "evidence_types": [
         "plan_document"
@@ -323,11 +323,11 @@
         "evidence_id": "EVIDENCE-CORE-REQUIREMENTS-TRACED",
         "criterion_id": "CORE-REQUIREMENTS-TRACED",
         "status": "pass",
-        "evidence_ref": "docs/plans/kit-v3-diagram-set.md",
+        "evidence_ref": "docs/plans/kit-v3-diagram-set.md#requirements",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -337,8 +337,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-SUCCESS-DISPROOF",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-SUCCESS-DISPROOF",
       "evidence_types": [
         "plan_section"
@@ -351,9 +351,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#success-and-disproof",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -363,8 +363,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-TRACE-REVIEW",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-TRACE-REVIEW",
       "evidence_types": [
         "plan_section"
@@ -377,9 +377,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#success-and-disproof",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -389,8 +389,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-TRACE-DEBUGGING",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-TRACE-DEBUGGING",
       "evidence_types": [
         "plan_section"
@@ -403,9 +403,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#when-a-run-fails-or-surprises-us",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -415,8 +415,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-SYSTEM-MODEL",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-SYSTEM-MODEL",
       "evidence_types": [
         "plan_document"
@@ -427,11 +427,11 @@
         "evidence_id": "EVIDENCE-CORE-SYSTEM-MODEL",
         "criterion_id": "CORE-SYSTEM-MODEL",
         "status": "pass",
-        "evidence_ref": "docs/plans/kit-v3-diagram-set.md",
+        "evidence_ref": "docs/plans/kit-v3-diagram-set.md#system-model",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -441,8 +441,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-CAPABILITY-REUSE",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-CAPABILITY-REUSE",
       "evidence_types": [
         "plan_document"
@@ -455,9 +455,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#capability-reuse",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -467,8 +467,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-AUTHORITY-NONGOALS",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-AUTHORITY-NONGOALS",
       "evidence_types": [
         "plan_section"
@@ -481,9 +481,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#authority-and-non-goals",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -493,8 +493,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-IRREVERSIBLE-SPEND",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-IRREVERSIBLE-SPEND",
       "evidence_types": [
         "plan_section"
@@ -507,21 +507,21 @@
         "status": "not_applicable",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#authority-and-non-goals",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:36:08Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": [],
-        "not_applicable_reason": "irreversible_or_spend_action=false"
+        "not_applicable_reason": "no irreversible action or spend: public repo commits are revertible, no paid calls"
       },
-      "annotation": "none proposed"
+      "annotation": "no irreversible action or spend: public repo commits are revertible, no paid calls"
     },
     {
       "schema_version": "checklist-item-observation.v1",
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-UNCERTAINTIES",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-UNCERTAINTIES",
       "evidence_types": [
         "plan_section"
@@ -534,9 +534,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#uncertainties",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -546,8 +546,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-CORE-ACTIVATION-FACTS",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "CORE-ACTIVATION-FACTS",
       "evidence_types": [
         "plan_document",
@@ -561,9 +561,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#activation-facts",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null
@@ -573,8 +573,8 @@
       "record_type": "checklist_item_observation",
       "observation_id": "OBS-OV-PROTO-VERTICAL-RESET",
       "checklist_id": "method-conformance.bounded-design",
-      "checklist_revision": "sha256:5046110bf8630cd7a072d77f899ea092d90e8b86e3bd06d362847a8f89714480",
-      "definition_sha256": "bdddf754ddfc4f990c215988c11e5483b8e7bf2a257547048256916879e2deb0",
+      "checklist_revision": "sha256:38213c874266e4977d38ca66e9d05db811b02db5aa76330f389168efaf39fbe8",
+      "definition_sha256": "61d3897ac215a9376ac32607d45d3a550e26e6948f299e88af001b1b2efddf82",
       "item_id": "OV-PROTO-VERTICAL-RESET",
       "evidence_types": [
         "plan_section"
@@ -587,9 +587,9 @@
         "status": "pass",
         "evidence_ref": "docs/plans/kit-v3-diagram-set.md#vertical-and-reset",
         "scope": "plan:docs/plans/kit-v3-diagram-set.md",
-        "observed_at": "2026-10-11T17:03:29Z",
-        "producer": "quick-adopt",
-        "source_revision": "sha256:3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+        "observed_at": "2026-10-11T21:34:54Z",
+        "producer": "agent",
+        "source_revision": "sha256:b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
         "limitations": []
       },
       "annotation": null

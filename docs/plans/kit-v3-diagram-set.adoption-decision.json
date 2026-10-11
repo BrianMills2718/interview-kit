@@ -3,14 +3,14 @@
   "record_type": "method_adoption_decision",
   "decision": "adopted",
   "plan_ref": "docs/plans/kit-v3-diagram-set.md",
-  "plan_sha256": "3147b63bb9d31ffdbc7f5b37594823b682d542182b7c887c1f09829d21b16055",
+  "plan_sha256": "b36c1b0b4a66f8b03a524c5a0a75e121150c94e194aa318addfaf142219e76fd",
   "receipt_ref": "docs/plans/kit-v3-diagram-set.receipt.json",
-  "receipt_sha256": "1e484ffeb3931bbc35bba093ed502002a47a57c1bd6ab612c33cc9f2f013ac7c",
+  "receipt_sha256": "6594531e9cb3988ea71b39401e2cb7cbfaef524713e4cf038a429e3000efce08",
   "receipt_result": "pass",
   "reason_codes": [],
   "summary": [
     "pass: 11 items evidenced, 1 confirmed not applicable, 0 advisory deviation(s)",
     "warn CORE-SYSTEM-MODEL: MODEL-NO-ELEMENT-IDS -> MODEL-NO-ELEMENT-IDS: docs/model/ARCHITECTURE.md has no element lines; write each as `- ID (decided|guessed): what it is`"
   ],
-  "decided_at": "2026-10-11T17:03:39Z"
+  "decided_at": "2026-10-11T21:36:15Z"
 }

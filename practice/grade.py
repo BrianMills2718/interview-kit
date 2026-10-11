@@ -47,7 +47,10 @@ def run_case(solution, case, data):
         interrupts += 1
         if interrupts > 3:
             return ["more than 3 interrupts; resume is not reaching the end"]
-        out = graph.invoke(Command(resume=case.get("human")), config)
+        pending = out["__interrupt__"]  # two tool calls that each pause in one turn: answer each by id
+        answer = case.get("human")
+        resume = answer if len(pending) == 1 else {i.id: answer for i in pending}
+        out = graph.invoke(Command(resume=resume), config)
 
     exp, problems = case["expect"], []
     if shop["refunds"] != exp["refunds"]:
