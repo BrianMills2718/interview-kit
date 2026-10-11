@@ -109,16 +109,25 @@ Each says what would show it was wrong.
   reply's `response_metadata` has `model_name`. Sources found by two research passes and
   checked by hand; one public page on AI use in interviews turned out to be one company's own
   hiring policy, so the kit generalises it rather than calling it a grading rubric.
+- 2026-10-11, second timed dry run with the method in the kit (fresh clone at 5f59b5e, fresh
+  agent): 3 min 32 s; `grade.py` 8 of 8, `check.sh --final` 14 passed, exit 0. All 34 tool calls
+  were read: it opened `cases.json` only after its first grade run and never the reference. It
+  first ticked done-when items with made-up counts (`check.sh --final` now refuses "N passed"),
+  was blocked by `rm -rf` (now a Python command a test runs), and could not use `aes` with a
+  top-level `solution.py` (AES issue 540; `method/aes.md` says so). Other fixes: a no-approver
+  rule in `AGENTS.md`, a Shape section in the template, a read-first and skip list in
+  `method/README.md`, the `Reply` tool name and build-time step limit in the langgraph skill.
+  Suite after: `uv run pytest -v` 52 passed, exit 0.
 
 ## In progress and next
 
 Most useful next additions, in order:
 
-1. A second practice problem whose cases are not visible to the candidate: the dry run ran far
-   under target partly because `cases.json` shows the design (now the problem says not to open it
-   before the first grade run, which is only a request).
-2. A dry run by a person in the hosted IDE's chat itself (needs an account); the 12-minute agent
-   run says nothing about a human's pace.
+1. A harder second practice problem whose cases are not visible to the candidate: two agent dry
+   runs finished in 12 and 3.5 minutes against a 2-hour target, so this one no longer rehearses
+   time pressure for an agent.
+2. A dry run by a person in the hosted IDE's chat itself (needs an account); the agent runs
+   say nothing about a human's pace.
 
 Known untidiness: plan-adoption records under `docs/plans/` show in the IDE file explorer after a
 clone; harmless.
