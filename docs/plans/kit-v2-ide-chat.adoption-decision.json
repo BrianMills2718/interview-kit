@@ -1,0 +1,19 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-ide-chat.md",
+  "plan_sha256": "fe7d4be706cbc2a4ed83acb5abe8369be57b8a7590502db994292b8a0b34a4d8",
+  "receipt_ref": "docs/plans/kit-v2-ide-chat.receipt.json",
+  "receipt_sha256": "478e04b8605e36adeaf461aa058c14c5c2cda275332953956e54779c9c708416",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes; it only provides a separate heading for failures or surprises.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not cite the documentation entry point from which the model is reachable, identify the repository's scope in a shared model, name applicable source-linked views or explain material omissions, specify concrete model freshness or drift checks, or state how the model, view coverage, and verification evidence will be reconciled in the same change. It also does not explicitly state what the examined run must show for the declared absence of model elements.",
+    "OV-PROTO-VERTICAL-RESET: semantic_unresolved -> Add to the plan: An explicit indication that the vertical does not add coordinated-work ceremony."
+  ],
+  "decided_at": "2026-10-11T06:13:48Z"
+}

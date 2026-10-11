@@ -53,6 +53,7 @@ cases, reviewer before finishing, and `bash kit/check.sh --final` at the end.
 | `AGENTS.md` | always: how the assistant works (plan, roles, small steps, checks, explain) |
 | `PLAN.template.md` | start of every task: copy to `PLAN.md` and fill in |
 | `check.sh` | after every step (`--final` at the end; `--install-hook` to run it on each commit) |
+| `skills/using-ide-ai-chat/SKILL.md` | using the IDE's recorded AI chat well (start here) |
 | `skills/plan/SKILL.md` | writing the plan |
 | `skills/langgraph-agent/SKILL.md` | building a tool-calling agent or multi-step graph |
 | `skills/evaluate-agent/SKILL.md` | testing an agent offline and evaluating it on known cases |

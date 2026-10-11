@@ -18,7 +18,7 @@ as a Claude Code plugin.
 | Rules for the assistant in a test | [AGENTS.md](../AGENTS.md) | how to work, roles, enforcement, agent specifics |
 | Planning | [PLAN.template.md](../PLAN.template.md), [skills/plan](../skills/plan/SKILL.md) | `PLAN.md` before any code |
 | Enforcement | [check.sh](../check.sh) | plan concrete, code compiles, tests pass; `--final` for done |
-| Skills | [langgraph-agent](../skills/langgraph-agent/SKILL.md), [evaluate-agent](../skills/evaluate-agent/SKILL.md), [explain-your-work](../skills/explain-your-work/SKILL.md) | task know-how |
+| Skills | [using-ide-ai-chat](../skills/using-ide-ai-chat/SKILL.md), [langgraph-agent](../skills/langgraph-agent/SKILL.md), [evaluate-agent](../skills/evaluate-agent/SKILL.md), [explain-your-work](../skills/explain-your-work/SKILL.md) | task know-how |
 | Subagent roles | [planner](../agents/planner.md), [implementer](../agents/implementer.md), [tester](../agents/tester.md), [reviewer](../agents/reviewer.md) | one role at a time |
 | Example | [examples/agent_template.py](../examples/agent_template.py) | runnable LangGraph agent |
 | Tests | [tests/](../tests/) | the template (fake model) and check.sh on good and broken projects |
@@ -60,13 +60,11 @@ Each says what would show it was wrong.
 
 Most useful next additions, in order:
 
-1. `skills/using-ide-ai-chat`: driving a chat assistant with Ask/Plan/Edit modes well and visibly
-   (prompt patterns, verify before accepting, noting where the AI was wrong).
-2. More LangGraph patterns, each tested offline: structured output with Pydantic, a retrieval
+1. More LangGraph patterns, each tested offline: structured output with Pydantic, a retrieval
    tool, a multi-agent supervisor, human-in-the-loop interrupts, streaming. Check the current
    API first.
-3. A short, accurate note on MCP and agent-to-agent protocols.
-4. A 2-hour practice problem in this style, with a reference solution kept out of `KIT.md`.
+2. A short, accurate note on MCP and agent-to-agent protocols.
+3. A 2-hour practice problem in this style, with a reference solution kept out of `KIT.md`.
 
 Known untidiness: plan-adoption records under `docs/plans/` show in the IDE file explorer after a
 clone; harmless.
