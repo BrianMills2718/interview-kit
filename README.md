@@ -74,13 +74,8 @@ repo. To improve the kit:
 - Commits need a plan: company-planning `cli.py skeleton` then `cli.py check` before `adopt`;
   tag commits `[Goal <plan_id>]`.
 
-Most useful next additions, in order:
-1. `skills/using-ide-ai-chat`: driving a chat assistant with Ask/Plan/Edit modes well and visibly
-   (prompt patterns, verify before accepting, noting where the AI was wrong).
-2. More LangGraph patterns, each tested: structured output with Pydantic, a retrieval tool,
-   a multi-agent supervisor, human-in-the-loop interrupts, streaming. Check the current API first.
-3. A short, accurate note on MCP and agent-to-agent protocols.
-4. A 2-hour practice problem in this style, with a reference solution kept out of `KIT.md`.
+The [wiki](wiki/index.md) has the full map, the decisions, the evidence so far and the list of
+next additions.
 
 ## Check the kit itself
 
