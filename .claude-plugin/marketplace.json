@@ -1,6 +1,6 @@
 {
   "name": "interview-kit",
-  "owner": { "name": "Brian Mills" },
+  "owner": { "name": "interview-kit" },
   "description": "Portable best-practice kit for agentic AI coding work.",
   "plugins": [
     {

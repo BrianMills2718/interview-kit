@@ -1,0 +1,19 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-anon-install.md",
+  "plan_sha256": "86126e7919da86a638d0c5764bdb51b2fc1f8727b717d8b11eef0dc0a25cf3c2",
+  "receipt_ref": "docs/plans/kit-v2-anon-install.receipt.json",
+  "receipt_sha256": "9a7622fdb453da1eea70ad6d716d8e730d7c635e8d9f205334410768c3c9ff24",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly state that this procedure is distinct from anticipated failure modes.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not state what the examined run must show for the listed element “README install section”; “the output shows what that line says” is not a concrete observation requirement. It also lacks the required documentation entry point for the model, applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and a same-change reconciliation method for the model, view coverage, and verification evidence.",
+    "CORE-ACTIVATION-FACTS: semantic_unresolved -> Add to the plan: Evidence that the target repository is not governed by `.aes/target.yaml`, or an explicit declaration that `aes_governed_target` is false based on that check."
+  ],
+  "decided_at": "2026-10-11T07:36:28Z"
+}

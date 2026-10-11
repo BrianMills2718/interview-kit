@@ -1,7 +1,10 @@
 // Re-runnable check that the kit works in CoderPad's public sandbox (no login): opens a Python Project,
 // clones the kit, runs check.sh and the agent tests, fetches KIT.md, and saves kit_terminal.png.
-// Run: PLAYWRIGHT_MODULE=<path to playwright> CHROME_PATH=<chromium binary, optional> node scripts/coderpad_sandbox_check.cjs
+// Run: KIT_REPO_URL=https://github.com/<owner>/interview-kit PLAYWRIGHT_MODULE=<path to playwright> CHROME_PATH=<chromium binary, optional> node scripts/coderpad_sandbox_check.cjs
 // Clicks use fixed screen positions in CoderPad's current layout; a layout change breaks them loudly (timeout).
+const REPO = process.env.KIT_REPO_URL;
+if (!REPO) throw new Error('Set KIT_REPO_URL to the kit repo, e.g. https://github.com/<owner>/interview-kit');
+const RAW = REPO.replace('https://github.com/', 'https://raw.githubusercontent.com/') + '/main/KIT.md';
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 (async () => {
   const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
@@ -18,10 +21,10 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
   await p.waitForTimeout(40000);
   await p.waitForTimeout(10000);
   await p.mouse.click(600, 800);
-  const cmds = ['git clone -q --depth 1 https://github.com/BrianMills2718/interview-kit kit && ls kit',
+  const cmds = [`git clone -q --depth 1 ${REPO} kit && ls kit`,
     'cp kit/PLAN.template.md PLAN.md; bash kit/check.sh 2>&1 | tail -4',
     'pip install -q pytest langgraph langchain-core 2>&1 | tail -1; cd kit && python3 -m pytest -q tests/test_agent_template.py 2>&1 | tail -2; cd ..',
-    'curl -s https://raw.githubusercontent.com/BrianMills2718/interview-kit/main/KIT.md | head -3'];
+    `curl -s ${RAW} | head -3`];
   for (const c of cmds) { await p.keyboard.type(c, { delay: 25 }); await p.keyboard.press('Enter'); await p.waitForTimeout(c.startsWith('pip') ? 60000 : 12000); }
   await p.screenshot({ path: 'kit_terminal.png' });
   const t = await p.locator('.xterm-rows').last().innerText().catch(e => 'noxterm ' + e.message);

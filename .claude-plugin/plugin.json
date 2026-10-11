@@ -2,5 +2,5 @@
   "name": "interview-kit",
   "description": "Light planning, enforcement, skills and subagents for building agentic AI solutions with an AI assistant: PLAN.md first, small checked steps, tests, explanation.",
   "version": "0.2.0",
-  "author": { "name": "Brian Mills" }
+  "author": { "name": "interview-kit" }
 }

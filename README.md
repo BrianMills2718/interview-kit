@@ -18,7 +18,7 @@ brings the method (notes, checks, roles), never another AI tool.
 **Hosted IDE with a terminal (e.g. a CoderPad Python Project):**
 
 ```bash
-git clone --depth 1 https://github.com/BrianMills2718/interview-kit kit
+git clone --depth 1 <this repo's URL> kit   # copy the URL from the repo page's Code button
 cp kit/PLAN.template.md PLAN.md
 ```
 
@@ -29,12 +29,11 @@ chat as context. Add a Check button by adding this target to the project's `.cpa
 "check": { "label": "Check", "command": "bash kit/check.sh" }
 ```
 
-**No terminal or no internet:** open
-https://raw.githubusercontent.com/BrianMills2718/interview-kit/main/KIT.md in another tab and
-paste it into a `KIT.md` file. It holds every rule, the plan template, the skills and the
+**No terminal or no internet:** open `KIT.md` on the repo page in another tab,
+click Raw, and paste it into a `KIT.md` file. It holds every rule, the plan template, the skills and the
 subagent roles in one file.
 
-**Claude Code:** `/plugin marketplace add BrianMills2718/interview-kit`, then
+**Claude Code:** `/plugin marketplace add <owner>/interview-kit` (owner from the repo URL), then
 `/plugin install interview-kit@interview-kit`. The skills and subagents load natively.
 
 ## Use it
