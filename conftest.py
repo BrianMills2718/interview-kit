@@ -7,4 +7,6 @@ KIT = Path(__file__).parent
 
 
 def pytest_ignore_collect(collection_path, config):
-    return config.rootpath != KIT
+    if config.rootpath != KIT:
+        return True
+    return None  # no opinion: keep pytest's defaults (it skips .venv)
