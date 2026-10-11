@@ -13,10 +13,14 @@ they will do with the answer. Then pick the form.
 - **Nothing invented**: every element is real (see architecture-views.md); unknowns are marked
   "unknown", not drawn as if known.
 - **Colour is never the only signal**: add a word or a dashed line, and avoid red against green.
+- **Show the mechanism the decision rests on**: if the design depends on how a library behaves
+  (a pause returns to the caller; a resume re-runs the tool), draw that behaviour exactly.
+- **A table, not a flowchart, for a straight chain of checks**; draw only the branching part.
 
 For a take-home: the six diagrams live in `docs/MODEL.md`, each under a heading that is its
-question. The README shows the two a reviewer needs first (context and the main sequence) and
-links to the rest.
+question with a bold "Answer:" line beneath it. The README shows the two a reviewer needs first,
+the agent loop (diagram 2) and the rules (diagram 4), and links to the rest. Before finishing,
+check each diagram against the code: every node, arrow and row is something the code does.
 
 **Check every diagram renders** before you finish: paste each block into mermaid.live, or run
 `npx --yes @mermaid-js/mermaid-cli -i docs/MODEL.md -o .render/MODEL.md`. If it cannot find

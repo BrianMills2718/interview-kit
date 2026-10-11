@@ -16,7 +16,7 @@ DESIGN_SECTIONS = ["Outcome", "Requirements", "Failure modes", "Domain rules", "
 # diagram number -> (name used in messages, Mermaid kinds accepted)
 DIAGRAMS = {
     1: ("Context", ("flowchart", "graph")),
-    2: ("Building blocks", ("flowchart", "graph")),
+    2: ("Agent loop", ("flowchart", "graph")),
     3: ("Main sequence", ("sequenceDiagram",)),
     4: ("Rules", ("flowchart", "graph")),
     5: ("States", ("stateDiagram-v2", "stateDiagram")),
@@ -96,6 +96,8 @@ def check(project: Path, final: bool) -> list[tuple[bool, str]]:
             if body is None:
                 out.append((False, f"docs/MODEL.md lacks diagram '## {n}. {name}'"))
                 continue
+            if not re.search(r"^\*\*Answer:\*\*\s*\S", body, re.M):
+                out.append((False, f"docs/MODEL.md diagram {n} '{name}' lacks an '**Answer:**' line under its heading"))
             got = mermaid_kinds(body)
             if n == 5 and not got and re.search(r"^No states:\s*\S", body, re.M):
                 out.append((True, "docs/MODEL.md diagram 5 'States': none, with a reason"))

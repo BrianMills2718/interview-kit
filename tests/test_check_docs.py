@@ -129,3 +129,11 @@ def test_final_accepts_an_imported_library_function(tmp_path):
     edit(p / "docs/MODEL.md", "| adder | the sum | `add()` |", "| adder | the sum | `add()` after `interrupt()` and `Cmd()` |")
     code, out = run(p, "--final")
     assert code == 0, out
+
+
+def test_diagram_without_an_answer_line_fails(tmp_path):
+    p = package(tmp_path)
+    edit(p / "docs/MODEL.md", "**Answer:** one call, one return.\n", "")
+    code, out = run(p)
+    assert code == 1
+    assert "diagram 3 'Main sequence' lacks an '**Answer:**' line" in out

@@ -1,19 +1,23 @@
-# System model
+# System model: adder, adds two numbers with one pure function
 
 ## Goals
 - Outcome: a caller adds two numbers and sees the sum.
 - Quality goals: correct sum.
 
 ## 1. Context: who and what is outside the system?
+**Answer:** only the caller.
+*View: current. Arrows mean: sends to.*
 ```mermaid
 flowchart LR
   Caller -->|two numbers| Adder
 ```
 
-## 2. Building blocks: which part owns what?
+## 2. Agent loop: which part runs each step, and where does the run stop or pause?
+**Answer:** there is no loop; `add()` runs once and returns.
+*View: current. Arrows mean: calls.*
 ```mermaid
-flowchart TB
-  add["add()"]
+flowchart LR
+  Caller -->|"a, b"| add["add()"]
 ```
 
 | Block | Owns | Code |
@@ -21,6 +25,7 @@ flowchart TB
 | adder | the sum | `add()` |
 
 ## 3. Main sequence: what happens, in order, on the main path?
+**Answer:** one call, one return.
 ```mermaid
 sequenceDiagram
   participant Caller
@@ -30,16 +35,19 @@ sequenceDiagram
 ```
 
 ## 4. Rules: in what order are the business rules checked?
+**Answer:** one check: both inputs are numbers.
 ```mermaid
 flowchart TD
   num{both numbers?} -->|yes| sum[return a + b]
   num -->|no| err[TypeError]
 ```
 
-## 5. States: what states does the main item move through?
+## 5. States: what states does a run or record move through, including pauses and resumes?
+**Answer:** none.
 No states: add is a pure function.
 
 ## 6. Data: what are the typed contracts and state?
+**Answer:** two ints in.
 ```mermaid
 classDiagram
   class add {

@@ -23,7 +23,7 @@ like START -> agent -> tools -> agent -> END helps).
 ## Design decisions
 The two or three that matter most; all of them are in [docs/DECISIONS.md](docs/DECISIONS.md).
 Design, model and all six diagrams: [docs/DESIGN.md](docs/DESIGN.md), [docs/MODEL.md](docs/MODEL.md).
-Paste the context and main-sequence diagrams from the model here.
+Paste the agent-loop diagram (2) and the rules table (4) from the model here.
 
 | Requirement | Code | Test |
 |---|---|---|
