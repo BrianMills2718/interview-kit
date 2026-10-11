@@ -41,7 +41,7 @@ Each says what would show it was wrong.
 3. **One paste-able file** (`KIT.md`) as the no-internet fallback. Wrong if it grows past what an
    IDE chat accepts as context; keep notes short.
 4. **Light commit rule in this repo** (`.aes/commit_rule.yaml`: plan tag enforced, plan-adoption
-   verdict logged, not blocking), from Brian 2026-10-10: "drop a lot of the process ceremnoy".
+   verdict logged, not blocking), at the owner's request (2026-10-10).
    Most refusals that led to it came from misusing quick-adopt
    ([company-planning#118](https://github.com/BrianMills2718/company-planning/issues/118)).
    Wrong if a commit here lands without a real plan file; then set `plan_adoption: enforce`.

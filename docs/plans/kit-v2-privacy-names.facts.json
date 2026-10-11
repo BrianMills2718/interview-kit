@@ -1,0 +1,21 @@
+{
+  "schema_version": "method-activation-facts.v1",
+  "record_type": "method_activation_facts",
+  "plan_ref": "docs/plans/kit-v2-privacy-names.md",
+  "plan_sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0",
+  "path_decision_ref": "docs/plans/kit-v2-privacy-names.path-decision.json",
+  "path_decision_sha256": "54ef9a14582024c4b623e544967ede0fc050859a22f0f06bf8fe3d75409c76ee",
+  "facts": {
+    "shared_mechanism": false,
+    "empirical_comparison_proposed": false,
+    "llm_central": false,
+    "irreversible_or_spend_action": false
+  },
+  "fact_sources": {
+    "shared_mechanism": "derived_current_boundary",
+    "empirical_comparison_proposed": "derived_current_boundary",
+    "llm_central": "derived_current_boundary",
+    "irreversible_or_spend_action": "derived_current_boundary"
+  },
+  "recorded_at": "2026-10-11T07:13:21Z"
+}

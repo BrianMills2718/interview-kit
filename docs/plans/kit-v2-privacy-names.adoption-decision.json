@@ -1,0 +1,18 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-privacy-names.md",
+  "plan_sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0",
+  "receipt_ref": "docs/plans/kit-v2-privacy-names.receipt.json",
+  "receipt_sha256": "a4f3fb492443539ef1346441c3d681d9918fee9fb6952312e831dfac5561e201",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly state that this procedure is distinct from anticipated failure modes, and it does not explicitly separate review completeness from the run verdict; it only says a complete review is distinct from a passing run.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not state what the examined run must show for the `public-repo privacy` model element; “the output shows what that line says” is not a concrete observation. It also lacks applicable source-linked views or an explicit explanation of their absence, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons no update is needed)."
+  ],
+  "decided_at": "2026-10-11T07:14:07Z"
+}

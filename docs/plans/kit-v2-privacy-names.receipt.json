@@ -1,0 +1,538 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-kit-v2-privacy-names-9104a9a11d0f",
+  "plan": {
+    "plan_ref": "docs/plans/kit-v2-privacy-names.md",
+    "plan_sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+  },
+  "path_decision": {
+    "ref": "docs/plans/kit-v2-privacy-names.path-decision.json",
+    "sha256": "54ef9a14582024c4b623e544967ede0fc050859a22f0f06bf8fe3d75409c76ee",
+    "selected_path": "prototype",
+    "classified_path": "prototype",
+    "errors": []
+  },
+  "route": "inline_prototype",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@11",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "0261c51b94b32a629bf6255b3c032c18cdbef4e8df6d5bed9db1f72d267c89cb"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "e08f1a326de035b56e4e20bd6224439145f2373926a66672502c4b78a524105d"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/kit-v2-privacy-names.facts.json",
+    "facts_sha256": "1ab4d5cab8c2c5867ec1ab6f0cf559acab68c42d3eed4ae3d43cffa3cee27918",
+    "facts": {
+      "shared_mechanism": false,
+      "empirical_comparison_proposed": false,
+      "llm_central": false,
+      "irreversible_or_spend_action": false,
+      "crosses_system_boundary": false,
+      "deploys": false,
+      "claims_external_standard": false,
+      "aes_governed_target": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": true
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "crosses_system_boundary": "default:not_declared",
+      "deploys": "default:not_declared",
+      "claims_external_standard": "default:not_declared",
+      "aes_governed_target": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": false,
+        "reason": "shared_mechanism=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": false,
+        "reason": "llm_central=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": true,
+        "reason": "inline_prototype=true (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": false,
+        "reason": "crosses_system_boundary=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": false,
+        "reason": "claims_external_standard=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:4e714121a64916df60e36bd7d38e5a3ff574f93a74efe3fdc14b6544f9b10ff5",
+    "definition_sha256": "3941eb35515699afb89ed0c77de1fec459e421feedcacb1f5fd23e7316d93ba2",
+    "bundle_ref": "docs/plans/kit-v2-privacy-names.bundle.json",
+    "bundle_sha256": "683b2668bc64d6540407db8ed935b59088a2ee3b4411c058b28822d65d5165de",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#actor-and-result",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor as Brian, states the desired result for the public repository, and gives a stable, concrete user-visible example: the privacy read lists no company, interview, or personal details beyond the owner’s public identity.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.path-decision.json",
+          "sha256": "54ef9a14582024c4b623e544967ede0fc050859a22f0f06bf8fe3d75409c76ee"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan has an explicit Requirements table with R1 stating the requested result, identifying its check, and marking it “planned, not yet run.” It also explicitly addresses implied claims, stating that there are none beyond R1 and that the change presents nothing as following a standard, schema, or contract.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#success-and-disproof",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly defines success as the real read finding no company, interview, or quote while the planted input still catches both planted lines. It also provides a concrete disproof condition: the real read still lists a quote or company.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#success-and-disproof",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence names the run being judged, identifies its location as the committed complete check output, and specifies trace requirements beyond the final result: command/files/reset context, named checks with results and skip status, matching exit status, and output for each model element. It also explicitly states that both success and disproof are judged from that file.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#when-a-run-fails-or-surprises-us",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence does not explicitly state that this procedure is distinct from anticipated failure modes, and it does not explicitly separate review completeness from the run verdict; it only says a complete review is distinct from a passing run.",
+        "rationale": "The quoted section explicitly covers preserving the failed run and trace id, reading the full record, citing and classifying divergence, investigating unresolved causes before causal repair, and linking a targeted repair to a new traced verification run while retaining the original. However, the required distinctness from anticipated failure modes and the separation of review completeness specifically from the run verdict are not stated explicitly.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence does not explicitly state that this procedure is distinct from anticipated failure modes, and it does not explicitly separate review completeness from the run verdict; it only says a complete review is distinct from a passing run."
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The plan does not state what the examined run must show for the `public-repo privacy` model element; “the output shows what that line says” is not a concrete observation. It also lacks applicable source-linked views or an explicit explanation of their absence, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons no update is needed).",
+        "rationale": "Although the plan links `wiki/index.md` and names `public-repo privacy`, it provides only a bare model element and does not satisfy the required discovery, view, freshness, and reconciliation obligations. The quoted evidence therefore does not establish the complete system-model requirement.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The plan does not state what the examined run must show for the `public-repo privacy` model element; “the output shows what that line says” is not a concrete observation. It also lacks applicable source-linked views or an explicit explanation of their absence, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons no update is needed)."
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#capability-reuse",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names both catalogue files and states, “No catalogue entry fits,” with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism. This satisfies the no-entry alternative.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#authority-and-non-goals",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies authority: Brian requested the change in his own repository, with one agent making it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": false,
+      "verifier_kind": "semantic",
+      "disposition": "not_applicable",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#uncertainties",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly lists one uncertainty—whether the change needs files beyond the listed files—and provides resolving evidence: `git status --short` showing only `.aes/commit_rule.yaml` and `wiki/index.md`. No separate owner is required because resolving evidence is provided.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#activation-facts",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly states: “No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard.” It does not propose an experiment or external-standard conformance, and the quoted evidence does not establish that the target repository is governed by `.aes/target.yaml`; therefore no triggered activation fact is declared false.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-PROTO-VERTICAL-RESET",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v2-privacy-names.md#vertical-and-reset",
+          "sha256": "9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/OV-PROTO-VERTICAL-RESET",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly states the minimal vertical result, including the retained owner name and GitHub username and the validation checks. It names the reset boundary as `git revert` of the commit and the non-goal as anything outside the two listed files, without introducing coordinated-work ceremony.",
+        "reused": false
+      },
+      "suggested_action": null
+    }
+  ],
+  "item_counts": {
+    "pass": 10,
+    "unresolved": 2,
+    "not_applicable": 1,
+    "unavailable": 0,
+    "missing": 0
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-kit-v2-privacy-names-9104a9a11d0f",
+    "snapshot_ref": "SNAPSHOT-kit-v2-privacy-names",
+    "snapshot_revision": "sha256:683b2668bc64d6540407db8ed935b59088a2ee3b4411c058b28822d65d5165de",
+    "packet_ref": "docs/plans/kit-v2-privacy-names.md",
+    "packet_revision": "sha256:9104a9a11d0f3d7af5e38a777f8a6c32a2fde9daacefad71d91e1e0dc810c3e0",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [
+      {
+        "diagnostic_id": "DIAG-kit-v2-privacy-names-5",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-TRACE-DEBUGGING: The evidence does not explicitly state that this procedure is distinct from anticipated failure modes, and it does not explicitly separate review completeness from the run verdict; it only says a complete review is distinct from a passing run.",
+        "source_locator": "docs/plans/kit-v2-privacy-names.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence does not explicitly state that this procedure is distinct from anticipated failure modes, and it does not explicitly separate review completeness from the run verdict; it only says a complete review is distinct from a passing run.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-TRACE-DEBUGGING"
+      },
+      {
+        "diagnostic_id": "DIAG-kit-v2-privacy-names-6",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-SYSTEM-MODEL: The plan does not state what the examined run must show for the `public-repo privacy` model element; “the output shows what that line says” is not a concrete observation. It also lacks applicable source-linked views or an explicit explanation of their absence, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons no update is needed).",
+        "source_locator": "docs/plans/kit-v2-privacy-names.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The plan does not state what the examined run must show for the `public-repo privacy` model element; “the output shows what that line says” is not a concrete observation. It also lacks applicable source-linked views or an explicit explanation of their absence, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons no update is needed).",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-SYSTEM-MODEL"
+      }
+    ],
+    "route": "inline_prototype",
+    "adoption_readiness": "contributor_disposition_needed",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "actionable_summary": [
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly state that this procedure is distinct from anticipated failure modes, and it does not explicitly separate review completeness from the run verdict; it only says a complete review is distinct from a passing run.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The plan does not state what the examined run must show for the `public-repo privacy` model element; “the output shows what that line says” is not a concrete observation. It also lacks applicable source-linked views or an explicit explanation of their absence, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons no update is needed)."
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "quick-adopt",
+    "session": "ee31d131-4b2f-4673-b467-06a94912c64d"
+  },
+  "started_at": "2026-10-11T07:13:24Z",
+  "completed_at": "2026-10-11T07:14:07Z",
+  "duration_ms": 40064
+}

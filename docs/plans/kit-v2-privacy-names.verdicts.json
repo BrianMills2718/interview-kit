@@ -1,0 +1,101 @@
+{
+  "0dae1bd36aff1ba035fe41908d246c13e95d31ccdeea64c42977fc7c7f24a5a3": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly defines success as the real read finding no company, interview, or quote while the planted input still catches both planted lines. It also provides a concrete disproof condition: the real read still lists a quote or company.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  },
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly state that this procedure is distinct from anticipated failure modes, and it does not explicitly separate review completeness from the run verdict; it only says a complete review is distinct from a passing run.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The quoted section explicitly covers preserving the failed run and trace id, reading the full record, citing and classifying divergence, investigating unresolved causes before causal repair, and linking a targeted repair to a new traced verification run while retaining the original. However, the required distinctness from anticipated failure modes and the separation of review completeness specifically from the run verdict are not stated explicitly.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "2cd8095310ed91225806d3241b623040cc8d94ea95ca6d8dcda9c8bbdcc02a2e": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states the minimal vertical result, including the retained owner name and GitHub username and the validation checks. It names the reset boundary as `git revert` of the commit and the non-goal as anything outside the two listed files, without introducing coordinated-work ceremony.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "3ba2427eb42badc92535d5c4c8ace7c99fbeb34e40e3330c89725611bf6b8422": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly states: \u201cNo shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard.\u201d It does not propose an experiment or external-standard conformance, and the quoted evidence does not establish that the target repository is governed by `.aes/target.yaml`; therefore no triggered activation fact is declared false.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "46556f128564fd14d19f96bd47596c1eee9589745e1f17c13b2d4fc6c5b8166d": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "The plan does not state what the examined run must show for the `public-repo privacy` model element; \u201cthe output shows what that line says\u201d is not a concrete observation. It also lacks applicable source-linked views or an explicit explanation of their absence, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons no update is needed).",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "Although the plan links `wiki/index.md` and names `public-repo privacy`, it provides only a bare model element and does not satisfy the required discovery, view, freshness, and reconciliation obligations. The quoted evidence therefore does not establish the complete system-model requirement.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  },
+  "51f0bb8f23628b4991c4249a2aa8819ab49fd79435f9b896abc8be374776342d": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names the run being judged, identifies its location as the committed complete check output, and specifies trace requirements beyond the final result: command/files/reset context, named checks with results and skip status, matching exit status, and output for each model element. It also explicitly states that both success and disproof are judged from that file.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "5f1f725c1589a63391612597e659ab794eb269fd090d7d8bc6e4c3b931ca8b93": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as Brian, states the desired result for the public repository, and gives a stable, concrete user-visible example: the privacy read lists no company, interview, or personal details beyond the owner\u2019s public identity.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies authority: Brian requested the change in his own repository, with one agent making it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "ae5d053dde3a27213fa6182f9c75454fa0a6a75955cac046b350b3d1b5ae5776": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism. This satisfies the no-entry alternative.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "bd7ccf9fee699f787ee651f4f6e34515196881bc14c4e78be1e0e1d158623eff": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly lists one uncertainty\u2014whether the change needs files beyond the listed files\u2014and provides resolving evidence: `git status --short` showing only `.aes/commit_rule.yaml` and `wiki/index.md`. No separate owner is required because resolving evidence is provided.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "ffe444c1bf37ed8a5eadabd46721a10d81426552878ac887bb3413c4ae46a0b3": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan has an explicit Requirements table with R1 stating the requested result, identifying its check, and marking it \u201cplanned, not yet run.\u201d It also explicitly addresses implied claims, stating that there are none beyond R1 and that the change presents nothing as following a standard, schema, or contract.",
+    "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  }
+}
