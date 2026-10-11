@@ -356,7 +356,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies Brian as owning the repository and setting the goal, and states that the agent merges to main and pushes after local checks. It also explicitly lists non-goals, including excluding company names, personal data, hosted CI, live or paid LLM calls, edits to code-c7's files, and A2A or langchain-mcp-adapters code.",
+        "rationale": "The evidence explicitly identifies the owner as owning the repository and setting the goal, and states that the agent merges to main and pushes after local checks. It also explicitly lists non-goals, including excluding company names, personal data, hosted CI, live or paid LLM calls, edits to code-c7's files, and A2A or langchain-mcp-adapters code.",
         "reused": true
       },
       "suggested_action": null
@@ -383,7 +383,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence identifies the irreversible action and publication boundary, names Brian as the authorizer, and explains containment through pre-push privacy checks, generic content, and immediate post-push reversion and notification if private data is found.",
+        "rationale": "The evidence identifies the irreversible action and publication boundary, names the owner as the authorizer, and explains containment through pre-push privacy checks, generic content, and immediate post-push reversion and notification if private data is found.",
         "reused": true
       },
       "suggested_action": null
@@ -491,7 +491,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names OpenRouter (and OpenAI) as providers and identifies Brian's OpenRouter route as the authority for a future live check. It also states the promotion condition: one live OpenRouter run must log the supervisor choosing `ask_orders` for an order question and the specialist answer returning as that tool's result.",
+        "rationale": "The evidence explicitly names OpenRouter (and OpenAI) as providers and identifies the owner's OpenRouter route as the authority for a future live check. It also states the promotion condition: one live OpenRouter run must log the supervisor choosing `ask_orders` for an order question and the specialist answer returning as that tool's result.",
         "reused": true
       },
       "suggested_action": null

@@ -1,4 +1,4 @@
-# Interview kit (combined; source: github.com/BrianMills2718/interview-kit)
+# Interview kit (combined; source: the interview-kit repo)
 
 <!-- AGENTS.md -->
 # Working rules for the coding assistant

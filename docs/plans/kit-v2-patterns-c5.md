@@ -13,7 +13,7 @@ goal:
   forbidden_substitutes: "Snippets no test runs; tests that still pass with the pattern broken; API names recalled from memory rather than checked against current docs and the installed packages."
   boundaries: "Only interview-kit, only the files agreed with session code-c7 (examples/patterns_multi.py, examples/mcp_server.py, their tests, skills/mcp-and-a2a, sections after Pitfalls in skills/langgraph-agent, KIT.md, wiki, README rows); public repo, so no company names, interview details, personal data or secrets; no live or paid LLM calls."
   done_when: "docs/plans/kit-v2-patterns-c5.check.txt (full pytest -v, build_kit, plugin validate, privacy grep) and docs/plans/mutation.txt show the five new tests PASSED by name, each broken pattern failing its test, KIT.md at or under 600 lines, plugin validate passing and no private-data hits."
-  do_not_gate_on: "The IDE AI chat (needs an account), the real test environment, code-c7 items (watchlist, structured output, retrieval, interrupt, practice problem, dry run), Brian reading it."
+  do_not_gate_on: "The IDE AI chat (needs an account), the real test environment, code-c7 items (watchlist, structured output, retrieval, interrupt, practice problem, dry run), the owner reading it."
 ---
 
 # Kit v2: supervisor and streaming patterns, MCP server, MCP/A2A note
@@ -85,7 +85,7 @@ Checked against the capability catalogue in agentic-capability-architecture-cano
 
 > **CORE-AUTHORITY-NONGOALS** (blocking): The plan states who holds authority over the work and what it explicitly will not do (non-goals).
 
-**Authority:** Brian owns the repo and set this goal in the session on 2026-10-11; he does not review PRs, so the agent merges to main and pushes after the local checks pass. The file split with the other session (code-c7) was agreed by message on 2026-10-11.
+**Authority:** the owner owns the repo and set this goal in the session on 2026-10-11; he does not review PRs, so the agent merges to main and pushes after the local checks pass. The file split with the other session (code-c7) was agreed by message on 2026-10-11.
 
 **Non-goals:** no company names, interview details or personal data; no hosted CI; no live or paid LLM calls; no edits to code-c7's files; no A2A or langchain-mcp-adapters code (both named in the note as untested).
 
@@ -96,8 +96,8 @@ Checked against the capability catalogue in agentic-capability-architecture-cano
 One irreversible action, no spend.
 
 - **Action and boundary:** `git push origin main` to the public GitHub repo. That is the publication boundary: before it everything is local and revertible; after it the content may be cached or copied, so a later `git revert` removes it from the repo but not from caches.
-- **Who authorizes:** Brian. He authorized this class of publication in advance (workspace rule, 2026-10-07: "i dont care what is public as long as it doesnt contain private data"; 2026-10-04: "yes you can deploy anything that doesnt have private information publicly"), and set this goal, which says "push to main after checks pass". No other approval applies.
-- **Containment:** the push happens only after the privacy check (R8: gitleaks plus a grep for emails, phones and company names on the whole diff) prints no matches in check.txt; the content is generic example code and notes; if anything private is found after the push, revert at once and tell Brian.
+- **Who authorizes:** the owner. He authorized this class of publication in advance (workspace rule, 2026-10-07: "i dont care what is public as long as it doesnt contain private data"; 2026-10-04: "yes you can deploy anything that doesnt have private information publicly"), and set this goal, which says "push to main after checks pass". No other approval applies.
+- **Containment:** the push happens only after the privacy check (R8: gitleaks plus a grep for emails, phones and company names on the whole diff) prints no matches in check.txt; the content is generic example code and notes; if anything private is found after the push, revert at once and tell the owner.
 
 ## Uncertainties
 
@@ -130,7 +130,7 @@ One irreversible action, no spend.
 
 **Tracing.** Each node logs its tool calls (`log.info("supervisor: tool_calls=%s", ...)`, `specialist %s: %d chars`), and `stream_steps()` yields every node update in order, which is the trace a candidate prints. In this plan's runs every model is a scripted fake, so the trace is the pytest output in check.txt with the scripted replies in the test file.
 
-**Provider and spend authority.** This plan makes no live model call and spends nothing. The examples' live path (`__main__` in `examples/agent_template.py`) uses OpenRouter (`OPENROUTER_API_KEY`, `openai/gpt-4o-mini`) or OpenAI. In a test, the candidate's own key and the test's rules are the authority; in this repo, Brian's OpenRouter route is the authority for any future live check.
+**Provider and spend authority.** This plan makes no live model call and spends nothing. The examples' live path (`__main__` in `examples/agent_template.py`) uses OpenRouter (`OPENROUTER_API_KEY`, `openai/gpt-4o-mini`) or OpenAI. In a test, the candidate's own key and the test's rules are the authority; in this repo, the owner's OpenRouter route is the authority for any future live check.
 
 **Authentic-run condition before promotion.** The kit presents these patterns as offline-tested control flow only. Before any text in the kit claims the supervisor routes correctly with a real model, one live run through OpenRouter must show, in its logged trace, the supervisor choosing `ask_orders` for an order question and the specialist's answer returning as that tool's result. Until then the skill does not make that claim.
 

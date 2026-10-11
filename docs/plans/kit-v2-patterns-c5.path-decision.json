@@ -38,20 +38,20 @@
     "boundary_known": "derived_current_boundary"
   },
   "fact_evidence": {
-    "existing_implementation_obstacle": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "reproduced_failure": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "identified_fix": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "concurrent_writers": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "machine_consumed_planning_handoff": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "shared_contract_mutation": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "persistent_migration": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "governed_registry": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "consequential_external_mutation": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "answer_only": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "continuity_beyond_session": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "one_writer": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "reversible": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
-    "boundary_known": "Bounded additions to one public repo Brian owns, in a separate worktree split with the one other session by agreement; reversible by git revert."
+    "existing_implementation_obstacle": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "reproduced_failure": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "identified_fix": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "concurrent_writers": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "machine_consumed_planning_handoff": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "shared_contract_mutation": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "persistent_migration": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "governed_registry": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "consequential_external_mutation": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "answer_only": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "continuity_beyond_session": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "one_writer": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "reversible": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert.",
+    "boundary_known": "Bounded additions to one public repo the owner owns, in a separate worktree split with the one other session by agreement; reversible by git revert."
   },
-  "rationale": "One writer, one reversible change Brian asked for, files named in advance."
+  "rationale": "One writer, one reversible change the owner asked for, files named in advance."
 }

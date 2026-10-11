@@ -148,7 +148,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result, and gives a concrete, user-visible stable example: `test_interrupt_resume_no_skips_the_action` asserting `REFUNDS_ISSUED == []` after resume `'no'`.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result, and gives a concrete, user-visible stable example: `test_interrupt_resume_no_skips_the_action` asserting `REFUNDS_ISSUED == []` after resume `'no'`.",
         "reused": false
       },
       "suggested_action": null
@@ -362,7 +362,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states that one agent makes it. It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
+        "rationale": "The evidence explicitly identifies the owner as the authority requesting the change and states that one agent makes it. It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
         "reused": false
       },
       "suggested_action": null

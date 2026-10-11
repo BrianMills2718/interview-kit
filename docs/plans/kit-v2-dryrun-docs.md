@@ -13,9 +13,9 @@ goal:
   outcome: "The kit's notes answer the questions the timed dry run got stuck on: setup, approval in a recorded chat, version checks in a uv venv, two langgraph traps, the provider key"
   canonical_example: "A candidate reading PROBLEM.md knows to install langchain langgraph pytest and not to open cases.json first"
   forbidden_substitutes: "claiming success from a check's last line or exit status alone; a change outside the listed files; a commit without the saved check output"
-  boundaries: "only these files: AGENTS.md, practice/PROBLEM.md, skills/langgraph-agent/SKILL.md, skills/plan/SKILL.md, skills/using-ide-ai-chat/SKILL.md; no irreversible action and no spend; Brian's request as quoted is the scope"
+  boundaries: "only these files: AGENTS.md, practice/PROBLEM.md, skills/langgraph-agent/SKILL.md, skills/plan/SKILL.md, skills/using-ide-ai-chat/SKILL.md; no irreversible action and no spend; the owner's request as quoted is the scope"
   done_when: "uv run pytest -v passes; the two new watchlist rows reproduce on langgraph 1.2.14 The check's full output is committed as docs/plans/kit-v2-dryrun-docs.check.txt, and the commit is tagged [Goal kit-v2-dryrun-docs] with an Asked: line quoting the request."
-  do_not_gate_on: "Brian's review of the plan page; work outside the listed files"
+  do_not_gate_on: "the owner's review of the plan page; work outside the listed files"
 ---
 
 # Fold the dry run's documentation frictions into the kit
@@ -34,9 +34,9 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Actor and result
 
-**Actor:** Brian, who asked for this change.
+**Actor:** The owner, who asked for this change.
 
-**Request (verbatim):** Brian 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat"
+**Request (verbatim):** The owner 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat"
 
 **Desired result:** The kit's notes answer the questions the timed dry run got stuck on: setup, approval in a recorded chat, version checks in a uv venv, two langgraph traps, the provider key
 
@@ -44,7 +44,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Authority and non-goals
 
-**Authority:** Brian asked for this change in his own repository; one agent makes it.
+**Authority:** the owner asked for this change in his own repository; one agent makes it.
 
 **Non-goals:** nothing outside the files listed under Vertical and reset. No irreversible action and no spend.
 
@@ -52,7 +52,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 | Id | Requirement | Source | Check | Status |
 | --- | --- | --- | --- | --- |
-| R1 | The kit's notes answer the questions the timed dry run got stuck on: setup, approval in a recorded chat, version checks in a uv venv, two langgraph traps, the provider key | asked: Brian 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat" | the success check under Success and disproof, its output saved as `docs/plans/kit-v2-dryrun-docs.check.txt` | planned, not yet run |
+| R1 | The kit's notes answer the questions the timed dry run got stuck on: setup, approval in a recorded chat, version checks in a uv venv, two langgraph traps, the provider key | asked: The owner 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat" | the success check under Success and disproof, its output saved as `docs/plans/kit-v2-dryrun-docs.check.txt` | planned, not yet run |
 
 Requirements the change's own claims imply: none beyond R1; the change presents nothing as following a standard, schema or contract.
 
@@ -100,4 +100,4 @@ Make the change, run the success check, commit. Reset: `git revert` of the commi
 
 ## Activation facts
 
-No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change Brian asked for.
+No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change the owner asked for.

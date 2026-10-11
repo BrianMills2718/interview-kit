@@ -2,7 +2,7 @@
   "1074b55317bd8184922b5cef679388230cc4dd03cc8edd9bfb4da7e86ea0bea0": {
     "item_id": "CORE-IRREVERSIBLE-SPEND",
     "materiality": "material",
-    "missing": "An explicit statement of who must authorize the public-repository push, and a clearly named boundary for that action. The evidence mentions Brian\u2019s standing rule and a private-data exception, but does not explicitly state that Brian must authorize the push or define the boundary as an authorization boundary.",
+    "missing": "An explicit statement of who must authorize the public-repository push, and a clearly named boundary for that action. The evidence mentions the owner\u2019s standing rule and a private-data exception, but does not explicitly state that the owner must authorize the push or define the boundary as an authorization boundary.",
     "model": "openrouter/openai/gpt-5.6-luna",
     "rationale": "The evidence identifies containment measures\u2014a privacy check before pushing and `git revert` afterward\u2014but the public push is still an irreversible action despite the statement that none are proposed. The required authorization and boundary are only implied by the standing rule and privacy exception.",
     "trace_id": "company-planning/method-conformance/kit-v2-patterns-c5/b70b7027c225/CORE-IRREVERSIBLE-SPEND",
@@ -103,7 +103,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence identifies the irreversible action and publication boundary, names Brian as the authorizer, and explains containment through pre-push privacy checks, generic content, and immediate post-push reversion and notification if private data is found.",
+    "rationale": "The evidence identifies the irreversible action and publication boundary, names the owner as the authorizer, and explains containment through pre-push privacy checks, generic content, and immediate post-push reversion and notification if private data is found.",
     "trace_id": "company-planning/method-conformance/kit-v2-patterns-c5/0eafdb6dda60/CORE-IRREVERSIBLE-SPEND",
     "verdict": "pass"
   },
@@ -184,7 +184,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly names OpenRouter (and OpenAI) as providers and identifies Brian's OpenRouter route as the authority for a future live check. It also states the promotion condition: one live OpenRouter run must log the supervisor choosing `ask_orders` for an order question and the specialist answer returning as that tool's result.",
+    "rationale": "The evidence explicitly names OpenRouter (and OpenAI) as providers and identifies the owner's OpenRouter route as the authority for a future live check. It also states the promotion condition: one live OpenRouter run must log the supervisor choosing `ask_orders` for an order question and the specialist answer returning as that tool's result.",
     "trace_id": "company-planning/method-conformance/kit-v2-patterns-c5/cbe2549c91b7/OV-LLM-AUTHORITY-PROMOTION",
     "verdict": "pass"
   },
@@ -193,7 +193,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly identifies Brian as owning the repository and setting the goal, and states that the agent merges to main and pushes after local checks. It also explicitly lists non-goals, including excluding company names, personal data, hosted CI, live or paid LLM calls, edits to code-c7's files, and A2A or langchain-mcp-adapters code.",
+    "rationale": "The evidence explicitly identifies the owner as owning the repository and setting the goal, and states that the agent merges to main and pushes after local checks. It also explicitly lists non-goals, including excluding company names, personal data, hosted CI, live or paid LLM calls, edits to code-c7's files, and A2A or langchain-mcp-adapters code.",
     "trace_id": "company-planning/method-conformance/kit-v2-patterns-c5/b70b7027c225/CORE-AUTHORITY-NONGOALS",
     "verdict": "pass"
   },

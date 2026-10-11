@@ -148,7 +148,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result for the public repository, and gives a stable, concrete user-visible example: the privacy read lists no company, interview, or personal details beyond the owner’s public identity.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result for the public repository, and gives a stable, concrete user-visible example: the privacy read lists no company, interview, or personal details beyond the owner’s public identity.",
         "reused": false
       },
       "suggested_action": null
@@ -360,7 +360,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies authority: Brian requested the change in his own repository, with one agent making it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
+        "rationale": "The evidence explicitly identifies authority: the owner requested the change in his own repository, with one agent making it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
         "reused": false
       },
       "suggested_action": null

@@ -38,20 +38,20 @@
     "boundary_known": "derived_current_boundary"
   },
   "fact_evidence": {
-    "existing_implementation_obstacle": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "reproduced_failure": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "identified_fix": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "concurrent_writers": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "machine_consumed_planning_handoff": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "shared_contract_mutation": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "persistent_migration": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "governed_registry": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "consequential_external_mutation": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "answer_only": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "continuity_beyond_session": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "one_writer": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "reversible": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert.",
-    "boundary_known": "Bounded change Brian asked for (4 file(s)), one writer, reversible by git revert."
+    "existing_implementation_obstacle": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "reproduced_failure": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "identified_fix": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "concurrent_writers": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "machine_consumed_planning_handoff": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "shared_contract_mutation": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "persistent_migration": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "governed_registry": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "consequential_external_mutation": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "answer_only": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "continuity_beyond_session": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "one_writer": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "reversible": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert.",
+    "boundary_known": "Bounded change the owner asked for (4 file(s)), one writer, reversible by git revert."
   },
-  "rationale": "One writer, one reversible change Brian asked for, files named in advance."
+  "rationale": "One writer, one reversible change the owner asked for, files named in advance."
 }

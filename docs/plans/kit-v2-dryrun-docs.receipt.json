@@ -148,7 +148,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result as notes answering the listed timed-dry-run questions, and gives a concrete, user-visible example: a candidate reading PROBLEM.md knows which packages to install and not to open cases.json first.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result as notes answering the listed timed-dry-run questions, and gives a concrete, user-visible example: a candidate reading PROBLEM.md knows which packages to install and not to open cases.json first.",
         "reused": false
       },
       "suggested_action": null
@@ -362,7 +362,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies Brian as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+        "rationale": "The evidence explicitly identifies the owner as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
         "reused": false
       },
       "suggested_action": null

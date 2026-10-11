@@ -28,7 +28,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "3d61c6f6ebad23159700d824a0c235b36c7a1a21",
           "pointer": "#core-and-conditional-requirements"
@@ -46,7 +46,7 @@
           "path_decision_record"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#choose-the-route-before-adding-structure"
@@ -64,7 +64,7 @@
           "plan_document"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#requirements-traced-default"
@@ -82,7 +82,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#4-derive-the-design"
@@ -100,7 +100,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#4-derive-the-design"
@@ -118,7 +118,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#when-a-run-fails-or-surprises-us"
@@ -136,7 +136,7 @@
           "plan_document"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#system-model-default"
@@ -154,7 +154,7 @@
           "plan_document"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#capability-reuse-default"
@@ -172,7 +172,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "3d61c6f6ebad23159700d824a0c235b36c7a1a21",
           "pointer": "#core-and-conditional-requirements"
@@ -190,7 +190,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "3d61c6f6ebad23159700d824a0c235b36c7a1a21",
           "pointer": "#core-and-conditional-requirements"
@@ -208,7 +208,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "3d61c6f6ebad23159700d824a0c235b36c7a1a21",
           "pointer": "#core-and-conditional-requirements"
@@ -227,7 +227,7 @@
           "activation_facts_record"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/docs/designs/enforcement/PLANNING_METHOD_CONFORMANCE_RECEIPT.md",
           "revision": "3d61c6f6ebad23159700d824a0c235b36c7a1a21",
           "pointer": "#core-and-conditional-requirements"
@@ -245,7 +245,7 @@
           "plan_section"
         ],
         "source_ref": {
-          "repository": "BrianMills2718/company-planning",
+          "repository": "the ownerMills2718/company-planning",
           "path": "plugins/company-planning/skills/bounded-design/SKILL.md",
           "revision": "db5f90d61acfdcd02e448c2fa565f4f94a6a4adb",
           "pointer": "#4-derive-the-design"

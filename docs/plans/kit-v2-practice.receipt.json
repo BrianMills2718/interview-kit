@@ -148,7 +148,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result as the contents and behavior of practice/, and gives a stable, concrete, user-visible example: running `python practice/grade.py` with the reference solution prints `7/7 cases PASS`.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result as the contents and behavior of practice/, and gives a stable, concrete, user-visible example: running `python practice/grade.py` with the reference solution prints `7/7 cases PASS`.",
         "reused": false
       },
       "suggested_action": null
@@ -362,7 +362,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies Brian as the authority/requester and states that the work will not extend beyond the listed files, perform irreversible actions, or incur spending.",
+        "rationale": "The evidence explicitly identifies the owner as the authority/requester and states that the work will not extend beyond the listed files, perform irreversible actions, or incur spending.",
         "reused": false
       },
       "suggested_action": null

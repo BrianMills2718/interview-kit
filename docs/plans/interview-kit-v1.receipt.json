@@ -148,7 +148,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result as a public GitHub repository and offline KIT.md, and gives a stable, concrete user-visible example: a specific git clone command yielding named files and directories.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result as a public GitHub repository and offline KIT.md, and gives a stable, concrete user-visible example: a specific git clone command yielding named files and directories.",
         "reused": false
       },
       "suggested_action": null
@@ -358,7 +358,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies authority: Brian requested the change in his repository and one agent will execute it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
+        "rationale": "The evidence explicitly identifies authority: the owner requested the change in his repository and one agent will execute it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
         "reused": false
       },
       "suggested_action": null

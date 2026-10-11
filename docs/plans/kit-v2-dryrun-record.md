@@ -13,9 +13,9 @@ goal:
   outcome: "wiki/index.md records the timed dry run's evidence and the next additions it showed; KIT.md carries the new notes"
   canonical_example: "A maintainer opening wiki/index.md sees the 12 min 31 s run, 8 of 8, and the next two additions"
   forbidden_substitutes: "claiming success from a check's last line or exit status alone; a change outside the listed files; a commit without the saved check output"
-  boundaries: "only these files: KIT.md, README.md, wiki/index.md; no irreversible action and no spend; Brian's request as quoted is the scope"
+  boundaries: "only these files: KIT.md, README.md, wiki/index.md; no irreversible action and no spend; the owner's request as quoted is the scope"
   done_when: "./build_kit.sh leaves KIT.md under 30 KB; uv run pytest -v passes The check's full output is committed as docs/plans/kit-v2-dryrun-record.check.txt, and the commit is tagged [Goal kit-v2-dryrun-record] with an Asked: line quoting the request."
-  do_not_gate_on: "Brian's review of the plan page; work outside the listed files"
+  do_not_gate_on: "the owner's review of the plan page; work outside the listed files"
 ---
 
 # Record the dry run and rebuild KIT.md
@@ -34,9 +34,9 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Actor and result
 
-**Actor:** Brian, who asked for this change.
+**Actor:** The owner, who asked for this change.
 
-**Request (verbatim):** Brian 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat"
+**Request (verbatim):** The owner 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat"
 
 **Desired result:** wiki/index.md records the timed dry run's evidence and the next additions it showed; KIT.md carries the new notes
 
@@ -44,7 +44,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Authority and non-goals
 
-**Authority:** Brian asked for this change in his own repository; one agent makes it.
+**Authority:** the owner asked for this change in his own repository; one agent makes it.
 
 **Non-goals:** nothing outside the files listed under Vertical and reset. No irreversible action and no spend.
 
@@ -52,7 +52,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 | Id | Requirement | Source | Check | Status |
 | --- | --- | --- | --- | --- |
-| R1 | wiki/index.md records the timed dry run's evidence and the next additions it showed; KIT.md carries the new notes | asked: Brian 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat" | the success check under Success and disproof, its output saved as `docs/plans/kit-v2-dryrun-record.check.txt` | planned, not yet run |
+| R1 | wiki/index.md records the timed dry run's evidence and the next additions it showed; KIT.md carries the new notes | asked: The owner 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat" | the success check under Success and disproof, its output saved as `docs/plans/kit-v2-dryrun-record.check.txt` | planned, not yet run |
 
 Requirements the change's own claims imply: none beyond R1; the change presents nothing as following a standard, schema or contract.
 
@@ -98,4 +98,4 @@ Make the change, run the success check, commit. Reset: `git revert` of the commi
 
 ## Activation facts
 
-No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change Brian asked for.
+No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change the owner asked for.

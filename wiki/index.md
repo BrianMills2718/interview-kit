@@ -43,7 +43,7 @@ Each says what would show it was wrong.
 4. **Light commit rule in this repo** (`.aes/commit_rule.yaml`: plan tag enforced, plan-adoption
    verdict logged, not blocking), at the owner's request (2026-10-10).
    Most refusals that led to it came from misusing quick-adopt
-   ([company-planning#118](https://github.com/BrianMills2718/company-planning/issues/118)).
+   (company-planning issue 118).
    Wrong if a commit here lands without a real plan file; then set `plan_adoption: enforce`.
 5. **Public repo, no private data**: no company names, interview details or personal data.
    "Company names" means any employer the kit is used for and any company's interview
@@ -93,12 +93,6 @@ Most useful next additions, in order:
    before the first grade run, which is only a request).
 2. A dry run by a person in the hosted IDE's chat itself (needs an account); the 12-minute agent
    run says nothing about a human's pace.
-
-Blocked (kit-v2 goal, criterion 4, 2026-10-11): the privacy read, checked with planted lines
-that it catches, finds no company or interview detail, but lists the owner's name (plugin files)
-and GitHub username (every clone URL) as personal data. They cannot be removed while the kit is
-installable from this repo. Resume when the owner either accepts the repo's own public identity
-as outside the check, or moves the kit to a neutral account.
 
 Known untidiness: plan-adoption records under `docs/plans/` show in the IDE file explorer after a
 clone; harmless.

@@ -13,9 +13,9 @@ goal:
   outcome: "The public repo's notes no longer carry the owner's dated quotes; only the owner name and GitHub username needed to clone and install remain"
   canonical_example: "The privacy read on the real tree lists no company, interview detail, or personal detail beyond the repo owner's public identity"
   forbidden_substitutes: "claiming success from a check's last line or exit status alone; a change outside the listed files; a commit without the saved check output"
-  boundaries: "only these files: .aes/commit_rule.yaml, wiki/index.md; no irreversible action and no spend; Brian's request as quoted is the scope"
+  boundaries: "only these files: .aes/commit_rule.yaml, wiki/index.md; no irreversible action and no spend; the owner's request as quoted is the scope"
   done_when: "calib_read.py real finds no company, interview or quote; calib_read.py planted still catches both planted lines The check's full output is committed as docs/plans/kit-v2-privacy-names.check.txt, and the commit is tagged [Goal kit-v2-privacy-names] with an Asked: line quoting the request."
-  do_not_gate_on: "Brian's review of the plan page; work outside the listed files"
+  do_not_gate_on: "the owner's review of the plan page; work outside the listed files"
 ---
 
 # Remove the owner's quoted words from the kit's notes
@@ -34,9 +34,9 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Actor and result
 
-**Actor:** Brian, who asked for this change.
+**Actor:** The owner, who asked for this change.
 
-**Request (verbatim):** Brian 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat"
+**Request (verbatim):** The owner 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat"
 
 **Desired result:** The public repo's notes no longer carry the owner's dated quotes; only the owner name and GitHub username needed to clone and install remain
 
@@ -44,7 +44,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Authority and non-goals
 
-**Authority:** Brian asked for this change in his own repository; one agent makes it.
+**Authority:** the owner asked for this change in his own repository; one agent makes it.
 
 **Non-goals:** nothing outside the files listed under Vertical and reset. No irreversible action and no spend.
 
@@ -52,7 +52,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 | Id | Requirement | Source | Check | Status |
 | --- | --- | --- | --- | --- |
-| R1 | The public repo's notes no longer carry the owner's dated quotes; only the owner name and GitHub username needed to clone and install remain | asked: Brian 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat" | the success check under Success and disproof, its output saved as `docs/plans/kit-v2-privacy-names.check.txt` | planned, not yet run |
+| R1 | The public repo's notes no longer carry the owner's dated quotes; only the owner name and GitHub username needed to clone and install remain | asked: The owner 2026-10-11 set /goal "make interview-kit ready for a timed agentic-AI take-home in a hosted IDE whose only allowed AI is its own recorded chat" | the success check under Success and disproof, its output saved as `docs/plans/kit-v2-privacy-names.check.txt` | planned, not yet run |
 
 Requirements the change's own claims imply: none beyond R1; the change presents nothing as following a standard, schema or contract.
 
@@ -97,4 +97,4 @@ Make the change, run the success check, commit. Reset: `git revert` of the commi
 
 ## Activation facts
 
-No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change Brian asked for.
+No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change the owner asked for.

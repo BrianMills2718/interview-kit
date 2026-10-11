@@ -40,7 +40,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly names the actor (Brian), states the desired result (a version-checked watchlist table mapping old API forms to current patterns), and gives a concrete user-visible example: the create_react_agent row citing the LangGraphDeprecatedSinceV10 warning on langgraph 1.2.14.",
+    "rationale": "The evidence explicitly names the actor (the owner), states the desired result (a version-checked watchlist table mapping old API forms to current patterns), and gives a concrete user-visible example: the create_react_agent row citing the LangGraphDeprecatedSinceV10 warning on langgraph 1.2.14.",
     "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-ACTOR-RESULT-EXAMPLE",
     "verdict": "pass"
   },
@@ -58,7 +58,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly identifies Brian as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+    "rationale": "The evidence explicitly identifies the owner as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
     "trace_id": "company-planning/method-conformance/kit-v2-watchlist/acb009f9421c/CORE-AUTHORITY-NONGOALS",
     "verdict": "pass"
   },

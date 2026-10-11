@@ -11,11 +11,11 @@ trace_review_criteria:
     expected_outcome: pass
 goal:
   outcome: "A public GitHub repo holds working rules, skill guides and an agent template that a fresh environment pulls in with one command, plus a single KIT.md to paste when offline; single-agent work with no coordination ceremony (no claims, worktrees or work-unit graph), which is a non-goal"
-  canonical_example: "git clone --depth 1 https://github.com/BrianMills2718/interview-kit kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py."
+  canonical_example: "git clone --depth 1 https://github.com/the ownerMills2718/interview-kit kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py."
   forbidden_substitutes: "claiming success from a check's last line or exit status alone; a change outside the listed files; a commit without the saved check output"
-  boundaries: "only these files: AGENTS.md, skills, examples, tests, README.md; no irreversible action and no spend; Brian's request as quoted is the scope"
+  boundaries: "only these files: AGENTS.md, skills, examples, tests, README.md; no irreversible action and no spend; the owner's request as quoted is the scope"
   done_when: "On a clean clone made from GitHub without login, the saved check output docs/plans/interview-kit-v1.check.txt shows: (1) ls listing AGENTS.md, KIT.md, the three skills/*.md files and examples/agent_template.py; (2) uv run pytest -v listing test_tool_result_reaches_the_model, test_tool_error_is_returned_not_raised and test_no_tool_needed_ends_immediately as PASSED, which assert the exact tool output 'Order A-100: shipped' and the error text 'Unknown order id' using a scripted fake model; (3) curl of the raw KIT.md URL without login returning text containing 'Working rules for the coding assistant'; (4) gitleaks --no-git and a grep for emails and phone numbers finding nothing; (5) a light LLM read (OpenRouter) of the full text of every committed file asked to list any personal detail of a real person, client or employer material, private message, or non-public record, with its verbatim answer saved; pass only if it lists none. Trace exemption: no model, agent or pipeline under test runs, so the check output is the whole trace. The trace-debugging procedure is distinct from the anticipated failure modes named under disproof, and review completeness (every check's output read) is judged separately from the run verdict. The check's full output is committed as docs/plans/interview-kit-v1.check.txt, and the commit is tagged [Goal interview-kit-v1] with an Asked: line quoting the request."
-  do_not_gate_on: "Brian's review of the plan page; work outside the listed files"
+  do_not_gate_on: "the owner's review of the plan page; work outside the listed files"
 ---
 
 # Portable best-practice kit for hosted coding tests
@@ -34,17 +34,17 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 ## Actor and result
 
-**Actor:** Brian, who asked for this change.
+**Actor:** The owner, who asked for this change.
 
-**Request (verbatim):** Brian 2026-10-10 "im talking about bringing in what is essentialy best practices docuemtnation" so that he can "put them on github and then pull them in right away"
+**Request (verbatim):** The owner 2026-10-10 "im talking about bringing in what is essentialy best practices docuemtnation" so that he can "put them on github and then pull them in right away"
 
 **Desired result:** A public GitHub repo holds working rules, skill guides and an agent template that a fresh environment pulls in with one command, plus a single KIT.md to paste when offline; single-agent work with no coordination ceremony (no claims, worktrees or work-unit graph), which is a non-goal.
 
-**Stable example:** git clone --depth 1 https://github.com/BrianMills2718/interview-kit kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py.
+**Stable example:** git clone --depth 1 https://github.com/the ownerMills2718/interview-kit kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py.
 
 ## Authority and non-goals
 
-**Authority:** Brian asked for this change in his own repository; one agent makes it.
+**Authority:** the owner asked for this change in his own repository; one agent makes it.
 
 **Non-goals:** nothing outside the files listed under Vertical and reset. No irreversible action and no spend.
 
@@ -52,7 +52,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 | Id | Requirement | Source | Check | Status |
 | --- | --- | --- | --- | --- |
-| R1 | A public GitHub repo holds working rules, skill guides and an agent template that a fresh environment pulls in with one command, plus a single KIT.md to paste when offline; single-agent work with no coordination ceremony (no claims, worktrees or work-unit graph), which is a non-goal. | asked: Brian 2026-10-10 "im talking about bringing in what is essentialy best practices docuemtnation" so that he can "put them on github and then pull them in right away" | the success check under Success and disproof, its output saved as `docs/plans/interview-kit-v1.check.txt` | planned, not yet run |
+| R1 | A public GitHub repo holds working rules, skill guides and an agent template that a fresh environment pulls in with one command, plus a single KIT.md to paste when offline; single-agent work with no coordination ceremony (no claims, worktrees or work-unit graph), which is a non-goal. | asked: The owner 2026-10-10 "im talking about bringing in what is essentialy best practices docuemtnation" so that he can "put them on github and then pull them in right away" | the success check under Success and disproof, its output saved as `docs/plans/interview-kit-v1.check.txt` | planned, not yet run |
 | R2 | README.md lists every committed note and example file in its table | stated with the request | the check output compares git ls-files with the README table | planned, not yet run |
 | R3 | KIT.md equals the output of build_kit.sh | stated with the request | the check output reruns build_kit.sh then git diff --exit-code KIT.md with exit 0 | planned, not yet run |
 
@@ -98,4 +98,4 @@ Make the change, run the success check, commit. Reset: `git revert` of the commi
 
 ## Activation facts
 
-No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change Brian asked for.
+No shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard: a bounded change the owner asked for.

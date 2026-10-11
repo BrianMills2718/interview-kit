@@ -58,7 +58,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly names the actor as Brian, states the desired result for the public repository, and gives a stable, concrete user-visible example: the privacy read lists no company, interview, or personal details beyond the owner\u2019s public identity.",
+    "rationale": "The evidence explicitly names the actor as the owner, states the desired result for the public repository, and gives a stable, concrete user-visible example: the privacy read lists no company, interview, or personal details beyond the owner\u2019s public identity.",
     "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-ACTOR-RESULT-EXAMPLE",
     "verdict": "pass"
   },
@@ -67,7 +67,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly identifies authority: Brian requested the change in his own repository, with one agent making it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
+    "rationale": "The evidence explicitly identifies authority: the owner requested the change in his own repository, with one agent making it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
     "trace_id": "company-planning/method-conformance/kit-v2-privacy-names/183df76102d1/CORE-AUTHORITY-NONGOALS",
     "verdict": "pass"
   },

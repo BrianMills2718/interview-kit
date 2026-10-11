@@ -148,7 +148,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result as recording the timed dry run’s evidence and additions in wiki/index.md and KIT.md, and gives a concrete, user-visible example: a maintainer sees the 12 min 31 s run, 8 of 8, and the next two additions.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result as recording the timed dry run’s evidence and additions in wiki/index.md and KIT.md, and gives a concrete, user-visible example: a maintainer sees the 12 min 31 s run, 8 of 8, and the next two additions.",
         "reused": false
       },
       "suggested_action": null
@@ -364,7 +364,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies Brian as the authority who requested the change and states the scope of who executes it (“one agent makes it”). It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
+        "rationale": "The evidence explicitly identifies the owner as the authority who requested the change and states the scope of who executes it (“one agent makes it”). It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
         "reused": false
       },
       "suggested_action": null

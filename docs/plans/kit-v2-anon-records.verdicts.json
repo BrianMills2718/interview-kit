@@ -1,0 +1,101 @@
+{
+  "0287385990dda89b62e768865cd53f5b836bebe65d44eb8f0af04a6e42835d0c": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "material",
+    "missing": "A direct check that the rebuilt KIT.md is correct or conforms to the intended content is missing; \u201cKIT.md rebuilt\u201d only establishes that a rebuild occurred. The evidence also does not specify what property \u201cgrep returns nothing\u201d tests beyond the separate disproof condition.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The disproof condition is concrete: any tracked file still naming the owner. JSON parsing is a direct syntax check, but the success evidence treats rebuilding KIT.md as success without checking its resulting correctness or conformance.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-SUCCESS-DISPROOF",
+    "verdict": "unresolved"
+  },
+  "19e5927e2f5c27af66161a18dcd4abad87d71c1752102d1c0b94b0a0b58bf6d4": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "The plan does not state concretely what the examined run must show for the \u201cPlan of record\u201d element; \u201cthe output shows what that line says\u201d is not an explicit observation requirement. It also lacks applicable source-linked views or an explanation of view omissions, concrete model freshness/drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change. The documentation entry point and repository scope of the model are not explicitly identified.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides the model link `wiki/index.md` and names \u201cPlan of record,\u201d but the trace requirement only refers generally to showing \u201cwhat that line says.\u201d The plan contains no concrete freshness or drift check, view-coverage treatment, or reconciliation obligation, so the bare model reference does not satisfy the full requirement.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  },
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly establish that this procedure is distinct from anticipated failure modes.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The heading and instructions cover preserving the failed run and trace ID, reviewing full execution evidence, citing and classifying divergence, constraining unresolved repairs, tracing verification, retaining the original failure, and separating review completeness from the run result. However, it never states or otherwise explicitly distinguishes this procedure from anticipated failure modes.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "35865a54387fff8b3d9e5152b8003d41b345d6a2ff1e5d3e4224c3c840378796": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan provides a requirements list with R1, explicitly names its verifying success check and saved output, and gives the status as \u201cplanned, not yet run.\u201d It also explicitly states that the change implies no requirements beyond R1 and makes no claim to follow a standard, schema, or contract.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the owner as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "938c054dda6bc6197b1146dd8c47e6a2bd5d7c4e48ac611c9d30c708c1c82fdf": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly states that it proposes no shared mechanism, comparison, central LLM behavior, irreversible action or spend, or external-standard claim, matching the corresponding declared false facts. The quoted evidence does not indicate that the target repository is governed by an AES target, so no additional triggered fact is shown.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "ae5d053dde3a27213fa6182f9c75454fa0a6a75955cac046b350b3d1b5ae5776": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism. This satisfies the no-entry alternative.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "b1cee2467241bf924c283b66c004bbd344638b64f1db245d6a2bf586b5b94025": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly lists the uncertainty about whether additional files are needed, and provides resolving evidence: `git status --short` showing only the specified paths. The uncertainty is material because it determines whether work is in or out of scope.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "bc2fce845023fe791fc8e6876e1117021a175126aa5d5c9657f68b80f4f889c7": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as the owner, states the desired result as \u201cNo tracked file names the owner,\u201d and gives a concrete, user-visible stable example: grepping tracked files for the owner\u2019s name returns nothing.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "f749cd968ef6793a8ca8ff5d972c987c1aa3e35e6624175254242e797e9a7def": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the run\u2014the success check run once on the change-making commit\u2014identifies its location as the committed complete check output, and specifies trace content required beyond the final result. It also states that both success and disproof are judged from that trace and explicitly explains that no model, agent, or LLM pipeline runs under the plan.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "f85b07656aaf9d793a25b8cb5d770ae0296162f0df4dab5123716fc0948cd622": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "material",
+    "missing": "The evidence adds coordinated-work ceremony: \u201cMake the change, run the success check, commit.\u201d",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "It explicitly names the vertical result, reset boundary, and non-goal, but the instruction to make the change, run a check, and commit conflicts with the requirement to avoid coordinated-work ceremony.",
+    "trace_id": "company-planning/method-conformance/kit-v2-anon-records/7e3f2a24288f/OV-PROTO-VERTICAL-RESET",
+    "verdict": "unresolved"
+  }
+}

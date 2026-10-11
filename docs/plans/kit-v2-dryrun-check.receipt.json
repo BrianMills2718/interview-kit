@@ -148,7 +148,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly names the actor as Brian, states the desired result in concrete terms, and provides a stable, user-visible example: a fresh project with a quoted placeholder and no tests passes plain check.sh.",
+        "rationale": "The evidence explicitly names the actor as the owner, states the desired result in concrete terms, and provides a stable, user-visible example: a fresh project with a quoted placeholder and no tests passes plain check.sh.",
         "reused": false
       },
       "suggested_action": null
@@ -194,7 +194,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The plan explicitly lists requirement R1, including what Brian asked for, its verification check, and status “planned, not yet run.” It also explicitly states that the change implies no requirements beyond R1 and makes no claim to follow an external standard, schema, or contract.",
+        "rationale": "The plan explicitly lists requirement R1, including what the owner asked for, its verification check, and status “planned, not yet run.” It also explicitly states that the change implies no requirements beyond R1 and makes no claim to follow an external standard, schema, or contract.",
         "reused": false
       },
       "suggested_action": null
@@ -364,7 +364,7 @@
         "verdict": "pass",
         "materiality": "non_material",
         "missing": null,
-        "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states the work’s non-goals: nothing outside the listed files, no irreversible action, and no spend.",
+        "rationale": "The evidence explicitly identifies the owner as the authority requesting the change and states the work’s non-goals: nothing outside the listed files, no irreversible action, and no spend.",
         "reused": false
       },
       "suggested_action": null

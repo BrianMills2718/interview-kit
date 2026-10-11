@@ -40,7 +40,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The plan explicitly lists requirement R1, including what Brian asked for, its verification check, and status \u201cplanned, not yet run.\u201d It also explicitly states that the change implies no requirements beyond R1 and makes no claim to follow an external standard, schema, or contract.",
+    "rationale": "The plan explicitly lists requirement R1, including what the owner asked for, its verification check, and status \u201cplanned, not yet run.\u201d It also explicitly states that the change implies no requirements beyond R1 and makes no claim to follow an external standard, schema, or contract.",
     "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-REQUIREMENTS-TRACED",
     "verdict": "pass"
   },
@@ -49,7 +49,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states the work\u2019s non-goals: nothing outside the listed files, no irreversible action, and no spend.",
+    "rationale": "The evidence explicitly identifies the owner as the authority requesting the change and states the work\u2019s non-goals: nothing outside the listed files, no irreversible action, and no spend.",
     "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-AUTHORITY-NONGOALS",
     "verdict": "pass"
   },
@@ -94,7 +94,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly names the actor as Brian, states the desired result in concrete terms, and provides a stable, user-visible example: a fresh project with a quoted placeholder and no tests passes plain check.sh.",
+    "rationale": "The evidence explicitly names the actor as the owner, states the desired result in concrete terms, and provides a stable, user-visible example: a fresh project with a quoted placeholder and no tests passes plain check.sh.",
     "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-ACTOR-RESULT-EXAMPLE",
     "verdict": "pass"
   }

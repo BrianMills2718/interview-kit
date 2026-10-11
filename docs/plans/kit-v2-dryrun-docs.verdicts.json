@@ -58,7 +58,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly identifies Brian as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
+    "rationale": "The evidence explicitly identifies the owner as the requester with authority over the change and states the non-goals: work outside the listed files, irreversible actions, and spending.",
     "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-AUTHORITY-NONGOALS",
     "verdict": "pass"
   },
@@ -85,7 +85,7 @@
     "materiality": "non_material",
     "missing": null,
     "model": "openrouter/openai/gpt-5.6-luna",
-    "rationale": "The evidence explicitly names the actor as Brian, states the desired result as notes answering the listed timed-dry-run questions, and gives a concrete, user-visible example: a candidate reading PROBLEM.md knows which packages to install and not to open cases.json first.",
+    "rationale": "The evidence explicitly names the actor as the owner, states the desired result as notes answering the listed timed-dry-run questions, and gives a concrete, user-visible example: a candidate reading PROBLEM.md knows which packages to install and not to open cases.json first.",
     "trace_id": "company-planning/method-conformance/kit-v2-dryrun-docs/93d697ac72ef/CORE-ACTOR-RESULT-EXAMPLE",
     "verdict": "pass"
   },
