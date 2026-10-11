@@ -12,6 +12,9 @@
 1. <smallest runnable step>
 2. ...
 
+## System model
+<one page per kit/method/system-model.md (goals, context, parts, runtime with the writing function, quality checks, unknowns), or one line: System model: not needed, because REASON>
+
 ## Assumptions
 - <ambiguity> -> <reading chosen, and why>
 

@@ -12,6 +12,8 @@ Add two numbers.
 - [x] `pytest -v` -> test_add PASSED
 ## Steps
 1. write add
+## System model
+System model: not needed, because it is one function.
 """
 README = """# Adder
 ## Run it
@@ -102,3 +104,18 @@ def test_uses_the_project_venv_python(tmp_path):
     code, out = run(p)
     assert code == 0, out
     assert marker.exists()
+
+
+def test_plan_without_system_model_fails(tmp_path):
+    code, out = run(project(tmp_path, plan=PLAN.split("## System model")[0]))
+    assert code == 1 and "PLAN.md lacks '## System model'" in out
+
+
+def test_empty_system_model_section_fails(tmp_path):
+    code, out = run(project(tmp_path, plan=PLAN.split("## System model")[0] + "## System model\n\n## Risks\n- none\n"))
+    assert code == 1 and "System model section is empty" in out
+
+
+def test_one_line_system_model_reason_passes(tmp_path):
+    code, out = run(project(tmp_path))
+    assert code == 0 and "PASS PLAN.md has a System model" in out

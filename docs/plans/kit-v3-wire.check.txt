@@ -1,0 +1,128 @@
+## Before: commit aa0b063 plus the new tests
+$ uv run pytest -v
+============================= test session starts ==============================
+collecting ... collected 36 items
+
+tests/test_agent_template.py::test_tool_result_reaches_the_model PASSED  [  2%]
+tests/test_agent_template.py::test_tool_error_is_returned_not_raised PASSED [  5%]
+tests/test_agent_template.py::test_no_tool_needed_ends_immediately PASSED [  8%]
+tests/test_check_sh.py::test_good_project_passes_final PASSED            [ 11%]
+tests/test_check_sh.py::test_missing_plan_fails PASSED                   [ 13%]
+tests/test_check_sh.py::test_template_placeholders_fail PASSED           [ 16%]
+tests/test_check_sh.py::test_failing_test_fails PASSED                   [ 19%]
+tests/test_check_sh.py::test_unticked_item_fails_only_in_final PASSED    [ 22%]
+tests/test_check_sh.py::test_readme_without_ai_section_fails_final PASSED [ 25%]
+tests/test_check_sh.py::test_quoted_requirement_with_angle_brackets_is_not_a_placeholder PASSED [ 27%]
+tests/test_check_sh.py::test_unfilled_template_line_is_a_placeholder PASSED [ 30%]
+tests/test_check_sh.py::test_no_tests_yet_waits_before_final_and_fails_final PASSED [ 33%]
+tests/test_check_sh.py::test_ai_section_needs_the_word_not_the_letters PASSED [ 36%]
+tests/test_check_sh.py::test_uses_the_project_venv_python PASSED         [ 38%]
+tests/test_check_sh.py::test_plan_without_system_model_fails FAILED      [ 41%]
+tests/test_check_sh.py::test_empty_system_model_section_fails FAILED     [ 44%]
+tests/test_check_sh.py::test_one_line_system_model_reason_passes FAILED  [ 47%]
+tests/test_mcp_server.py::test_mcp_lists_the_tool_with_its_docstring_and_schema PASSED [ 50%]
+tests/test_mcp_server.py::test_mcp_tool_call_returns_result_and_errors_are_flagged PASSED [ 52%]
+tests/test_method.py::test_readme_links_every_method_note PASSED         [ 55%]
+tests/test_method.py::test_aes_accepts_the_example_plan_and_rejects_one_without_a_disproof PASSED [ 58%]
+tests/test_model.py::test_every_runtime_row_has_a_writer_that_writes_it PASSED [ 61%]
+tests/test_model.py::test_kit_md_matches_its_sources PASSED              [ 63%]
+tests/test_patterns.py::test_structured_output_retries_on_invalid_then_validates PASSED [ 66%]
+tests/test_patterns.py::test_retrieval_ranks_the_relevant_document_first PASSED [ 69%]
+tests/test_patterns.py::test_retrieval_says_so_when_nothing_matches PASSED [ 72%]
+tests/test_patterns.py::test_interrupt_pauses_before_the_action_and_resume_yes_runs_it PASSED [ 75%]
+tests/test_patterns.py::test_interrupt_resume_no_skips_the_action PASSED [ 77%]
+tests/test_patterns_multi.py::test_supervisor_routes_to_the_right_specialist_and_uses_its_answer PASSED [ 80%]
+tests/test_patterns_multi.py::test_supervisor_can_ask_two_specialists_in_turn PASSED [ 83%]
+tests/test_patterns_multi.py::test_stream_yields_each_step_in_order PASSED [ 86%]
+tests/test_practice.py::test_reference_passes_every_case PASSED          [ 88%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [ 91%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 94%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [ 97%]
+tests/test_wiki_map.py::test_every_wiki_link_resolves PASSED             [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_plan_without_system_model_fails _____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-brian/pytest-557/test_plan_without_system_model0')
+
+    def test_plan_without_system_model_fails(tmp_path):
+        code, out = run(project(tmp_path, plan=PLAN.split("## System model")[0]))
+>       assert code == 1 and "PLAN.md lacks '## System model'" in out
+E       assert (0 == 1)
+
+tests/test_check_sh.py:111: AssertionError
+____________________ test_empty_system_model_section_fails _____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-brian/pytest-557/test_empty_system_model_sectio0')
+
+    def test_empty_system_model_section_fails(tmp_path):
+        code, out = run(project(tmp_path, plan=PLAN.split("## System model")[0] + "## System model\n\n## Risks\n- none\n"))
+>       assert code == 1 and "System model section is empty" in out
+E       assert (0 == 1)
+
+tests/test_check_sh.py:116: AssertionError
+___________________ test_one_line_system_model_reason_passes ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-brian/pytest-557/test_one_line_system_model_rea0')
+
+    def test_one_line_system_model_reason_passes(tmp_path):
+        code, out = run(project(tmp_path))
+>       assert code == 0 and "PASS PLAN.md has a System model" in out
+E       assert (0 == 0 and 'PASS PLAN.md has a System model' in "PASS PLAN.md has '## Goal'\nPASS PLAN.md has '## Done when'\nPASS PLAN.md has '## Steps'\nPASS PLAN.md has 1 done-when items\nPASS PLAN.md has no template placeholders\nPASS all .py files compile\n     pytest: ============================== 1 passed in 0.01s =============================== (exit 0)\nPASS tests pass\n== check: 7 passed, 0 failed (final=0)\n")
+
+tests/test_check_sh.py:121: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_check_sh.py::test_plan_without_system_model_fails - assert ...
+FAILED tests/test_check_sh.py::test_empty_system_model_section_fails - assert...
+FAILED tests/test_check_sh.py::test_one_line_system_model_reason_passes - ass...
+======================== 3 failed, 33 passed in 22.58s =========================
+pytest exit=1
+
+## After: the change
+$ uv run pytest -v
+============================= test session starts ==============================
+collecting ... collected 36 items
+
+tests/test_agent_template.py::test_tool_result_reaches_the_model PASSED  [  2%]
+tests/test_agent_template.py::test_tool_error_is_returned_not_raised PASSED [  5%]
+tests/test_agent_template.py::test_no_tool_needed_ends_immediately PASSED [  8%]
+tests/test_check_sh.py::test_good_project_passes_final PASSED            [ 11%]
+tests/test_check_sh.py::test_missing_plan_fails PASSED                   [ 13%]
+tests/test_check_sh.py::test_template_placeholders_fail PASSED           [ 16%]
+tests/test_check_sh.py::test_failing_test_fails PASSED                   [ 19%]
+tests/test_check_sh.py::test_unticked_item_fails_only_in_final PASSED    [ 22%]
+tests/test_check_sh.py::test_readme_without_ai_section_fails_final PASSED [ 25%]
+tests/test_check_sh.py::test_quoted_requirement_with_angle_brackets_is_not_a_placeholder PASSED [ 27%]
+tests/test_check_sh.py::test_unfilled_template_line_is_a_placeholder PASSED [ 30%]
+tests/test_check_sh.py::test_no_tests_yet_waits_before_final_and_fails_final PASSED [ 33%]
+tests/test_check_sh.py::test_ai_section_needs_the_word_not_the_letters PASSED [ 36%]
+tests/test_check_sh.py::test_uses_the_project_venv_python PASSED         [ 38%]
+tests/test_check_sh.py::test_plan_without_system_model_fails PASSED      [ 41%]
+tests/test_check_sh.py::test_empty_system_model_section_fails PASSED     [ 44%]
+tests/test_check_sh.py::test_one_line_system_model_reason_passes PASSED  [ 47%]
+tests/test_mcp_server.py::test_mcp_lists_the_tool_with_its_docstring_and_schema PASSED [ 50%]
+tests/test_mcp_server.py::test_mcp_tool_call_returns_result_and_errors_are_flagged PASSED [ 52%]
+tests/test_method.py::test_readme_links_every_method_note PASSED         [ 55%]
+tests/test_method.py::test_aes_accepts_the_example_plan_and_rejects_one_without_a_disproof PASSED [ 58%]
+tests/test_model.py::test_every_runtime_row_has_a_writer_that_writes_it PASSED [ 61%]
+tests/test_model.py::test_kit_md_matches_its_sources PASSED              [ 63%]
+tests/test_patterns.py::test_structured_output_retries_on_invalid_then_validates PASSED [ 66%]
+tests/test_patterns.py::test_retrieval_ranks_the_relevant_document_first PASSED [ 69%]
+tests/test_patterns.py::test_retrieval_says_so_when_nothing_matches PASSED [ 72%]
+tests/test_patterns.py::test_interrupt_pauses_before_the_action_and_resume_yes_runs_it PASSED [ 75%]
+tests/test_patterns.py::test_interrupt_resume_no_skips_the_action PASSED [ 77%]
+tests/test_patterns_multi.py::test_supervisor_routes_to_the_right_specialist_and_uses_its_answer PASSED [ 80%]
+tests/test_patterns_multi.py::test_supervisor_can_ask_two_specialists_in_turn PASSED [ 83%]
+tests/test_patterns_multi.py::test_stream_yields_each_step_in_order PASSED [ 86%]
+tests/test_practice.py::test_reference_passes_every_case PASSED          [ 88%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [ 91%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 94%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [ 97%]
+tests/test_wiki_map.py::test_every_wiki_link_resolves PASSED             [100%]
+
+============================= 36 passed in 22.13s ==============================
+pytest exit=0
+$ grep -c method/README.md AGENTS.md; grep -c "## System model" PLAN.template.md KIT.md
+1
+KIT.md:1
+PLAN.template.md:1

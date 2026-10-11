@@ -31,6 +31,14 @@ else
   for sec in "## Goal" "## Done when" "## Steps"; do
     grep -q "^$sec" PLAN.md && ok "PLAN.md has '$sec'" || bad "PLAN.md lacks '$sec'"
   done
+  # the system model: a one-page model, or one line saying why none is needed (kit/method/system-model.md)
+  if ! grep -q '^## System model' PLAN.md; then
+    bad "PLAN.md lacks '## System model' (a one-page model, or 'System model: not needed, because <reason>'; see kit/method/system-model.md)"
+  elif [[ -z $(awk '/^## System model/{f=1;next} /^## /{f=0} f && NF' PLAN.md) ]]; then
+    bad "PLAN.md System model section is empty"
+  else
+    ok "PLAN.md has a System model"
+  fi
   items=$(grep -cE '^\s*- \[( |x)\]' PLAN.md || true)
   [[ "$items" -gt 0 ]] && ok "PLAN.md has $items done-when items" || bad "PLAN.md has no '- [ ]' done-when items"
   # only the template's own placeholders count, so quoted requirement text like `<policy text>` is fine

@@ -1,0 +1,16 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "adopted",
+  "plan_ref": "docs/plans/kit-v3-wire.md",
+  "plan_sha256": "45cc2bf1f87d23c345abf5e4129dc0f409595cdbbb0491c7f7752da1509cfd3a",
+  "receipt_ref": "docs/plans/kit-v3-wire.receipt.json",
+  "receipt_sha256": "dd961bb547391c7d91b9013b5e40a9f95b5f0a150d6b1057c9dd475fbd0d7a7c",
+  "receipt_result": "pass",
+  "reason_codes": [],
+  "summary": [
+    "pass: 11 items evidenced, 1 confirmed not applicable, 0 advisory deviation(s)",
+    "warn CORE-SYSTEM-MODEL: MODEL-NOT-FOUND -> MODEL-NOT-FOUND: not does not exist in /home/brian/code/interview-kit"
+  ],
+  "decided_at": "2026-10-11T16:22:10Z"
+}
