@@ -67,3 +67,38 @@ def test_unticked_item_fails_only_in_final(tmp_path):
 def test_readme_without_ai_section_fails_final(tmp_path):
     code, out = run(project(tmp_path, readme=README.replace("## How I used the AI\n", "")), "--final")
     assert code == 1 and "'AI'" in out
+
+
+def test_quoted_requirement_with_angle_brackets_is_not_a_placeholder(tmp_path):
+    code, out = run(project(tmp_path, plan=PLAN + "## Assumptions\n- tool returns `P-2: <policy text>` lines\n"))
+    assert code == 0, out
+
+
+def test_unfilled_template_line_is_a_placeholder(tmp_path):
+    code, out = run(project(tmp_path, plan=PLAN + "## Goal\n<2-3 sentences in my words, plus the exact requirement lines quoted from the prompt>\n"))
+    assert code == 1 and "placeholders" in out
+
+
+def test_no_tests_yet_waits_before_final_and_fails_final(tmp_path):
+    p = project(tmp_path, test=None)
+    code, out = run(p)
+    assert code == 0 and "WAIT no test files yet" in out, out
+    code, out = run(p, "--final")
+    assert code == 1 and "no test files found" in out
+
+
+def test_ai_section_needs_the_word_not_the_letters(tmp_path):
+    readme = README.replace("## How I used the AI\n", "## Details\n")
+    code, out = run(project(tmp_path, readme=readme), "--final")
+    assert code == 1 and "'AI'" in out
+
+
+def test_uses_the_project_venv_python(tmp_path):
+    p = project(tmp_path)
+    (p / ".venv/bin").mkdir(parents=True)
+    marker = p / "venv_used"
+    (p / ".venv/bin/python").write_text(f'#!/usr/bin/env bash\ntouch "{marker}"\nexec python3 "$@"\n')
+    (p / ".venv/bin/python").chmod(0o755)
+    code, out = run(p)
+    assert code == 0, out
+    assert marker.exists()

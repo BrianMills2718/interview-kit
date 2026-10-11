@@ -1,0 +1,20 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-dryrun-check.md",
+  "plan_sha256": "75c3399188825439e921b3897369d3e0e4ac61a82401d97d6789c97b8d46f8cb",
+  "receipt_ref": "docs/plans/kit-v2-dryrun-check.receipt.json",
+  "receipt_sha256": "d2f88a2fdb11535fca72ce6063a93b084f6960aef9eeffc3523d335c1afd0785",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: The evidence does not identify what the pytest cases directly test or show that they establish the claimed correctness or conformance properties; passing the test suite is otherwise only a pipeline result. It also does not explain why the stated README condition would disprove the approach.",
+    "CORE-TRACE-REVIEW: semantic_unresolved -> Add to the plan: The disproof criterion (“a README headed '## Details' still passes --final”) has no named run, trace location, or requirement for evidence beyond its final outcome.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The trace review does not state a concrete observable that the examined run must show for the element “check.sh enforcement”; “the output shows what that line says” is insufficient. The plan also lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons updates are unnecessary)."
+  ],
+  "decided_at": "2026-10-11T06:44:28Z"
+}

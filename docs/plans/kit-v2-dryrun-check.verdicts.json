@@ -1,0 +1,101 @@
+{
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly distinguish this procedure from anticipated failure modes.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The section explicitly covers preserving failures, full-trace review, divergence classification, unresolved diagnoses, targeted re-verification, retention of the original failure, and separating review completeness from a passing run. However, it does not state that this procedure is distinct from anticipated failure modes.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "4039a8174d34e01e51bf63290cdda62ab726ce6b562ce1af94f6ff70dbd6dba4": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "material",
+    "missing": "The disproof criterion (\u201ca README headed '## Details' still passes --final\u201d) has no named run, trace location, or requirement for evidence beyond its final outcome.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The success criterion explicitly identifies the run, saved trace, and details that must appear beyond the final result. However, the disproof criterion only states an outcome and is not covered by the trace-review requirements.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-TRACE-REVIEW",
+    "verdict": "unresolved"
+  },
+  "498f5ab92ffb5a1722f034c9b835b9d41c83990a4309267e17da88215dba2100": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly states: \u201cNo shared mechanism, no comparison, no LLM at the centre, no irreversible action or spend, and no claim to follow an external standard.\u201d The evidence does not show an A/B test or other alternative-comparison experiment, an AES-governed target, or any other triggering fact declared false.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "60bd9efd1c4ea1ed8ff61e7a3a58eb2074c566edbd0eb9802978f3bdca40cff0": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "material",
+    "missing": "The evidence does not identify what the pytest cases directly test or show that they establish the claimed correctness or conformance properties; passing the test suite is otherwise only a pipeline result. It also does not explain why the stated README condition would disprove the approach.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan names a concrete disproof condition\u2014\u201ca README headed '## Details' still passes --final\u201d\u2014but the success measure is only that `pytest` cases show PASSED. The trace requirements describe execution and reporting, not the substantive properties each test verifies.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-SUCCESS-DISPROOF",
+    "verdict": "unresolved"
+  },
+  "7ce552a375107fd00b92e38a98aea8f6f74b96f87a15a896d72dd7840197bca3": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly lists requirement R1, including what Brian asked for, its verification check, and status \u201cplanned, not yet run.\u201d It also explicitly states that the change implies no requirements beyond R1 and makes no claim to follow an external standard, schema, or contract.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states the work\u2019s non-goals: nothing outside the listed files, no irreversible action, and no spend.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "a4f9881a554ae9e8f5592c9a2cc6d665a45f6cb9c6d7c17dd37119e3f0e88061": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the vertical files and delivered behavior, defines completion with a specific test command, states the reset boundary as `git revert` of the commit, and identifies the non-goal as anything outside those files. It adds only execution steps, not coordinated-work ceremony.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "ae5d053dde3a27213fa6182f9c75454fa0a6a75955cac046b350b3d1b5ae5776": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly checks both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason: the work is content in a standalone public interview kit rather than a cross-project mechanism. This satisfies the requirement\u2019s no-entry alternative.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "da783e397c378f8243292641601fbc6a00d6f5f3654c83232bf057e2e6e0b78d": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "The trace review does not state a concrete observable that the examined run must show for the element \u201ccheck.sh enforcement\u201d; \u201cthe output shows what that line says\u201d is insufficient. The plan also lacks applicable source-linked views, an explanation of material view omissions, concrete model freshness or drift checks, and a statement of how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons updates are unnecessary).",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a model path (`wiki/index.md`) and names one element, but it does not satisfy the required discovery, view, freshness, and reconciliation obligations. A bare path and element listing without concrete run evidence and those maintenance checks fails the requirement.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  },
+  "ed3b4c96c4d7074b5dddc050057d52740d3a99dea304fc3e2db79e8a8bd3556c": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly lists the uncertainty about whether additional files are needed and provides resolving evidence: `git status --short` showing the only relevant files. Thus, the uncertainty has evidence that would resolve it.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "fcba408e036ea7ba69743b9877f4973d5bccea88c42e0964985958fa7bef3b35": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as Brian, states the desired result in concrete terms, and provides a stable, user-visible example: a fresh project with a quoted placeholder and no tests passes plain check.sh.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-check/7f69c327c2d7/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  }
+}
