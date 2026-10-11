@@ -456,8 +456,12 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
    Not "works well". Each item gets `[ ]` and becomes `[x]` only after the check ran.
    Leave out "`check.sh --final` passes": it checks these items, so run it last instead.
 3. **Steps**: numbered, each small enough to run and check on its own.
-4. **Assumptions**: every ambiguity in the spec and the reading chosen.
-5. **Risks**: what could make this wrong, and how it would show.
+4. **System model** (heading `## System model`): one page per `method/system-model.md` (goals, context, building blocks,
+   runtime, views, quality, unknowns), or one line "System model: not needed, because <reason>". `check.sh` fails without it.
+   For the steps before it (requirements, failure modes, contracts, thin slices) see
+   `method/design-chain.md`.
+5. **Assumptions**: every ambiguity in the spec and the reading chosen.
+6. **Risks**: what could make this wrong, and how it would show.
 
 ## Choose the simplest shape that works (write the choice in the plan)
 
@@ -666,12 +670,14 @@ tools: Read, Grep, Glob, Write
 ---
 
 You are the planner. Read the task and the existing files, then write or update `PLAN.md`
-following `skills/plan/SKILL.md` and `PLAN.template.md`.
+following `skills/plan/SKILL.md` and `PLAN.template.md`. For anything bigger than one function,
+walk `method/design-chain.md` and write the one-page model from `method/system-model.md`.
 
 - Quote the requirement lines you were given; do not paraphrase them away.
 - Every done-when item is a command or an observable result. Reject vague ones.
 - Steps are small enough to run and check one at a time.
 - List each ambiguity with the reading you chose.
+- Fill `## System model`: the one-page model, or one line "not needed, because <reason>".
 - Do not write implementation code. Return the plan and the open questions, if any.
 
 <!-- agents/reviewer.md -->

@@ -1,5 +1,6 @@
 """check.sh must pass a well-formed project and fail each kind of broken one."""
 
+import re
 import subprocess
 from pathlib import Path
 
@@ -119,3 +120,13 @@ def test_empty_system_model_section_fails(tmp_path):
 def test_one_line_system_model_reason_passes(tmp_path):
     code, out = run(project(tmp_path))
     assert code == 0 and "PASS PLAN.md has a System model" in out
+
+
+def test_planner_notes_name_every_section_check_sh_requires():
+    """The planner role and plan skill tell the planner to write each heading check.sh demands."""
+    required = set(re.findall(r"grep -q '\^(## [^']+)' PLAN\.md", CHECK.read_text()))
+    assert "## System model" in required, f"check.sh no longer requires a System model: {required}"
+    for note in ["agents/planner.md", "skills/plan/SKILL.md", "PLAN.template.md"]:
+        text = (CHECK.parent / note).read_text()
+        missing = [h for h in required if h not in text]
+        assert not missing, f"{note} does not name {missing}"

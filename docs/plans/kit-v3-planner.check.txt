@@ -1,0 +1,14 @@
+Before (planner notes unchanged):
+>           assert not missing, f"{note} does not name {missing}"
+E           AssertionError: agents/planner.md does not name ['## System model']
+1 failed, 14 deselected in 0.06s
+
+After:
+tests/test_check_sh.py::test_planner_notes_name_every_section_check_sh_requires PASSED [ 36%]
+tests/test_model.py::test_kit_md_matches_its_sources PASSED              [ 59%]
+tests/test_model.py::test_kit_md_bundles_every_note PASSED               [ 61%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [ 81%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 83%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [ 85%]
+============================= 49 passed in 26.98s ==============================
+exit 0
