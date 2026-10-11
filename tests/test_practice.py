@@ -54,6 +54,7 @@ def test_problem_removal_command_deletes_the_reference(tmp_path):
     commands = [c for c in re.findall(r"`([^`]+)`", problem) if "shutil.rmtree" in c]
     assert len(commands) == 1, commands
     shutil.copytree(ROOT / "practice", tmp_path / "kit/practice", ignore=shutil.ignore_patterns("__pycache__"))
+    assert (tmp_path / "kit/practice/reference/sample-run/PLAN.md").exists()  # the recorded run goes with it
     subprocess.run(commands[0], shell=True, cwd=tmp_path, check=True)
     assert not (tmp_path / "kit/practice/reference").exists()
     assert (tmp_path / "kit/practice/grade.py").exists()
