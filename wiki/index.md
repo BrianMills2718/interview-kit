@@ -15,6 +15,8 @@ as a Claude Code plugin.
 
 | Part | File | Role |
 |---|---|---|
+| System model | [docs/model/ARCHITECTURE.md](../docs/model/ARCHITECTURE.md) | goals, parts, writers, views, expected patterns; drift checks [tests/test_model.py](../tests/test_model.py), [tests/test_wiki_map.py](../tests/test_wiki_map.py) |
+| Method | [method/README.md](../method/README.md) | how to plan and design: design chain, system model, views, decisions, diagrams, optional AES plan checks; tested by [tests/test_method.py](../tests/test_method.py) |
 | Rules for the assistant in a test | [AGENTS.md](../AGENTS.md) | how to work, roles, enforcement, agent specifics |
 | Planning | [PLAN.template.md](../PLAN.template.md), [skills/plan](../skills/plan/SKILL.md) | `PLAN.md` before any code |
 | Enforcement | [check.sh](../check.sh) | plan concrete, code compiles, tests pass; `--final` for done |
@@ -38,8 +40,10 @@ Each says what would show it was wrong.
 2. **Enforcement is a script the user runs** (`check.sh`, optionally a git pre-commit hook or a
    CoderPad run target), because a hosted IDE has no hooks we control. Wrong if a test run shows
    the script cannot run there (it did run in the sandbox on 2026-10-10).
-3. **One paste-able file** (`KIT.md`) as the no-internet fallback. Wrong if it grows past what an
-   IDE chat accepts as context; keep notes short.
+3. **One generated file** (`KIT.md`) as a fallback for an IDE with no terminal or no internet.
+   Not a size limit on the kit: the IDE's terminal has internet, so the kit is cloned and its
+   files read directly. Wrong if a test environment turns out to have no internet; then cut
+   `KIT.md` to the rules and plan template.
 4. **Light commit rule in this repo** (`.aes/commit_rule.yaml`: plan tag enforced, plan-adoption
    verdict logged, not blocking), at the owner's request (2026-10-10).
    Most refusals that led to it came from misusing quick-adopt
@@ -59,6 +63,12 @@ Each says what would show it was wrong.
    A2A and `langchain-mcp-adapters` are described but not shipped as code, because nothing here
    tests them. Wrong if a task needs an MCP server consumed by LangGraph: then add and test an
    adapter example.
+8. **The planning method is copied in, adapted, not linked** (`method/`): notes adapted from the
+   owner's own planning, architecture-model and diagram-guidance repositories, with everything
+   that needs a team (claims, worktrees, coordination) left out. The `aes` CLI is installed
+   from its own repository at a pinned revision (`method/install_aes.sh`); it makes no AI
+   calls. Copying keeps the kit readable in one clone. Wrong if a note here and its source
+   disagree on a rule that matters in a test; then re-copy from the source.
 
 ## Evidence
 

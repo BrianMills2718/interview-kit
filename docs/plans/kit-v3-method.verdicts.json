@@ -1,0 +1,101 @@
+{
+  "182f236003ceae1427ed0145cc392a462ae4a987648222294c8fea412ae57962": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly defines success checks for plan validation, file/index conformance, model-to-code agreement, link resolution, and absence of secrets or prohibited branding, with each check tied to the stated property. It also gives concrete disproof conditions, including validation rejection, missing links, missing writers, and prohibited content, and specifies how failing and successful runs are evidenced.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  },
+  "369e21c27dbb609a6031034a3e0cab8ed5f3720d6da3858b7409afadc912a826": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the two runs (the parent commit before the change and the change commit), identifies the full check output and its committed location, and specifies trace contents beyond the final result: exact command and exit status, files and reset state, named non-skipped checks with results, and model-element output. It also explicitly exempts model, agent, or LLM pipeline runs by stating that none run under this plan.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "5f5fdfd0daa7327da23dbef8f47a389f9b13e0c038315e9c99815672b9cdbd3c": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor (the owner), states the desired result (the method folder and its contents plus a one-page system model), and provides a stable, concrete, user-visible example: the README identifies the method file for each timed-test stage and the validation command exits 0.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "678c1987217f4f3833a12b37471b5b223d7e5856d44b1c52b7b150e7646647aa": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the complete set of material uncertainties and lists one uncertainty. That uncertainty has specified resolving evidence: a pre-edit `git status --short` check showing only the listed files; no separate owner is required because resolving evidence is provided.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "7c924367d4ea1849396625775e792047cb50e88f6811f09f1795ddf19fe34227": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence links `docs/model/ARCHITECTURE.md` from `wiki/index.md`, identifies the repository scope, names the affected elements P3, V1, and V4, and specifies what the saved before/after runs must show for each. It also names the applicable verification view, explains why no other view applies, gives concrete drift tests, and states that the model, view coverage, and check output are reconciled in the same commit.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-SYSTEM-MODEL",
+    "verdict": "pass"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the owner as the authority by stating he requested the change in his own repository, and it states the non-goals: work outside the listed files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "8d2a498a12ed02a5e14bf91e88a31f4793c3959479a68d924488ad7ed08c4181": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly declares all relevant activation facts false and provides reasons consistent with the quoted scope: no alternatives are compared, no LLM call or irreversible/spend action is proposed, no external standard is claimed, and no `.aes/target.yaml` governs the repository or is created. The described files and checks do not introduce a new shared mechanism, contract, or algorithm.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "9c672f6136d3e8dd6e576726bbfcafc7ae61046e7b2a2e8e6609efde8ba7fdfa": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly lists requirement R1, including the requested work, and identifies its verifying check as the success check with output saved to `docs/plans/kit-v3-method.check.txt`. R1\u2019s status is explicitly \u201cplanned, not yet run,\u201d and the plan states that no additional requirements are implied by the change, including no standard, schema, or contract conformance claim.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "a93d210f13d0f45edfd8e166145540b19a217732b02f4aa6bd9333490e70e65a": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the minimal vertical (`method`, `tests`, `docs`, `wiki/index.md` and saved check output), states the reset boundary as `git revert` of the commit, and identifies non-goals (\u201canything outside these files\u201d plus no coordinated-work ceremony).",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "b40dd0e3afe8ef09ceaeb4c4ce87cd3959c73b18a34cd56e7dad15b678237c01": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The quoted procedure is explicitly separate from anticipated failures and covers preserving the failed run and trace ID, reading complete inputs/prompts/tool interactions/intermediate stages/final output, citing and classifying divergence, linking a targeted repair to a new traced verification run while retaining the original, and restricting unresolved diagnoses to investigation. It also states that review completeness is distinct from the run verdict.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-TRACE-DEBUGGING",
+    "verdict": "pass"
+  },
+  "fce71d7b912e67315fdd3faa32b1be8f35b69c5affda3d5a25eec72dedba75a8": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly checks both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason. It identifies the needed work\u2014editing the repository\u2019s `method`, `tests`, `docs`, and `wiki/index.md`\u2014and explains that no catalogue entry provides repository-source editing.",
+    "trace_id": "company-planning/method-conformance/kit-v3-method/91a139897cd6/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  }
+}

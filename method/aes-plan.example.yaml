@@ -1,0 +1,60 @@
+# An AES plan (proposal) for one requirement, from outcome to the test that proves it.
+# Copy it, change the ids and text, then: aes plan validate <file> && aes plan accept <file>.
+# It extends the outcome OUT-001 that `aes init` creates. See aes.md.
+schema_version: aes.v0_2.proposal.probe0
+proposal_id: PLAN-001-BOOK
+title: Book a free room, never double-book
+rationale: >
+  OUT-001 has nothing planned under it yet. This plans one chain from the
+  outcome to a test before any code is written.
+closes_gaps: []
+target_delta:
+  add:
+    normative_items:
+      - id: NI-001
+        kind: behavior
+        outcome_refs: [OUT-001]
+        statement: >
+          book_room(room, slot) records a booking when the room is free in that
+          slot, and refuses with the clashing booking's id when it is not.
+    success_criteria:
+      - id: SC-001
+        statement: a free slot is booked; a taken slot is refused with the clash named.
+        target_refs: [NI-001]
+        disproof: >
+          two bookings exist for the same room and slot, or a refusal does not
+          name the booking it clashes with.
+        evidence_requirements:
+          - id: ER-001-01
+            kind: deterministic_test
+            requirement: >
+              A test books room R1 at 10:00, books it again at 10:00 and checks the
+              second call is refused naming the first booking's id, and that a
+              booking of R1 at 11:00 still succeeds.
+    components:
+      - id: CMP-BOOKING
+        responsibility: create bookings and refuse clashes
+        target_refs: [NI-001]
+        planned_artifact_refs: [ART-TOOLS, ART-TEST-BOOK]
+    planned_artifacts:
+      - id: ART-TOOLS
+        locator: {exact_path: src/booking/tools.py}
+        kind: source
+        purpose: the book_room tool
+        semantic_justification_refs: [NI-001]
+      - id: ART-TEST-BOOK
+        locator: {exact_path: tests/test_booking.py}
+        kind: test
+        purpose: prove SC-001
+        semantic_justification_refs: [SC-001]
+    verification_subjects:
+      - id: VS-BOOK
+        criterion_refs: [SC-001]
+        evidence_requirement_refs: [ER-001-01]
+        proof_kind: deterministic_test
+        proof_role: direct
+        locator: tests/test_booking.py
+        purpose: prove a taken slot is refused and a free one booked
+trace_review:
+  runs_traced_work: false
+  reason: book_room is a plain function; the test calls it directly with no model
