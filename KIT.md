@@ -275,6 +275,101 @@ installed versions differ, re-check before trusting this table or the assistant.
 - Tool docstrings that are vague: the model picks the wrong tool or wrong arguments.
 - Testing only against the live model: flaky and slow. Use a fake model (see the test).
 
+## Several agents: a supervisor with specialists as tools
+
+Tested in `examples/patterns_multi.py` (`tests/test_patterns_multi.py`). Wrap each specialist's
+compiled graph as a tool; the supervisor is the same agent loop as above, with those tools.
+
+```python
+def specialist_tool(name, description, graph):
+    def ask_specialist(question: str) -> str:
+        out = graph.invoke({"messages": [("user", question)]}, config={"recursion_limit": 10})
+        return out["messages"][-1].content
+    return StructuredTool.from_function(ask_specialist, name=f"ask_{name}", description=description)
+```
+
+The description is what the supervisor reads when it chooses, so say what each specialist
+knows. No extra package is needed; the separate `langgraph-supervisor` add-on is one more API.
+
+## Streaming progress
+
+`graph.stream(inputs, config, stream_mode="updates")` yields `{node_name: update}` after each
+step (`"values"` yields the whole state; `"messages"` yields `(token_chunk, metadata)` pairs
+from the model). `stream_steps()` in `examples/patterns_multi.py` turns updates into
+`("agent", "calls ['lookup_order']")`, `("tools", "Order A-100: shipped")`, ... for a log or UI.
+
+<!-- skills/mcp-and-a2a/SKILL.md -->
+---
+name: mcp-and-a2a
+description: What MCP (agent-to-tool) and A2A (agent-to-agent) are, when to use each, and a tested MCP server. Use when a task mentions tools over a protocol, tool servers, or agents talking to agents.
+---
+
+# Skill: MCP and A2A in one page
+
+Checked 2026-10-11 against the MCP spec 2026-07-28 (modelcontextprotocol.io/specification),
+the `mcp` Python SDK 2.3.0, and the A2A spec 1.0.0 (a2a-protocol.org/latest/specification).
+
+## Which one
+
+| | MCP (Model Context Protocol) | A2A (Agent2Agent) |
+|---|---|---|
+| Connects | an AI app to **tools and data** | an agent to **another agent** |
+| The other side is | a server exposing functions | an opaque agent doing a task |
+| Use when | the model needs to call a function or read a resource | work is handed to an agent you do not control |
+
+In a take-home, plain LangChain `@tool` functions are usually enough. Use MCP if the task asks
+for it or the tools must be shared across apps; mention A2A as the next step, not the core.
+
+## MCP: the facts that matter
+
+- JSON-RPC 2.0 messages. Roles: **host** (the app), **client** (one connector per server),
+  **server**.
+- Servers offer **tools** (functions the model calls), **resources** (data to read) and
+  **prompts** (templates). Clients may offer **elicitation** (asking the user for input).
+- Standard transports: **stdio** (client launches the server as a subprocess) and **Streamable
+  HTTP** (one HTTP endpoint; replies as JSON or an SSE stream).
+- Security: tools are arbitrary code; the host must get user consent before calling one, and
+  tool descriptions from an untrusted server are untrusted input.
+
+Tested server (`examples/mcp_server.py`, `tests/test_mcp_server.py`):
+
+```python
+from mcp.server import MCPServer                     # mcp 2.x; 1.x called it FastMCP
+from mcp.server.mcpserver.exceptions import ToolError
+
+mcp = MCPServer("orders")
+
+@mcp.tool()
+def lookup_order(order_id: str) -> str:
+    """Return the status of an order given its ID, e.g. 'A-100'."""   # the model reads this
+    if order_id not in ORDERS:
+        raise ToolError(f"Unknown order id {order_id!r}")   # message reaches the model
+    return f"Order {order_id}: {ORDERS[order_id]}"
+```
+
+- Raise `ToolError` for expected failures: any other exception reaches the client only as
+  `Error executing tool lookup_order` (found by the test, not in most tutorials).
+- Test without a network: `async with mcp.Client(server) as c: await c.call_tool(...)`;
+  results use `is_error` and `input_schema` (snake_case in 2.x).
+- Into LangGraph: the `langchain-mcp-adapters` package (`MultiServerMCPClient`, then
+  `await client.get_tools()`) turns server tools into LangChain tools. Untested here: check
+  the installed version's docs before using it.
+
+## A2A: the facts that matter
+
+- An agent publishes an **Agent Card** (JSON: identity, skills, endpoint, auth) at
+  `https://{domain}/.well-known/agent-card.json`.
+- Work is a **Task** with states such as submitted, working, input-required, completed,
+  failed. **Messages** (role user or agent) carry **Parts** (text, file, data); results come
+  back as **Artifacts**.
+- Bindings: JSON-RPC (`SendMessage`, `SendStreamingMessage`), gRPC, and HTTP+JSON. Streaming
+  uses Server-Sent Events.
+- Python SDK: `a2a-sdk`. Untested here.
+
+## Say this in the README
+
+Name which protocol you used and why, what you would expose over MCP or A2A with more time,
+and the security point: tool servers run code, so calls need consent and tool text is untrusted.
 
 <!-- skills/plan/SKILL.md -->
 ---

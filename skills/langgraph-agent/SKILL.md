@@ -106,3 +106,25 @@ installed versions differ, re-check before trusting this table or the assistant.
 - Tool docstrings that are vague: the model picks the wrong tool or wrong arguments.
 - Testing only against the live model: flaky and slow. Use a fake model (see the test).
 
+## Several agents: a supervisor with specialists as tools
+
+Tested in `examples/patterns_multi.py` (`tests/test_patterns_multi.py`). Wrap each specialist's
+compiled graph as a tool; the supervisor is the same agent loop as above, with those tools.
+
+```python
+def specialist_tool(name, description, graph):
+    def ask_specialist(question: str) -> str:
+        out = graph.invoke({"messages": [("user", question)]}, config={"recursion_limit": 10})
+        return out["messages"][-1].content
+    return StructuredTool.from_function(ask_specialist, name=f"ask_{name}", description=description)
+```
+
+The description is what the supervisor reads when it chooses, so say what each specialist
+knows. No extra package is needed; the separate `langgraph-supervisor` add-on is one more API.
+
+## Streaming progress
+
+`graph.stream(inputs, config, stream_mode="updates")` yields `{node_name: update}` after each
+step (`"values"` yields the whole state; `"messages"` yields `(token_chunk, metadata)` pairs
+from the model). `stream_steps()` in `examples/patterns_multi.py` turns updates into
+`("agent", "calls ['lookup_order']")`, `("tools", "Order A-100: shipped")`, ... for a log or UI.

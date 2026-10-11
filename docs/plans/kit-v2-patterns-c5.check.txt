@@ -1,0 +1,53 @@
+# check run 2026-10-11T02:34:29-04:00 on ce02264 + staged c5 changes
+$ ./build_kit.sh
+wrote KIT.md (527 lines)
+exit 0
+
+$ uv run pytest -v
+============================= test session starts ==============================
+platform linux -- Python 3.13.15, pytest-9.1.1, pluggy-1.6.0 -- /home/brian/code/interview-kit-c5/.venv/bin/python
+rootdir: /home/brian/code/interview-kit-c5
+configfile: pyproject.toml
+plugins: langsmith-0.14.7, anyio-4.15.1
+collecting ... collected 23 items
+
+tests/test_agent_template.py::test_tool_result_reaches_the_model PASSED  [  4%]
+tests/test_agent_template.py::test_tool_error_is_returned_not_raised PASSED [  8%]
+tests/test_agent_template.py::test_no_tool_needed_ends_immediately PASSED [ 13%]
+tests/test_check_sh.py::test_good_project_passes_final PASSED            [ 17%]
+tests/test_check_sh.py::test_missing_plan_fails PASSED                   [ 21%]
+tests/test_check_sh.py::test_template_placeholders_fail PASSED           [ 26%]
+tests/test_check_sh.py::test_failing_test_fails PASSED                   [ 30%]
+tests/test_check_sh.py::test_unticked_item_fails_only_in_final PASSED    [ 34%]
+tests/test_check_sh.py::test_readme_without_ai_section_fails_final PASSED [ 39%]
+tests/test_mcp_server.py::test_mcp_lists_the_tool_with_its_docstring_and_schema PASSED [ 43%]
+tests/test_mcp_server.py::test_mcp_tool_call_returns_result_and_errors_are_flagged PASSED [ 47%]
+tests/test_patterns.py::test_structured_output_retries_on_invalid_then_validates PASSED [ 52%]
+tests/test_patterns.py::test_retrieval_ranks_the_relevant_document_first PASSED [ 56%]
+tests/test_patterns.py::test_retrieval_says_so_when_nothing_matches PASSED [ 60%]
+tests/test_patterns.py::test_interrupt_pauses_before_the_action_and_resume_yes_runs_it PASSED [ 65%]
+tests/test_patterns.py::test_interrupt_resume_no_skips_the_action PASSED [ 69%]
+tests/test_patterns_multi.py::test_supervisor_routes_to_the_right_specialist_and_uses_its_answer PASSED [ 73%]
+tests/test_patterns_multi.py::test_supervisor_can_ask_two_specialists_in_turn PASSED [ 78%]
+tests/test_patterns_multi.py::test_stream_yields_each_step_in_order PASSED [ 82%]
+tests/test_practice.py::test_reference_passes_every_case PASSED          [ 86%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken0-expect_failed0] PASSED [ 91%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken1-expect_failed1] PASSED [ 95%]
+tests/test_practice.py::test_grader_fails_a_broken_solution[broken2-expect_failed2] PASSED [100%]
+
+============================= 23 passed in 46.01s ==============================
+exit 0
+
+$ claude plugin validate .
+Validating marketplace manifest: /home/brian/code/interview-kit-c5/.claude-plugin/marketplace.json
+
+✔ Validation passed
+exit 0
+
+$ gitleaks dir . (tracked + new files, excluding .venv)
+[90m2:35AM[0m [32mINF[0m [1mscanned ~1154859 bytes (1.15 MB) in 402ms[0m
+[90m2:35AM[0m [32mINF[0m [1mno leaks found[0m
+exit 0
+
+$ grep emails / phone numbers / company and interview words in changed files
+grep exit 1 (1 = no matches)
