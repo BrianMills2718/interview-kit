@@ -11,7 +11,7 @@ trace_review_criteria:
     expected_outcome: pass
 goal:
   outcome: "A public GitHub repo holds working rules, skill guides and an agent template that a fresh environment pulls in with one command, plus a single KIT.md to paste when offline; single-agent work with no coordination ceremony (no claims, worktrees or work-unit graph), which is a non-goal"
-  canonical_example: "git clone --depth 1 https://github.com/the ownerMills2718/interview-kit kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py."
+  canonical_example: "git clone --depth 1 <this repo's URL> kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py."
   forbidden_substitutes: "claiming success from a check's last line or exit status alone; a change outside the listed files; a commit without the saved check output"
   boundaries: "only these files: AGENTS.md, skills, examples, tests, README.md; no irreversible action and no spend; the owner's request as quoted is the scope"
   done_when: "On a clean clone made from GitHub without login, the saved check output docs/plans/interview-kit-v1.check.txt shows: (1) ls listing AGENTS.md, KIT.md, the three skills/*.md files and examples/agent_template.py; (2) uv run pytest -v listing test_tool_result_reaches_the_model, test_tool_error_is_returned_not_raised and test_no_tool_needed_ends_immediately as PASSED, which assert the exact tool output 'Order A-100: shipped' and the error text 'Unknown order id' using a scripted fake model; (3) curl of the raw KIT.md URL without login returning text containing 'Working rules for the coding assistant'; (4) gitleaks --no-git and a grep for emails and phone numbers finding nothing; (5) a light LLM read (OpenRouter) of the full text of every committed file asked to list any personal detail of a real person, client or employer material, private message, or non-public record, with its verbatim answer saved; pass only if it lists none. Trace exemption: no model, agent or pipeline under test runs, so the check output is the whole trace. The trace-debugging procedure is distinct from the anticipated failure modes named under disproof, and review completeness (every check's output read) is judged separately from the run verdict. The check's full output is committed as docs/plans/interview-kit-v1.check.txt, and the commit is tagged [Goal interview-kit-v1] with an Asked: line quoting the request."
@@ -40,7 +40,7 @@ passing run. Criterion `outcome` covers the entire requested success check.
 
 **Desired result:** A public GitHub repo holds working rules, skill guides and an agent template that a fresh environment pulls in with one command, plus a single KIT.md to paste when offline; single-agent work with no coordination ceremony (no claims, worktrees or work-unit graph), which is a non-goal.
 
-**Stable example:** git clone --depth 1 https://github.com/the ownerMills2718/interview-kit kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py.
+**Stable example:** git clone --depth 1 <this repo's URL> kit in an empty folder yields AGENTS.md, skills/ and examples/agent_template.py.
 
 ## Authority and non-goals
 
