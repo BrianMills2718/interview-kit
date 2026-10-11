@@ -1,0 +1,10 @@
+[project]
+name = "interview-kit"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-core>=1.6.9",
+    "langchain-openai>=1.7.0",
+    "langgraph>=1.2.14",
+    "pytest>=9.1.1",
+]

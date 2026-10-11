@@ -1,0 +1,18 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/interview-kit-v1.md",
+  "plan_sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7",
+  "receipt_ref": "docs/plans/interview-kit-v1.receipt.json",
+  "receipt_sha256": "f4213bfe581fe7190ee4426626399f041b74f125b3967b845aa5b6e0e118ed2c",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it does not explicitly state that review completeness is separate from the run verdict.",
+    "CORE-ACTIVATION-FACTS: semantic_unresolved -> Add to the plan: Explicit evidence that the target repository is not governed by an `.aes/target.yaml` file."
+  ],
+  "decided_at": "2026-10-11T01:58:31Z"
+}

@@ -1,0 +1,538 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-interview-kit-v1-65475f4d334f",
+  "plan": {
+    "plan_ref": "docs/plans/interview-kit-v1.md",
+    "plan_sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+  },
+  "path_decision": {
+    "ref": "docs/plans/interview-kit-v1.path-decision.json",
+    "sha256": "e7d833becedb9dfb21d918e3db0620c84f542944adfb9cb5630bb8028fe01eae",
+    "selected_path": "prototype",
+    "classified_path": "prototype",
+    "errors": []
+  },
+  "route": "inline_prototype",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@11",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "0261c51b94b32a629bf6255b3c032c18cdbef4e8df6d5bed9db1f72d267c89cb"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "e08f1a326de035b56e4e20bd6224439145f2373926a66672502c4b78a524105d"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/interview-kit-v1.facts.json",
+    "facts_sha256": "993c26c5ed3fb497e819c6d06f415a70a33f99ebdec8be54a60d88e8848476ff",
+    "facts": {
+      "shared_mechanism": false,
+      "empirical_comparison_proposed": false,
+      "llm_central": false,
+      "irreversible_or_spend_action": false,
+      "crosses_system_boundary": false,
+      "deploys": false,
+      "claims_external_standard": false,
+      "aes_governed_target": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": true
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "crosses_system_boundary": "default:not_declared",
+      "deploys": "default:not_declared",
+      "claims_external_standard": "default:not_declared",
+      "aes_governed_target": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": false,
+        "reason": "shared_mechanism=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": false,
+        "reason": "llm_central=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": true,
+        "reason": "inline_prototype=true (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": false,
+        "reason": "crosses_system_boundary=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": false,
+        "reason": "claims_external_standard=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:e4c74c06adf40d2a1b85fcf6245870f88d6b79c3e10e8cb1d6dd23263a1a664c",
+    "definition_sha256": "4b92bd90023b5d344ff3b7776fb16b86a966e6e40948ff696e50de4478b06935",
+    "bundle_ref": "docs/plans/interview-kit-v1.bundle.json",
+    "bundle_sha256": "b544afef9c8f2585a1a80f23e6bae2a7383a17cfd89084112dc44cdb43f024fc",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#actor-and-result",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor as Brian, states the desired result as a public GitHub repository and offline KIT.md, and gives a stable, concrete user-visible example: a specific git clone command yielding named files and directories.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.path-decision.json",
+          "sha256": "e7d833becedb9dfb21d918e3db0620c84f542944adfb9cb5630bb8028fe01eae"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan has an explicit Requirements table listing R1–R3. Each requirement names a check and has the status “planned, not yet run”; R1 covers the requested deliverable and its stated non-goals, while R2 and R3 cover the README inventory and KIT.md build claims.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#success-and-disproof",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly defines success checks for repository contents, tool behavior, raw-file accessibility, secrets/personal material, and trace completeness. It also provides concrete disproof conditions: login requirements, failed or skipped tests, or any secret, personal detail, or non-public material.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#success-and-disproof",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the run—the success check run once on the change-making commit—and identifies its full trace location as the complete output with command and exit status saved in `docs/plans/interview-kit-v1.check.txt`. It also specifies what must be seen beyond the final result: the exact files and commit, every check/test by name with results and no skips, matching exit status, and output for each System model element; it explicitly states the no-run trace exemption and its reason.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#when-a-run-fails-or-surprises-us",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it does not explicitly state that review completeness is separate from the run verdict.",
+        "rationale": "The section explicitly covers preserving the failed check and trace id, reading the full run record, citing and classifying divergence, investigating unresolved causes before causal repair, and linking a repair to a new traced run while retaining the original. However, “A complete review is distinct from a passing run” does not explicitly establish separation from the run verdict, and no anticipated-failure procedure or explicit distinction from it is quoted.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it does not explicitly state that review completeness is separate from the run verdict."
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly provides the exemption line: “System model: exempt -- documentation repo with no stored state, no service and no user-facing view, so no source-linked views apply.” This states the qualifying absence of stored state and user-facing view, so a model link and element-level trace obligations are not required.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#capability-reuse",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly checks both catalogue files and states, “No catalogue entry fits,” giving the unmet need: notes readable by a third-party hosted IDE assistant without workspace access, while the available workspace skills repository depends on local paths and policies.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#authority-and-non-goals",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies authority: Brian requested the change in his repository and one agent will execute it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": false,
+      "verifier_kind": "semantic",
+      "disposition": "not_applicable",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#uncertainties",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly lists the uncertainty about whether files beyond the stated list are needed and provides resolving evidence: repository inspection via `git ls-files` after the commit, with the expected scope enumerated.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "unresolved",
+      "verifier_result": "fail",
+      "reason_codes": [
+        "semantic_unresolved"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#activation-facts",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "unresolved",
+        "materiality": "material",
+        "missing": "Explicit evidence that the target repository is not governed by an `.aes/target.yaml` file.",
+        "rationale": "The plan explicitly declares `aes_governed_target` false, but the quoted evidence does not directly establish whether `.aes/target.yaml` governs the target repository. The statements that the repository is new and that listed files are the complete scope do not explicitly verify the absence of that governing file.",
+        "reused": false
+      },
+      "suggested_action": "Add to the plan: Explicit evidence that the target repository is not governed by an `.aes/target.yaml` file."
+    },
+    {
+      "item_id": "OV-PROTO-VERTICAL-RESET",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/interview-kit-v1.md#vertical-and-reset",
+          "sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/OV-PROTO-VERTICAL-RESET",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the vertical result—a public GitHub repo with working rules, skill guides, an agent template, and a pasteable KIT.md—and bounds it to the listed files. It states the reset boundary as reverting the commit with `git revert`, identifies non-goals (“single-agent work with no coordination ceremony” and “anything outside these files”), and explicitly excludes claims, worktrees, and a work-unit graph.",
+        "reused": false
+      },
+      "suggested_action": null
+    }
+  ],
+  "item_counts": {
+    "pass": 10,
+    "unresolved": 2,
+    "not_applicable": 1,
+    "unavailable": 0,
+    "missing": 0
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-interview-kit-v1-65475f4d334f",
+    "snapshot_ref": "SNAPSHOT-interview-kit-v1",
+    "snapshot_revision": "sha256:b544afef9c8f2585a1a80f23e6bae2a7383a17cfd89084112dc44cdb43f024fc",
+    "packet_ref": "docs/plans/interview-kit-v1.md",
+    "packet_revision": "sha256:65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [
+      {
+        "diagnostic_id": "DIAG-interview-kit-v1-5",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-TRACE-DEBUGGING: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it does not explicitly state that review completeness is separate from the run verdict.",
+        "source_locator": "docs/plans/interview-kit-v1.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it does not explicitly state that review completeness is separate from the run verdict.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-TRACE-DEBUGGING"
+      },
+      {
+        "diagnostic_id": "DIAG-interview-kit-v1-11",
+        "class": "semantic",
+        "severity": "warning",
+        "rule_id": "PL-MCR-SEMANTIC-UNRESOLVED",
+        "message": "CORE-ACTIVATION-FACTS: Explicit evidence that the target repository is not governed by an `.aes/target.yaml` file.",
+        "source_locator": "docs/plans/interview-kit-v1.md",
+        "materiality": "material",
+        "suggested_action": "Add to the plan: Explicit evidence that the target repository is not governed by an `.aes/target.yaml` file.",
+        "disposition": "unresolved",
+        "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-ACTIVATION-FACTS"
+      }
+    ],
+    "route": "inline_prototype",
+    "adoption_readiness": "contributor_disposition_needed",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "actionable_summary": [
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it does not explicitly state that review completeness is separate from the run verdict.",
+    "CORE-ACTIVATION-FACTS: semantic_unresolved -> Add to the plan: Explicit evidence that the target repository is not governed by an `.aes/target.yaml` file."
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "quick-adopt",
+    "session": "b54cd0ef-b5ea-44df-b2e1-b73b3d18ee6d"
+  },
+  "started_at": "2026-10-11T01:58:15Z",
+  "completed_at": "2026-10-11T01:58:31Z",
+  "duration_ms": 12214
+}

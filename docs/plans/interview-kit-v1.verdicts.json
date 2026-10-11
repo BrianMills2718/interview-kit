@@ -1,0 +1,101 @@
+{
+  "10db172c21e23b162823ac7508cb1dbe57fe82f6fec8e31366e8ca91a2519c4e": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly defines success checks for repository contents, tool behavior, raw-file accessibility, secrets/personal material, and trace completeness. It also provides concrete disproof conditions: login requirements, failed or skipped tests, or any secret, personal detail, or non-public material.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  },
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "The evidence does not explicitly distinguish this procedure from anticipated failure modes, and it does not explicitly state that review completeness is separate from the run verdict.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The section explicitly covers preserving the failed check and trace id, reading the full run record, citing and classifying divergence, investigating unresolved causes before causal repair, and linking a repair to a new traced run while retaining the original. However, \u201cA complete review is distinct from a passing run\u201d does not explicitly establish separation from the run verdict, and no anticipated-failure procedure or explicit distinction from it is quoted.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "3542c625a3f73177af08ae0e92038fc277ef4349b8ad78e5252dbc7fd961308b": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly provides the exemption line: \u201cSystem model: exempt -- documentation repo with no stored state, no service and no user-facing view, so no source-linked views apply.\u201d This states the qualifying absence of stored state and user-facing view, so a model link and element-level trace obligations are not required.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-SYSTEM-MODEL",
+    "verdict": "pass"
+  },
+  "372ae72d053dff93360c01a2bfc266e2eb206130abbf84c2dbfbc35e103c3d90": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as Brian, states the desired result as a public GitHub repository and offline KIT.md, and gives a stable, concrete user-visible example: a specific git clone command yielding named files and directories.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "5bd21298db185613b347fd04e1d0b105fcdf9d56f037e9cc20807f980f898955": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "Explicit evidence that the target repository is not governed by an `.aes/target.yaml` file.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly declares `aes_governed_target` false, but the quoted evidence does not directly establish whether `.aes/target.yaml` governs the target repository. The statements that the repository is new and that listed files are the complete scope do not explicitly verify the absence of that governing file.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies authority: Brian requested the change in his repository and one agent will execute it. It also explicitly states non-goals: work outside the listed files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "977fefc69866775bddb56460567dfc29d19db6443a17622c6ab571a6bdcab002": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly checks both catalogue files and states, \u201cNo catalogue entry fits,\u201d giving the unmet need: notes readable by a third-party hosted IDE assistant without workspace access, while the available workspace skills repository depends on local paths and policies.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "9acd6c0fc02b1f86ea1d9c095dd6913fda2e0bf8b08c4553172f3db255e35e7b": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the run\u2014the success check run once on the change-making commit\u2014and identifies its full trace location as the complete output with command and exit status saved in `docs/plans/interview-kit-v1.check.txt`. It also specifies what must be seen beyond the final result: the exact files and commit, every check/test by name with results and no skips, matching exit status, and output for each System model element; it explicitly states the no-run trace exemption and its reason.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "a82133e09cf9626a65ff4924290b53340b195bc66d91f75d419b8568100dbf8f": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan has an explicit Requirements table listing R1\u2013R3. Each requirement names a check and has the status \u201cplanned, not yet run\u201d; R1 covers the requested deliverable and its stated non-goals, while R2 and R3 cover the README inventory and KIT.md build claims.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "ab35ad71e807bc32b5ee3f8a475fb85e44dd055078fd4a6abce37331c9102242": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly lists the uncertainty about whether files beyond the stated list are needed and provides resolving evidence: repository inspection via `git ls-files` after the commit, with the expected scope enumerated.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "e09416b0659d7f122bad7af2a031df015eb3a734acd5099a248dc90e3f3c2a0c": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the vertical result\u2014a public GitHub repo with working rules, skill guides, an agent template, and a pasteable KIT.md\u2014and bounds it to the listed files. It states the reset boundary as reverting the commit with `git revert`, identifies non-goals (\u201csingle-agent work with no coordination ceremony\u201d and \u201canything outside these files\u201d), and explicitly excludes claims, worktrees, and a work-unit graph.",
+    "trace_id": "company-planning/method-conformance/interview-kit-v1/db77fc7dd810/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  }
+}

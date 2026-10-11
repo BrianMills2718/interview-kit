@@ -1,0 +1,5 @@
+# Light profile (Brian 2026-10-10: "have all the planning and enforcement ... but probably drop
+# a lot of the process ceremony"). Commits must still carry a plan tag and name a plan file;
+# the plan-adoption reviewer's verdict is logged, not blocking.
+mode: enforce
+plan_adoption: observe

@@ -1,0 +1,21 @@
+{
+  "schema_version": "method-activation-facts.v1",
+  "record_type": "method_activation_facts",
+  "plan_ref": "docs/plans/interview-kit-v1.md",
+  "plan_sha256": "65475f4d334fac7bd20c60e6ef7dab40bd22ec19d6a63f77b9feb378896df1a7",
+  "path_decision_ref": "docs/plans/interview-kit-v1.path-decision.json",
+  "path_decision_sha256": "e7d833becedb9dfb21d918e3db0620c84f542944adfb9cb5630bb8028fe01eae",
+  "facts": {
+    "shared_mechanism": false,
+    "empirical_comparison_proposed": false,
+    "llm_central": false,
+    "irreversible_or_spend_action": false
+  },
+  "fact_sources": {
+    "shared_mechanism": "derived_current_boundary",
+    "empirical_comparison_proposed": "derived_current_boundary",
+    "llm_central": "derived_current_boundary",
+    "irreversible_or_spend_action": "derived_current_boundary"
+  },
+  "recorded_at": "2026-10-11T01:58:15Z"
+}
