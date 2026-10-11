@@ -1,3 +1,8 @@
+---
+name: explain-your-work
+description: Write the README and in-code explanations reviewers read first, including how the AI assistant was used. Use at the end and keep updated while working.
+---
+
 # Skill: explain the solution
 
 Use at the end, and keep it updated while working. Reviewers read this first.

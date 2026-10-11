@@ -1,3 +1,8 @@
+---
+name: evaluate-agent
+description: Test an agent offline with a scripted fake model and evaluate it on known cases with per-case pass/fail and trace reading. Use whenever a solution includes an LLM or agent.
+---
+
 # Skill: test and evaluate an agent
 
 Use when the solution includes an LLM or agent and needs to show it works.

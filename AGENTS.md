@@ -4,8 +4,9 @@ These rules apply to any AI coding assistant working in this project. Read them 
 
 ## How we work
 
-1. **Plan before code.** Restate the task in 3-5 lines, list assumptions, and propose a short
-   numbered plan. Wait for approval before editing files.
+1. **Plan before code.** Write `PLAN.md` from `PLAN.template.md` (see `skills/plan/SKILL.md`):
+   goal with the quoted requirements, checkable done-when items, small steps, assumptions.
+   Wait for approval before editing code.
 2. **One small step at a time.** Each edit does one thing that can be run and checked. No
    multi-file rewrites in one go.
 3. **Run it after every change.** Execute the code or the tests after each edit and report the
@@ -20,6 +21,19 @@ These rules apply to any AI coding assistant working in this project. Read them 
    Non-obvious decisions get a short comment naming the alternative that was rejected.
 8. **Say when unsure.** If the spec is ambiguous, state the interpretation chosen and why,
    in the code and in the README, rather than guessing silently.
+
+## Roles (subagents)
+
+Work in four roles, one at a time, each described in `agents/`: **planner** writes `PLAN.md`,
+**implementer** does one step and runs it, **tester** writes tests that could fail, **reviewer**
+critiques the result against the plan before anything is called done. When asked to act as a
+role, follow that file.
+
+## Enforcement
+
+`bash kit/check.sh` checks the plan is concrete, the code compiles and the tests pass, and prints
+counts. `bash kit/check.sh --final` also requires every done-when item ticked and the README
+sections present. Run it after each step; the work is done only when `--final` passes.
 
 ## Agentic AI specifics
 

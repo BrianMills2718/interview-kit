@@ -1,3 +1,8 @@
+---
+name: langgraph-agent
+description: Build a tool-calling agent or multi-step graph with LangGraph (state, tools, routing, memory, limits). Use when the task is an agent that uses tools or takes steps.
+---
+
 # Skill: build a tool-calling agent with LangGraph
 
 Use when the task is "build an agent that uses tools / takes steps / answers from data".
