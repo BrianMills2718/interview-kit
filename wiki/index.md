@@ -72,12 +72,22 @@ Each says what would show it was wrong.
   MCP spec 2026-07-28 and A2A spec 1.0.0 against their spec pages; `mcp` 2.3.0 against its
   installed source. Found by a test: `mcp` 2.x sends only "Error executing tool <name>" for any
   exception other than `ToolError`.
+- 2026-10-11, timed dry run of `practice/PROBLEM.md`: fresh clone from GitHub, reference removed,
+  solved by a fresh agent using only the kit in 12 min 31 s (target 2 h); `grade.py` 8 of 8,
+  `check.sh --final` 13 passed, exit 0. All 37 tool calls were read: it never opened the
+  reference. Twelve frictions found; the fixed ones are in `check.sh`, `conftest.py`,
+  `practice/PROBLEM.md`, `AGENTS.md`, the plan and langgraph skills (watchlist rows checked
+  against langgraph 1.2.14).
 
 ## In progress and next
 
 Most useful next additions, in order:
 
-1. A timed dry run of the practice problem from a fresh clone, with its frictions folded back.
+1. A second practice problem whose cases are not visible to the candidate: the dry run ran far
+   under target partly because `cases.json` shows the design (now the problem says not to open it
+   before the first grade run, which is only a request).
+2. A dry run by a person in the hosted IDE's chat itself (needs an account); the 12-minute agent
+   run says nothing about a human's pace.
 
 Known untidiness: plan-adoption records under `docs/plans/` show in the IDE file explorer after a
 clone; harmless.

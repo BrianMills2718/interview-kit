@@ -9,7 +9,8 @@ These rules apply to any AI coding assistant working in this project. Read them 
 
 1. **Plan before code.** Write `PLAN.md` from `PLAN.template.md` (see `skills/plan/SKILL.md`):
    goal with the quoted requirements, checkable done-when items, small steps, assumptions.
-   Wait for approval before editing code.
+   Wait for approval before editing code (the person types "plan approved" in the chat, so the
+   recording shows it).
 2. **One small step at a time.** Each edit does one thing that can be run and checked. No
    multi-file rewrites in one go.
 3. **Run it after every change.** Execute the code or the tests after each edit and report the
@@ -248,13 +249,14 @@ print(result["messages"][-1].content)
   `add_conditional_edges` that returns a node name.
 - **Human approval:** `interrupt(payload)` inside a node pauses the run (the caller sees
   `result["__interrupt__"]`); resume with `graph.invoke(Command(resume="yes"), cfg)` on the same
-  `thread_id`. Needs a checkpointer. See `build_refund_graph` in `examples/patterns.py`.
+  `thread_id`. Needs a checkpointer. See `build_refund_graph` in `examples/patterns.py`. Inside a
+  `@tool` of `create_agent` it also works (pass `checkpointer=`); see the watchlist for the re-run.
 - **Retries:** a router that sends to a `check` node, which loops back to
   `agent` with feedback or ends, with a counter so it cannot loop forever.
 
 ## Current API watchlist (the IDE's AI may suggest the old form)
 
-Checked 2026-10-11 against the installed packages (`pip show langchain langgraph`). If the
+Checked 2026-10-11 against the installed packages (`python -c "import importlib.metadata as m; print(m.version('langchain'), m.version('langgraph'))"`; `pip show` fails inside a uv venv). If the
 installed versions differ, re-check before trusting this table or the assistant.
 
 | Old form the AI may write | Current form | Checked in |
@@ -267,6 +269,12 @@ installed versions differ, re-check before trusting this table or the assistant.
 | `GenericFakeChatModel(...).bind_tools(tools)` in tests | raises `NotImplementedError`; subclass with `def bind_tools(self, tools, **kw): return self` (see tests) | langchain-core 1.6.9 |
 | `llm.with_structured_output` inside `create_agent` | `response_format=ToolStrategy(Model)`; result in `out["structured_response"]` | langchain 1.4.4 |
 | `from langchain.mcp import ...` on a plain install | needs `pip install "langchain[mcp]"` (imports `fastmcp`) | langchain 1.4.4 |
+| `Command(resume=None)` to mean "no answer" | crashes (`UnboundLocalError`); resume with a real value, e.g. `"no"` | langgraph 1.2.14 |
+| `interrupt()` inside a `@tool` used by `create_agent` | works, but on resume the whole tool runs again from the top: do side effects (refund, write) only after `interrupt()` returns | langgraph 1.2.14 |
+
+The model provider: the task names it (or gives a key). Install that provider's package
+(`langchain-openai`, `langchain-anthropic`, ...), read the key from the environment variable it
+names, and fail with a clear message when it is missing. Tests use the fake model, so they need no key.
 
 ## Pitfalls
 
@@ -389,6 +397,7 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
 2. **Done when**: checkable items, each one a command or an observable result, e.g.
    "`pytest -v` shows test_routes_to_tool PASSED" or "`python main.py 'X'` prints Y".
    Not "works well". Each item gets `[ ]` and becomes `[x]` only after the check ran.
+   Leave out "`check.sh --final` passes": it checks these items, so run it last instead.
 3. **Steps**: numbered, each small enough to run and check on its own.
 4. **Assumptions**: every ambiguity in the spec and the reading chosen.
 5. **Risks**: what could make this wrong, and how it would show.
@@ -440,7 +449,7 @@ Never start in Edit. Ask -> Plan -> Edit, one step per Edit prompt.
   model, then the code."
 - **Make it verify:** "Run `pytest -v` and show me the output" after every Edit.
 - **Check its API knowledge:** "Which langchain/langgraph version is installed? Is that function
-  current in that version?" Then check with `pip show` and the watchlist in
+  current in that version?" Then check with `importlib.metadata.version(...)` and the watchlist in
   `skills/langgraph-agent`. Assistants often suggest deprecated calls.
 - **Correct it in the open:** when it is wrong, say what was wrong and why in the chat, and note
   it in the README's AI section. Visible corrections are evidence of judgment.

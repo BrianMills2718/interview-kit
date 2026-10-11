@@ -1,0 +1,21 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "refused",
+  "plan_ref": "docs/plans/kit-v2-dryrun-record.md",
+  "plan_sha256": "79dec1a5fc645f5de0a3347957b8b633e1820dba3d06be441a6436e9bbe6e724",
+  "receipt_ref": "docs/plans/kit-v2-dryrun-record.receipt.json",
+  "receipt_sha256": "84e38eb08aba420ffb3bd336b2c05bf7dca189babb3eb4882dfb94b9a9e2591f",
+  "receipt_result": "fail",
+  "reason_codes": [
+    "semantic_unresolved"
+  ],
+  "summary": [
+    "CORE-SUCCESS-DISPROOF: semantic_unresolved -> Add to the plan: A direct success check that verifies the required watchlist rows are present and correct. The stated size limit is only a count-based stand-in, and “pytest passes” does not identify or establish a test of that property.",
+    "CORE-TRACE-REVIEW: semantic_unresolved -> Add to the plan: The disproof criterion, “KIT.md lacks the new watchlist rows or exceeds 30 KB,” is stated only as an outcome and is not tied to a named run, trace location, or required trace evidence beyond that outcome.",
+    "CORE-TRACE-DEBUGGING: semantic_unresolved -> Add to the plan: An explicit statement that this procedure is distinct from anticipated failure modes.",
+    "CORE-SYSTEM-MODEL: semantic_unresolved -> Add to the plan: The model element “wiki and paste-able bundle” lacks a concrete statement of what the examined run must show for it. The plan also omits applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons they need no update).",
+    "CORE-ACTIVATION-FACTS: semantic_unresolved -> Add to the plan: Evidence that the target repository is not governed by an AES target (`.aes/target.yaml`)."
+  ],
+  "decided_at": "2026-10-11T06:56:33Z"
+}

@@ -1,0 +1,101 @@
+{
+  "15d087ba9ebfc513d2c252b7a45c8fc2fa0ae152548de563d37606650df26032": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the vertical\u2019s files and results: `wiki/index.md` records the dry-run evidence and next additions, while `KIT.md` carries the new notes, with checks that define completion. It states the reset boundary as `git revert` of the commit and the non-goal as anything outside those files; no coordinated-work ceremony is added.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "1706e04d83662f08e4f2e84a4fb3115bd6527c69e6287bc4dcab9fc8739e20e6": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor as Brian, states the desired result as recording the timed dry run\u2019s evidence and additions in wiki/index.md and KIT.md, and gives a concrete, user-visible example: a maintainer sees the 12 min 31 s run, 8 of 8, and the next two additions.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "2c687d0cef46f70fc181e447d6fb5a1b3382614c3b3f3980eba61dd3cd7f3653": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "material",
+    "missing": "An explicit statement that this procedure is distinct from anticipated failure modes.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a separately headed procedure and explicitly covers preserving the failure and trace, full review, divergence classification, targeted re-verification, unresolved diagnoses, and separation of review completeness from run outcome. However, it does not explicitly state that the procedure is distinct from anticipated failure modes.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-TRACE-DEBUGGING",
+    "verdict": "unresolved"
+  },
+  "371808f1ed35a072a06235144fc616c83454029e6fbae9ed36a22048c427590c": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "material",
+    "missing": "The disproof criterion, \u201cKIT.md lacks the new watchlist rows or exceeds 30 KB,\u201d is stated only as an outcome and is not tied to a named run, trace location, or required trace evidence beyond that outcome.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The success evidence explicitly names the run, gives the saved trace location, and specifies what the trace must show. However, the separate disproof criterion provides no corresponding full-trace review, so not every criterion satisfies CORE-TRACE-REVIEW.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-TRACE-REVIEW",
+    "verdict": "unresolved"
+  },
+  "374efb1bf8d016244073aa3d5f16256734ee2448b6359e1315b0242b4ac75902": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "material",
+    "missing": "A direct success check that verifies the required watchlist rows are present and correct. The stated size limit is only a count-based stand-in, and \u201cpytest passes\u201d does not identify or establish a test of that property.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence provides a concrete disproof condition\u2014missing watchlist rows or exceeding 30 KB\u2014and records command output and exit status. However, it does not explicitly show that the tests directly verify the watchlist content; the size threshold alone cannot demonstrate correctness.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-SUCCESS-DISPROOF",
+    "verdict": "unresolved"
+  },
+  "60d85f316990900eacc69732883875d433cf764b58eb5dedae960c5970643148": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "Evidence that the target repository is not governed by an AES target (`.aes/target.yaml`).",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan declares `aes_governed_target` false, but the quoted evidence does not establish whether `.aes/target.yaml` governs the target repository. The other declared-false facts are substantively supported by the plan's bounded content change and explicit statements that there is no comparison, central LLM pipeline, irreversible action, spend, shared mechanism, or external-standard claim.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies Brian as the authority who requested the change and states the scope of who executes it (\u201cone agent makes it\u201d). It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "ae5d053dde3a27213fa6182f9c75454fa0a6a75955cac046b350b3d1b5ae5776": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies both catalogue files and states, \u201cNo catalogue entry fits,\u201d with a reason: the work is content inside a standalone public interview kit rather than a cross-project mechanism. This satisfies the no-fit alternative.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "bef96f0e98f0fb54595007e9967031b09315678ffcd7f57fd83813fb0054a426": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly lists the uncertainty and provides resolving evidence: `git status --short` showing only `KIT.md README.md wiki/index.md`, with the resolution occurring before editing.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "c24ea18728c038b140986b4f020e606b2a1447907b252a186bc537a9f162c651": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly lists requirement R1, identifies its source, names the success check and saved output, and marks its status as \u201cplanned, not yet run.\u201d It also explicitly states that the change makes no claims of following a standard, schema, or contract and identifies no additional implied requirements.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "c8441383b9eb6bbc30a809d7072bc786f7864fa698cdef93e220d60639f27c46": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "material",
+    "missing": "The model element \u201cwiki and paste-able bundle\u201d lacks a concrete statement of what the examined run must show for it. The plan also omits applicable source-linked views, explanations of material omissions, concrete model freshness or drift checks, and how the model, view coverage, and verification evidence will be reconciled in the same change (or concrete reasons they need no update).",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan provides the model link `wiki/index.md` and names one model element, but its trace requirement only says the output must show \u201cwhat that line says,\u201d which does not specify observable evidence such as an event, identifier, or displayed entity. No freshness/drift or reconciliation obligations are stated.",
+    "trace_id": "company-planning/method-conformance/kit-v2-dryrun-record/85c36d69167d/CORE-SYSTEM-MODEL",
+    "verdict": "unresolved"
+  }
+}

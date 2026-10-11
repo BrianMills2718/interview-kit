@@ -86,6 +86,6 @@ next additions.
 ## Check the kit itself
 
 ```bash
-uv sync && uv run pytest -v      # all pass (23 on 2026-10-11): patterns, MCP server, practice grader, check.sh
+uv sync && uv run pytest -v      # all pass (28 on 2026-10-11): patterns, MCP server, practice grader, check.sh
 ./build_kit.sh                   # rebuild KIT.md after editing any note
 ```
