@@ -1,0 +1,636 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-kit-v3-live-run-3491043c025d",
+  "plan": {
+    "plan_ref": "docs/plans/kit-v3-live-run.md",
+    "plan_sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+  },
+  "path_decision": {
+    "ref": "docs/plans/kit-v3-live-run.path-decision.json",
+    "sha256": "837e206f46f56385f6e80d78f779ee9ab52833df64da1222ab9dc0216281e88a",
+    "selected_path": "prototype",
+    "classified_path": "prototype",
+    "errors": []
+  },
+  "route": "inline_prototype",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@13",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "b62a29405f2c6a0ef730a8d4f78b8eb4bdccca5a29cc1c711a5a96902a121291"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "9ca8d6e47f651430c21ff382a3d7c1f99e25c61f7ea85d0919ec09d71918d4f9"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/kit-v3-live-run.facts.json",
+    "facts_sha256": "d51393e954a2bf390ec663348c3fb06ff88760b26d6325013dac61cecbb1f8be",
+    "facts": {
+      "shared_mechanism": true,
+      "empirical_comparison_proposed": false,
+      "llm_central": true,
+      "irreversible_or_spend_action": true,
+      "aes_governed_target": false,
+      "crosses_system_boundary": false,
+      "deploys": false,
+      "claims_external_standard": false,
+      "durable_documents_declared": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": true
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "aes_governed_target": "declared:derived_current_boundary",
+      "crosses_system_boundary": "default:not_declared",
+      "deploys": "default:not_declared",
+      "claims_external_standard": "default:not_declared",
+      "durable_documents_declared": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": true,
+        "reason": "shared_mechanism=true (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": true,
+        "reason": "llm_central=true (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": true,
+        "reason": "inline_prototype=true (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": false,
+        "reason": "crosses_system_boundary=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": false,
+        "reason": "claims_external_standard=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-DURABLE-DOCS",
+        "activation_fact": "durable_documents_declared",
+        "active": false,
+        "reason": "durable_documents_declared=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:8f1749e82a75f4322bc68df23af43d453d2f362bb6e9b13430fef195e6eb16f7",
+    "definition_sha256": "919a6ad7199249a34d25e0e82c2fe4b4d8aa17413e71fcbb9430630acab0014e",
+    "bundle_ref": "docs/plans/kit-v3-live-run.bundle.json",
+    "bundle_sha256": "899a9b8f878c2a28cf2719a5a71c019f44233a2c3f580da34482266ed0a862e8",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#actor-and-result",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor as a candidate in a timed agentic-AI take-home, states the desired result—knowing which examples ran against a real model, through which route, and what responses looked like—and provides a stable, concrete user-visible example in a named file with a dated live-run record and trace.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.path-decision.json",
+          "sha256": "837e206f46f56385f6e80d78f779ee9ab52833df64da1222ab9dc0216281e88a"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#requirements",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/e7defcb75683/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence provides a requirements table covering R1–R7, with each requirement naming a check and a status. It also explicitly identifies the work’s user-facing claim that notes will say an example “ran live” and states that R1–R4 verify it; no deferred requirements or omitted named standards are present.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#success-and-disproof",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/f836b43ffe44/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence defines explicit success checks for R1–R4, including recorded tool calls, matching result IDs, and answers using returned results, plus direct embedding-ranking checks. It also gives concrete disproof conditions—an unexpected response shape, a crash or missing tool call, or an answer ignoring the tool result—and identifies the run and trace locations used to judge them.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#success-and-disproof",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/f836b43ffe44/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence names the run (`scripts/live_run.py` run once), specifies where its full trace and console output live, and states what must be observed beyond the final result, including model IDs, tool-call/result IDs, token usage, and the final answer. It also explicitly covers R1–R3 and R4, with R4 requiring the embedding requests, responses, and per-document similarity scores rather than only the ranking outcome.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#when-a-run-fails-or-surprises-us",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly provides a separate debugging procedure distinct from anticipated failure modes. It requires retaining the failed run and trace id, reviewing all specified inputs, calls, stages, and outputs, citing and classifying the divergence, and connecting a targeted fix to offline and new live traced verification while preserving the original; it also states that unresolved cases permit reading but not a fix and separates review completeness from the run verdict.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#system-model",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence provides the permitted exemption, explicitly stating the repository has no stored state or user-facing view. It also cites `wiki/index.md`, states that no source-linked views apply, and specifies same-commit reconciliation plus a concrete wiki-reachability freshness check.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#capability-reuse",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly states, “No catalogue entry fits, because” the need is a one-off live check requiring copyable code and the shared LLM client is unavailable in the hosted IDE. It also explicitly states that no catalogue capabilities are reused and no catalogue capabilities are added, while identifying `scripts/live_run.py` and its first consumer.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#authority-and-non-goals",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies the authority as “the owner, who approved this run,” and lists explicit non-goals, including no changes to code-c7’s files, no new dependency, no benchmark or model comparison, and no claims beyond the shapes and route actually run.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": true,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#irreversible-actions-and-spend",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/CORE-IRREVERSIBLE-SPEND",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence identifies both proposed irreversible items, states each boundary, names the authorizer, and explains containment. The spend has per-call billing and a $1 ceiling with run limits; the push is limited by a zero-hit privacy scan and immediate reversion if private content is found.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#uncertainties",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence lists three uncertainties under the blocking CORE-UNCERTAINTIES requirement. Each has explicit resolving evidence: trace.jsonl for the request shapes, OpenRouter’s model list for model IDs, and the trace for re-sending SDK output objects; the first also names an owner.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#activation-facts",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/e7defcb75683/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly declares `llm_central: true`, `irreversible_or_spend_action: true`, and `shared_mechanism: true`, covering its live model calls, OpenRouter spend, and proposed shared patterns. It explicitly states there is no alternative comparison, no external-standard conformance claim, and no `.aes/target.yaml` governance or creation, so the corresponding false declarations are not contradicted.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-PRIOR-ART-DISPOSITION",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#prior-art-and-ownership",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/10231bc65bf1/OV-PRIOR-ART-DISPOSITION",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies searches of existing ownership and internal lineage, including the repo, prior plan, session code, and shared client, and assigns dispositions to each identified item. It also names the external prior art searched and dispositions each as reuse or bounded exception, while other internal artifacts are dispositioned as compose or extend.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-PRIOR-ART-PARALLEL-CHECK",
+      "effect": "advisory",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#prior-art-and-ownership",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/10231bc65bf1/OV-PRIOR-ART-PARALLEL-CHECK",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan specifies a concrete structural check: before commit, `grep -rln \"openrouter\" scripts/ examples/` must show only `scripts/live_run.py`, with the output recorded in `check.txt`. This would detect an additional parallel implementation containing the same concern.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-LLM-CALL-BOUNDARY",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#llm-call-boundary",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/f836b43ffe44/OV-LLM-CALL-BOUNDARY",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly describes the call graph, including the ordered model and embedding calls; the structured boundaries for tool-call items, validated agent tool calls, and embedding vectors; and tracing via httpx hooks that record request/response bodies with run labels and timestamps.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-LLM-AUTHORITY-PROMOTION",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#llm-call-boundary",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/f836b43ffe44/OV-LLM-AUTHORITY-PROMOTION",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names OpenRouter as the provider, the owner's key as the spend authority, and a $1 ceiling. It also states an authentic-run condition requiring trace evidence of a real tool call, a same-id result, and a final text answer before a shape may be described as having run live.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-PROTO-VERTICAL-RESET",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-v3-live-run.md#vertical-and-reset",
+          "sha256": "3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-v3-live-run/5a64d3cb72e8/OV-PROTO-VERTICAL-RESET",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the minimal vertical result (the OpenAI Responses run end to end, followed by later work), the reset boundary (branch/worktree, base commit, and deletion if abandoned), and the non-goals by reference to “Authority and non-goals.” It also explicitly states that no coordinated-work ceremony is added and specifies “one writer, one branch.”",
+        "reused": true
+      },
+      "suggested_action": null
+    }
+  ],
+  "item_counts": {
+    "pass": 17,
+    "unresolved": 0,
+    "not_applicable": 0,
+    "unavailable": 0,
+    "missing": 0,
+    "warn": 0
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-kit-v3-live-run-3491043c025d",
+    "snapshot_ref": "SNAPSHOT-kit-v3-live-run",
+    "snapshot_revision": "sha256:899a9b8f878c2a28cf2719a5a71c019f44233a2c3f580da34482266ed0a862e8",
+    "packet_ref": "docs/plans/kit-v3-live-run.md",
+    "packet_revision": "sha256:3491043c025dce70d7264f3191319dc956a4593cf3ce50012ed410b29c60469c",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [],
+    "route": "inline_prototype",
+    "adoption_readiness": "ready_for_contributor",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "pass",
+  "reason_codes": [],
+  "actionable_summary": [
+    "pass: 17 items evidenced, 0 confirmed not applicable, 0 advisory deviation(s)"
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "claude-code",
+    "session": "b54cd0ef-b5ea-44df-b2e1-b73b3d18ee6d"
+  },
+  "started_at": "2026-10-11T17:04:08Z",
+  "completed_at": "2026-10-11T17:04:18Z",
+  "duration_ms": 9825
+}

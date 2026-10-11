@@ -17,7 +17,7 @@ Runnable, offline-tested version: `examples/hardening.py` (`tests/test_hardening
 | rate limiting | `ChatOpenAI(..., rate_limiter=InMemoryRateLimiter(requests_per_second=1))` | `langchain_core.rate_limiters` |
 | personal data | `PIIMiddleware("email", strategy="redact", apply_to_input=True)` | strategies: redact, mask, hash, block |
 | reject bad input before spending a call | `@before_agent(can_jump_to=["end"])` returning `{"messages": [...], "jump_to": "end"}` | `@after_agent` checks the output |
-| cost | `with get_usage_metadata_callback() as cb:` then tokens x price | counts only replies whose `response_metadata` has `model_name` (real providers set it; fakes in tests must) |
+| cost | `with get_usage_metadata_callback() as cb:` then tokens x price | counts only replies whose `response_metadata` has `model_name` (real providers set it; fakes in tests must); the price table is yours to set: in the 2026-10-11 live run the example's placeholder prices gave $0.00038 where OpenRouter's own `usage.cost` was $0.00122 |
 
 Also:
 

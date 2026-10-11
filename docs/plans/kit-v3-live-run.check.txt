@@ -1,0 +1,150 @@
+# kit-v3-live-run check output, 2026-10-11T17:02:43Z
+
+## 1. live run (console output)
+$ uv run --with anthropic python scripts/live_run.py docs/plans/kit-v3-live-run.trace.jsonl   # 2026-10-11T17:00:30Z, commit 5890683 + working tree
+raw_agent turn 0: tools=['lookup_order']
+raw_agent tool lookup_order({'order_id': 'A-100'}) -> 20 chars
+raw_agent turn 1: tools=[]
+httpx2 HTTP Request: POST https://openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"
+raw_agent turn 0: stop_reason=tool_use tools=['lookup_order']
+raw_agent tool lookup_order({'order_id': 'A-100'}) -> 20 chars
+httpx2 HTTP Request: POST https://openrouter.ai/api/v1/messages "HTTP/1.1 200 OK"
+raw_agent turn 1: stop_reason=end_turn tools=[]
+hardening usage {'input_tokens': 218, 'output_tokens': 583, 'usd': 0.000382}
+== openai: OK (3.5s)
+{
+ "answer": "Order A-100: shipped.",
+ "item_types": [
+  "message",
+  "reasoning",
+  "function_call",
+  "function_call_output",
+  "message"
+ ]
+}
+== anthropic: OK (3.7s)
+{
+ "answer": "Order A-100 has shipped. The lookup doesn't include a carrier or tracking number or an estimated delivery date. If you need those, I can check again, but I can't get them with this tool.",
+ "turns": 4
+}
+== hardening: OK (7.0s)
+{
+ "answer": "Your order A-100 has shipped.\n\nWould you like me to fetch the tracking number and estimated delivery date or resend the shipping confirmation to your email? If so, please confirm the email address on the order (or provide the correct one) and I\u2019ll retrieve those details.",
+ "usage": {
+  "input_tokens": 218,
+  "output_tokens": 583,
+  "usd": 0.000382
+ }
+}
+== rag: OK (2.2s)
+{
+ "how long do refunds take?": [
+  [
+   "refunds",
+   0.6358
+  ],
+  [
+   "shipping",
+   0.3896
+  ],
+  [
+   "cancel",
+   0.2609
+  ]
+ ],
+ "when will my parcel arrive?": [
+  [
+   "shipping",
+   0.3615
+  ],
+  [
+   "cancel",
+   0.2386
+  ],
+  [
+   "refunds",
+   0.2197
+  ]
+ ],
+ "can I cancel my order?": [
+  [
+   "cancel",
+   0.6221
+  ],
+  [
+   "refunds",
+   0.2893
+  ],
+  [
+   "shipping",
+   0.1937
+  ]
+ ]
+}
+== summary: 4 passed, 0 failed; trace docs/plans/kit-v3-live-run.trace.jsonl
+exit status: 0
+
+## 2. trace read: every request/response, key items (reader: tool call, id echoed, answer, cost)
+$ python3 readtrace.py docs/plans/kit-v3-live-run.trace.jsonl
+1 openai REQ openai/gpt-5-mini [('user', None, None)]
+2 openai RESP 200 [('function_call', 'call_TwNJ5T1pcCncGyrVlVgThfdl', 'lookup_order', '{"order_id":"A-100"}', None)] cost 0.00021575
+3 openai REQ openai/gpt-5-mini [('user', None, None), ('function_call', 'call_TwNJ5T1pcCncGyrVlVgThfdl', '{"order_id":"A-100"}'), ('function_call_output', 'call_TwNJ5T1pcCncGyrVlVgThfdl', 'Order A-100: shipped')]
+4 openai RESP 200 [('message', None, None, None, 'Order A-100: shipped.')] cost 7.675e-05
+5 anthropic REQ anthropic/claude-haiku-5.5 last: {"role": "user", "content": "Where is order A-100?"}
+6 anthropic RESP 200 tool_use [('tool_use', 'toolu_01WrQuSDxjCFcnBdKzJNgESE', {'order_id': 'A-100'}, '')] usage {'input_tokens': 460, 'output_tokens': 53, 'output_tokens_details': {'thinking_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'cache_creation': {'ephemeral_5m_input_tokens': 0, 'ephemeral_1h_input_tokens': 0}, 'inference_geo': 'global', 'server_tool_use': None, 'service_tier': 'standard', 'speed': 'standard', 'cost': 7.25e-05, 'is_byok': False, 'cost_details': {'upstream_inference_cost': 7.25e-05, 'upstream_inference_prompt_cost': 4.6e-05, 'upstream_inference_completions_cost': 2.65e-05}}
+7 anthropic REQ anthropic/claude-haiku-5.5 last: {"role": "user", "content": [{"type": "tool_result", "tool_use_id": "toolu_01WrQuSDxjCFcnBdKzJNgESE", "content": "Order A-100: shipped", "is_error": false}]}
+8 anthropic RESP 200 end_turn [('text', None, None, "Order A-100 has shipped. The lookup doesn't include a carrier or tracking number or an estimated delivery date. If you need those, I can check again, ")] usage {'input_tokens': 527, 'output_tokens': 62, 'output_tokens_details': {'thinking_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'cache_creation': {'ephemeral_5m_input_tokens': 0, 'ephemeral_1h_input_tokens': 0}, 'inference_geo': 'global', 'server_tool_use': None, 'service_tier': 'standard', 'speed': 'standard', 'cost': 8.37e-05, 'is_byok': False, 'cost_details': {'upstream_inference_cost': 8.37e-05, 'upstream_inference_prompt_cost': 5.27e-05, 'upstream_inference_completions_cost': 3.1e-05}}
+9 hardening REQ openai/gpt-5-mini last: {"content": "Where is order A-100? My email is [REDACTED_EMAIL]", "role": "user"}
+10 hardening RESP 200 tool_calls [{'type': 'function', 'index': 0, 'id': 'call_zLpoDS7nPtmdNJXD1VU1mN9J', 'function': {'name': 'lookup_order', 'arguments': '{"order_id":"A-100"}'}}]  cost 0.00022475
+11 hardening REQ openai/gpt-5-mini last: {"content": "Order A-100: shipped", "role": "tool", "tool_call_id": "call_zLpoDS7nPtmdNJXD1VU1mN9J"}
+12 hardening RESP 200 stop None Your order A-100 has shipped.
+
+Would you like me to fetch the tracking number and estimated delivery date or resend the shipping confirmation to your  cost 0.00099575
+13 rag REQ openai/text-embedding-3-small ["Refunds are issued within 5 business days of receiving the return.", "Standard shipping takes 3 to 7 days; express takes 1 to 2 days.", "Orders can be cancelled free of charge until they ship."]
+14 rag RESP 200 vectors: 3 <8192 chars/values omitted> usage {'prompt_tokens': 44, 'total_tokens': 44, 'cost': 8.8e-07, 'is_byok': False, 'cost_details': {'upstream_inference_cost': 8.8e-07, 'upstream_inference_prompt_cost': 8.8e-07, 'upstream_inference_completions_cost': 0}}
+15 rag REQ openai/text-embedding-3-small ["how long do refunds take?"]
+16 rag RESP 200 vectors: 1 <8192 chars/values omitted> usage {'prompt_tokens': 6, 'total_tokens': 6, 'cost': 1.2e-07, 'is_byok': False, 'cost_details': {'upstream_inference_cost': 1.2e-07, 'upstream_inference_prompt_cost': 1.2e-07, 'upstream_inference_completions_cost': 0}}
+17 rag REQ openai/text-embedding-3-small ["when will my parcel arrive?"]
+18 rag RESP 200 vectors: 1 <8192 chars/values omitted> usage {'prompt_tokens': 6, 'total_tokens': 6, 'cost': 1.2e-07, 'is_byok': False, 'cost_details': {'upstream_inference_cost': 1.2e-07, 'upstream_inference_prompt_cost': 1.2e-07, 'upstream_inference_completions_cost': 0}}
+19 rag REQ openai/text-embedding-3-small ["can I cancel my order?"]
+20 rag RESP 200 vectors: 1 <8192 chars/values omitted> usage {'prompt_tokens': 6, 'total_tokens': 6, 'cost': 1.2e-07, 'is_byok': False, 'cost_details': {'upstream_inference_cost': 1.2e-07, 'upstream_inference_prompt_cost': 1.2e-07, 'upstream_inference_completions_cost': 0}}
+total reported cost USD: 0.00167
+
+## 3. parallel-implementation check
+$ grep -rln openrouter scripts/ examples/
+scripts/live_run.py
+examples/agent_template.py
+Reading: agent_template.py's OpenRouter mention predates this change (its model-builder comment, see git log -S openrouter); this change adds OpenRouter only in scripts/live_run.py, and the three examples it ran are unchanged except a comment in hardening.py.
+
+## 4. full suite
+$ uv run pytest -v
+PASSED lines: 52
+no FAILED or ERROR lines
+============================= 52 passed in 23.52s ==============================
+exit status: 0
+
+## 5. privacy scan of changed files
+$ gitleaks detect --no-git --source <each changed file>
+KIT.md: 1:03PM INF no leaks found
+README.md: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.adoption-attempts.jsonl: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.adoption-decision.json: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.bundle.json: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.check.txt: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.facts.json: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.goal.md: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.md: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.path-decision.json: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.receipt.json: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.trace.jsonl: 1:03PM INF no leaks found
+docs/plans/kit-v3-live-run.verdicts.json: 1:03PM INF no leaks found
+examples/hardening.py: 1:03PM INF no leaks found
+scripts/live_run.py: 1:03PM INF no leaks found
+skills/production-hardening/SKILL.md: 1:03PM INF no leaks found
+skills/raw-api-agent/SKILL.md: 1:03PM INF no leaks found
+wiki/index.md: 1:03PM INF no leaks found
+$ grep -nE "sk-or-|Bearer |x-api-key|authorization|@gmail|<owner and employer names>|[0-9]{3}-[0-9]{3}-[0-9]{4}" <changed files>
+scripts/live_run.py:69:    """Messages-API loop from raw_api_agent.py against a Claude model (bearer auth, as OpenRouter expects)."""
+skills/raw-api-agent/SKILL.md:18:  `Anthropic(base_url="https://openrouter.ai/api", auth_token=KEY)` (bearer auth), model ids like
+KIT.md:549:  `Anthropic(base_url="https://openrouter.ai/api", auth_token=KEY)` (bearer auth), model ids like
+(end of grep hits) Reading: the 3 hits are the words "bearer auth" describing the auth style; no key, header or name.

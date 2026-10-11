@@ -25,7 +25,9 @@ from langchain_core.tools import tool
 log = logging.getLogger("hardening")
 
 ORDERS = {"A-100": "shipped", "A-101": "processing"}
-PRICE_PER_1K = {"input": 0.00015, "output": 0.0006}  # USD; set from the provider's price page
+# USD placeholder: set from the provider's price page for your model. Live run 2026-10-11 with
+# gpt-5-mini: these gave $0.00038, the provider billed $0.00122 (reasoning tokens bill as output).
+PRICE_PER_1K = {"input": 0.00015, "output": 0.0006}
 MAX_INPUT_CHARS = 2000
 
 

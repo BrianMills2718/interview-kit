@@ -514,7 +514,7 @@ Runnable, offline-tested version: `examples/hardening.py` (`tests/test_hardening
 | rate limiting | `ChatOpenAI(..., rate_limiter=InMemoryRateLimiter(requests_per_second=1))` | `langchain_core.rate_limiters` |
 | personal data | `PIIMiddleware("email", strategy="redact", apply_to_input=True)` | strategies: redact, mask, hash, block |
 | reject bad input before spending a call | `@before_agent(can_jump_to=["end"])` returning `{"messages": [...], "jump_to": "end"}` | `@after_agent` checks the output |
-| cost | `with get_usage_metadata_callback() as cb:` then tokens x price | counts only replies whose `response_metadata` has `model_name` (real providers set it; fakes in tests must) |
+| cost | `with get_usage_metadata_callback() as cb:` then tokens x price | counts only replies whose `response_metadata` has `model_name` (real providers set it; fakes in tests must); the price table is yours to set: in the 2026-10-11 live run the example's placeholder prices gave $0.00038 where OpenRouter's own `usage.cost` was $0.00122 |
 
 Also:
 
@@ -537,8 +537,19 @@ description: Build a tool-calling agent directly on the Anthropic or OpenAI API,
 # Skill: an agent loop on the raw API
 
 Runnable, offline-tested version: `examples/raw_api_agent.py` (`tests/test_raw_api_agent.py`).
-The tests replay replies in the documented message shapes with a stub client; check the
-installed SDK once live before relying on a shape.
+The tests replay replies in the documented message shapes with a stub client. Both loops also
+ran once live on 2026-10-11 through OpenRouter (`scripts/live_run.py`, trace in
+`docs/plans/kit-v3-live-run.trace.jsonl`): `openai/gpt-5-mini` on the Responses shape and
+`anthropic/claude-haiku-5.5` on the Messages shape each called the tool, got the result back
+under the same id and answered from it, unchanged. Live details the stubs do not show:
+
+- reasoning models put `reasoning` items in `resp.output`; sending them back as-is
+  (`items += resp.output`) works;
+- through OpenRouter: `OpenAI(base_url="https://openrouter.ai/api/v1", api_key=KEY)` and
+  `Anthropic(base_url="https://openrouter.ai/api", auth_token=KEY)` (bearer auth), model ids like
+  `openai/gpt-5-mini`;
+- anthropic 1.13+ is built on `httpx2`: a custom `http_client=` must be an `httpx2.Client`,
+  an `httpx.Client` raises "Invalid `http_client` argument".
 
 ## The loop (both providers)
 
