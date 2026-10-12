@@ -13,14 +13,17 @@ That is also what "how you use the AI" is graded on.
 2. **Plan.** "Write PLAN.md: the goal, with the task's requirements quoted as R1, R2 and so on.
    A checkable done-when list. Five to eight small steps. Assumptions and risks." Read it, fix it,
    then type "plan approved".
-3. **Design.** "Write docs/DESIGN.md: outcome, failure modes, the business rules in the order they
-   are checked, one good and one bad test input for each rule, build order."
+3. **Design.** "Write docs/DESIGN.md: outcome, the requirements as a table (R1, R2...), failure
+   modes, the business rules in the order they are checked, one good and one bad test input for
+   each rule, build order."
 4. **Diagrams.** "Write docs/MODEL.md with six Mermaid diagrams. Give each one a question as its
    heading and a bold Answer line under it. The six are: context, the agent loop (show where it
    pauses), the main sequence, the rules as a table, the run states, and the data models.
+   Then four tables: Runtime (which function writes each record), Contracts (what passes
+   between parts and how it fails), Quality (each goal and the test that proves it), Unknowns.
    Use only real function names."
-5. **Decisions.** "Write docs/DECISIONS.md as a table: each choice, why, the alternative I
-   rejected, and what would prove it wrong."
+5. **Decisions.** "Write docs/DECISIONS.md as a table with rows D1, D2...: each choice, why, the
+   alternative I rejected, and what would prove it wrong."
 6. **Build, one slice at a time.** "Implement step N only, with a test a wrong version would fail.
    Use a fake scripted model so the tests run offline. Run the tests." Repeat for each step.
 7. **Check against the plan.** "Act as a reviewer. Check the code against PLAN.md and the
