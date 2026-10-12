@@ -49,6 +49,7 @@ cases, reviewer before finishing, and `bash kit/check.sh --final` at the end.
 
 | File | Use it when |
 |---|---|
+| `MEMORY_SHEET.md` | the test allows no outside files: the whole method on one page to learn |
 | `AGENTS.md` | always: how the assistant works (plan, roles, small steps, checks, explain) |
 | `PLAN.template.md` | start of every task: copy to `PLAN.md` and fill in |
 | `check.sh` | after every step (`--final` at the end; `--install-hook` to run it on each commit) |
