@@ -1,0 +1,518 @@
+{
+  "schema_version": "planning-method-conformance-receipt.v1",
+  "record_type": "planning_method_conformance_receipt",
+  "receipt_id": "RECEIPT-kit-memory-sheet-54a81adc8024",
+  "plan": {
+    "plan_ref": "docs/plans/kit-memory-sheet.md",
+    "plan_sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+  },
+  "path_decision": {
+    "ref": "docs/plans/kit-memory-sheet.path-decision.json",
+    "sha256": "2b554ddea9f735fce0fdb742893cc17c0522d5c0e50587653713e8f62c147431",
+    "selected_path": "prototype",
+    "classified_path": "prototype",
+    "errors": []
+  },
+  "route": "inline_prototype",
+  "profile": {
+    "profile_id": "bounded-design",
+    "revision": "bounded-design@13",
+    "path": "contracts/method-conformance/profiles/bounded-design.v1.json",
+    "sha256": "b62a29405f2c6a0ef730a8d4f78b8eb4bdccca5a29cc1c711a5a96902a121291"
+  },
+  "compiler": {
+    "path": "scripts/method_conformance/compiler.py",
+    "sha256": "9ca8d6e47f651430c21ff382a3d7c1f99e25c61f7ea85d0919ec09d71918d4f9"
+  },
+  "activation": {
+    "facts_ref": "docs/plans/kit-memory-sheet.facts.json",
+    "facts_sha256": "13d5cf72b2512c6ca71ba8b4f3c5e629a0410fdef80fc2e026f42e0848262382",
+    "facts": {
+      "shared_mechanism": false,
+      "empirical_comparison_proposed": false,
+      "llm_central": false,
+      "irreversible_or_spend_action": false,
+      "crosses_system_boundary": false,
+      "deploys": false,
+      "claims_external_standard": false,
+      "aes_governed_target": false,
+      "durable_documents_declared": false,
+      "multiple_writers": false,
+      "consequential_boundary": false,
+      "inline_prototype": true
+    },
+    "fact_origins": {
+      "shared_mechanism": "declared:derived_current_boundary",
+      "empirical_comparison_proposed": "declared:derived_current_boundary",
+      "llm_central": "declared:derived_current_boundary",
+      "irreversible_or_spend_action": "declared:derived_current_boundary",
+      "crosses_system_boundary": "default:not_declared",
+      "deploys": "default:not_declared",
+      "claims_external_standard": "default:not_declared",
+      "aes_governed_target": "default:not_declared",
+      "durable_documents_declared": "default:not_declared",
+      "multiple_writers": "derived:path_decision.concurrent_writers",
+      "consequential_boundary": "derived:path_decision.persistent_migration|consequential_external_mutation",
+      "inline_prototype": "derived:classified_path==prototype"
+    },
+    "overlays": [
+      {
+        "overlay_id": "OV-PRIOR-ART",
+        "activation_fact": "shared_mechanism",
+        "active": false,
+        "reason": "shared_mechanism=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-EMPIRICAL-COMPARISON",
+        "activation_fact": "empirical_comparison_proposed",
+        "active": false,
+        "reason": "empirical_comparison_proposed=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-LLM-CENTRAL",
+        "activation_fact": "llm_central",
+        "active": false,
+        "reason": "llm_central=false (declared:derived_current_boundary)"
+      },
+      {
+        "overlay_id": "OV-MULTIPLE-WRITERS",
+        "activation_fact": "multiple_writers",
+        "active": false,
+        "reason": "multiple_writers=false (derived:path_decision.concurrent_writers)"
+      },
+      {
+        "overlay_id": "OV-CONSEQUENTIAL-BOUNDARY",
+        "activation_fact": "consequential_boundary",
+        "active": false,
+        "reason": "consequential_boundary=false (derived:path_decision.persistent_migration|consequential_external_mutation)"
+      },
+      {
+        "overlay_id": "OV-INLINE-PROTOTYPE",
+        "activation_fact": "inline_prototype",
+        "active": true,
+        "reason": "inline_prototype=true (derived:classified_path==prototype)"
+      },
+      {
+        "overlay_id": "OV-SYSTEM-BOUNDARY",
+        "activation_fact": "crosses_system_boundary",
+        "active": false,
+        "reason": "crosses_system_boundary=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DEPLOYMENT",
+        "activation_fact": "deploys",
+        "active": false,
+        "reason": "deploys=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-STANDARD-CONFORMANCE",
+        "activation_fact": "claims_external_standard",
+        "active": false,
+        "reason": "claims_external_standard=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-AES",
+        "activation_fact": "aes_governed_target",
+        "active": false,
+        "reason": "aes_governed_target=false (default:not_declared)"
+      },
+      {
+        "overlay_id": "OV-DURABLE-DOCS",
+        "activation_fact": "durable_documents_declared",
+        "active": false,
+        "reason": "durable_documents_declared=false (default:not_declared)"
+      }
+    ]
+  },
+  "checklist": {
+    "checklist_id": "method-conformance.bounded-design",
+    "revision": "sha256:c66a265620ea2ef23c95194e0f0c5c0b51638df9e0b914a355208b1d89f968af",
+    "definition_sha256": "d983ff6d41113911da7626568546a887590ab96f8e66487fcaf93d6835196838",
+    "bundle_ref": "docs/plans/kit-memory-sheet.bundle.json",
+    "bundle_sha256": "64cb987a04673fc0afc97ac250565dd0fa61dff601290af966a48b39220b7d66",
+    "coverage": "complete",
+    "definition_matches_recompilation": true
+  },
+  "items": [
+    {
+      "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#actor-and-result",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-ACTOR-RESULT-EXAMPLE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the actor (Brian), states the desired result (a static MEMORY_SHEET.md study document with eight prompts), and gives a concrete, user-visible stable example (Prompt 4 requiring docs/MODEL.md with six Mermaid diagrams and specified headings).",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ROUTE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "structural",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.path-decision.json",
+          "sha256": "2b554ddea9f735fce0fdb742893cc17c0522d5c0e50587653713e8f62c147431"
+        }
+      ],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-REQUIREMENTS-TRACED",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-REQUIREMENTS-TRACED",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The Requirements table explicitly lists R1, including the requested deliverable and its claims, links it to a named success check whose output is saved, and marks it planned, not yet run. The plan also explicitly states that the change makes no claims beyond R1 and presents nothing as following a standard, schema, or contract, so no additional omitted requirement is evidenced.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SUCCESS-DISPROOF",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#success-and-disproof",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-SUCCESS-DISPROOF",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan explicitly identifies success checks: documentation and link resolution, inclusion of each required package file in prompts, and the wiki link required for acceptance. It also gives concrete disproof conditions—any required package file or diagram missing from prompts, or an employer/interview detail named in the sheet—and specifies before/after runs and saved outputs to demonstrate the checks.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-REVIEW",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#success-and-disproof",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-TRACE-REVIEW",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence names both the before-commit disproof run and the change-commit success run, identifies their complete output and exact command/exit status in `docs/plans/kit-memory-sheet.check.txt`, and specifies required trace details beyond the outcome. It also explicitly states how both runs judge the success and disproof conditions.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-TRACE-DEBUGGING",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#when-a-run-fails-or-surprises-us",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-TRACE-DEBUGGING",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly defines a separate procedure, preserves the failed check and execution trace, requires reading all named artifacts before choosing a fix, cites and classifies the divergence, restricts unresolved diagnoses to investigation, and links targeted repairs to new traced verification runs while retaining the original. It also states that complete review is distinct from a passing run.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-SYSTEM-MODEL",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "warn",
+      "verifier_result": "pass",
+      "reason_codes": [
+        "MODEL-NO-ELEMENT-IDS"
+      ],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-SYSTEM-MODEL",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The plan links `docs/model/ARCHITECTURE.md`, identifies the repository scope and documentation entry point, and explicitly states that no model elements are added, changed, or relied on because the work is documentation-only. It also names the applicable requirement-to-verification view, explains why no other view applies, specifies concrete freshness tests, and states how model, view coverage, and saved verification evidence are reconciled in the same commit.",
+        "reused": false
+      },
+      "suggested_action": "MODEL-NO-ELEMENT-IDS: docs/model/ARCHITECTURE.md has no element lines; write each as `- ID (decided|guessed): what it is`"
+    },
+    {
+      "item_id": "CORE-CAPABILITY-REUSE",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#capability-reuse",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-CAPABILITY-REUSE",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly states, “No catalogue entry fits, because this is a study sheet inside one repo,” and explains that the work needs repository-file edits that no catalogue entry provides. It therefore supplies the required reason for the no-fit case, without claiming unlisted reuse or adding a capability.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-AUTHORITY-NONGOALS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#authority-and-non-goals",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-AUTHORITY-NONGOALS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states that one agent makes it. It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-IRREVERSIBLE-SPEND",
+      "effect": "blocking",
+      "applicability_mode": "conditional",
+      "condition_fact": "irreversible_or_spend_action",
+      "condition_value": false,
+      "verifier_kind": "semantic",
+      "disposition": "not_applicable",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [],
+      "semantic": null,
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-UNCERTAINTIES",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#uncertainties",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-UNCERTAINTIES",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly identifies the complete set of material uncertainties in a table and provides resolving evidence for it: before editing, confirm the change is limited to MEMORY_SHEET.md and docs only. Thus the listed uncertainty has a resolution mechanism.",
+        "reused": true
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "CORE-ACTIVATION-FACTS",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#activation-facts",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-ACTIVATION-FACTS",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "All relevant activation facts are explicitly declared false with supporting evidence. The before/after runs are verification of one change rather than an empirical comparison, and the plan explicitly states there is no shared mechanism, central LLM dependence, irreversible action or spend, external-standard claim, or AES target.",
+        "reused": false
+      },
+      "suggested_action": null
+    },
+    {
+      "item_id": "OV-PROTO-VERTICAL-RESET",
+      "effect": "blocking",
+      "applicability_mode": "required",
+      "condition_fact": null,
+      "condition_value": null,
+      "verifier_kind": "semantic",
+      "disposition": "pass",
+      "verifier_result": "pass",
+      "reason_codes": [],
+      "evidence": [
+        {
+          "ref": "docs/plans/kit-memory-sheet.md#vertical-and-reset",
+          "sha256": "54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4"
+        }
+      ],
+      "semantic": {
+        "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/OV-PROTO-VERTICAL-RESET",
+        "model": "openrouter/openai/gpt-5.6-luna",
+        "verdict": "pass",
+        "materiality": "non_material",
+        "missing": null,
+        "rationale": "The evidence explicitly names the minimal vertical result (`MEMORY_SHEET.md` and its saved check output), defines the reset boundary as `git revert` of the commit, and states the non-goal as anything outside these files. It also explicitly says the plan adds no coordinated-work ceremony.",
+        "reused": false
+      },
+      "suggested_action": null
+    }
+  ],
+  "item_counts": {
+    "pass": 11,
+    "unresolved": 0,
+    "not_applicable": 1,
+    "unavailable": 0,
+    "missing": 0,
+    "warn": 1
+  },
+  "semantic_verifier": {
+    "kind": "llm_client",
+    "available": true,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "task": "company_planning.method_conformance.semantic_item_review"
+  },
+  "conformance_report": {
+    "schema_version": "1.0",
+    "record_type": "planning_conformance_report",
+    "report_id": "REPORT-kit-memory-sheet-54a81adc8024",
+    "snapshot_ref": "SNAPSHOT-kit-memory-sheet",
+    "snapshot_revision": "sha256:64cb987a04673fc0afc97ac250565dd0fa61dff601290af966a48b39220b7d66",
+    "packet_ref": "docs/plans/kit-memory-sheet.md",
+    "packet_revision": "sha256:54a81adc80249aa08a9740e691905f1020d299abc281dbc5e52cf151d99426f4",
+    "structural_status": "pass",
+    "semantic_review_status": "complete",
+    "diagnostics": [],
+    "route": "inline_prototype",
+    "adoption_readiness": "ready_for_contributor",
+    "limitations": [
+      "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+    ]
+  },
+  "advisory_deviations": [],
+  "result": "pass",
+  "reason_codes": [],
+  "actionable_summary": [
+    "pass: 11 items evidenced, 1 confirmed not applicable, 0 advisory deviation(s)",
+    "warn CORE-SYSTEM-MODEL: MODEL-NO-ELEMENT-IDS -> MODEL-NO-ELEMENT-IDS: docs/model/ARCHITECTURE.md has no element lines; write each as `- ID (decided|guessed): what it is`"
+  ],
+  "limitations": [
+    "Semantic verdicts judge only the cited plan excerpt against the item statement; they do not judge product strategy."
+  ],
+  "caller": {
+    "client": "quick-adopt",
+    "session": "ee31d131-4b2f-4673-b467-06a94912c64d"
+  },
+  "started_at": "2026-10-12T13:51:51Z",
+  "completed_at": "2026-10-12T13:52:01Z",
+  "duration_ms": 10197
+}

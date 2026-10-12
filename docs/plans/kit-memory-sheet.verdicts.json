@@ -1,0 +1,146 @@
+{
+  "2624c8ff3566d1324531ffa3e79789acbced518e0b4bbeadfdd6064e07d82b70": {
+    "item_id": "CORE-CAPABILITY-REUSE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly states, \u201cNo catalogue entry fits, because this is a study sheet inside one repo,\u201d and explains that the work needs repository-file edits that no catalogue entry provides. It therefore supplies the required reason for the no-fit case, without claiming unlisted reuse or adding a capability.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-CAPABILITY-REUSE",
+    "verdict": "pass"
+  },
+  "33f27e48926d135eaf24998bed90664b09d5b09324afb4e7fa7ff4717a3032a4": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the minimal vertical result (`MEMORY_SHEET.md` and its saved check output), defines the reset boundary as `git revert` of the commit, and states the non-goal as anything outside these files. It also explicitly says the plan adds no coordinated-work ceremony.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "35c64bcc8f9c091cb5dcd94bffe3cdcbe5ea478d3b656f950da8c691856f4ddb": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the actor (Brian), states the desired result (a static MEMORY_SHEET.md study document with eight prompts), and gives a concrete, user-visible stable example (Prompt 4 requiring docs/MODEL.md with six Mermaid diagrams and specified headings).",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "43af82f2ea9fa1e0853484c680a319c931d3e7a9ef7faafe2d03978a17459ffc": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "All relevant activation facts are explicitly declared false with supporting evidence. The before/after runs are verification of one change rather than an empirical comparison, and the plan explicitly states there is no shared mechanism, central LLM dependence, irreversible action or spend, external-standard claim, or AES target.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-ACTIVATION-FACTS",
+    "verdict": "pass"
+  },
+  "4de015a3bdc3c9fb3211936230e96a0b22da2f2bcf0460b2b409843988697506": {
+    "item_id": "CORE-TRACE-REVIEW",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence names both the before-commit disproof run and the change-commit success run, identifies their complete output and exact command/exit status in `docs/plans/kit-memory-sheet.check.txt`, and specifies required trace details beyond the outcome. It also explicitly states how both runs judge the success and disproof conditions.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-TRACE-REVIEW",
+    "verdict": "pass"
+  },
+  "56b25a9f752feb73bf66a04149b2b52ad34a088df1e0900850ca84ef0ed02677": {
+    "item_id": "CORE-ACTIVATION-FACTS",
+    "materiality": "material",
+    "missing": "llm_central is declared false, but the plan\u2019s desired result centrally depends on typing prompts into an IDE assistant to produce the planning package.",
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly says MEMORY_SHEET.md prompts, when typed into an IDE assistant, produce the package, and its goal is defined around that behavior. Under the requirement, this triggers llm_central, so declaring it false is not supported.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-ACTIVATION-FACTS",
+    "verdict": "unresolved"
+  },
+  "5ffb5a836014f78b8a855208d8db8bba5a994da0d6fbc299499753ca5802e81e": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The Requirements table explicitly lists R1, including the requested deliverable and its claims, links it to a named success check whose output is saved, and marks it planned, not yet run. The plan also explicitly states that the change makes no claims beyond R1 and presents nothing as following a standard, schema, or contract, so no additional omitted requirement is evidenced.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "607c8c9101eedfd42580b952aa12b0060fc7498aea010db22fe95aaf376884da": {
+    "item_id": "OV-PROTO-VERTICAL-RESET",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names the minimal vertical result (`MEMORY_SHEET.md` and its saved check output), defines the reset boundary as `git revert` of the commit, and states the non-goal as anything outside those files. It also explicitly excludes coordinated-work ceremony, including a work-unit graph and review or release contract.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/OV-PROTO-VERTICAL-RESET",
+    "verdict": "pass"
+  },
+  "67f965d23f93597f912b3db53990c07657cbbccfbcd3c3398d5f21e9d640b0f1": {
+    "item_id": "CORE-ACTOR-RESULT-EXAMPLE",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly names Brian as the actor, states the desired result of producing the planning package from eight prompts, and gives a concrete, stable user-visible example involving Prompt 4 and six Mermaid diagrams with required headings and answers.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-ACTOR-RESULT-EXAMPLE",
+    "verdict": "pass"
+  },
+  "840570ccea37b25a05af86acde87e7608464188c9e7dbeaca46de6e8cb6d2368": {
+    "item_id": "CORE-AUTHORITY-NONGOALS",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies Brian as the authority requesting the change and states that one agent makes it. It also explicitly lists non-goals: work outside the specified files, irreversible actions, and spending.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-AUTHORITY-NONGOALS",
+    "verdict": "pass"
+  },
+  "956096474806c23d198bc219031a0420f4164f4791ceed5d70098b6b304f811b": {
+    "item_id": "CORE-REQUIREMENTS-TRACED",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan provides a requirements list with R1, identifies its verification check (`the success check under Success and disproof`, with output saved to `docs/plans/kit-memory-sheet.check.txt`), and gives its status as `planned, not yet run`. It also explicitly states that the change implies no additional requirements and presents no claim of following a named standard, schema, or contract.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-REQUIREMENTS-TRACED",
+    "verdict": "pass"
+  },
+  "ad15598fe0c4c662edd8fcb6f9b0903c3c884d51f70ad5074d4302c9d72d2db0": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence links `docs/model/ARCHITECTURE.md`, identifies `wiki/index.md` as the documentation entry point, and states the model is repository-scoped rather than shared. It explicitly declares no model elements are added, changed, or relied on beyond unchanged diagram kinds, explains why no other views apply, names concrete freshness tests, and specifies same-commit reconciliation of the model, view coverage, and saved verification output.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-SYSTEM-MODEL",
+    "verdict": "pass"
+  },
+  "b40dd0e3afe8ef09ceaeb4c4ce87cd3959c73b18a34cd56e7dad15b678237c01": {
+    "item_id": "CORE-TRACE-DEBUGGING",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly defines a separate procedure, preserves the failed check and execution trace, requires reading all named artifacts before choosing a fix, cites and classifies the divergence, restricts unresolved diagnoses to investigation, and links targeted repairs to new traced verification runs while retaining the original. It also states that complete review is distinct from a passing run.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-TRACE-DEBUGGING",
+    "verdict": "pass"
+  },
+  "ccda7db19660ea0378f490f87336f8d3dceb7d843ab7eaa1c3de469c945541e6": {
+    "item_id": "CORE-UNCERTAINTIES",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The evidence explicitly identifies the complete set of material uncertainties in a table and provides resolving evidence for it: before editing, confirm the change is limited to MEMORY_SHEET.md and docs only. Thus the listed uncertainty has a resolution mechanism.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-UNCERTAINTIES",
+    "verdict": "pass"
+  },
+  "df7776a232086354e16c451a4b63c01d953483a4099e9981e1588415389819e6": {
+    "item_id": "CORE-SYSTEM-MODEL",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan links `docs/model/ARCHITECTURE.md`, identifies the repository scope and documentation entry point, and explicitly states that no model elements are added, changed, or relied on because the work is documentation-only. It also names the applicable requirement-to-verification view, explains why no other view applies, specifies concrete freshness tests, and states how model, view coverage, and saved verification evidence are reconciled in the same commit.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/e3786ba8bd4f/CORE-SYSTEM-MODEL",
+    "verdict": "pass"
+  },
+  "eea91076c8ca3f5171d82f2974fc4c376aef543d8a59f4b69cdbd36cdde37a5e": {
+    "item_id": "CORE-SUCCESS-DISPROOF",
+    "materiality": "non_material",
+    "missing": null,
+    "model": "openrouter/openai/gpt-5.6-luna",
+    "rationale": "The plan explicitly identifies success checks: documentation and link resolution, inclusion of each required package file in prompts, and the wiki link required for acceptance. It also gives concrete disproof conditions\u2014any required package file or diagram missing from prompts, or an employer/interview detail named in the sheet\u2014and specifies before/after runs and saved outputs to demonstrate the checks.",
+    "trace_id": "company-planning/method-conformance/kit-memory-sheet/d7d96b756ee8/CORE-SUCCESS-DISPROOF",
+    "verdict": "pass"
+  }
+}
