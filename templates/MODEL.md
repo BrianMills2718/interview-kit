@@ -1,101 +1,23 @@
 # System model: <system name>, <one sentence: what it does and its one key design choice>
 
-Copy to `docs/MODEL.md` before writing code; keep it true as the code changes (method/system-model.md).
+Copy to `docs/MODEL.md` after `docs/PRD.md`, before writing code; keep it true as the code changes
+(method/system-model.md). Draw only the diagrams that answer a question; the three below are
+required, and Context, Agent loop or Components may be added when they answer one too.
 Every box, arrow and row names a real function, class, tool or record. Write functions in
 backticks with parentheses and classes in backticks: `check.sh --final` fails any function named
 that way that the code does not define, and any backticked test name that no test file defines.
-Mark anything not yet decided (guessed). Each diagram answers the question in its heading.
-Under each heading write two lines before the diagram: a bold "Answer:" line, one sentence
-answering the heading for this system; then an italic line saying whether the view is current
-or proposed and what its arrows mean (one meaning per diagram). Give each part one label and use
-it unchanged in every diagram (same node id, same text). Draw the mechanism a decision rests on
-as the library really does it (a pause returns to the caller; a resume re-runs the tool). A
-ten-line probe script that confirms the behaviour is allowed before the model, and worth it.
+Under each heading write a bold "Answer:" line first (the kit's own convention): one sentence
+answering the heading's question for this system. Give each part one label and use it unchanged
+in every diagram. Draw the mechanism a decision rests on as the library really does it (a pause
+returns to the caller; a resume re-runs the tool). A ten-line probe script that confirms the
+behaviour is allowed before the model, and worth it.
 Guidance in `<!-- -->` comments does not render; leave or delete it.
 
-## Goals
-- Outcome: <who does what, and what they see when it works>
-- Quality goals: <2 to 4, e.g. correct refunds, bounded steps, explainable answer>
-
-## 1. Context: who and what is outside the system?
+## Domain model: what are the things, and what must always be true of them?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-```mermaid
-flowchart LR
-  <Person or caller> -->|<what they send>| <System>
-  <System> -->|<what it calls>| <External system or model>
-```
-
-## 2. Agent loop: which part runs each step, and where does the run stop or pause?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-```mermaid
-flowchart LR
-  In["<caller>"] -->|"invoke(input, thread_id)"| Model["<model node>"]
-  Model -->|"tool call"| Tools["<tools node: tool_a(), tool_b()>"]
-  Tools -->|"result"| Model
-  Model -->|"final answer"| Out["<structured output>"]
-  Tools -.->|"pause: returned to caller"| In
-```
-
-<!-- Who owns what: one row per part; mark the only writer of each record. -->
-
-| Block | Owns | Code |
-|---|---|---|
-| <part> | <what it decides or holds> | `<function()>` |
-
-## 3. Main sequence: what happens, in order, on the main path?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-```mermaid
-sequenceDiagram
-  participant Caller
-  participant Graph
-  participant Model
-  participant Tool
-  Caller->>Graph: <invoke(input, thread_id)>
-  loop until the final answer (step limit <N>)
-    Graph->>Model: <messages>
-    Model-->>Graph: <tool call>
-    Graph->>Tool: <run tool>
-    Tool-->>Graph: <result>
-  end
-  Graph-->>Caller: <final answer, or pause payload>
-```
-<!-- ->> is a call, -->> only its return. Give every tool its own lifeline, or none. A pause
-returns to the caller; draw the resume as a new call from the caller and show what re-runs.
-No ";" inside a message or Note: it breaks the diagram. -->
-
-## 4. Rules: in what order are the business rules checked?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-| # | Check (first match wins) | Result text | Code |
-|---|---|---|---|
-| 1 | <check> | <exact text> | `<function()>` |
-
-<!-- Draw a flowchart only for the branches after the straight chain. -->
-```mermaid
-flowchart LR
-  <gate?> -->|yes| <outcome>
-  <gate?> -->|no| <other outcome>
-```
-
-## 5. States: what states does a run or record move through, including pauses and resumes?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-<!-- Draw only states the rules in section 4 do not already show (paused, checkpointed,
-resumed, retried). -->
-```mermaid
-stateDiagram-v2
-  [*] --> <first state>
-  <first state> --> <next state>: <event>
-```
-
-## 6. Data: what are the typed contracts and state?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-<!-- Write Literal values out (Literal["approved", "refused"]), list each validator under its
-field, leave out +/- visibility markers, and keep parentheses out of field lines. -->
+<!-- The nouns from the use cases and the typed records that pass between parts. Write Literal
+values out (Literal["approved", "refused"]), leave out +/- visibility markers, and keep
+parentheses out of field lines. -->
 ```mermaid
 classDiagram
   class <Model> {
@@ -103,22 +25,44 @@ classDiagram
   }
 ```
 
-## Runtime: which function writes each record?
-| Process | Trigger | Reads | Writes | Writer |
-|---|---|---|---|---|
-| <process> | <what starts it> | <inputs> | <record changed> | `<function()>` |
+Rules:
+- <invariant that must always hold, e.g. a refund never exceeds the order total>
 
-## Contracts: what crosses between parts, and how it fails
-| Crossing | Producer | Consumer | Shape | On failure |
-|---|---|---|---|---|
-| <crossing> | <part> | <part> | <type or schema> | <what happens> |
+## State machine: what states does a run or record move through, and what is forbidden?
+**Answer:** <one sentence answering the heading>
+<!-- Include the human pause and the resume. Every arrow here, and every forbidden line below,
+gets a row in "Tests from the model". If nothing has states, replace this section's diagram and
+lists with one line: "No states: <reason>". -->
+```mermaid
+stateDiagram-v2
+  [*] --> <first state>
+  <first state> --> <next state>: <event>
+  <next state> --> [*]
+```
 
-## Quality: what observable result shows each goal holds?
-| Goal | Observable pattern | Test |
+Forbidden:
+- <state> --> <state>
+
+## Sequence: UC2 <the riskiest use case, by its id in docs/PRD.md>
+**Answer:** <one sentence answering: what happens, in order, in this use case?>
+<!-- ->> is a call, -->> only its return. Give every tool its own lifeline, or none. A pause
+returns to the caller; draw the resume as a new call from the caller and show what re-runs.
+No ";" inside a message or Note: it breaks the diagram. -->
+```mermaid
+sequenceDiagram
+  participant Caller
+  participant System
+  Caller->>System: <call>
+  System-->>Caller: <result, or pause payload>
+```
+
+## Tests from the model
+<!-- One row per state-machine arrow (copy it as written: "A --> B") and one per forbidden line,
+plus one per domain rule. The test is the oracle for that claim. -->
+| Claim | From | Test |
 |---|---|---|
-| <goal> | <what you would see> | `<test name>` |
-
-## Unknowns
-| Unknown | What would decide it |
-|---|---|
-| <open question> | <the evidence that settles it> |
+| [*] --> <first state> | state machine | `test_<what it shows>` |
+| <first state> --> <next state> | state machine | `test_<what it shows>` |
+| <next state> --> [*] | state machine | `test_<what it shows>` |
+| <state> --> <state> | forbidden | `test_<what it shows>` |
+| <invariant> | domain rule | `test_<what it shows>` |

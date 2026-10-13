@@ -1,6 +1,8 @@
 # Architecture views: which diagram for which question
 
-Draw a view only to answer a question someone has. Pick the view from the concern:
+Draw a view only to answer a question someone has. In a take-home, `docs/MODEL.md` always has
+the domain model, the state machine and the riskiest use case as a sequence; add another view
+from this table only when it answers a question. Pick the view from the concern:
 
 | Concern | View | In Mermaid |
 |---|---|---|

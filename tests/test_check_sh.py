@@ -129,13 +129,13 @@ def test_system_model_pointing_at_docs_passes(tmp_path):
 def test_missing_planning_package_fails(tmp_path):
     code, out = run(project(tmp_path, docs=False))
     assert code == 1
-    for name in ("DESIGN", "MODEL", "DECISIONS"):
+    for name in ("PRD", "MODEL", "DECISIONS"):
         assert f"FAIL docs/{name}.md missing" in out, out
 
 
 def test_package_results_are_counted(tmp_path):
     code, out = run(project(tmp_path), "--final")
-    assert "PASS docs/MODEL.md diagram 3 'Main sequence' is a sequenceDiagram" in out, out
+    assert "PASS docs/MODEL.md 'Sequence' is a sequenceDiagram" in out, out
     assert "PASS docs/MODEL.md names 1 functions, all defined in the code" in out, out
 
 

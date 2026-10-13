@@ -49,9 +49,10 @@ cases, reviewer before finishing, and `bash kit/check.sh --final` at the end.
 
 | File | Use it when |
 |---|---|
-| `MEMORY_SHEET.md` | what to type into the AI chat, in order: thirteen near-verbatim prompts to learn (intent, off-the-shelf, diagrams, plan, build) |
+| `MEMORY_SHEET.md` | what to type into the AI chat, in order: fourteen near-verbatim prompts to learn, in the Unified Process order (intent, use cases, domain and states, off-the-shelf, shape, riskiest case, plan, build) |
 | `AGENTS.md` | always: how the assistant works (plan, roles, small steps, checks, explain) |
 | `PLAN.template.md` | start of every task: copy to `PLAN.md` and fill in |
+| `templates/` | with the plan, before code: `PRD.md` (use cases, risks), `MODEL.md` (domain model, state machine, riskiest sequence, tests from the model), `DECISIONS.md` (ADRs), copied to `docs/` |
 | `check.sh` | after every step (`--final` at the end; `--install-hook` to run it on each commit) |
 | `skills/using-ide-ai-chat/SKILL.md` | using the IDE's recorded AI chat well (start here) |
 | `skills/plan/SKILL.md` | writing the plan |

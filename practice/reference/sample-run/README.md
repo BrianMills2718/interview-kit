@@ -14,8 +14,9 @@ answer is a Pydantic `Reply` registered with `ToolStrategy`, so an invalid answe
 model as an error and it retries.
 
 ## Design decisions
-The ones that matter most (all of them: [docs/DECISIONS.md](docs/DECISIONS.md); design, model and
-all six diagrams: [docs/DESIGN.md](docs/DESIGN.md), [docs/MODEL.md](docs/MODEL.md)):
+The ones that matter most (all of them, as ADRs: [docs/DECISIONS.md](docs/DECISIONS.md); requirements,
+use cases and risks: [docs/PRD.md](docs/PRD.md); domain model, state machine, the riskiest use case
+as a sequence, and the tests drawn from them: [docs/MODEL.md](docs/MODEL.md)):
 
 - **Pause inside the tool, write after it.** LangGraph's `interrupt()` returns the payload to the
   caller; on `Command(resume=...)` with the same `thread_id` the tool runs again from its first line.
@@ -27,7 +28,7 @@ all six diagrams: [docs/DESIGN.md](docs/DESIGN.md), [docs/MODEL.md](docs/MODEL.m
 - **Step limit travels with the graph** (`recursion_limit` 12 set in `build_agent()`), since the
   caller owns `invoke`.
 
-Agent loop (diagram 2 of the model):
+Agent loop (from the model):
 
 ```mermaid
 flowchart LR
@@ -41,7 +42,7 @@ flowchart LR
   Caller -.->|"resume: Command(resume=answer), same thread_id, tool re-runs from its first line"| Tools
 ```
 
-Refund rules (diagram 4 of the model), first match wins:
+Refund rules (the domain model's rules), first match wins:
 
 | # | Check (first match wins) | Result text | Code |
 |---|---|---|---|
@@ -73,7 +74,7 @@ Refund rules (diagram 4 of the model), first match wins:
 This run was done by an AI agent (Claude) rehearsing the kit end to end, so "the AI" wrote the code.
 What kept it honest was running things, not trusting recall:
 - The interrupt/resume mechanism was checked by running `probe_interrupt.py` before drawing
-  diagrams 2, 3 and 5. The run showed the tool is entered twice (`risky() entered 2 times`), which
+  the state machine, the sequence and the agent loop. The run showed the tool is entered twice (`risky() entered 2 times`), which
   is why the append sits after `interrupt()`; writing it before would double-refund.
 - The "invalid Reply goes back" claim was checked by printing the messages: the first `Reply` with
   `category="billing"` came back as an `Error: Failed to parse structured output ...` tool message,

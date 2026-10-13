@@ -17,9 +17,10 @@ they will do with the answer. Then pick the form.
   (a pause returns to the caller; a resume re-runs the tool), draw that behaviour exactly.
 - **A table, not a flowchart, for a straight chain of checks**; draw only the branching part.
 
-For a take-home: the six diagrams live in `docs/MODEL.md`, each under a heading that is its
-question with a bold "Answer:" line beneath it. The README shows the two a reviewer needs first,
-the agent loop (diagram 2) and the rules (diagram 4), and links to the rest. Before finishing,
+For a take-home: the diagrams live in `docs/MODEL.md` (domain model, state machine, the riskiest
+use case as a sequence; others only when they answer a question), each under a heading that is
+its question with a bold "Answer:" line beneath it. The README shows the two a reviewer needs
+first, the state machine and the sequence, and links to the rest. Before finishing,
 check each diagram against the code: every node, arrow and row is something the code does.
 
 **Check every diagram renders** before you finish: paste each block into mermaid.live, or run

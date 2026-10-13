@@ -53,7 +53,7 @@ else
   fi
 fi
 
-# 1b. Planning package: docs/DESIGN.md, docs/MODEL.md (six diagrams), docs/DECISIONS.md (kit/templates/)
+# 1b. Planning package: docs/PRD.md, docs/MODEL.md (domain, states, sequence, tests from the model), docs/DECISIONS.md (ADRs), from kit/templates/
 FA=(); [[ $FINAL == 1 ]] && FA=(--final)
 docs_out=$(python3 "$KIT/check_docs.py" . "${FA[@]}" 2>&1); seen=0
 while read -r line; do

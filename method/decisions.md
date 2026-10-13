@@ -4,8 +4,8 @@
 
 Confidence decides. In a timed test you can rarely ask, so:
 
-- **High confidence, or cheap to reverse**: decide, and write one row in the README's Design
-  decisions (below). Do not ask.
+- **High confidence, or cheap to reverse**: decide, and write one ADR row in
+  `docs/DECISIONS.md` (below); the README's Design decisions names the ones that matter most. Do not ask.
 - **Low confidence and it changes the outcome** (the task is ambiguous about what "done" is):
   if you can ask the interviewer, ask one atomic question with your recommendation attached.
   If you cannot, pick the reading that keeps the most options open, state it as an assumption,
@@ -16,11 +16,13 @@ what is at stake; the alternatives; the one question.
 
 ## Record it
 
-| Decision | Why | Rejected | Wrong if |
-|---|---|---|---|
-| specialists as tools, not a handoff swarm | one loop, testable with a fake model | langgraph-supervisor | a task needs agents to hand control mid-conversation |
+An Architecture Decision Record (Nygard: context, decision, consequences), one row each:
 
-"Wrong if" is a concrete, checkable condition (a test, a case, a number), not "revisit later".
+| ID | Context | Decision | Consequences | Rejected alternative | What would show it wrong |
+|---|---|---|---|---|---|
+| ADR-1 | several specialist tasks, one conversation | specialists as tools, not a handoff swarm | one loop, testable with a fake model | langgraph-supervisor | a task needs agents to hand control mid-conversation |
+
+"What would show it wrong" is a concrete, checkable condition (a test, a case, a number), not "revisit later".
 
 ## Prior art first
 

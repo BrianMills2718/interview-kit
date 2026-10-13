@@ -9,12 +9,13 @@ These rules apply to any AI coding assistant working in this project. Read them 
 
 1. **Plan before code.** Write `PLAN.md` from `PLAN.template.md` (see `skills/plan/SKILL.md`):
    goal with the quoted requirements, checkable done-when items, small steps, the shape chosen,
-   assumptions and risks. With it, fill the planning package from `kit/templates/`:
-   `docs/DESIGN.md` (outcome, quoted requirements, failure modes, rules, fixtures, slices),
-   `docs/MODEL.md` (six Mermaid diagrams: context, agent loop, main sequence, rules,
-   states, data; plus runtime, contracts, quality and unknowns tables) and `docs/DECISIONS.md`.
-   `check.sh` fails until all three are filled in. How to think at each stage is in
-   `kit/method/README.md`.
+   assumptions and risks. With it, fill the planning package from `kit/templates/`, in this
+   order: `docs/PRD.md` (goal, quoted requirements, use cases including failures, assumptions,
+   risks ranked riskiest first), `docs/MODEL.md` (domain model, state machine with its forbidden
+   transitions, the riskiest use case as a sequence diagram, and a "Tests from the model" table
+   with one test per state arrow; other diagrams only when they answer a question) and
+   `docs/DECISIONS.md` (ADRs). `check.sh` fails until all three are filled in. How to think at
+   each stage is in `kit/method/README.md`.
    Wait for approval before editing code (the person types "plan approved" in the chat, so the
    recording shows it). If no person is present (an agent working alone or rehearsing), commit
    the plan and go on: the commit is the record.
@@ -79,14 +80,14 @@ sections present. Run it after each step; the work is done only when `--final` p
 - [ ] README explains approach, decisions, AI use and limitations
 
 ## Steps
-1. <smallest runnable step: its test first, then the code>
+1. <smallest runnable step, riskiest use case first: its test first, then the code>
 2. ...
 
 ## Shape
 <plain code, one structured call, fixed workflow, agent loop, or supervisor; one line per bigger shape rejected and why (skills/plan)>
 
 ## System model
-<one line pointing at docs/MODEL.md (filled from kit/templates/MODEL.md), plus the one or two facts a reader most needs from it>
+<one line pointing at docs/MODEL.md (filled from kit/templates/MODEL.md, after docs/PRD.md), plus the one or two facts a reader most needs from it>
 
 ## Assumptions
 - <ambiguity> -> <reading chosen, and why>
@@ -95,146 +96,37 @@ sections present. Run it after each step; the work is done only when `--final` p
 - <what could make this wrong> -> <how it would show>
 
 <!-- templates/DECISIONS.md -->
-# Decisions
+# Decisions (ADR log)
 
-Copy to `docs/DECISIONS.md`. One row per real choice (library, structure, scope, a rule's
-reading), written when it is made (method/decisions.md). The README links here.
+Copy to `docs/DECISIONS.md`. One row per real choice (library, shape, scope, a rule's reading),
+written when it is made (method/decisions.md). Context, Decision and Consequences are Nygard's
+Architecture Decision Record; the last two columns are the kit's additions. The README links here.
 
-| ID | Decision | Why | Rejected alternative | What would show it wrong |
-|---|---|---|---|---|
-| D1 | <choice> | <reason> | <alternative and why not> | <observable trigger> |
-
-<!-- templates/DESIGN.md -->
-# Design
-
-Copy to `docs/DESIGN.md` in the first minutes, before the model and the code. Walk it top to
-bottom (method/design-chain.md); each section depends on the one above. Short lists are fine.
-
-## Outcome
-<who does what, and what they see when it works, in one sentence>
-
-Example: <one concrete input> -> <the exact expected result>
-
-## Requirements
-| ID | Quoted from the task | Assumption, if inferred |
-|---|---|---|
-| R1 | "<exact requirement text>" | <reading chosen, or none> |
-
-## Failure modes and controls
-| ID | Requirement | What could go wrong | Control (least code that prevents, detects or recovers) |
-|---|---|---|---|
-| F1 | R1 | <failure> | <control> |
-
-## Domain rules, in the order they are checked
-1. <rule>: <what happens>
-
-## Fixtures: one good and one smallest bad input per boundary
-| Boundary | Good input | Bad input | Expected on bad |
-|---|---|---|---|
-| <boundary> | <good> | <bad> | <error or refusal> |
-
-## Slices: build order, each with its judge first
-1. <slice>: judged by `<test name>`
+| ID | Context | Decision | Consequences | Rejected alternative | What would show it wrong |
+|---|---|---|---|---|---|
+| ADR-1 | <the force or question> | <choice> | <what follows, good and bad> | <alternative and why not> | <observable trigger> |
 
 <!-- templates/MODEL.md -->
 # System model: <system name>, <one sentence: what it does and its one key design choice>
 
-Copy to `docs/MODEL.md` before writing code; keep it true as the code changes (method/system-model.md).
+Copy to `docs/MODEL.md` after `docs/PRD.md`, before writing code; keep it true as the code changes
+(method/system-model.md). Draw only the diagrams that answer a question; the three below are
+required, and Context, Agent loop or Components may be added when they answer one too.
 Every box, arrow and row names a real function, class, tool or record. Write functions in
 backticks with parentheses and classes in backticks: `check.sh --final` fails any function named
 that way that the code does not define, and any backticked test name that no test file defines.
-Mark anything not yet decided (guessed). Each diagram answers the question in its heading.
-Under each heading write two lines before the diagram: a bold "Answer:" line, one sentence
-answering the heading for this system; then an italic line saying whether the view is current
-or proposed and what its arrows mean (one meaning per diagram). Give each part one label and use
-it unchanged in every diagram (same node id, same text). Draw the mechanism a decision rests on
-as the library really does it (a pause returns to the caller; a resume re-runs the tool). A
-ten-line probe script that confirms the behaviour is allowed before the model, and worth it.
+Under each heading write a bold "Answer:" line first (the kit's own convention): one sentence
+answering the heading's question for this system. Give each part one label and use it unchanged
+in every diagram. Draw the mechanism a decision rests on as the library really does it (a pause
+returns to the caller; a resume re-runs the tool). A ten-line probe script that confirms the
+behaviour is allowed before the model, and worth it.
 Guidance in `<!-- -->` comments does not render; leave or delete it.
 
-## Goals
-- Outcome: <who does what, and what they see when it works>
-- Quality goals: <2 to 4, e.g. correct refunds, bounded steps, explainable answer>
-
-## 1. Context: who and what is outside the system?
+## Domain model: what are the things, and what must always be true of them?
 **Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-```mermaid
-flowchart LR
-  <Person or caller> -->|<what they send>| <System>
-  <System> -->|<what it calls>| <External system or model>
-```
-
-## 2. Agent loop: which part runs each step, and where does the run stop or pause?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-```mermaid
-flowchart LR
-  In["<caller>"] -->|"invoke(input, thread_id)"| Model["<model node>"]
-  Model -->|"tool call"| Tools["<tools node: tool_a(), tool_b()>"]
-  Tools -->|"result"| Model
-  Model -->|"final answer"| Out["<structured output>"]
-  Tools -.->|"pause: returned to caller"| In
-```
-
-<!-- Who owns what: one row per part; mark the only writer of each record. -->
-
-| Block | Owns | Code |
-|---|---|---|
-| <part> | <what it decides or holds> | `<function()>` |
-
-## 3. Main sequence: what happens, in order, on the main path?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-```mermaid
-sequenceDiagram
-  participant Caller
-  participant Graph
-  participant Model
-  participant Tool
-  Caller->>Graph: <invoke(input, thread_id)>
-  loop until the final answer (step limit <N>)
-    Graph->>Model: <messages>
-    Model-->>Graph: <tool call>
-    Graph->>Tool: <run tool>
-    Tool-->>Graph: <result>
-  end
-  Graph-->>Caller: <final answer, or pause payload>
-```
-<!-- ->> is a call, -->> only its return. Give every tool its own lifeline, or none. A pause
-returns to the caller; draw the resume as a new call from the caller and show what re-runs.
-No ";" inside a message or Note: it breaks the diagram. -->
-
-## 4. Rules: in what order are the business rules checked?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-| # | Check (first match wins) | Result text | Code |
-|---|---|---|---|
-| 1 | <check> | <exact text> | `<function()>` |
-
-<!-- Draw a flowchart only for the branches after the straight chain. -->
-```mermaid
-flowchart LR
-  <gate?> -->|yes| <outcome>
-  <gate?> -->|no| <other outcome>
-```
-
-## 5. States: what states does a run or record move through, including pauses and resumes?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-<!-- Draw only states the rules in section 4 do not already show (paused, checkpointed,
-resumed, retried). -->
-```mermaid
-stateDiagram-v2
-  [*] --> <first state>
-  <first state> --> <next state>: <event>
-```
-
-## 6. Data: what are the typed contracts and state?
-**Answer:** <one sentence answering the heading>
-*View: <current or proposed>. Arrows (or lines) mean: <one meaning>.*
-<!-- Write Literal values out (Literal["approved", "refused"]), list each validator under its
-field, leave out +/- visibility markers, and keep parentheses out of field lines. -->
+<!-- The nouns from the use cases and the typed records that pass between parts. Write Literal
+values out (Literal["approved", "refused"]), leave out +/- visibility markers, and keep
+parentheses out of field lines. -->
 ```mermaid
 classDiagram
   class <Model> {
@@ -242,25 +134,86 @@ classDiagram
   }
 ```
 
-## Runtime: which function writes each record?
-| Process | Trigger | Reads | Writes | Writer |
-|---|---|---|---|---|
-| <process> | <what starts it> | <inputs> | <record changed> | `<function()>` |
+Rules:
+- <invariant that must always hold, e.g. a refund never exceeds the order total>
 
-## Contracts: what crosses between parts, and how it fails
-| Crossing | Producer | Consumer | Shape | On failure |
-|---|---|---|---|---|
-| <crossing> | <part> | <part> | <type or schema> | <what happens> |
+## State machine: what states does a run or record move through, and what is forbidden?
+**Answer:** <one sentence answering the heading>
+<!-- Include the human pause and the resume. Every arrow here, and every forbidden line below,
+gets a row in "Tests from the model". If nothing has states, replace this section's diagram and
+lists with one line: "No states: <reason>". -->
+```mermaid
+stateDiagram-v2
+  [*] --> <first state>
+  <first state> --> <next state>: <event>
+  <next state> --> [*]
+```
 
-## Quality: what observable result shows each goal holds?
-| Goal | Observable pattern | Test |
+Forbidden:
+- <state> --> <state>
+
+## Sequence: UC2 <the riskiest use case, by its id in docs/PRD.md>
+**Answer:** <one sentence answering: what happens, in order, in this use case?>
+<!-- ->> is a call, -->> only its return. Give every tool its own lifeline, or none. A pause
+returns to the caller; draw the resume as a new call from the caller and show what re-runs.
+No ";" inside a message or Note: it breaks the diagram. -->
+```mermaid
+sequenceDiagram
+  participant Caller
+  participant System
+  Caller->>System: <call>
+  System-->>Caller: <result, or pause payload>
+```
+
+## Tests from the model
+<!-- One row per state-machine arrow (copy it as written: "A --> B") and one per forbidden line,
+plus one per domain rule. The test is the oracle for that claim. -->
+| Claim | From | Test |
 |---|---|---|
-| <goal> | <what you would see> | `<test name>` |
+| [*] --> <first state> | state machine | `test_<what it shows>` |
+| <first state> --> <next state> | state machine | `test_<what it shows>` |
+| <next state> --> [*] | state machine | `test_<what it shows>` |
+| <state> --> <state> | forbidden | `test_<what it shows>` |
+| <invariant> | domain rule | `test_<what it shows>` |
 
-## Unknowns
-| Unknown | What would decide it |
-|---|---|
-| <open question> | <the evidence that settles it> |
+<!-- templates/PRD.md -->
+# PRD: <system name>
+
+Copy to `docs/PRD.md` in the first minutes, before the model and the code. Fill it top to
+bottom (method/design-chain.md): goal, quoted requirements, use cases (the normal path first, then
+what goes wrong), assumptions, risks ranked riskiest first. The row ids (`R1`, `UC1`, `A1`, `K1`)
+are the kit's own convention so the model, plan and tests can point at rows.
+Guidance in `<!-- -->` comments does not render; leave or delete it.
+
+## Goal
+<one-line thesis: who uses it, what they get, why this shape>
+
+Example: <one concrete input> -> <the exact expected result>
+
+## Requirements
+| ID | Quoted from the task | Reading chosen, if ambiguous |
+|---|---|---|
+| R1 | "<exact requirement text>" | <reading, or none> |
+
+## Use cases
+<!-- Kind is normal, failure or alternative. At least one normal and one failure or alternative.
+Steps are short: actor action, system response. -->
+| ID | Kind | Actor | Trigger | Steps | Expected result |
+|---|---|---|---|---|---|
+| UC1 | normal | <actor> | <what starts it> | <steps> | <what they see> |
+| UC2 | failure | <actor> | <what goes wrong> | <steps> | <error or refusal they see> |
+
+## Assumptions
+| ID | Assumption | Requirement it affects |
+|---|---|---|
+| A1 | <answer to an open question> | <R1> |
+
+## Risks
+<!-- Riskiest first. The riskiest use case gets the sequence diagram in docs/MODEL.md and is
+built first. -->
+| ID | Risk | Use case | How we test it early |
+|---|---|---|---|
+| K1 | <what could go wrong> | <UC2> | <the test or probe that would show it> |
 
 <!-- skills/debug/SKILL.md -->
 ---
@@ -382,8 +335,8 @@ like START -> agent -> tools -> agent -> END helps).
 
 ## Design decisions
 The two or three that matter most; all of them are in [docs/DECISIONS.md](docs/DECISIONS.md).
-Design, model and all six diagrams: [docs/DESIGN.md](docs/DESIGN.md), [docs/MODEL.md](docs/MODEL.md).
-Paste the agent-loop diagram (2) and the rules table (4) from the model here.
+Requirements, use cases and risks: [docs/PRD.md](docs/PRD.md); the model: [docs/MODEL.md](docs/MODEL.md).
+Paste the state machine and the riskiest use case's sequence diagram from the model here.
 
 | Requirement | Code | Test |
 |---|---|---|
@@ -642,12 +595,14 @@ goes. It is the contract the checks in `check.sh` hold the work to. Copy `PLAN.t
 3. **Steps**: numbered, each small enough to run and check on its own.
 4. **System model** (heading `## System model`): one line pointing at `docs/MODEL.md`. The
    planning package lives in `docs/`, copied from `templates/` and filled before code:
-   - `docs/DESIGN.md`: outcome with one example, quoted requirements R1.., failure modes and
-     controls F1.., domain rules in order, fixtures, slices (`method/design-chain.md`);
-   - `docs/MODEL.md`: six Mermaid diagrams (1 context, 2 agent loop, 3 main sequence,
-     4 rules, 5 states, 6 data) and the runtime, contracts, quality and unknowns tables
+   - `docs/PRD.md`: goal with one example, quoted requirements R1.., use cases UC1.. (normal,
+     failure, alternative), assumptions A1.., risks K1.. riskiest first (`method/design-chain.md`);
+   - `docs/MODEL.md`: domain model (classDiagram and its rules), state machine
+     (stateDiagram-v2 with the human pause and a Forbidden list, or "No states: <reason>"), the
+     riskiest use case as a sequence diagram, and "Tests from the model": one test per state
+     arrow and per forbidden line; other diagrams only when they answer a question
      (`method/system-model.md`, `method/architecture-views.md`);
-   - `docs/DECISIONS.md`: one row per real choice (`method/decisions.md`).
+   - `docs/DECISIONS.md`: one ADR row per real choice (`method/decisions.md`).
    `check.sh` fails until each is filled; `--final` also fails any function or test the model
    names that the code does not define.
 5. **Assumptions**: every ambiguity in the spec and the reading chosen.
@@ -868,21 +823,23 @@ You are the implementer. Take exactly one step from `PLAN.md`.
 <!-- agents/planner.md -->
 ---
 name: planner
-description: Turns a task into PLAN.md and the docs/ planning package (design, six-diagram model, decisions) before any code is written. Use first on every task and when scope changes.
+description: Turns a task into PLAN.md and the docs/ planning package (PRD, model, ADRs) before any code is written. Use first on every task and when scope changes.
 tools: Read, Grep, Glob, Write
 ---
 
 You are the planner. Read the task and the existing files, then write or update `PLAN.md`
 following `skills/plan/SKILL.md` and `PLAN.template.md`. For anything bigger than one function,
-then fill the planning package: copy `templates/DESIGN.md`, `templates/MODEL.md` and
-`templates/DECISIONS.md` into `docs/` and fill each (`method/design-chain.md`, `method/system-model.md`).
+then fill the planning package: copy `templates/PRD.md`, `templates/MODEL.md` and
+`templates/DECISIONS.md` into `docs/` and fill them in that order (`method/design-chain.md`, `method/system-model.md`).
 
 - Quote the requirement lines you were given; do not paraphrase them away.
 - Every done-when item is a command or an observable result. Reject vague ones.
 - Steps are small enough to run and check one at a time.
 - List each ambiguity with the reading you chose.
-- Fill `## System model` with one line pointing at `docs/MODEL.md`; draw all six diagrams there,
-  each answering its heading's question about this system. Undecided parts are marked (guessed).
+- Fill `## System model` with one line pointing at `docs/MODEL.md`. There: the domain model, the
+  state machine and the riskiest use case as a sequence, each answering its heading's question,
+  and a "Tests from the model" row for every state arrow and forbidden line. Draw another diagram
+  only when it answers a question. Undecided parts are marked (guessed).
 - Do not write implementation code. Return the plan and the open questions, if any.
 
 <!-- agents/reviewer.md -->
@@ -935,10 +892,10 @@ that needs a team (claims, worktrees, coordination) is left out.
 
 | Stage of the test | Read | You produce |
 |---|---|---|
-| First 10 minutes: understand the task | [design-chain.md](design-chain.md) | outcome, requirements, failure modes, in `PLAN.md` |
-| Before code: the shape of the solution | [system-model.md](system-model.md) | `docs/DESIGN.md` and `docs/MODEL.md` from `templates/` |
-| When a picture would help | [architecture-views.md](architecture-views.md), [representation.md](representation.md) | the six diagrams in `docs/MODEL.md`, each answering its heading's question |
-| Any choice (library, structure, scope) | [decisions.md](decisions.md) | a row in `docs/DECISIONS.md`: choice, why, what would show it wrong |
+| First 20 minutes: understand the task | [design-chain.md](design-chain.md) | `docs/PRD.md` from `templates/`: goal, quoted requirements, use cases with failures, assumptions, risks |
+| Before code: the shape of the solution | [system-model.md](system-model.md) | `docs/MODEL.md` from `templates/`: domain model, state machine, the riskiest use case as a sequence, tests from the model |
+| When another picture would help | [architecture-views.md](architecture-views.md), [representation.md](representation.md) | a diagram only if it answers a question, under a heading that asks it |
+| Any choice (library, structure, scope) | [decisions.md](decisions.md) | an ADR row in `docs/DECISIONS.md`: context, decision, consequences, what would show it wrong |
 | Each step | [design-chain.md](design-chain.md#slices-judge-first) | the test (the judge) first, then the code |
 | Optional: machine-checked plan | [aes.md](aes.md) | `aes` records outcome to criterion to test, and says what is unproven |
 
@@ -947,7 +904,7 @@ that needs a team (claims, worktrees, coordination) is left out.
 applies.
 
 **Skip in a timed test:** the design chain's steps when the prompt already fixes the inputs,
-outputs and rules (quote it in `docs/DESIGN.md` instead); the model's drift test (it pays off over
+outputs and rules (quote it in `docs/PRD.md` instead); the model's drift test (it pays off over
 days, not hours; `check.sh --final` already checks every named function exists); `aes` under
 3 hours. Never skip the package itself: `check.sh` requires it.
 
@@ -1005,7 +962,9 @@ promised, what proves it, and what is still unproven.
 <!-- method/architecture-views.md -->
 # Architecture views: which diagram for which question
 
-Draw a view only to answer a question someone has. Pick the view from the concern:
+Draw a view only to answer a question someone has. In a take-home, `docs/MODEL.md` always has
+the domain model, the state machine and the riskiest use case as a sequence; add another view
+from this table only when it answers a question. Pick the view from the concern:
 
 | Concern | View | In Mermaid |
 |---|---|---|
@@ -1049,8 +1008,8 @@ Adapted from ISO/IEC/IEEE 42010 (views answer stakeholders' concerns), UML and t
 
 Confidence decides. In a timed test you can rarely ask, so:
 
-- **High confidence, or cheap to reverse**: decide, and write one row in the README's Design
-  decisions (below). Do not ask.
+- **High confidence, or cheap to reverse**: decide, and write one ADR row in
+  `docs/DECISIONS.md` (below); the README's Design decisions names the ones that matter most. Do not ask.
 - **Low confidence and it changes the outcome** (the task is ambiguous about what "done" is):
   if you can ask the interviewer, ask one atomic question with your recommendation attached.
   If you cannot, pick the reading that keeps the most options open, state it as an assumption,
@@ -1061,11 +1020,13 @@ what is at stake; the alternatives; the one question.
 
 ## Record it
 
-| Decision | Why | Rejected | Wrong if |
-|---|---|---|---|
-| specialists as tools, not a handoff swarm | one loop, testable with a fake model | langgraph-supervisor | a task needs agents to hand control mid-conversation |
+An Architecture Decision Record (Nygard: context, decision, consequences), one row each:
 
-"Wrong if" is a concrete, checkable condition (a test, a case, a number), not "revisit later".
+| ID | Context | Decision | Consequences | Rejected alternative | What would show it wrong |
+|---|---|---|---|---|---|
+| ADR-1 | several specialist tasks, one conversation | specialists as tools, not a handoff swarm | one loop, testable with a fake model | langgraph-supervisor | a task needs agents to hand control mid-conversation |
+
+"What would show it wrong" is a concrete, checkable condition (a test, a case, a number), not "revisit later".
 
 ## Prior art first
 
@@ -1080,11 +1041,16 @@ in a 4-hour test is almost always the wrong call.
 Work down this chain once, briefly, before code. Each line depends on the one above; skipping a
 line usually means a later surprise.
 
-1. **Outcome**: who does what, and what they see when it works. One sentence, plus one
+The first five lines are `docs/PRD.md` (from `templates/PRD.md`); the rest feed `docs/MODEL.md`.
+
+1. **Goal**: who does what, and what they see when it works. One sentence, plus one
    concrete example (input, then the exact expected result).
-2. **Requirements**: quote the task text. Mark anything you infer as an assumption.
-3. **Failure modes**: for each requirement, the ways it can go wrong that matter
-   (wrong tool chosen, loop never stops, bad input accepted, model output invalid).
+2. **Requirements**: quote the task text, as rows R1, R2...
+3. **Use cases**: the normal path first, then every failure and alternative (wrong tool chosen,
+   loop never stops, bad input accepted, model output invalid, a human says no). Rows UC1...
+   with Kind normal, failure or alternative.
+   **Assumptions** (A1...) record each reading of something ambiguous; **risks** (K1...) are
+   ranked riskiest first, and the riskiest use case is drawn and built first.
 4. **Controls**: the least code that prevents, detects or recovers from each failure mode
    (validation, a step limit, a retry with the error, a human approval step). Every control
    traces to a failure mode; a control with no failure mode is gold-plating.
@@ -1095,7 +1061,7 @@ line usually means a later surprise.
 8. **Fixtures**: for each boundary that matters, one good input and one smallest bad input.
 9. **Thin slices**: the order to build in (below).
 
-Depth: a take-home is "small". Write lines 1, 2, 3 and 9 in full; 4 to 8 as short lists. Do not
+Depth: a take-home is "small". Write lines 1, 2, 3 and 9 in full; 4 to 8 as short lists or in the model. Do not
 invent security, compliance or scaling requirements the task did not ask for; name them as
 "would add with more time" in the README instead.
 
@@ -1120,7 +1086,7 @@ Each slice has four things, written before its code:
 
 - **Outcome**: what changes for the user.
 - **Success check**: the property that shows it works, plus how it could fail (the disproof).
-- **Watchlist**: the failure modes from step 3 this slice could trigger.
+- **Watchlist**: the failure use cases from step 3 this slice could trigger.
 - **Judge**: representative inputs and the check that grades them, usually a test with a fake
   model. Write the judge first and see it fail.
 
@@ -1155,9 +1121,10 @@ they will do with the answer. Then pick the form.
   (a pause returns to the caller; a resume re-runs the tool), draw that behaviour exactly.
 - **A table, not a flowchart, for a straight chain of checks**; draw only the branching part.
 
-For a take-home: the six diagrams live in `docs/MODEL.md`, each under a heading that is its
-question with a bold "Answer:" line beneath it. The README shows the two a reviewer needs first,
-the agent loop (diagram 2) and the rules (diagram 4), and links to the rest. Before finishing,
+For a take-home: the diagrams live in `docs/MODEL.md` (domain model, state machine, the riskiest
+use case as a sequence; others only when they answer a question), each under a heading that is
+its question with a bold "Answer:" line beneath it. The README shows the two a reviewer needs
+first, the state machine and the sequence, and links to the rest. Before finishing,
 check each diagram against the code: every node, arrow and row is something the code does.
 
 **Check every diagram renders** before you finish: paste each block into mermaid.live, or run
@@ -1172,31 +1139,40 @@ Known breakers: `;` inside a sequence message or Note, parentheses in a class-di
 # System model: one page that says what the system is
 
 Write one model per project before the code, and keep it true as the code changes. In a
-take-home it is `docs/MODEL.md`, copied from `templates/MODEL.md`, with six diagrams (context,
-agent loop with who-owns-what, main sequence, rules, states, data) and the tables below; `check.sh` enforces
-it. The content follows the arc42 headings, with C4 diagrams in Mermaid:
+take-home it is `docs/MODEL.md`, copied from `templates/MODEL.md` after `docs/PRD.md`, in the
+Unified Process order (Larman: use cases, then the domain model, then interactions):
+
+1. **Domain model**: the things in the use cases and the typed records, as a `classDiagram`,
+   with a `Rules:` list of what must always be true.
+2. **State machine**: the states a run or record moves through, with the human pause and the
+   resume, as a `stateDiagram-v2`, and a `Forbidden:` list of transitions that must never happen.
+3. **Sequence**: the riskiest use case (`## Sequence: UC2 <name>`), call by call.
+4. **Tests from the model**: one row per state arrow, per forbidden line and per rule, each
+   naming its test. The state machine is the test oracle (model-based testing).
+
+`check.sh` enforces these. Add Context, Agent loop or Components only when they answer a
+question; every diagram has a bold "Answer:" line under its heading. Only the state machine
+may be replaced, by one line "No states: <reason>", when nothing changes state.
+
+A long-lived project's model (like this repository's own) follows the arc42 headings, with C4
+diagrams in Mermaid:
 
 1. **Goals**: the outcome and the 2 to 4 quality goals that matter (correct refunds, bounded
    cost, explainable output).
 2. **Context and scope**: who and what is outside the system, and what crosses the edge.
    One C4 context diagram.
 3. **Building blocks**: the parts and what each owns. A table, one row per part.
-4. **Runtime**: each process (what triggers it, what it reads, what it writes, which function
-   does the writing). A table, plus one sequence diagram for the main path if it has more than
-   three steps.
+4. **Processes**: each process (what triggers it, what it reads, what it writes, which function
+   does the writing).
 5. **Views**: which diagrams exist and what question each answers.
-6. **Quality**: the observable pattern that shows each goal holds, and the test that checks it.
+6. **Checks**: the observable pattern that shows each goal holds, and the test that checks it.
 
-End with an **Unknowns** table: `| Unknown | What would decide it |`. Never fill a gap with a
-guess presented as fact; mark each element `decided` or `guessed`.
-
-A small system still gets all six diagrams; they are short. Only the states diagram may be
-replaced, by one line "No states: <reason>", when nothing changes state.
+Never fill a gap with a guess presented as fact; mark each element `decided` or `guessed`.
 
 ## Keep it true
 
 A model that drifts from the code is worse than none. Add one small test that reads the model
-and checks it against the code in both directions: every runtime row names a function that
+and checks it against the code in both directions: every row naming a function names one that
 exists, and every tool or node in the code appears in the model. Break it once on purpose to see
 it fail. This repository does that for itself: [docs/model/ARCHITECTURE.md](../docs/model/ARCHITECTURE.md)
 and [tests/test_model.py](../tests/test_model.py).
@@ -1204,44 +1180,45 @@ and [tests/test_model.py](../tests/test_model.py).
 ## Example: a meeting-room booking agent
 
 ~~~markdown
-## System model
-
-Elements:
-- G1 (decided): a staff member asks in plain words and gets a room booked or a clear reason why not.
-- B1 (decided): agent graph; B2 (decided): rooms store; B3 (decided): calendar tool.
-- P1 (decided): book_room writes a booking to the rooms store (`tools.py: book_room`).
-- Q1 (decided): never double-books; test_no_double_booking.
-
-### 1. Goals
-Book a free room that fits the request; never double-book; explain each refusal.
-
-### 2. Context
+## Domain model: what are the things, and what must always be true of them?
+**Answer:** a booking joins one room to one time slot.
 ```mermaid
-flowchart LR
-  Staff -->|request in words| Agent
-  Agent -->|tool calls| Rooms[(rooms store)]
-  Agent -->|prompts| LLM[model API]
+classDiagram
+  class Room {
+    name: str
+    seats: int
+  }
+  class Booking {
+    room: str
+    start: datetime
+    end: datetime
+  }
+  Room "1" --> "*" Booking
 ```
+Rules:
+- two bookings of one room never overlap
 
-### 3. Building blocks
-| Part | Owns |
-|---|---|
-| agent graph (`agent.py`) | the conversation and the stop rule |
-| tools (`tools.py`) | find_rooms, book_room; all writes |
-| rooms store (`rooms.json`) | rooms, bookings |
+## State machine: what states does a booking request move through?
+**Answer:** a request is checked, then booked or refused; nothing is written before the check.
+```mermaid
+stateDiagram-v2
+  [*] --> Requested
+  Requested --> Booked: room free
+  Requested --> Refused: clash or no room fits
+  Booked --> [*]
+  Refused --> [*]
+```
+Forbidden:
+- Refused --> Booked
 
-### 4. Runtime
-| Process | Trigger | Reads | Writes | Writer |
-|---|---|---|---|---|
-| P1 book | model calls book_room | bookings | one booking | `tools.py: book_room` |
+## Sequence: UC2 a clashing request is refused
+(the riskiest use case: a double booking)
 
-### 6. Quality
-| Goal | Observable pattern | Check |
+## Tests from the model
+| Claim | From | Test |
 |---|---|---|
-| never double-book | a second booking of the same slot is refused with the clashing id | `test_no_double_booking` |
-
-### Unknowns
-| Unknown | What would decide it |
-|---|---|
-| Are time zones in scope? | the task text, or the interviewer's answer |
+| Requested --> Booked | state machine | `test_free_room_is_booked` |
+| Requested --> Refused | state machine | `test_clash_is_refused_with_its_id` |
+| Refused --> Booked | forbidden | `test_refused_request_writes_nothing` |
+| two bookings never overlap | domain rule | `test_no_double_booking` |
 ~~~

@@ -58,6 +58,6 @@ name and gives the final answer by calling a tool named `Reply`.
 
 ## Graded on
 
-All grader cases pass; your own tests; the planning package in `docs/` (DESIGN, MODEL with six
-diagrams, DECISIONS, from `kit/templates/`); a README with Run it, Approach, Design decisions,
+All grader cases pass; your own tests; the planning package in `docs/` (PRD, MODEL,
+DECISIONS, from `kit/templates/`); a README with Run it, Approach, Design decisions,
 AI use and Limitations; a clear, honest account of how you used the AI chat.

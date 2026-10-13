@@ -69,9 +69,19 @@ def test_filled_template_passes_check(tmp_path):
     assert "## Shape" in template
     (tmp_path / "PLAN.md").write_text(re.sub(r"<[^<>]+>", "filled", template))
     (tmp_path / "docs").mkdir()
-    for name in ("DESIGN", "MODEL", "DECISIONS"):  # the planning package, filled the same way
+    for name in ("PRD", "MODEL", "DECISIONS"):  # the planning package, filled the same way
         text = (ROOT / "templates" / f"{name}.md").read_text()
         (tmp_path / "docs" / f"{name}.md").write_text(re.sub(r"<[^<>]+>", "filled", text))
     (tmp_path / "test_x.py").write_text("def test_x():\n    assert 1 + 1 == 2\n")
     r = subprocess.run(["bash", str(ROOT / "check.sh"), str(tmp_path)], capture_output=True, text=True)
     assert r.returncode == 0, r.stdout
+
+
+def test_sample_run_package_passes_check_docs_final():
+    """The recorded run's docs/ package is in the current format, and its named tests and functions exist."""
+    import subprocess
+
+    r = subprocess.run(["python3", str(ROOT / "check_docs.py"), str(ROOT / "practice/reference/sample-run"), "--final"],
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stdout
+    assert "PASS docs/MODEL.md tests cover all 10 state transitions" in r.stdout, r.stdout

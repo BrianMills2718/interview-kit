@@ -1,30 +1,22 @@
 # System model: adder, adds two numbers with one pure function
 
-## Goals
-- Outcome: a caller adds two numbers and sees the sum.
-- Quality goals: correct sum.
-
-## 1. Context: who and what is outside the system?
-**Answer:** only the caller.
-*View: current. Arrows mean: sends to.*
+## Domain model: what are the things, and what must always be true of them?
+**Answer:** two ints in, one int out.
 ```mermaid
-flowchart LR
-  Caller -->|two numbers| Adder
+classDiagram
+  class add {
+    a: int
+    b: int
+  }
 ```
 
-## 2. Agent loop: which part runs each step, and where does the run stop or pause?
-**Answer:** there is no loop; `add()` runs once and returns.
-*View: current. Arrows mean: calls.*
-```mermaid
-flowchart LR
-  Caller -->|"a, b"| add["add()"]
-```
+Rules:
+- the result equals a + b
 
-| Block | Owns | Code |
-|---|---|---|
-| adder | the sum | `add()` |
+## State machine: what states does a run or record move through, and what is forbidden?
+No states: add is a pure function.
 
-## 3. Main sequence: what happens, in order, on the main path?
+## Sequence: UC1 add two numbers
 **Answer:** one call, one return.
 ```mermaid
 sequenceDiagram
@@ -34,44 +26,7 @@ sequenceDiagram
   Adder-->>Caller: 5
 ```
 
-## 4. Rules: in what order are the business rules checked?
-**Answer:** one check: both inputs are numbers.
-```mermaid
-flowchart TD
-  num{both numbers?} -->|yes| sum[return a + b]
-  num -->|no| err[TypeError]
-```
-
-## 5. States: what states does a run or record move through, including pauses and resumes?
-**Answer:** none.
-No states: add is a pure function.
-
-## 6. Data: what are the typed contracts and state?
-**Answer:** two ints in.
-```mermaid
-classDiagram
-  class add {
-    a: int
-    b: int
-  }
-```
-
-## Runtime: which function writes each record?
-| Process | Trigger | Reads | Writes | Writer |
-|---|---|---|---|---|
-| add | a call | a, b | nothing | `add()` |
-
-## Contracts: what crosses between parts, and how it fails
-| Crossing | Producer | Consumer | Shape | On failure |
-|---|---|---|---|---|
-| call | Caller | add | two ints | TypeError |
-
-## Quality: what observable result shows each goal holds?
-| Goal | Observable pattern | Test |
+## Tests from the model
+| Claim | From | Test |
 |---|---|---|
-| correct sum | 2 + 3 = 5 | `test_add` |
-
-## Unknowns
-| Unknown | What would decide it |
-|---|---|
-| floats allowed? | a task line saying so |
+| the result equals a + b, via `add()` | domain rule | `test_add` |

@@ -9,14 +9,14 @@
 - [ ] README explains approach, decisions, AI use and limitations
 
 ## Steps
-1. <smallest runnable step: its test first, then the code>
+1. <smallest runnable step, riskiest use case first: its test first, then the code>
 2. ...
 
 ## Shape
 <plain code, one structured call, fixed workflow, agent loop, or supervisor; one line per bigger shape rejected and why (skills/plan)>
 
 ## System model
-<one line pointing at docs/MODEL.md (filled from kit/templates/MODEL.md), plus the one or two facts a reader most needs from it>
+<one line pointing at docs/MODEL.md (filled from kit/templates/MODEL.md, after docs/PRD.md), plus the one or two facts a reader most needs from it>
 
 ## Assumptions
 - <ambiguity> -> <reading chosen, and why>

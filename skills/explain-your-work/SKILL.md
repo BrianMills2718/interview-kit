@@ -22,8 +22,8 @@ like START -> agent -> tools -> agent -> END helps).
 
 ## Design decisions
 The two or three that matter most; all of them are in [docs/DECISIONS.md](docs/DECISIONS.md).
-Design, model and all six diagrams: [docs/DESIGN.md](docs/DESIGN.md), [docs/MODEL.md](docs/MODEL.md).
-Paste the agent-loop diagram (2) and the rules table (4) from the model here.
+Requirements, use cases and risks: [docs/PRD.md](docs/PRD.md); the model: [docs/MODEL.md](docs/MODEL.md).
+Paste the state machine and the riskiest use case's sequence diagram from the model here.
 
 | Requirement | Code | Test |
 |---|---|---|

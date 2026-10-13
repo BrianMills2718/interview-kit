@@ -3,11 +3,16 @@
 Work down this chain once, briefly, before code. Each line depends on the one above; skipping a
 line usually means a later surprise.
 
-1. **Outcome**: who does what, and what they see when it works. One sentence, plus one
+The first five lines are `docs/PRD.md` (from `templates/PRD.md`); the rest feed `docs/MODEL.md`.
+
+1. **Goal**: who does what, and what they see when it works. One sentence, plus one
    concrete example (input, then the exact expected result).
-2. **Requirements**: quote the task text. Mark anything you infer as an assumption.
-3. **Failure modes**: for each requirement, the ways it can go wrong that matter
-   (wrong tool chosen, loop never stops, bad input accepted, model output invalid).
+2. **Requirements**: quote the task text, as rows R1, R2...
+3. **Use cases**: the normal path first, then every failure and alternative (wrong tool chosen,
+   loop never stops, bad input accepted, model output invalid, a human says no). Rows UC1...
+   with Kind normal, failure or alternative.
+   **Assumptions** (A1...) record each reading of something ambiguous; **risks** (K1...) are
+   ranked riskiest first, and the riskiest use case is drawn and built first.
 4. **Controls**: the least code that prevents, detects or recovers from each failure mode
    (validation, a step limit, a retry with the error, a human approval step). Every control
    traces to a failure mode; a control with no failure mode is gold-plating.
@@ -18,7 +23,7 @@ line usually means a later surprise.
 8. **Fixtures**: for each boundary that matters, one good input and one smallest bad input.
 9. **Thin slices**: the order to build in (below).
 
-Depth: a take-home is "small". Write lines 1, 2, 3 and 9 in full; 4 to 8 as short lists. Do not
+Depth: a take-home is "small". Write lines 1, 2, 3 and 9 in full; 4 to 8 as short lists or in the model. Do not
 invent security, compliance or scaling requirements the task did not ask for; name them as
 "would add with more time" in the README instead.
 
@@ -43,7 +48,7 @@ Each slice has four things, written before its code:
 
 - **Outcome**: what changes for the user.
 - **Success check**: the property that shows it works, plus how it could fail (the disproof).
-- **Watchlist**: the failure modes from step 3 this slice could trigger.
+- **Watchlist**: the failure use cases from step 3 this slice could trigger.
 - **Judge**: representative inputs and the check that grades them, usually a test with a fake
   model. Write the judge first and see it fail.
 
