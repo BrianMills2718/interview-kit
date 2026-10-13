@@ -81,7 +81,10 @@ Read it, correct it, then type: "plan approved".
 
 **10. Build one step** [Edit]. Repeat for each step.
 > Implement step <N> only. Write a test a wrong version would fail, and where the model is
-> involved, use a fake scripted model so it runs offline. Use the function names in docs/MODEL.md. Run the tests and show me the output.
+> involved, use a fake scripted model so it runs offline. Use the function names in docs/MODEL.md.
+> Also test what the diagrams forbid, such as no refund before approval and nothing written on a
+> "no". Never change a diagram or a test just to make the code pass: if the model is wrong, tell me
+> why and update the diagram and its test together. Run the tests and show me the output.
 
 Then:
 > Explain in two sentences what you just wrote.
