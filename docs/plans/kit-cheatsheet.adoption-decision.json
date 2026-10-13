@@ -1,0 +1,16 @@
+{
+  "schema_version": "method-adoption-decision.v1",
+  "record_type": "method_adoption_decision",
+  "decision": "adopted",
+  "plan_ref": "docs/plans/kit-cheatsheet.md",
+  "plan_sha256": "138675cbac4bb4009b56084df8161b41715f1311b0162d210d2623d8e5884d47",
+  "receipt_ref": "docs/plans/kit-cheatsheet.receipt.json",
+  "receipt_sha256": "f7c721084d0697fe35c473cf9825b3ac3d21a805e4eaf632ca1c452a9e984092",
+  "receipt_result": "pass",
+  "reason_codes": [],
+  "summary": [
+    "pass: 11 items evidenced, 1 confirmed not applicable, 0 advisory deviation(s)",
+    "warn CORE-SYSTEM-MODEL: MODEL-NO-ELEMENT-IDS, MODEL-NO-UNKNOWNS -> MODEL-NO-ELEMENT-IDS: method/system-model.md has no element lines; write each as `- ID (decided|guessed): what it is`; MODEL-NO-UNKNOWNS: method/system-model.md has no unknowns table (header `| Unknown | What would decide it |`)"
+  ],
+  "decided_at": "2026-10-13T23:28:35Z"
+}

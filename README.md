@@ -50,6 +50,7 @@ cases, reviewer before finishing, and `bash kit/check.sh --final` at the end.
 | File | Use it when |
 |---|---|
 | `MEMORY_SHEET.md` | what to type into the AI chat, in order: fourteen near-verbatim prompts to learn, in the Unified Process order (intent, use cases, domain and states, off-the-shelf, shape, riskiest case, plan, build) |
+| `CHEATSHEET.md` | the same stages as short prompts to keep open beside the chat, with the full model set chosen by question (context, domain, data dictionary, pipeline, states, sequence, components, contracts, evaluation) |
 | `AGENTS.md` | always: how the assistant works (plan, roles, small steps, checks, explain) |
 | `PLAN.template.md` | start of every task: copy to `PLAN.md` and fill in |
 | `templates/` | with the plan, before code: `PRD.md` (use cases, risks), `MODEL.md` (domain model, state machine, riskiest sequence, tests from the model), `DECISIONS.md` (ADRs), copied to `docs/` |
