@@ -104,3 +104,10 @@ def test_adr_row_is_named():
 
 def test_finish_prompt_ticks_done_when():
     assert "Tick each Done when item" in SHEET, "--final fails until PLAN.md's done-when items are ticked"
+
+
+def test_quoted_outputs_get_their_own_tests():
+    # A verbatim rehearsal followed prompt 9 exactly and drew no test for the task's quoted output
+    # strings, which are what hidden grading cases compare.
+    assert "exact output the task quotes" in SHEET, "prompt 9 must ask for one test per quoted output"
+    assert "each naming the `test_...` rows" in SHEET, "prompt 10 must tie each step to its tests"

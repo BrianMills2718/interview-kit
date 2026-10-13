@@ -61,8 +61,8 @@ Then question the drawing:
 > Walk me through the state machine when <the riskiest use case> happens. Which arrow fires,
 > and what stops a forbidden one?
 
-(`bash kit/check.sh` fails "## Sequence" and "## Tests from the model" until prompt 9; that is
-expected.)
+(`bash kit/check.sh` fails PLAN.md, docs/DECISIONS.md, "## Sequence" and "## Tests from the model"
+until prompts 8-10; that is expected.)
 
 **6. Off the shelf** [Ask]
 > For each requirement, what already does it? Name the library, the exact import and function,
@@ -96,20 +96,22 @@ Then [Edit]:
 > sequenceDiagram with a bold **Answer:** line. Use the real library functions from prompt 7 and
 > name our functions exactly as we will write them. Then add ## Tests from the model, a table
 > | Claim | From | Test |: one row per arrow in the state machine, copied as written "A --> B",
-> including [*]; one row per Forbidden line; one row per domain rule. Name each test `test_...`.
+> including [*]; one row per Forbidden line; one row per domain rule; one row per requirement whose
+> exact output the task quotes, From = its R id. Name each test `test_...`.
 > In backticks with (), name only functions our code defines or imports, never a method such as
 > `graph.invoke()`: `check.sh --final` fails names the code does not define.
 
 **10. Plan** [Plan]
 > Write a plan with these headings: ## Goal, with the requirements R1, R2...; ## Done when, a
-> checklist; ## Steps, five to eight small steps, step 1 the thinnest end-to-end slice through the
+> checklist; ## Steps, five to eight small steps, each naming the `test_...` rows from
+> docs/MODEL.md it makes pass, step 1 the thinnest end-to-end slice through the
 > entry function for the riskiest use case, its test first; ## Shape, the shape chosen and one
 > line per rejected shape; ## System model, a link to docs/MODEL.md; ## Assumptions; ## Risks.
 
 Read it, correct it, then [Edit]: "Save that plan as PLAN.md." Then type: "plan approved".
 
 **11. Build one step** [Edit]. Repeat for each step.
-> Implement step <N> only. Write the tests docs/MODEL.md names for it, each one a wrong version
+> Implement step <N> only. Write the tests PLAN.md names for it, each one a wrong version
 > would fail, and where the model is involved, use a fake scripted model so it runs offline. Use
 > the function names in docs/MODEL.md.
 > Also test what the diagrams forbid: every Forbidden line in docs/MODEL.md, and that nothing is
@@ -124,18 +126,21 @@ Then:
 > case, arrow or rule with no test, anything drawn but not in the code, and anything in the code
 > but not drawn.
 
-Fix what it finds, one step at a time, with prompt 11.
+Fix what it finds, one finding at a time, with prompt 11, saying "Fix finding <n> only" in place
+of "Implement step <N> only".
 
 **13. README** [Edit]
-> Write README.md with these ## headings in order: ## Run it (the exact command and its output),
+> Write README.md with these ## headings in order: ## Run it (the one command that runs it end to
+> end, such as the task's grader or demo, and its real output),
 > ## Approach (include the state machine and the sequence diagram), ## Off-the-shelf parts,
 > ## Design decisions (link docs/DECISIONS.md), ## Assumptions, ## How I used the AI (where it
 > was wrong and what I changed), ## Limitations, ## Next steps.
 
 **14. Finish** [Edit]
-> Run every test, the main command and `bash kit/check.sh --final`. Tick each Done when item in
-> PLAN.md and write the real result next to it (the actual pass count, not a placeholder). Run
-> `bash kit/check.sh --final` again and show me its last line and anything still unticked.
+> Run every test, the README's Run it command and `bash kit/check.sh --final`.
+> Tick each Done when item in PLAN.md and write the real result next to it (the actual pass count, not a placeholder).
+> Run `bash kit/check.sh --final` again, put its last line on the check.sh item, and show me
+> anything still unticked.
 
 ## When it is wrong (any time)
 > That's wrong: <what>. Fix it, and add a line to the README's AI notes saying what you got wrong
