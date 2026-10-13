@@ -1,5 +1,9 @@
 # interview-kit
 
+> **Use [interview-kit-v2](https://github.com/BrianMills2718/interview-kit-v2) instead:** seven short
+> what-to-use-when guides (workflow, documents, models, LangChain/LangGraph, data science,
+> evaluation, tests). This repo keeps the practice problems and graders.
+
 Light planning, enforcement, skills and subagents for building agentic AI solutions with an AI
 coding assistant. No claims, worktrees or coordination ceremony: plan first, small checked steps,
 tests that could fail, a review pass, and a clear explanation.
