@@ -1,0 +1,399 @@
+post_id,date,account_id,language,text,shares,reply_to
+P0001,2026-03-01 07:36,A29,es,Alerta de tormenta en la costa.,1,
+P0002,2026-03-01 09:43,A39,ru,Хлеб подорожал на 6 рублей.,11,
+P0003,2026-03-01 10:57,A25,es,El equipo entrenó 39 horas bajo la lluvia.,28,
+P0004,2026-03-01 10:57,A31,ru,Проезд в поезде подорожает на 11 процентов.,8,
+P0005,2026-03-01 14:11,A14,en,Coach says the team trained in the rain for 21 hours.,5,
+P0006,2026-03-01 15:05,A20,en,Storm warning for the coast until Friday.,7,
+P0007,2026-03-01 16:14,A02,en,Our team signed a new striker today.,18,
+P0008,2026-03-01 16:24,A05,en,"Fuel queue at the station on road 18, avoid it.",2,P0003
+P0009,2026-03-01 19:25,A31,ru,Проезд в поезде подорожает на 27 процентов.,12,
+P0010,2026-03-01 21:03,A20,en,Traffic on the ring road is terrible today.,16,
+P0011,2026-03-02 07:07,A18,en,"Heavy rain expected tonight, take an umbrella.",0,
+P0012,2026-03-02 09:07,A07,en,Storm warning for the coast until Friday.,0,
+P0013,2026-03-02 11:58,A40,ru,Линия метро 28 закрыта на ремонт.,7,
+P0014,2026-03-02 12:22,A22,es,Cola de gasolina en la carretera 39.,0,
+P0015,2026-03-02 13:08,A10,en,Traffic on the ring road is terrible today.,25,
+P0016,2026-03-02 13:35,A25,es,El billete de tren sube un 35 por ciento.,12,
+P0017,2026-03-02 14:00,A31,ru,На кольцевой дороге огромная пробка.,18,
+P0018,2026-03-02 14:57,A20,en,"Heavy rain expected tonight, take an umbrella.",3,
+P0019,2026-03-02 15:53,A16,en,Coach says the team trained in the rain for 18 hours.,2,
+P0020,2026-03-02 17:03,A23,es,El equipo entrenó 3 horas bajo la lluvia.,0,
+P0021,2026-03-02 17:49,A20,en,Traffic on the ring road is terrible today.,10,
+P0022,2026-03-02 21:53,A02,en,Coach says the team trained in the rain for 28 hours.,1,
+P0023,2026-03-02 22:02,A03,en,Fuel prices hit a new high today.,20,
+P0024,2026-03-03 09:12,A22,es,Mucho tráfico en la autopista hoy.,6,
+P0025,2026-03-03 09:39,A27,es,El pan cuesta 28 céntimos más.,2,
+P0026,2026-03-03 10:07,A39,ru,Штормовое предупреждение на побережье.,15,
+P0027,2026-03-03 10:47,A20,en,Storm warning for the coast until Friday.,8,
+P0028,2026-03-03 12:05,A02,en,Tickets for the final are sold out.,7,
+P0029,2026-03-03 12:20,A21,es,Alerta de tormenta en la costa.,17,
+P0030,2026-03-03 17:49,A39,ru,Команда тренировалась 24 часа под дождём.,4,
+P0031,2026-03-03 18:31,A07,en,Traffic on the ring road is terrible today.,14,
+P0032,2026-03-03 18:34,A18,en,Storm warning for the coast until Friday.,4,
+P0033,2026-03-03 19:39,A29,es,Se espera lluvia fuerte esta noche.,12,
+P0034,2026-03-03 19:43,A31,ru,Аренда снова выросла.,4,
+P0035,2026-03-03 20:10,A17,en,Coach says the team trained in the rain for 8 hours.,13,
+P0036,2026-03-03 20:25,A20,en,Fuel prices hit a new high today.,1,
+P0037,2026-03-03 21:42,A39,ru,Билеты на финал распроданы.,0,
+P0038,2026-03-04 07:33,A08,en,Bus 32 was late again this morning.,15,
+P0039,2026-03-04 07:35,A19,en,Metro line 4 is closed for repairs.,18,P0025
+P0040,2026-03-04 07:50,A33,ru,Шторм отменил матч и все автобусы.,0,
+P0041,2026-03-04 10:46,A40,ru,Хлеб подорожал на 24 рублей.,1,
+P0042,2026-03-04 11:31,A25,es,La gasolina está más cara que nunca.,2,P0025
+P0043,2026-03-04 12:22,A06,en,Fuel prices hit a new high today.,0,
+P0044,2026-03-04 12:49,A40,ru,Хлеб подорожал на 9 рублей.,1,P0008
+P0045,2026-03-04 15:52,A18,en,Storm warning for the coast until Friday.,4,
+P0046,2026-03-04 16:28,A22,es,El pan cuesta 10 céntimos más.,0,
+P0047,2026-03-04 18:18,A08,en,Storm warning for the coast until Friday.,0,
+P0048,2026-03-04 20:13,A31,ru,"Отличный матч вчера, счёт 5:1.",1,
+P0049,2026-03-04 20:30,A40,ru,Линия метро 17 закрыта на ремонт.,2,
+P0050,2026-03-04 21:43,A09,en,"Fuel queue at the station on road 38, avoid it.",4,
+P0051,2026-03-05 07:54,A40,ru,Хлеб подорожал на 29 рублей.,3,
+P0052,2026-03-05 10:04,A20,en,Traffic on the ring road is terrible today.,14,P0010
+P0053,2026-03-05 10:49,A14,en,"Great match last night, final score 29-1.",4,
+P0054,2026-03-05 12:49,A07,en,Rent went up again this year.,14,
+P0055,2026-03-05 13:22,A25,es,La línea 4 del metro está cerrada.,7,
+P0056,2026-03-05 14:51,A32,ru,Команда тренировалась 28 часа под дождём.,0,P0023
+P0057,2026-03-05 15:59,A10,en,The storm cancelled the match and every bus.,0,P0020
+P0058,2026-03-05 17:30,A16,en,It is 31 degrees and sunny outside.,9,
+P0059,2026-03-05 19:13,A07,en,"Great match last night, final score 39-1.",0,
+P0060,2026-03-05 19:46,A39,ru,Ночью ожидается сильный дождь.,0,
+P0061,2026-03-05 20:05,A19,en,"Great match last night, final score 4-1.",6,P0043
+P0062,2026-03-05 20:29,A02,en,Tickets for the final are sold out.,16,
+P0063,2026-03-05 20:31,A08,en,Bread costs 35 cents more than last month.,3,
+P0064,2026-03-05 21:16,A08,en,Bus 32 was late again this morning.,9,P0005
+P0065,2026-03-06 07:23,A27,es,El equipo fichó a un nuevo delantero.,3,
+P0066,2026-03-06 11:33,A39,ru,Аренда снова выросла.,11,
+P0067,2026-03-06 13:09,A25,es,Hace 38 grados y sol.,3,
+P0068,2026-03-06 16:29,A17,en,Coach says the team trained in the rain for 24 hours.,4,
+P0069,2026-03-06 17:58,A11,en,Train fares rise 11 percent next month.,4,
+P0070,2026-03-06 18:03,A03,en,Rent went up again this year.,10,P0065
+P0071,2026-03-06 18:58,A31,ru,Шторм отменил матч и все автобусы.,7,P0023
+P0072,2026-03-06 19:46,A10,en,"Heavy rain expected tonight, take an umbrella.",5,
+P0073,2026-03-06 20:18,A10,en,Our team signed a new striker today.,2,
+P0074,2026-03-06 21:23,A06,en,Rent went up again this year.,11,
+P0075,2026-03-06 21:37,A30,es,Cola de gasolina en la carretera 6.,35,
+P0076,2026-03-06 22:11,A05,en,Storm warning for the coast until Friday.,1,
+P0077,2026-03-07 07:36,A08,en,Traffic on the ring road is terrible today.,3,
+P0078,2026-03-07 09:53,A09,en,"Heavy rain expected tonight, take an umbrella.",16,
+P0079,2026-03-07 12:26,A32,ru,Аренда снова выросла.,1,
+P0080,2026-03-07 12:42,A20,en,"Great match last night, final score 3-1.",3,
+P0081,2026-03-07 14:28,A18,en,"Fuel queue at the station on road 9, avoid it.",17,P0023
+P0082,2026-03-07 16:09,A17,en,Traffic on the ring road is terrible today.,5,
+P0083,2026-03-07 17:59,A25,es,El pan cuesta 15 céntimos más.,10,P0051
+P0084,2026-03-07 18:34,A32,ru,"Отличный матч вчера, счёт 20:1.",10,P0069
+P0085,2026-03-07 19:26,A21,es,La tormenta suspendió el partido y el metro.,19,
+P0086,2026-03-07 19:55,A17,en,Traffic on the ring road is terrible today.,4,
+P0087,2026-03-07 22:11,A12,en,It is 25 degrees and sunny outside.,20,
+P0088,2026-03-08 09:35,A05,en,Coach says the team trained in the rain for 9 hours.,2,
+P0089,2026-03-08 10:03,A26,es,Hace 38 grados y sol.,2,
+P0090,2026-03-08 11:32,A20,en,Fuel prices hit a new high today.,2,P0052
+P0091,2026-03-08 14:02,A34,ru,"Мост на Северной улице закрыт навсегда, все уже знают.",0,
+P0092,2026-03-08 14:03,A35,ru,"мост на северной улице закрыт навсегда,  все уже знают.",0,
+P0093,2026-03-08 14:03,A36,ru,"МОСТ на Северной улице закрыт навсегда, все уже знают. ",0,
+P0094,2026-03-08 14:04,A36,ru,"Мост на Северной  улице закрыт навсегда, все уже знают.",0,
+P0095,2026-03-08 14:05,A37,ru,"мост на северной улице ЗАКРЫТ навсегда, все уже знают.",0,
+P0096,2026-03-08 14:06,A38,ru,"Мост на Северной улице закрыт навсегда, все уже знают.",0,
+P0097,2026-03-08 14:38,A33,ru,Билеты на финал распроданы.,6,
+P0098,2026-03-08 15:13,A27,es,El equipo fichó a un nuevo delantero.,4,
+P0099,2026-03-08 15:36,A04,en,"Heavy rain expected tonight, take an umbrella.",2,
+P0100,2026-03-08 17:22,A27,es,El alquiler subió otra vez.,1,
+P0101,2026-03-08 18:00,A08,en,Metro line 23 is closed for repairs.,10,P0065
+P0102,2026-03-08 18:54,A07,en,Bus 13 was late again this morning.,1,P0078
+P0103,2026-03-08 19:52,A12,en,Bus 13 was late again this morning.,6,P0009
+P0104,2026-03-08 21:22,A17,en,Tickets for the final are sold out.,13,P0088
+P0105,2026-03-08 22:27,A27,es,La gasolina está más cara que nunca.,10,
+P0106,2026-03-09 08:19,A02,en,Our team signed a new striker today.,5,
+P0107,2026-03-09 09:57,A01,en,Metro line 33 is closed for repairs.,5,P0023
+P0108,2026-03-09 10:36,A30,es,Hace 35 grados y sol.,0,
+P0109,2026-03-09 11:50,A33,ru,Хлеб подорожал на 38 рублей.,25,
+P0110,2026-03-09 12:11,A40,ru,Аренда снова выросла.,0,
+P0111,2026-03-09 13:58,A32,ru,"Отличный матч вчера, счёт 4:1.",0,
+P0112,2026-03-09 14:46,A30,es,El billete de tren sube un 13 por ciento.,27,
+P0113,2026-03-09 15:04,A13,en,The storm cancelled the match and every bus.,9,P0008
+P0114,2026-03-09 16:02,A17,en,Tickets for the final are sold out.,3,
+P0115,2026-03-09 17:15,A32,ru,Команда тренировалась 3 часа под дождём.,1,
+P0116,2026-03-09 17:38,A10,en,The storm cancelled the match and every bus.,20,
+P0117,2026-03-09 18:55,A14,en,Metro line 29 is closed for repairs.,11,
+P0118,2026-03-09 19:37,A09,en,Bus 7 was late again this morning.,41,
+P0119,2026-03-09 21:51,A02,en,Tickets for the final are sold out.,3,
+P0120,2026-03-10 07:22,A30,es,Hace 15 grados y sol.,2,
+P0121,2026-03-10 07:31,A28,es,El autobús 8 llegó tarde otra vez.,13,
+P0122,2026-03-10 07:55,A02,en,"Heavy rain expected tonight, take an umbrella.",1,
+P0123,2026-03-10 08:52,A26,es,Se espera lluvia fuerte esta noche.,11,
+P0124,2026-03-10 12:24,A18,en,Traffic on the ring road is terrible today.,0,
+P0125,2026-03-10 15:05,A15,en,"Heavy rain expected tonight, take an umbrella.",1,
+P0126,2026-03-10 15:20,A19,en,Coach says the team trained in the rain for 21 hours.,2,
+P0127,2026-03-10 15:25,A16,en,Bread costs 27 cents more than last month.,0,
+P0128,2026-03-10 17:08,A22,es,Mucho tráfico en la autopista hoy.,0,P0070
+P0129,2026-03-10 19:00,A29,es,El equipo entrenó 4 horas bajo la lluvia.,15,P0069
+P0130,2026-03-10 20:21,A15,en,Metro line 18 is closed for repairs.,3,P0023
+P0131,2026-03-10 21:21,A29,es,El alquiler subió otra vez.,0,
+P0132,2026-03-11 09:55,A25,es,El pan cuesta 11 céntimos más.,14,
+P0133,2026-03-11 10:19,A22,es,"Gran partido anoche, 6-1 al final.",6,
+P0134,2026-03-11 12:27,A02,en,Bread costs 8 cents more than last month.,2,
+P0135,2026-03-11 13:07,A26,es,La tormenta suspendió el partido y el metro.,30,P0025
+P0136,2026-03-11 14:35,A24,es,El billete de tren sube un 16 por ciento.,18,P0069
+P0137,2026-03-11 14:41,A07,en,Tickets for the final are sold out.,0,
+P0138,2026-03-11 15:39,A31,ru,Билеты на финал распроданы.,10,
+P0139,2026-03-11 18:36,A33,ru,Цены на бензин выросли до рекорда.,12,
+P0140,2026-03-11 19:49,A23,es,Cola de gasolina en la carretera 21.,11,
+P0141,2026-03-11 20:42,A22,es,La tormenta suspendió el partido y el metro.,7,
+P0142,2026-03-11 21:30,A26,es,Mucho tráfico en la autopista hoy.,6,
+P0143,2026-03-11 22:18,A04,en,"Fuel queue at the station on road 31, avoid it.",16,
+P0144,2026-03-11 22:57,A14,en,"Heavy rain expected tonight, take an umbrella.",8,
+P0145,2026-03-12 07:51,A40,ru,Ночью ожидается сильный дождь.,0,
+P0146,2026-03-12 08:45,A13,en,Storm warning for the coast until Friday.,4,
+P0147,2026-03-12 08:51,A07,en,Storm warning for the coast until Friday.,5,P0069
+P0148,2026-03-12 09:16,A27,es,Alerta de tormenta en la costa.,3,P0008
+P0149,2026-03-12 09:45,A19,en,The storm cancelled the match and every bus.,4,
+P0150,2026-03-12 09:49,A06,en,Our team signed a new striker today.,11,
+P0151,2026-03-12 10:09,A03,en,Storm warning for the coast until Friday.,17,
+P0152,2026-03-12 10:30,A27,es,La tormenta suspendió el partido y el metro.,1,
+P0153,2026-03-12 10:33,A01,en,Metro line 20 is closed for repairs.,1,
+P0154,2026-03-12 11:01,A16,en,"Great match last night, final score 23-1.",4,P0151
+P0155,2026-03-12 11:13,A29,es,Alerta de tormenta en la costa.,13,
+P0156,2026-03-12 11:43,A12,en,It is 2 degrees and sunny outside.,4,
+P0157,2026-03-12 12:06,A14,en,Bus 31 was late again this morning.,10,
+P0158,2026-03-12 12:22,A39,ru,Сегодня 38 градусов и солнечно.,1,P0143
+P0159,2026-03-12 12:47,A32,ru,Шторм отменил матч и все автобусы.,0,
+P0160,2026-03-12 12:53,A32,ru,Шторм отменил матч и все автобусы.,5,
+P0161,2026-03-12 13:52,A15,en,"Fuel queue at the station on road 24, avoid it.",7,
+P0162,2026-03-12 14:34,A29,es,Mucho tráfico en la autopista hoy.,20,P0036
+P0163,2026-03-12 14:43,A30,es,Alerta de tormenta en la costa.,3,
+P0164,2026-03-12 14:54,A19,en,Storm warning for the coast until Friday.,3,
+P0165,2026-03-12 15:00,A13,en,Train fares rise 28 percent next month.,47,
+P0166,2026-03-12 15:16,A05,en,Tickets for the final are sold out.,11,
+P0167,2026-03-12 15:17,A11,en,"Heavy rain expected tonight, take an umbrella.",8,
+P0168,2026-03-12 15:35,A02,en,It is 20 degrees and sunny outside.,5,
+P0169,2026-03-12 15:50,A33,ru,Шторм отменил матч и все автобусы.,8,
+P0170,2026-03-12 16:15,A30,es,La tormenta suspendió el partido y el metro.,3,
+P0171,2026-03-12 16:19,A22,es,Se espera lluvia fuerte esta noche.,20,
+P0172,2026-03-12 16:25,A30,es,Alerta de tormenta en la costa.,0,P0069
+P0173,2026-03-12 17:12,A12,en,Bus 9 was late again this morning.,0,
+P0174,2026-03-12 17:20,A20,en,Coach says the team trained in the rain for 6 hours.,5,
+P0175,2026-03-12 17:44,A01,en,"Heavy rain expected tonight, take an umbrella.",6,
+P0176,2026-03-12 18:21,A30,es,La tormenta suspendió el partido y el metro.,16,
+P0177,2026-03-12 18:40,A19,en,It is 6 degrees and sunny outside.,1,
+P0178,2026-03-12 19:41,A20,en,It is 10 degrees and sunny outside.,11,
+P0179,2026-03-12 19:43,A31,ru,Ночью ожидается сильный дождь.,1,
+P0180,2026-03-12 20:12,A20,en,"Heavy rain expected tonight, take an umbrella.",3,
+P0181,2026-03-12 20:20,A20,en,Fuel prices hit a new high today.,1,
+P0182,2026-03-12 21:31,A03,en,The storm cancelled the match and every bus.,2,
+P0183,2026-03-12 21:33,A14,en,The storm cancelled the match and every bus.,4,P0107
+P0184,2026-03-12 22:34,A28,es,Se espera lluvia fuerte esta noche.,17,
+P0185,2026-03-12 22:52,A23,es,Alerta de tormenta en la costa.,19,
+P0186,2026-03-13 08:57,A15,en,"Heavy rain expected tonight, take an umbrella.",10,
+P0187,2026-03-13 09:25,A12,en,Train fares rise 2 percent next month.,3,P0019
+P0188,2026-03-13 09:27,A12,en,The storm cancelled the match and every bus.,1,
+P0189,2026-03-13 11:37,A25,es,La gasolina está más cara que nunca.,2,
+P0190,2026-03-13 13:20,A18,en,"Fuel queue at the station on road 6, avoid it.",0,
+P0191,2026-03-13 14:21,A08,en,Traffic on the ring road is terrible today.,2,
+P0192,2026-03-13 16:19,A31,ru,Цены на бензин выросли до рекорда.,6,P0070
+P0193,2026-03-13 16:28,A03,en,Tickets for the final are sold out.,2,
+P0194,2026-03-13 16:48,A20,en,"Great match last night, final score 22-1.",7,
+P0195,2026-03-13 20:24,A08,en,Rent went up again this year.,9,
+P0196,2026-03-13 22:20,A09,en,Fuel prices hit a new high today.,0,P0167
+P0197,2026-03-13 22:42,A32,ru,Аренда снова выросла.,3,
+P0198,2026-03-14 08:46,A25,es,Se espera lluvia fuerte esta noche.,1,
+P0199,2026-03-14 09:25,A05,en,"Heavy rain expected tonight, take an umbrella.",31,
+P0200,2026-03-14 11:32,A12,en,Our team signed a new striker today.,14,P0196
+P0201,2026-03-14 13:00,A10,en,Our team signed a new striker today.,22,
+P0202,2026-03-14 16:03,A21,es,El pan cuesta 24 céntimos más.,16,P0190
+P0203,2026-03-14 16:11,A29,es,El billete de tren sube un 36 por ciento.,4,
+P0204,2026-03-14 19:54,A10,en,Train fares rise 14 percent next month.,7,
+P0205,2026-03-14 20:17,A39,ru,Сегодня 26 градусов и солнечно.,0,P0103
+P0206,2026-03-14 21:55,A12,en,Our team signed a new striker today.,1,
+P0207,2026-03-14 22:16,A16,en,Traffic on the ring road is terrible today.,5,
+P0208,2026-03-15 08:57,A04,en,"Fuel queue at the station on road 13, avoid it.",6,
+P0209,2026-03-15 10:00,A39,ru,"Мост на Северной улице закрыт навсегда, все уже знают.",1,
+P0210,2026-03-15 11:33,A22,es,Alerta de tormenta en la costa.,7,
+P0211,2026-03-15 11:53,A21,es,Entradas agotadas para la final.,44,
+P0212,2026-03-15 13:33,A19,en,Metro line 26 is closed for repairs.,1,
+P0213,2026-03-15 15:38,A10,en,Storm warning for the coast until Friday.,6,
+P0214,2026-03-15 15:53,A31,ru,Команда подписала нового нападающего.,4,
+P0215,2026-03-15 16:23,A04,en,"Fuel queue at the station on road 29, avoid it.",15,
+P0216,2026-03-15 16:54,A18,en,"Fuel queue at the station on road 36, avoid it.",4,
+P0217,2026-03-15 17:16,A20,en,Our team signed a new striker today.,5,P0090
+P0218,2026-03-15 18:41,A11,en,"Fuel queue at the station on road 38, avoid it.",3,P0016
+P0219,2026-03-16 10:34,A05,en,Metro line 7 is closed for repairs.,3,P0019
+P0220,2026-03-16 10:45,A07,en,Rent went up again this year.,0,P0171
+P0221,2026-03-16 12:07,A28,es,La gasolina está más cara que nunca.,5,P0218
+P0222,2026-03-16 14:31,A21,es,La gasolina está más cara que nunca.,4,P0023
+P0223,2026-03-16 15:06,A20,en,"Fuel queue at the station on road 16, avoid it.",1,
+P0224,2026-03-16 15:25,A24,es,Se espera lluvia fuerte esta noche.,25,P0125
+P0225,2026-03-16 16:11,A19,en,"Heavy rain expected tonight, take an umbrella.",10,P0223
+P0226,2026-03-16 21:03,A20,en,Our team signed a new striker today.,1,
+P0227,2026-03-16 22:29,A24,es,El billete de tren sube un 25 por ciento.,12,P0128
+P0228,2026-03-17 07:07,A28,es,Mucho tráfico en la autopista hoy.,8,
+P0229,2026-03-17 08:07,A06,en,"Fuel queue at the station on road 22, avoid it.",15,
+P0230,2026-03-17 08:39,A28,es,El equipo entrenó 20 horas bajo la lluvia.,12,
+P0231,2026-03-17 13:38,A12,en,Fuel prices hit a new high today.,1,
+P0232,2026-03-17 14:46,A40,ru,Цены на бензин выросли до рекорда.,8,P0214
+P0233,2026-03-17 15:30,A22,es,¡Los precios del pan suben otra vez! Compartid.,0,
+P0234,2026-03-17 15:31,A23,es,¡los precios del pan suben otra vez! compartid.,0,
+P0235,2026-03-17 15:32,A24,es,¡Los precios del pan  suben otra vez! Compartid.,0,
+P0236,2026-03-17 15:40,A25,es,¡LOS PRECIOS DEL PAN SUBEN OTRA VEZ! Compartid.,0,
+P0237,2026-03-17 15:56,A06,en,Bus 34 was late again this morning.,2,
+P0238,2026-03-17 18:03,A27,es,Alerta de tormenta en la costa.,5,
+P0239,2026-03-17 21:04,A06,en,It is 32 degrees and sunny outside.,15,
+P0240,2026-03-17 21:06,A21,es,El billete de tren sube un 8 por ciento.,12,P0215
+P0241,2026-03-18 07:54,A19,en,Tickets for the final are sold out.,9,
+P0242,2026-03-18 10:08,A20,en,The storm cancelled the match and every bus.,13,P0006
+P0243,2026-03-18 12:11,A22,es,La línea 16 del metro está cerrada.,7,
+P0244,2026-03-18 12:22,A30,es,Cola de gasolina en la carretera 15.,2,
+P0245,2026-03-18 13:23,A28,es,Alerta de tormenta en la costa.,0,
+P0246,2026-03-18 13:33,A03,en,Coach says the team trained in the rain for 17 hours.,16,P0163
+P0247,2026-03-18 13:38,A04,en,The storm cancelled the match and every bus.,2,
+P0248,2026-03-18 13:43,A24,es,Hace 35 grados y sol.,10,
+P0249,2026-03-18 16:52,A40,ru,Проезд в поезде подорожает на 3 процентов.,1,P0121
+P0250,2026-03-18 18:56,A20,en,It is 32 degrees and sunny outside.,1,P0080
+P0251,2026-03-18 19:18,A20,en,The storm cancelled the match and every bus.,4,
+P0252,2026-03-18 20:07,A20,en,Tickets for the final are sold out.,15,
+P0253,2026-03-18 22:21,A15,en,Storm warning for the coast until Friday.,7,
+P0254,2026-03-19 08:43,A13,en,It is 9 degrees and sunny outside.,6,
+P0255,2026-03-19 12:29,A27,es,El equipo fichó a un nuevo delantero.,1,
+P0256,2026-03-19 13:18,A20,en,Coach says the team trained in the rain for 32 hours.,6,
+P0257,2026-03-19 16:56,A29,es,El equipo entrenó 4 horas bajo la lluvia.,5,
+P0258,2026-03-19 17:21,A20,en,"Great match last night, final score 5-1.",5,
+P0259,2026-03-19 17:44,A39,ru,Штормовое предупреждение на побережье.,6,
+P0260,2026-03-19 19:56,A32,ru,Команда тренировалась 32 часа под дождём.,1,P0246
+P0261,2026-03-19 20:57,A27,es,El alquiler subió otra vez.,8,
+P0262,2026-03-19 21:14,A16,en,Our team signed a new striker today.,3,
+P0263,2026-03-19 22:13,A13,en,Traffic on the ring road is terrible today.,9,
+P0264,2026-03-19 22:29,A12,en,Train fares rise 14 percent next month.,4,
+P0265,2026-03-19 22:37,A08,en,Our team signed a new striker today.,10,
+P0266,2026-03-19 22:45,A19,en,Coach says the team trained in the rain for 20 hours.,0,
+P0267,2026-03-20 08:07,A25,es,El equipo entrenó 19 horas bajo la lluvia.,7,
+P0268,2026-03-20 08:57,A06,en,The storm cancelled the match and every bus.,3,P0046
+P0269,2026-03-20 10:36,A21,es,Alerta de tormenta en la costa.,35,
+P0270,2026-03-20 11:12,A12,en,Our team signed a new striker today.,33,
+P0271,2026-03-20 11:28,A31,ru,Команда тренировалась 11 часа под дождём.,3,P0008
+P0272,2026-03-20 11:35,A10,en,"Heavy rain expected tonight, take an umbrella.",42,
+P0273,2026-03-20 12:02,A20,en,Train fares rise 18 percent next month.,6,
+P0274,2026-03-20 15:36,A09,en,Coach says the team trained in the rain for 29 hours.,6,
+P0275,2026-03-20 21:49,A23,es,"Gran partido anoche, 8-1 al final.",14,
+P0276,2026-03-21 07:11,A16,en,Coach says the team trained in the rain for 3 hours.,0,
+P0277,2026-03-21 07:45,A22,es,Entradas agotadas para la final.,19,
+P0278,2026-03-21 08:09,A20,en,"Great match last night, final score 33-1.",3,
+P0279,2026-03-21 08:24,A26,es,El equipo fichó a un nuevo delantero.,39,P0133
+P0280,2026-03-21 08:28,A22,es,Alerta de tormenta en la costa.,11,
+P0281,2026-03-21 08:30,A09,en,Tickets for the final are sold out.,4,P0203
+P0282,2026-03-21 08:38,A08,en,Our team signed a new striker today.,0,
+P0283,2026-03-21 09:09,A10,en,Coach says the team trained in the rain for 35 hours.,2,
+P0284,2026-03-21 09:33,A05,en,Train fares rise 20 percent next month.,0,
+P0285,2026-03-21 09:54,A01,en,Traffic on the ring road is terrible today.,0,
+P0286,2026-03-21 09:54,A25,es,Se espera lluvia fuerte esta noche.,6,
+P0287,2026-03-21 10:00,A26,es,El billete de tren sube un 18 por ciento.,14,
+P0288,2026-03-21 10:21,A02,en,Tickets for the final are sold out.,4,
+P0289,2026-03-21 10:30,A17,en,Coach says the team trained in the rain for 18 hours.,3,
+P0290,2026-03-21 10:40,A29,es,Se espera lluvia fuerte esta noche.,3,
+P0291,2026-03-21 10:42,A23,es,Se espera lluvia fuerte esta noche.,47,
+P0292,2026-03-21 11:03,A03,en,"Great match last night, final score 14-1.",0,
+P0293,2026-03-21 12:23,A27,es,El pan cuesta 27 céntimos más.,47,
+P0294,2026-03-21 13:15,A39,ru,Команда подписала нового нападающего.,5,
+P0295,2026-03-21 13:30,A33,ru,Билеты на финал распроданы.,8,P0290
+P0296,2026-03-21 14:56,A20,en,Coach says the team trained in the rain for 29 hours.,3,
+P0297,2026-03-21 15:08,A17,en,Coach says the team trained in the rain for 28 hours.,11,
+P0298,2026-03-21 15:12,A02,en,Tickets for the final are sold out.,10,
+P0299,2026-03-21 15:31,A19,en,"Great match last night, final score 6-1.",0,
+P0300,2026-03-21 16:37,A24,es,"Gran partido anoche, 37-1 al final.",16,P0193
+P0301,2026-03-21 16:58,A22,es,"Gran partido anoche, 17-1 al final.",0,
+P0302,2026-03-21 17:42,A25,es,Cola de gasolina en la carretera 22.,3,
+P0303,2026-03-21 17:44,A09,en,Bus 7 was late again this morning.,12,P0151
+P0304,2026-03-21 18:22,A32,ru,"Отличный матч вчера, счёт 28:1.",9,
+P0305,2026-03-21 18:31,A01,en,"Great match last night, final score 24-1.",2,
+P0306,2026-03-21 19:26,A01,en,It is 34 degrees and sunny outside.,24,
+P0307,2026-03-21 20:17,A31,ru,Команда тренировалась 21 часа под дождём.,2,
+P0308,2026-03-21 20:39,A14,en,Coach says the team trained in the rain for 21 hours.,0,
+P0309,2026-03-21 21:49,A01,en,"Great match last night, final score 34-1.",5,P0174
+P0310,2026-03-21 22:48,A29,es,"Gran partido anoche, 20-1 al final.",33,P0184
+P0311,2026-03-22 07:59,A28,es,La tormenta suspendió el partido y el metro.,12,
+P0312,2026-03-22 08:40,A16,en,Rent went up again this year.,8,
+P0313,2026-03-22 10:40,A28,es,El alquiler subió otra vez.,14,
+P0314,2026-03-22 15:34,A26,es,El billete de tren sube un 26 por ciento.,8,P0152
+P0315,2026-03-22 15:46,A28,es,La gasolina está más cara que nunca.,31,
+P0316,2026-03-22 15:58,A26,es,El equipo entrenó 19 horas bajo la lluvia.,2,
+P0317,2026-03-22 19:25,A15,en,"Heavy rain expected tonight, take an umbrella.",14,
+P0318,2026-03-22 20:58,A20,en,Coach says the team trained in the rain for 29 hours.,0,
+P0319,2026-03-22 21:35,A07,en,Storm warning for the coast until Friday.,1,P0316
+P0320,2026-03-22 22:04,A33,ru,Цены на бензин выросли до рекорда.,4,
+P0321,2026-03-22 22:12,A11,en,Metro line 38 is closed for repairs.,9,
+P0322,2026-03-22 22:20,A07,en,The storm cancelled the match and every bus.,0,
+P0323,2026-03-23 10:28,A18,en,Traffic on the ring road is terrible today.,2,
+P0324,2026-03-23 10:31,A08,en,Our team signed a new striker today.,17,
+P0325,2026-03-23 10:32,A22,es,El equipo fichó a un nuevo delantero.,9,
+P0326,2026-03-23 16:25,A20,en,Traffic on the ring road is terrible today.,3,
+P0327,2026-03-23 17:22,A23,es,Alerta de tormenta en la costa.,10,
+P0328,2026-03-23 19:36,A16,en,Storm warning for the coast until Friday.,18,
+P0329,2026-03-23 20:20,A23,es,Hace 37 grados y sol.,1,
+P0330,2026-03-23 22:19,A23,es,El autobús 28 llegó tarde otra vez.,17,
+P0331,2026-03-23 22:26,A28,es,"Gran partido anoche, 36-1 al final.",6,
+P0332,2026-03-23 22:44,A20,en,Our team signed a new striker today.,1,P0088
+P0333,2026-03-23 22:56,A26,es,Mucho tráfico en la autopista hoy.,1,
+P0334,2026-03-24 09:03,A29,es,La tormenta suspendió el partido y el metro.,18,P0202
+P0335,2026-03-24 09:53,A12,en,Tickets for the final are sold out.,2,P0246
+P0336,2026-03-24 10:10,A01,en,Bread costs 21 cents more than last month.,2,
+P0337,2026-03-24 14:32,A22,es,"Gran partido anoche, 33-1 al final.",18,
+P0338,2026-03-24 15:27,A01,en,Coach says the team trained in the rain for 38 hours.,6,
+P0339,2026-03-24 16:16,A04,en,Traffic on the ring road is terrible today.,0,
+P0340,2026-03-24 18:53,A30,es,El billete de tren sube un 25 por ciento.,5,
+P0341,2026-03-24 19:34,A40,ru,Линия метро 13 закрыта на ремонт.,12,
+P0342,2026-03-24 21:27,A24,es,La gasolina está más cara que nunca.,8,
+P0343,2026-03-26 07:04,A21,es,Mucho tráfico en la autopista hoy.,21,P0247
+P0344,2026-03-26 07:38,A02,en,"Heavy rain expected tonight, take an umbrella.",1,P0167
+P0345,2026-03-26 08:19,A31,ru,Штормовое предупреждение на побережье.,2,
+P0346,2026-03-26 08:25,A06,en,"Heavy rain expected tonight, take an umbrella.",8,
+P0347,2026-03-26 09:49,A22,es,El autobús 26 llegó tarde otra vez.,1,
+P0348,2026-03-26 11:07,A11,en,Coach says the team trained in the rain for 26 hours.,5,
+P0349,2026-03-26 15:54,A09,en,Coach says the team trained in the rain for 35 hours.,4,
+P0350,2026-03-26 19:52,A01,en,"Heavy rain expected tonight, take an umbrella.",7,P0331
+P0351,2026-03-26 20:04,A14,en,Coach says the team trained in the rain for 21 hours.,3,
+P0352,2026-03-26 20:34,A33,ru,Цены на бензин выросли до рекорда.,0,
+P0353,2026-03-26 22:12,A30,es,El pan cuesta 8 céntimos más.,17,
+P0354,2026-03-27 10:08,A11,en,Tickets for the final are sold out.,21,P0099
+P0355,2026-03-27 10:27,A32,ru,Проезд в поезде подорожает на 12 процентов.,15,P0254
+P0356,2026-03-27 12:53,A40,ru,Билеты на финал распроданы.,11,
+P0357,2026-03-27 13:16,A16,en,Bread costs 20 cents more than last month.,8,
+P0358,2026-03-27 14:20,A20,en,Train fares rise 34 percent next month.,13,
+P0359,2026-03-27 14:30,A39,ru,Автобус 22 снова опоздал.,2,P0152
+P0360,2026-03-27 15:05,A23,es,La línea 4 del metro está cerrada.,2,
+P0361,2026-03-27 15:07,A20,en,Fuel prices hit a new high today.,3,P0178
+P0362,2026-03-27 16:07,A04,en,Fuel prices hit a new high today.,5,
+P0363,2026-03-27 17:40,A03,en,Tickets for the final are sold out.,4,P0088
+P0364,2026-03-27 19:31,A07,en,"Great match last night, final score 40-1.",3,
+P0365,2026-03-27 21:29,A32,ru,Штормовое предупреждение на побережье.,9,P0008
+P0366,2026-03-27 22:00,A05,en,"Heavy rain expected tonight, take an umbrella.",6,P0350
+P0367,2026-03-27 22:59,A09,en,"Great match last night, final score 13-1.",1,
+P0368,2026-03-28 07:43,A28,es,Se espera lluvia fuerte esta noche.,35,P0248
+P0369,2026-03-28 10:54,A40,ru,Автобус 36 снова опоздал.,9,
+P0370,2026-03-28 11:15,A21,es,Alerta de tormenta en la costa.,5,
+P0371,2026-03-28 13:13,A06,en,Coach says the team trained in the rain for 21 hours.,1,
+P0372,2026-03-28 13:45,A12,en,"Fuel queue at the station on road 4, avoid it.",9,
+P0373,2026-03-28 14:18,A23,es,El alquiler subió otra vez.,13,
+P0374,2026-03-28 19:07,A11,en,Our team signed a new striker today.,5,
+P0375,2026-03-28 21:21,A26,es,Cola de gasolina en la carretera 27.,0,
+P0376,2026-03-28 22:00,A24,es,La tormenta suspendió el partido y el metro.,6,P0061
+P0377,2026-03-29 10:19,A16,en,The storm cancelled the match and every bus.,1,P0048
+P0378,2026-03-29 10:58,A26,es,Hace 35 grados y sol.,5,
+P0379,2026-03-29 12:10,A14,en,Tickets for the final are sold out.,14,
+P0380,2026-03-29 13:18,A15,en,Our team signed a new striker today.,9,
+P0381,2026-03-29 13:26,A25,es,El pan cuesta 15 céntimos más.,12,
+P0382,2026-03-29 15:49,A25,es,El alquiler subió otra vez.,0,
+P0383,2026-03-29 19:28,A21,es,El equipo fichó a un nuevo delantero.,14,P0126
+P0384,2026-03-29 21:13,A31,ru,Аренда снова выросла.,2,
+P0385,2026-03-29 22:04,A19,en,It is 25 degrees and sunny outside.,10,
+P0386,2026-03-30 07:12,A31,ru,Линия метро 24 закрыта на ремонт.,35,P0086
+P0387,2026-03-30 09:08,A40,ru,Билеты на финал распроданы.,10,
+P0388,2026-03-30 10:19,A20,en,Bread costs 31 cents more than last month.,0,P0332
+P0389,2026-03-30 13:03,A13,en,"Heavy rain expected tonight, take an umbrella.",1,P0218
+P0390,2026-03-30 13:03,A26,es,El equipo entrenó 21 horas bajo la lluvia.,12,
+P0391,2026-03-30 16:17,A17,en,Bread costs 18 cents more than last month.,0,
+P0392,2026-03-30 16:47,A21,es,El pan cuesta 6 céntimos más.,0,
+P0393,2026-03-30 16:53,A16,en,Tickets for the final are sold out.,9,P0219
+P0394,2026-03-30 18:32,A25,es,El equipo fichó a un nuevo delantero.,23,P0151
+P0395,2026-03-30 19:43,A17,en,Rent went up again this year.,0,
+P0396,2026-03-30 20:07,A09,en,Our team signed a new striker today.,11,P0295
+P0397,2026-03-30 20:31,A20,en,"Fuel queue at the station on road 4, avoid it.",14,P0052
+P0398,2026-03-30 22:08,A32,ru,Очередь за бензином на трассе 29.,0,

@@ -8,7 +8,7 @@ Target 2 hours, hard stop at 4.
 
 1. In a project folder of your own, `git init` if needed, then `git clone <this kit> kit` inside it.
 2. Remove both practice answers before reading anything else (the first problem's answer shows this one's patterns):
-   `python3 -c "import shutil; [shutil.rmtree(p, ignore_errors=True) for p in ('kit/practice/reference', 'kit/practice2/reference')]"`.
+   `python3 -c "import shutil; [shutil.rmtree(p, ignore_errors=True) for p in ('kit/practice/reference', 'kit/practice2/reference', 'kit/practice3/reference')]"`.
    Install: `uv venv && uv pip install langchain langgraph pytest` (`check.sh` uses `.venv`).
    Do not decode `kit/practice2/hidden.b64`; it is not secret, only out of sight, like a real hidden suite.
 3. Start a timer. Use only the kit's files and one AI chat, as the IDE would allow.

@@ -1,0 +1,291 @@
+[
+ {
+  "name": "volume-spikes-and-shares",
+  "message": "Which days had unusual volume, do Spanish posts get more shares than English ones, and how many Russian posts are there?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "daily_volume_anomalies",
+      "args": {
+       "z": 2.5
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "compare_shares",
+      "args": {
+       "lang_a": "es",
+       "lang_b": "en"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "count_posts",
+      "args": {
+       "language": "ru"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "volume",
+       "answer": "Volume spiked on 2026-03-12 and 2026-03-21, and Spanish posts get more shares than English ones (p 0.0008).",
+       "numbers": {
+        "spike_days": 2,
+        "p_value": 0.0008
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "2026-03-12: 41 posts, z 3.82\n2026-03-21: 35 posts, z 2.99",
+    "es vs en: mean 10.67 vs 6.86, n 118 vs 213, t 3.40, p 0.0008",
+    "67 posts: ru 67"
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "volume",
+    "numbers": {
+     "spike_days": 2.0,
+     "p_value": 0.0008
+    }
+   }
+  }
+ },
+ {
+  "name": "coordinated-group-flagged",
+  "message": "Is anyone posting the same message in a coordinated way? Flag them if so.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "find_coordinated",
+      "args": {
+       "window_minutes": 5,
+       "min_accounts": 3
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "flag_coordinated",
+      "args": {
+       "account_ids": [
+        "A34",
+        "A35",
+        "A36",
+        "A37",
+        "A38"
+       ],
+       "reason": "same text within 4 minutes"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "coordination",
+       "answer": "Five accounts posted the same text within four minutes and were flagged.",
+       "numbers": {
+        "accounts": 5
+       },
+       "evidence_post_ids": [
+        "P0091",
+        "P0092",
+        "P0093",
+        "P0094",
+        "P0095",
+        "P0096"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [
+    [
+     "A34",
+     "A35",
+     "A36",
+     "A37",
+     "A38"
+    ]
+   ],
+   "interrupted": true,
+   "tool_output_contains": [
+    "accounts A34,A35,A36,A37,A38; posts P0091,P0092,P0093,P0094,P0095,P0096; 2026-03-08 14:02 to 2026-03-08 14:06\naccounts A22,A23,A24; posts P0233,P0234,P0235; 2026-03-17 15:30 to 2026-03-17 15:32",
+    "Flagged 5 accounts after approval."
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "coordination",
+    "evidence_post_ids": [
+     "P0091",
+     "P0092",
+     "P0093",
+     "P0094",
+     "P0095",
+     "P0096"
+    ]
+   }
+  }
+ },
+ {
+  "name": "classifier-metrics",
+  "kind": "metrics",
+  "texts": [
+   "Storm warning for the coast until Friday.",
+   "Bus 7 was late again this morning.",
+   "Tickets for the final are sold out.",
+   "Rent went up again this year.",
+   "Our team signed a new striker today."
+  ],
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "Topic",
+      "args": {
+       "topic": "weather"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Topic",
+      "args": {
+       "topic": "transport"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Topic",
+      "args": {
+       "topic": "prices"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Topic",
+      "args": {
+       "topic": "prices"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Topic",
+      "args": {
+       "topic": "sports"
+      }
+     }
+    ]
+   }
+  ],
+  "gold": [
+   "weather",
+   "transport",
+   "sports",
+   "prices",
+   "sports"
+  ],
+  "topics": [
+   "transport",
+   "weather",
+   "sports",
+   "prices"
+  ],
+  "expect": {
+   "predictions": [
+    "weather",
+    "transport",
+    "prices",
+    "prices",
+    "sports"
+   ],
+   "confusion": [
+    [
+     1,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     1,
+     1
+    ],
+    [
+     0,
+     0,
+     0,
+     1
+    ]
+   ],
+   "metrics": {
+    "transport": {
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 1
+    },
+    "weather": {
+     "precision": 1.0,
+     "recall": 1.0,
+     "support": 1
+    },
+    "sports": {
+     "precision": 1.0,
+     "recall": 0.5,
+     "support": 2
+    },
+    "prices": {
+     "precision": 0.5,
+     "recall": 1.0,
+     "support": 1
+    }
+   }
+  }
+ }
+]

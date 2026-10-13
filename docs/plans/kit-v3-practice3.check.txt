@@ -1,0 +1,101 @@
+# kit-v3-practice3 check output, 2026-10-13T16:24Z, commit base d40bf1c
+
+## 1. Reference graded through the CLI
+PASS volume-spikes-and-shares
+PASS coordinated-group-flagged
+PASS classifier-metrics
+PASS hidden: count-empty-filter-means-all
+PASS hidden: count-range-matches-nothing
+PASS hidden: z-threshold-is-inclusive
+PASS hidden: window-boundary
+PASS hidden: same-account-counts-once
+PASS hidden: flag-declined-records-nothing
+PASS hidden: flag-input-checked-before-pause
+PASS hidden: hub-ties-by-account-id
+PASS hidden: self-replies-not-counted
+PASS hidden: coordination-finding-needs-evidence
+PASS hidden: precision-zero-division
+PASS hidden: prediction-outside-topics-raises
+== grade: 15 passed, 0 failed of 15 cases (12 hidden)
+exit 0
+
+## 2. Mutation check through the CLI: one rule broken per copy
+### z_strict
+FAIL hidden: z-threshold-is-inclusive
+     failed check: tool output text
+== grade: 14 passed, 1 failed of 15 cases (12 hidden)
+exit 1
+### window_exclusive
+FAIL hidden: window-boundary
+     failed check: tool output text
+== grade: 14 passed, 1 failed of 15 cases (12 hidden)
+exit 1
+### flag_before_approval
+FAIL coordinated-group-flagged
+FAIL hidden: flag-declined-records-nothing
+     failed check: flagged groups, tool output text
+FAIL hidden: flag-input-checked-before-pause
+     failed check: tool output text
+== grade: 12 passed, 3 failed of 15 cases (12 hidden)
+exit 1
+### zero_division (evaluate.py)
+FAIL hidden: precision-zero-division
+     failed check: crashed
+== grade: 14 passed, 1 failed of 15 cases (12 hidden)
+exit 1
+
+## 3. Independent recomputation from posts.csv (plain arithmetic, not the reference)
+total 398 {'en': 213, 'es': 118, 'ru': 67}
+ru on 2026-03-08 7
+es on 2026-03-25 0
+days 30 zero days ['2026-03-25'] mean 13.2667 std 7.2615
+  2026-03-12: 41 posts, z 3.8192
+  2026-03-21: 35 posts, z 2.9930
+es vs en: mean 10.67 vs 6.86, n 118 vs 213, t 3.40, df 181.4, p 0.0008
+en vs ru: mean 6.86 vs 5.27, n 213 vs 67, t 1.69, df 128.0, p 0.0936
+same text 5 posts ['A31', 'A32', 'A33'] [('P0040', '03-04 07:50'), ('P0071', '03-06 18:58'), ('P0159', '03-12 12:47'), ('P0160', '03-12 12:53'), ('P0169', '03-12 15:50')]
+same text 3 posts ['A31', 'A39', 'A40'] [('P0060', '03-05 19:46'), ('P0145', '03-12 07:51'), ('P0179', '03-12 19:43')]
+same text 7 posts ['A34', 'A35', 'A36', 'A37', 'A38', 'A39'] [('P0091', '03-08 14:02'), ('P0092', '03-08 14:03'), ('P0093', '03-08 14:03'), ('P0094', '03-08 14:04'), ('P0095', '03-08 14:05'), ('P0096', '03-08 14:06'), ('P0209', '03-15 10:00')]
+same text 4 posts ['A22', 'A23', 'A24', 'A25'] [('P0233', '03-17 15:30'), ('P0234', '03-17 15:31'), ('P0235', '03-17 15:32'), ('P0236', '03-17 15:40')]
+replies received (others only) [('A03', 14), ('A05', 9), ('A11', 9), ('A27', 7), ('A04', 4), ('A22', 4), ('A20', 3), ('A28', 3)]
+replies received (self included) [('A03', 14), ('A20', 11), ('A05', 9)]
+exit 0
+
+## 4. practice3 tests
+collecting ... collected 20 items
+
+tests/test_practice3.py::test_hidden_file_matches_its_source PASSED      [  5%]
+tests/test_practice3.py::test_reference_passes_every_case PASSED         [ 10%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken0-expect_failed0] PASSED [ 15%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken1-expect_failed1] PASSED [ 20%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken2-expect_failed2] PASSED [ 25%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken3-expect_failed3] PASSED [ 30%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken4-expect_failed4] PASSED [ 35%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken5-expect_failed5] PASSED [ 40%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken6-expect_failed6] PASSED [ 45%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[solution-broken7-expect_failed7] PASSED [ 50%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[evaluate-broken8-expect_failed8] PASSED [ 55%]
+tests/test_practice3.py::test_grader_fails_a_broken_solution[evaluate-broken9-expect_failed9] PASSED [ 60%]
+tests/test_practice3.py::test_trivial_metrics_fail PASSED                [ 65%]
+tests/test_practice3.py::test_hidden_failures_print_no_expected_values PASSED [ 70%]
+tests/test_practice3.py::test_data_is_reproducible PASSED                [ 75%]
+tests/test_practice3.py::test_planted_signals_are_where_the_cases_expect PASSED [ 80%]
+tests/test_practice3.py::test_reference_evaluation_runs_offline PASSED   [ 85%]
+tests/test_practice3.py::test_problem_removal_command_deletes_the_reference PASSED [ 90%]
+tests/test_practice3.py::test_earlier_problems_also_remove_this_reference[practice/PROBLEM.md] PASSED [ 95%]
+tests/test_practice3.py::test_earlier_problems_also_remove_this_reference[practice2/PROBLEM.md] PASSED [100%]
+
+============================= 20 passed in 11.07s ==============================
+
+## 5. Parallel-implementation check: only practice/grade.py defines ScriptedModel
+./practice/grade.py:23:class ScriptedModel(GenericFakeChatModel):
+
+## 6. Privacy grep over the change (employer, product, person, interview-detail words); 0 lines expected
+61:+| R9 | The kit stays public-safe: no employer, team, person, product or interview detail | asked (the kit is public) | privacy grep recorded in check.txt | passing: see check.txt |
+2870: | Environment check | [scripts/coderpad_sandbox_check.cjs](../scripts/coderpad_sandbox_check.cjs) | re-runs the CoderPad sandbox test |
+grep exit 0 (1 = no matches)
+
+Reading of the two hits: line 61 is the rule text itself (R9 names the categories it forbids); line 2870 is an existing wiki row shown as diff context, not added by this change. Generated plan records (bundle.json) name the planning tool's public source repo owner, the same public owner as this repo; no private data. Verdict: no employer, team, person, product or interview detail added.
+
+## 7. Full suite on commit db31d2c (run after committing, existing .venv)
+`.venv/bin/python -m pytest tests/`: 103 passed, 0 failed, 0 errors, 0 skipped in 35.28s; exit 0

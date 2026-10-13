@@ -1,0 +1,700 @@
+[
+ {
+  "name": "count-empty-filter-means-all",
+  "message": "How many posts are there, and how many Russian ones on 8 March?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "count_posts",
+      "args": {
+       "language": "",
+       "start": "",
+       "end": ""
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "count_posts",
+      "args": {
+       "language": "RU",
+       "start": "2026-03-08",
+       "end": "2026-03-08"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "count",
+       "answer": "There are 398 posts, 7 of them Russian on 8 March.",
+       "numbers": {
+        "total": 398
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "398 posts: en 213, es 118, ru 67",
+    "7 posts: ru 7"
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "count"
+   }
+  }
+ },
+ {
+  "name": "count-range-matches-nothing",
+  "message": "How many Spanish posts on 25 March, and between 10 and 9 March?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "count_posts",
+      "args": {
+       "language": "es",
+       "start": "2026-03-25",
+       "end": "2026-03-25"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "count_posts",
+      "args": {
+       "language": "",
+       "start": "2026-03-10",
+       "end": "2026-03-09"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "count",
+       "answer": "There were none.",
+       "numbers": {
+        "total": 0
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "0 posts.\n0 posts."
+   ],
+   "tool_output_absent": [
+    " posts: "
+   ],
+   "finding": {
+    "question_type": "count"
+   }
+  }
+ },
+ {
+  "name": "z-threshold-is-inclusive",
+  "message": "Which days have a volume z-score of at least 2.99?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "daily_volume_anomalies",
+      "args": {
+       "z": 2.992
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "daily_volume_anomalies",
+      "args": {
+       "z": 2.99
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "volume",
+       "answer": "Two days.",
+       "numbers": {
+        "days": 2
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "2026-03-12: 41 posts, z 3.82\n2026-03-12: 41 posts, z 3.82\n2026-03-21: 35 posts, z 2.99"
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "volume"
+   }
+  }
+ },
+ {
+  "name": "window-boundary",
+  "message": "Check the 4-minute and 9-minute windows.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "find_coordinated",
+      "args": {
+       "window_minutes": 4,
+       "min_accounts": 5
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "find_coordinated",
+      "args": {
+       "window_minutes": 9,
+       "min_accounts": 4
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "coordination",
+       "answer": "One group.",
+       "numbers": {
+        "groups": 1
+       },
+       "evidence_post_ids": [
+        "P0091"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "accounts A34,A35,A36,A37,A38; posts P0091,P0092,P0093,P0094,P0095,P0096; 2026-03-08 14:02 to 2026-03-08 14:06"
+   ],
+   "tool_output_absent": [
+    "A22,A23,A24,A25",
+    "No coordinated groups."
+   ],
+   "finding": {
+    "question_type": "coordination"
+   }
+  }
+ },
+ {
+  "name": "same-account-counts-once",
+  "message": "Any group of six accounts?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "find_coordinated",
+      "args": {
+       "window_minutes": 5,
+       "min_accounts": 6
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "count",
+       "answer": "No group of six accounts.",
+       "numbers": {
+        "groups": 0
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "No coordinated groups."
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "count"
+   }
+  }
+ },
+ {
+  "name": "flag-declined-records-nothing",
+  "message": "Flag the Russian group.",
+  "human": "no",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "flag_coordinated",
+      "args": {
+       "account_ids": [
+        "A34",
+        "A35",
+        "A36",
+        "A37",
+        "A38"
+       ],
+       "reason": "same text"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "coordination",
+       "answer": "The analyst declined the flag.",
+       "numbers": {
+        "accounts": 5
+       },
+       "evidence_post_ids": [
+        "P0091"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": true,
+   "tool_output_contains": [
+    "Flag declined by analyst."
+   ],
+   "tool_output_absent": [
+    "after approval"
+   ],
+   "finding": {
+    "question_type": "coordination"
+   }
+  }
+ },
+ {
+  "name": "flag-input-checked-before-pause",
+  "message": "Flag A34 with A99, then A34 alone, then the group twice.",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "flag_coordinated",
+      "args": {
+       "account_ids": [
+        "A34",
+        "A99"
+       ],
+       "reason": "x"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "flag_coordinated",
+      "args": {
+       "account_ids": [
+        "A34",
+        "A34"
+       ],
+       "reason": "x"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "flag_coordinated",
+      "args": {
+       "account_ids": [
+        "A34",
+        "A35",
+        "A36",
+        "A37",
+        "A38"
+       ],
+       "reason": "x"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "flag_coordinated",
+      "args": {
+       "account_ids": [
+        "A38",
+        "A37",
+        "A36",
+        "A35",
+        "A34"
+       ],
+       "reason": "x"
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "coordination",
+       "answer": "One group flagged.",
+       "numbers": {
+        "accounts": 5
+       },
+       "evidence_post_ids": [
+        "P0091"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [
+    [
+     "A34",
+     "A35",
+     "A36",
+     "A37",
+     "A38"
+    ]
+   ],
+   "interrupted": true,
+   "tool_output_contains": [
+    "Account A99 not found.",
+    "A group needs at least 2 accounts.",
+    "Flagged 5 accounts after approval.",
+    "Group already flagged."
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "coordination"
+   }
+  }
+ },
+ {
+  "name": "hub-ties-by-account-id",
+  "message": "Top five reply hubs?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "top_reply_hubs",
+      "args": {
+       "k": 5
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "network",
+       "answer": "A03 receives the most replies.",
+       "numbers": {
+        "A03": 14
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "A03 14 replies\nA05 9 replies\nA11 9 replies\nA27 7 replies\nA04 4 replies"
+   ],
+   "tool_output_absent": [
+    "A22 4 replies"
+   ],
+   "finding": {
+    "question_type": "network"
+   }
+  }
+ },
+ {
+  "name": "self-replies-not-counted",
+  "message": "Top seven reply hubs?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "top_reply_hubs",
+      "args": {
+       "k": 7
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "top_reply_hubs",
+      "args": {
+       "k": 0
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "network",
+       "answer": "A03 receives the most replies.",
+       "numbers": {
+        "A03": 14
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "A27 7 replies\nA04 4 replies\nA22 4 replies\nA20 3 replies",
+    "k must be at least 1."
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "network"
+   }
+  }
+ },
+ {
+  "name": "coordination-finding-needs-evidence",
+  "message": "Is there coordination?",
+  "human": "yes",
+  "script": [
+   {
+    "tool_calls": [
+     {
+      "name": "find_coordinated",
+      "args": {
+       "window_minutes": 5,
+       "min_accounts": 5
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "coordination",
+       "answer": "Five accounts posted the same text.",
+       "numbers": {
+        "accounts": 5
+       },
+       "evidence_post_ids": []
+      }
+     }
+    ]
+   },
+   {
+    "tool_calls": [
+     {
+      "name": "Finding",
+      "args": {
+       "question_type": "coordination",
+       "answer": "Five accounts posted the same text.",
+       "numbers": {
+        "accounts": 5
+       },
+       "evidence_post_ids": [
+        "P0091",
+        "P0096"
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "expect": {
+   "flagged": [],
+   "interrupted": false,
+   "tool_output_contains": [
+    "accounts A34,A35,A36,A37,A38; posts P0091,P0092,P0093,P0094,P0095,P0096; 2026-03-08 14:02 to 2026-03-08 14:06"
+   ],
+   "tool_output_absent": [],
+   "finding": {
+    "question_type": "coordination",
+    "evidence_post_ids": [
+     "P0091",
+     "P0096"
+    ]
+   }
+  }
+ },
+ {
+  "name": "precision-zero-division",
+  "kind": "metrics",
+  "topics": [
+   "transport",
+   "weather",
+   "sports",
+   "prices"
+  ],
+  "gold": [
+   "transport",
+   "transport",
+   "weather",
+   "sports",
+   "sports",
+   "prices"
+  ],
+  "pred": [
+   "transport",
+   "weather",
+   "weather",
+   "sports",
+   "transport",
+   "weather"
+  ],
+  "expect": {
+   "confusion": [
+    [
+     1,
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     1,
+     0,
+     0
+    ]
+   ],
+   "metrics": {
+    "transport": {
+     "precision": 0.5,
+     "recall": 0.5,
+     "support": 2
+    },
+    "weather": {
+     "precision": 0.3333333333333333,
+     "recall": 1.0,
+     "support": 1
+    },
+    "sports": {
+     "precision": 1.0,
+     "recall": 0.5,
+     "support": 2
+    },
+    "prices": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "support": 1
+    }
+   }
+  }
+ },
+ {
+  "name": "prediction-outside-topics-raises",
+  "kind": "metrics",
+  "topics": [
+   "transport",
+   "weather",
+   "sports",
+   "prices"
+  ],
+  "gold": [
+   "transport",
+   "weather"
+  ],
+  "pred": [
+   "transport",
+   "politics"
+  ],
+  "expect": {
+   "raises": "ValueError"
+  }
+ }
+]
