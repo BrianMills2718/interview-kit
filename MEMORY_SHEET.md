@@ -12,7 +12,9 @@ use the AI, this is also what it sees.
 
 ## Before the first prompt
 
-Switch the chat to the strongest model offered. If outside files are allowed, run
+Switch the chat to the strongest model offered. If the test says start from a blank slate, the
+kit is not there: type the prompts from memory, and the prompts that mention `kit/check.sh` skip
+that part (prompt 14 has the chat do the checker's job instead). When practising, run
 `git clone <kit url> kit` in the terminal, send prompt 1 as written, and add one line: "Also read
 kit/AGENTS.md and follow it all session."
 
@@ -61,7 +63,7 @@ Then question the drawing:
 > Walk me through the state machine when <the riskiest use case> happens. Which arrow fires,
 > and what stops a forbidden one?
 
-(`bash kit/check.sh` fails PLAN.md, docs/DECISIONS.md, "## Sequence" and "## Tests from the model"
+(Practice only: `bash kit/check.sh` fails PLAN.md, docs/DECISIONS.md, "## Sequence" and "## Tests from the model"
 until prompts 8-10; that is expected.)
 
 **6. Off the shelf** [Ask]
@@ -99,7 +101,7 @@ Then [Edit]:
 > including [*]; one row per Forbidden line; one row per domain rule; one row per requirement whose
 > exact output the task quotes, From = its R id. Name each test `test_...`.
 > In backticks with (), name only functions our code defines or imports, never a method such as
-> `graph.invoke()`: `check.sh --final` fails names the code does not define.
+> `graph.invoke()`: every such name must exist in the code.
 
 **10. Plan** [Plan]
 > Write a plan with these headings: ## Goal, with the requirements R1, R2...; ## Done when, a
@@ -137,10 +139,11 @@ of "Implement step <N> only".
 > was wrong and what I changed), ## Limitations, ## Next steps.
 
 **14. Finish** [Edit]
-> Run every test, the README's Run it command and `bash kit/check.sh --final`.
+> Run every test, the README's Run it command and, if kit/check.sh exists, `bash kit/check.sh --final`.
+> Check that every test named in docs/MODEL.md exists and passes, and every Forbidden line has one.
 > Tick each Done when item in PLAN.md and write the real result next to it (the actual pass count, not a placeholder).
-> Run `bash kit/check.sh --final` again, put its last line on the check.sh item, and show me
-> anything still unticked.
+> If kit/check.sh exists, run `bash kit/check.sh --final` again and put its last line on that item.
+> Show me anything still unticked.
 
 ## When it is wrong (any time)
 > That's wrong: <what>. Fix it, and add a line to the README's AI notes saying what you got wrong
