@@ -13,8 +13,8 @@ use the AI, this is also what it sees.
 ## Before the first prompt
 
 Switch the chat to the strongest model offered. If outside files are allowed, run
-`git clone <kit url> kit` in the terminal and replace prompt 1 with: "Read kit/AGENTS.md and
-follow it all session."
+`git clone <kit url> kit` in the terminal, send prompt 1 as written, and add one line: "Also read
+kit/AGENTS.md and follow it all session."
 
 ## The fourteen prompts
 
@@ -30,7 +30,7 @@ follow it all session."
 > R1, R2..., quoting the task's exact words. Then list what is ambiguous or missing.
 
 **3. Questions** [Ask]
-> Ask me your questions one at a time, most important first. Give your recommended answer with
+> Ask me your questions one at a time, most important first, at most seven. Give your recommended answer with
 > each so I can just say yes or correct it.
 
 Answer each one. Then:
@@ -43,10 +43,12 @@ Answer each one. Then:
 
 Then [Edit]:
 > Write docs/PRD.md with these headings: ## Goal, one line (who, what, why this shape) and an
-> "Example: <input> -> <result>" line; ## Requirements, a table with rows | R1 |, quoting the
-> task; ## Use cases, a table | ID | Kind | Actor | Trigger | Steps | Expected result | with rows
-> | UC1 |, where Kind is normal, failure or alternative; ## Assumptions, rows | A1 |; ## Risks,
-> rows | K1 |, riskiest first.
+> "Example: <input> -> <result>" line; ## Requirements, a table | ID | Quoted from the task |
+> Reading chosen, if ambiguous | with rows | R1 |; ## Use cases, a table | ID | Kind | Actor |
+> Trigger | Steps | Expected result | with rows | UC1 |, where Kind is normal, failure or
+> alternative; ## Assumptions, a table | ID | Assumption | Requirement it affects | with rows
+> | A1 |; ## Risks, a table | ID | Risk | Use case | How we test it early | with rows | K1 |,
+> riskiest first.
 
 **5. Domain model and states** [Edit]
 > Start docs/MODEL.md. Under ## Domain model: a Mermaid classDiagram of the things in the use
@@ -58,6 +60,9 @@ Then [Edit]:
 Then question the drawing:
 > Walk me through the state machine when <the riskiest use case> happens. Which arrow fires,
 > and what stops a forbidden one?
+
+(`bash kit/check.sh` fails "## Sequence" and "## Tests from the model" until prompt 9; that is
+expected.)
 
 **6. Off the shelf** [Ask]
 > For each requirement, what already does it? Name the library, the exact import and function,
@@ -71,6 +76,11 @@ Then question the drawing:
 
 Then:
 > Which of those were wrong or out of date? Fix the list.
+
+Then:
+> Write a probe script of about ten lines that tries the library behaviour the riskiest use case
+> depends on (for a human pause: pause, resume once, print which lines ran twice). Run it and show
+> me the output.
 
 **8. Shape** [Ask]
 > I want to shape it as <one agent with tools, a fixed graph, a router, or plain code>, because
@@ -87,20 +97,23 @@ Then [Edit]:
 > name our functions exactly as we will write them. Then add ## Tests from the model, a table
 > | Claim | From | Test |: one row per arrow in the state machine, copied as written "A --> B",
 > including [*]; one row per Forbidden line; one row per domain rule. Name each test `test_...`.
+> In backticks with (), name only functions our code defines or imports, never a method such as
+> `graph.invoke()`: `check.sh --final` fails names the code does not define.
 
 **10. Plan** [Plan]
-> Write PLAN.md with these headings: ## Goal, with the requirements R1, R2...; ## Done when, a
-> checklist; ## Steps, five to eight small steps, riskiest use case first; ## System model, the
-> shape we chose and a link to docs/MODEL.md; ## Assumptions and risks.
+> Write a plan with these headings: ## Goal, with the requirements R1, R2...; ## Done when, a
+> checklist; ## Steps, five to eight small steps, step 1 the thinnest end-to-end slice through the
+> entry function for the riskiest use case, its test first; ## Shape, the shape chosen and one
+> line per rejected shape; ## System model, a link to docs/MODEL.md; ## Assumptions; ## Risks.
 
-Read it, correct it, then type: "plan approved".
+Read it, correct it, then [Edit]: "Save that plan as PLAN.md." Then type: "plan approved".
 
 **11. Build one step** [Edit]. Repeat for each step.
 > Implement step <N> only. Write the tests docs/MODEL.md names for it, each one a wrong version
 > would fail, and where the model is involved, use a fake scripted model so it runs offline. Use
 > the function names in docs/MODEL.md.
-> Also test what the diagrams forbid, such as no refund before approval and nothing written on a
-> "no". Never change a diagram or a test just to make the code pass: if the model is wrong, tell me
+> Also test what the diagrams forbid: every Forbidden line in docs/MODEL.md, and that nothing is
+> written on a "no". Never change a diagram or a test just to make the code pass: if the model is wrong, tell me
 > why and update the diagram and its test together. Run the tests and show me the output.
 
 Then:
@@ -114,15 +127,15 @@ Then:
 Fix what it finds, one step at a time, with prompt 11.
 
 **13. README** [Edit]
-> Write README.md with a "## Run it" section first (the exact command and its output), then: the
-> approach (include the state machine and the sequence diagram), the off-the-shelf parts we used
-> and why, design decisions (link docs/DECISIONS.md), assumptions, how I used the AI (where it
-> was wrong and what I changed), limitations, and next steps.
+> Write README.md with these ## headings in order: ## Run it (the exact command and its output),
+> ## Approach (include the state machine and the sequence diagram), ## Off-the-shelf parts,
+> ## Design decisions (link docs/DECISIONS.md), ## Assumptions, ## How I used the AI (where it
+> was wrong and what I changed), ## Limitations, ## Next steps.
 
 **14. Finish** [Edit]
-> Run every test and the main command once more. Tick each Done when item in PLAN.md and write the
-> real result next to it (the actual pass count, not a placeholder). Then show me anything that
-> is still unticked.
+> Run every test, the main command and `bash kit/check.sh --final`. Tick each Done when item in
+> PLAN.md and write the real result next to it (the actual pass count, not a placeholder). Run
+> `bash kit/check.sh --final` again and show me its last line and anything still unticked.
 
 ## When it is wrong (any time)
 > That's wrong: <what>. Fix it, and add a line to the README's AI notes saying what you got wrong

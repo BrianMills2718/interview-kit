@@ -73,7 +73,9 @@ def test_readme_sections_are_named():
     assert "Run it" in required
     missing = [s for s in required if s.lower() not in SHEET.lower()]
     assert missing == [], f"MEMORY_SHEET.md prompts omit README sections check.sh needs: {missing}"
-    assert '"## Run it"' in SHEET, "the README prompt must name the exact 'Run it' heading"
+    headings = re.findall(r"## ([^,(]+)", SHEET)
+    unheaded = [s for s in required if not any(s.lower() in h.lower() for h in headings)]
+    assert unheaded == [], f"the README prompt must name these as ## headings: {unheaded}"
 
 
 def test_prd_sections_and_rows_are_named():
